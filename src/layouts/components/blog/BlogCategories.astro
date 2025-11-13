@@ -1,7 +1,11 @@
 ---
 import { humanize, slugify } from "@lib/utils/textConverter";
-const { categories } = Astro.props;
+import { getRelativeLocaleUrl } from "astro:i18n";
+import config from "@config/config.json";
+
+const { categories, basePath = config.settings.blog_folder } = Astro.props;
 const params = Astro.params;
+const { currentLocale } = Astro;
 ---
 
 <div class="category-filter mb-10 mt-3 rounded-xl bg-[#EEEEEE] p-4">
@@ -11,7 +15,7 @@ const params = Astro.params;
         class={`filter-btn ${
           !params.category ? "filter-btn-active" : undefined
         } btn btn-sm`}
-        href="/categories">All Categories</a
+        href={getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}`)}>All Categories</a
       >
     </li>
     {
@@ -23,7 +27,10 @@ const params = Astro.params;
                 ? "filter-btn-active"
                 : undefined
             } btn btn-sm`}
-            href={`/categories/${slugify(category)}`}
+            href={getRelativeLocaleUrl(
+              currentLocale ?? '',
+              `/${basePath}/${slugify(category)}`,
+            )}
           >
             {humanize(category)}
           </a>

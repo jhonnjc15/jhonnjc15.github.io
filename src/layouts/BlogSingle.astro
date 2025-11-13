@@ -1,10 +1,14 @@
 ---
 import { Image } from 'astro:assets';
+import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import Disqus from "./function-components/Disqus";
 
 import { humanize, slugify } from "@lib/utils/textConverter";
+import { getRelativeLocaleUrl } from "astro:i18n";
+const { blog_folder } = config.settings;
+const { currentLocale } = Astro;
 import {
   FaRegCalendarAlt,
   FaRegClock,
@@ -52,7 +56,10 @@ const { Content } = await post.render();
               {
                 post.data.categories.map((category: string, index: number) => (
                   <a
-                    href={`/categories/${slugify(category)}`}
+                    href={getRelativeLocaleUrl(
+                      currentLocale ?? '',
+                      `/${blog_folder}/${slugify(category)}`,
+                    )}
                     class="hover:text-primary"
                   >
                     {humanize(category)}

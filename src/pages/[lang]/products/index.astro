@@ -4,15 +4,9 @@ import Shape from "@components/Shape.astro";
 import Base from "@layouts/Base.astro";
 import Faq from "@layouts/function-components/Faq.jsx";
 import { getEntryBySlug } from "astro:content";
-import ProductsExperiencesHome from "@components/products/ProductsExperiencesHome.astro"
-import ProductsExperiencesProducts from "@components/products/ProductsExperiencesProducts.astro"
-
 import ProductsList from "@components/products/ProductsList.astro";
-import Blogs from "@components/Blogs.astro";
 import config from "@config/config.json";
 import Pagination from "@layouts/components/Pagination.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
-import { sortByDate } from "@lib/utils/sortFunctions";
 
 // Importa ambos archivos estáticos
 import productsES from '@data/es/products.json';
@@ -33,11 +27,9 @@ const posts = json_products.map(product => ({
 //import productsJson from "@data/products.json";
 
 
-const { product_folder } = config.settings; // "blog"
-//const posts = await getSinglePage(product_folder);
+const { product_folder } = config.settings; // "products"
 
 const sortedPosts = posts;
-//const sortedPosts = sortByDate(posts);
 const recentPost = sortedPosts.filter((item) => !item.data.featured);
 const totalPages = Math.ceil(recentPost.length / config.settings.pagination);
 const currentPosts = recentPost.slice(0, config.settings.pagination);
@@ -105,10 +97,6 @@ export async function getStaticPaths() {
     <div class="container">
       <PageHeader page_data={page_data} />
     </div>
-  </section>
-  <!-- products -->
-  <section class="section mt-12 pt-0">
-    <ProductsExperiencesProducts/>
   </section>
   <section class="section mx-4 md:mx-10 lg:mx-20 mt-12">
     <ProductsList 

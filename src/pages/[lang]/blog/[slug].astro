@@ -1,0 +1,42 @@
+---
+import Base from "@layouts/Base.astro";
+import Shape from "@components/Shape.astro";
+import BlogSingle from "@layouts/BlogSingle.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+const { currentLocale } = Astro;
+const fallbackLocale = "es";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const [lang, ...rest] = post.slug.split("/");
+    return {
+      params: {
+        lang,
+        slug: rest.join("/"),
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+let post = await getEntryBySlug("blog", `${currentLocale}/${slug}`);
+
+if (!post && currentLocale !== fallbackLocale) {
+  post = await getEntryBySlug("blog", `${fallbackLocale}/${slug}`);
+}
+
+if (!post) {
+  throw new Error(`Blog post not found for slug ${slug}`);
+}
+
+const pageTitle = post.data.title;
+const pageDescription = post.data.subtitle ?? post.data.excerpt ?? "";
+
+---
+<Base title={pageTitle} description={pageDescription}>
+  <Shape />
+  <BlogSingle post={post} />
+</Base>

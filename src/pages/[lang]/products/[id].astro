@@ -1,0 +1,66 @@
+---
+import Shape from "@components/Shape.astro";
+import Base from "@layouts/Base.astro";
+import ProductPage from "@components/products/ProductPage.astro";
+import productsES from "@data/es/products.json";
+import productsEN from "@data/en/products.json";
+
+const { currentLocale } = Astro;
+
+const products = currentLocale === "en" ? productsEN : productsES;
+
+interface ProductData {
+  id_product: number;
+  title: string;
+  description?: string;
+  feature_1?: string;
+  feature_2?: string;
+  feature_3?: string;
+  price?: number;
+  images?: { src: string; isMain?: boolean }[];
+}
+
+export async function getStaticPaths() {
+  const locales = ["es", "en"];
+  const paths: { params: { lang: string; id: string } }[] = [];
+
+  for (const lang of locales) {
+    const localeProducts = lang === "en" ? productsEN : productsES;
+
+    for (const product of localeProducts) {
+      paths.push({
+        params: {
+          lang,
+          id: product.id_product.toString(),
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { id } = Astro.params;
+
+const product = products.find(
+  (entry) => String(entry.id_product) === String(id),
+) as ProductData | undefined;
+
+if (!product) {
+  throw new Error(`Product not found for id ${id}`);
+}
+
+const pageTitle = product.title;
+const pageDescription = product.description ?? "";
+
+---
+<Base
+  title={pageTitle}
+  meta_title={pageTitle}
+  description={pageDescription}
+>
+  <Shape />
+  <section class="px-5 section mx-4 md:mx-10 lg:mx-20 mt-12">
+    <ProductPage data_by_id={product} />
+  </section>
+</Base>

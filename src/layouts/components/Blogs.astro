@@ -4,8 +4,16 @@ import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import { humanize, plainify, slugify } from "@lib/utils/textConverter";
+import { getRelativeLocaleUrl } from "astro:i18n";
 const { summary_length } = config.settings;
-const { posts } = Astro.props;
+const { posts, basePath = config.settings.blog_folder } = Astro.props;
+const { currentLocale } = Astro;
+
+const buildPostLink = (slug: string) =>
+  getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slug}`);
+
+const buildCategoryLink = (category: string) =>
+  getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slugify(category)}`);
 ---
 
 <div class="row">
@@ -23,13 +31,13 @@ const { posts } = Astro.props;
           <div class="card-content">
             <div class="card-tags space-x-1">
               {item.data.categories.map((category: any) => (
-                <a class="tag" href={`/categories/${slugify(category)}`}>
+                <a class="tag" href={buildCategoryLink(category)}>
                   {humanize(category)}
                 </a>
               ))}
             </div>
             <h3 class="h4 card-title">
-              <a href={`/blog/${item.slug}`}>{item.data.title}</a>
+              <a href={buildPostLink(item.slug)}>{item.data.title}</a>
             </h3>
             <p class="mb-4 text-text">
               {plainify(item.body?.slice(0, Number(summary_length)))}...

@@ -3,13 +3,11 @@ import config from "@config/config.json";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { plainify } from "@lib/utils/textConverter";
 const { summary_length } = config.settings;
-import categoriesES from "@data/es/categories.json";
-import categoriesEN from "@data/en/categories.json";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 
 const { currentLocale } = Astro;
-const fallbackLocale = "es";
 
-// Selecciona productos según el idioma
 const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
 ---
 
@@ -81,7 +79,7 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
           href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
           class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
         >
-          <span>Read more</span>
+          <span>Explore category</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -118,20 +116,20 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
         <h5
           class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
         >
-          More features
+          Latest articles
         </h5>
         <p
           class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden group-hover:text-primary"
         >
-          Neque Dolor, fugiat non cum doloribus aperiam.
+          Stay updated with the newest stories and insights from our team.
         </p>
       </div>
 
-      <a
-        href="#"
-        class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
+        <a
+          href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
+          class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
       >
-        <span>Read more</span>
+        <span>Go to blog</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

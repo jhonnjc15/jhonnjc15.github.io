@@ -39,23 +39,12 @@ export async function getStaticPaths() {
 }
 
 
-let products = await getEntryBySlug("products", `${currentLocale}/-index`);
-if (!products) {
-  products = await getEntryBySlug("products", `${fallbackLocale}/-index`);
+let productIndex = await getEntryBySlug("products", `${currentLocale}/-index`);
+if (!productIndex) {
+  productIndex = await getEntryBySlug("products", `${fallbackLocale}/-index`);
 }
 
-let blogIndex = await getEntryBySlug("products", `${currentLocale}/-index`);
-if (!blogIndex) {
-  blogIndex = await getEntryBySlug("products", `${fallbackLocale}/-index`);
-}
-
-const { title, page_title, product_list } = blogIndex.data;
-
-console.log('blogIndex')
-console.log(blogIndex)
-
-console.log('products')
-console.log(products)
+const { title, page_title, product_list } = productIndex.data;
 
 const { slug } = Astro.params;
 const { product_folder } = config.settings;
@@ -82,7 +71,7 @@ const currentProducts = recentProduct.slice(indexOfFirstProduct, indexOfLastProd
 
 // Metadata para PageHeader
 const page_data = {
-  index_title: blogIndex.data.title,
+  index_title: productIndex.data.title,
   slug: `page / ${slug}`,
   index_path: `${config.settings.product_folder}`
 };
@@ -90,10 +79,10 @@ const page_data = {
 ---
 
 <Base
-  title={blogIndex.data.title}
-  meta_title={blogIndex.data.meta_title}
-  description={blogIndex.data.description}
-  image={blogIndex.data.image}
+  title={productIndex.data.title}
+  meta_title={productIndex.data.meta_title}
+  description={productIndex.data.description}
+  image={productIndex.data.image}
 >
   <Shape />
   <section class="page-hero pt-16">

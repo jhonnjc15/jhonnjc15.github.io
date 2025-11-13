@@ -27,6 +27,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const { currentLocale } = Astro
 
+const blogDropdownSubtitle = currentLocale === 'en' ? 'Stories by category' : 'Historias por categoría';
+const blogCtaText = currentLocale === 'en' ? 'Discover our blog categories' : 'Explora nuestras categorías de blog';
+const blogCtaHighlight = currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS';
+const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
+const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
+
 // console.log('Astro.props.is404')
 // console.log(Astro.props.is404)
 
@@ -127,7 +133,9 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                           </svg>
                         </div>
                         <p class="hidden lg:mt-1 lg:text-gray-500 lg:inline-block">
-                          Trending wallpapers for any kind of tatse
+                          {menu.name.toLowerCase() === 'blog'
+                            ? `${t('nav.blog')} • ${blogDropdownSubtitle}`
+                            : 'Trending wallpapers for any kind of tatse'}
                         </p>
                       </a>
                     </li>
@@ -137,13 +145,15 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                     <div class="bg-black lg:p-5 rounded-xl space-y-4 h-full flex flex-col justify-center ">
                       <div >
                         <p class="text-xl text-white tracking-tight text-balance">
-Conoce más sobre nuestros <span class="text-gray-400">INCREIBLES PRODUCTOS</span> 
+{menu.name.toLowerCase() === 'blog'
+  ? blogCtaText
+  : productsCtaText}<span class="text-gray-400">{menu.name.toLowerCase() === 'blog' ? blogCtaHighlight : productsCtaHighlight}</span>
                         </p>
                       </div>
-                      <a 
-                        href={getRelativeLocaleUrl(currentLocale ?? '', `/products`)}
+                      <a
+                        href={getRelativeLocaleUrl(currentLocale ?? '', menu.name.toLowerCase() === 'blog' ? `/blog` : `/products`)}
                         class={`nav-link items-center text-sm group active:bg-gray-100 active:text-gray-900/60 active:transition-none border font-medium flex flex-row justify-center gap-2 outline-offset-2 px-6 py-3 transition w-full bg-white hover:bg-gray-50 text-black rounded-lg ${
-                          isActive(pathname, '/products', currentLocale ?? '') ? 'text-primary border-primary' : ''
+                          isActive(pathname, menu.url, currentLocale ?? '') ? 'text-primary border-primary' : ''
                         }`}
                       >
                         <p>{t(`nav.${menu.name.toLowerCase()}`)}</p>

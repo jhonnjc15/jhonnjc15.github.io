@@ -13,10 +13,7 @@ const { data_by_id } = Astro.props;
   <!-- Detalles del producto -->
   <div class="flex flex-col gap-6 w-full">
     <div>
-      <span class="text-sm uppercase font-semibold tracking-wide">
-        {data_by_id.category}
-      </span>
-      <h1 class="text-3xl font-bold mt-2">{data_by_id.title}</h1>
+      <h1 class="text-3xl font-bold">{data_by_id.title}</h1>
     </div>
 
     <p class="leading-relaxed ">

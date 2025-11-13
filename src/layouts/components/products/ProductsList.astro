@@ -1,9 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import config from "@config/config.json";
-import dateFormat from "@lib/utils/dateFormat";
-import readingTime from "@lib/utils/readingTime";
-import { humanize, plainify, slugify } from "@lib/utils/textConverter";
+import { plainify } from "@lib/utils/textConverter";
 const { summary_length } = config.settings;
 const { products, product_list } = Astro.props;
 
@@ -18,12 +16,8 @@ const enhancedProducts = products.map((item) => {
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { currentLocale } = Astro
-import { getI18N } from '@i18n/index';
-
-const i18n = getI18N({ currentLocale })
 ---
 <div>
-{/* <h2 class="h4 mb-4">{i18n.LAYOUTS.COMPONENTS.PRODUCTS.PRODUCTSLIST.H2_SUBTITLE}</h2> */}
 <h2 class="h4 mb-4">{product_list.title}</h2>
 <p class="mb-4">
   {product_list.description}
@@ -41,8 +35,6 @@ const i18n = getI18N({ currentLocale })
             src={item.mainImage}
             alt={item.data.title}
           />
-          <span class="uppercase absolute top-0 right-0 m-4 rounded-lg bg-paqariYellow px-4 py-1 text-center text-sm font-medium text-white">{item.data.category}
-          </span>
         </div>
         <div class="p-6">
           <div class="flex items-center justify-between mb-2">
@@ -60,7 +52,10 @@ const i18n = getI18N({ currentLocale })
         <div class="p-6 pt-0">
           <a
             class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-gray-900/10 text-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-            href={getRelativeLocaleUrl(currentLocale ?? '',`${`/products/${item.data.category}/${item.data.id_product}`}`)}
+            href={getRelativeLocaleUrl(
+              currentLocale ?? '',
+              `/products/${item.data.id_product}`,
+            )}
             type="button">
             {product_list.product_detail_button.label}
           </a>

@@ -10,22 +10,24 @@
     },
     {
       "name": "Products",
-      "url": "/products",
+      "url": "/products"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
       "hasChildren": true,
       "children": [
         {
           "name": "Educational",
-          "url": "/products/educational"
+          "url": "/blog/educational"
         },
-
         {
           "name": "Entertainment",
-          "url": "/products/entertainment"
+          "url": "/blog/entertainment"
         },
-
         {
           "name": "Scientific",
-          "url": "/products/scientific"
+          "url": "/blog/scientific"
         }
       ]
     },
@@ -47,6 +49,10 @@
     {
       "name": "Products",
       "url": "/products"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
     },
     {
       "name": "Contact",

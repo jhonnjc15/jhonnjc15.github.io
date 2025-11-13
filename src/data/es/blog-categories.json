@@ -2,7 +2,7 @@
   {
     "category_name": "educational",
     "name": "Educativo",
-    "url": "/products/educational",
+    "url": "/blog/educational",
     "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341160.png",
     "id_category": 1,
     "short_description": "Recursos y materiales para apoyar el aprendizaje y la enseñanza.",
@@ -11,7 +11,7 @@
   {
     "category_name": "entertainment",
     "name": "Entretenimiento",
-    "url": "/products/entertainment",
+    "url": "/blog/entertainment",
     "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341139.png",
     "id_category": 2,
     "short_description": "Productos para el ocio y el disfrute personal, desde juegos hasta multimedia.",
@@ -20,7 +20,7 @@
   {
     "category_name": "scientific",
     "name": "Científico",
-    "url": "/products/scientific",
+    "url": "/blog/scientific",
     "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341134.png",
     "id_category": 3,
     "short_description": "Equipos y recursos para investigación y desarrollo científico.",

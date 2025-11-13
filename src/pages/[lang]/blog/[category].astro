@@ -1,0 +1,97 @@
+---
+import PageHeader from "@components/PageHeader.astro";
+import Shape from "@components/Shape.astro";
+import Base from "@layouts/Base.astro";
+import Blogs from "@components/Blogs.astro";
+import BlogCategories from "@components/blog/BlogCategories.astro";
+import Pagination from "@layouts/components/Pagination.astro";
+import config from "@config/config.json";
+import { getCollection } from "astro:content";
+import { sortByDate } from "@lib/utils/sortFunctions";
+
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
+
+const { currentLocale } = Astro;
+const fallbackLocale = "es";
+const { blog_folder, pagination } = config.settings;
+
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
+const { category } = Astro.params;
+
+const activeCategory = categoryEntries.find(
+  (entry) => entry.category_name === category,
+);
+
+if (!activeCategory) {
+  throw new Error(`Category not found: ${category}`);
+}
+
+const categories = categoryEntries.map((entry) => entry.category_name);
+
+const allPosts = await getCollection("blog");
+const filterByLocale = (entries: any[], locale: string) =>
+  entries.filter((entry) => entry.slug.startsWith(`${locale}/`));
+const normalizeSlug = (slug: string) => slug.split("/").slice(1).join("/");
+
+let localePosts = filterByLocale(allPosts, currentLocale ?? fallbackLocale);
+
+if (localePosts.length === 0 && currentLocale !== fallbackLocale) {
+  localePosts = filterByLocale(allPosts, fallbackLocale);
+}
+
+const posts = localePosts
+  .filter((entry) => !entry.data.draft)
+  .filter((entry) => entry.data.categories.includes(category))
+  .map((entry) => ({
+    ...entry,
+    slug: normalizeSlug(entry.slug),
+  }));
+
+const sortedPosts = sortByDate(posts);
+const totalPages = Math.ceil(sortedPosts.length / pagination) || 1;
+const currentPosts = sortedPosts.slice(0, pagination);
+
+const page_data = {
+  title: activeCategory.name,
+  page_title: activeCategory.name,
+  content: activeCategory.long_description ?? "",
+};
+
+export async function getStaticPaths() {
+  const locales = ["es", "en"];
+  const paths: { params: { lang: string; category: string } }[] = [];
+
+  for (const lang of locales) {
+    const entries = lang === "en" ? categoriesEN : categoriesES;
+
+    for (const entry of entries) {
+      paths.push({
+        params: {
+          lang,
+          category: entry.category_name,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+---
+<Base title={activeCategory.name} description={activeCategory.short_description}>
+  <Shape />
+  <section class="page-hero pb-4 pt-16">
+    <div class="container">
+      <PageHeader page_data={page_data} />
+    </div>
+  </section>
+  <section class="section mx-4 md:mx-10 lg:mx-20 mt-12">
+    <BlogCategories categories={categories} />
+    <Blogs posts={currentPosts} basePath={blog_folder} />
+    <Pagination
+      section={`${blog_folder}/${category}`}
+      currentPage={1}
+      totalPages={totalPages}
+    />
+  </section>
+</Base>

@@ -1,0 +1,101 @@
+---
+import PageHeader from "@components/PageHeader.astro";
+import Shape from "@components/Shape.astro";
+import Base from "@layouts/Base.astro";
+import Blogs from "@components/Blogs.astro";
+import BlogCategories from "@components/blog/BlogCategories.astro";
+import Pagination from "@layouts/components/Pagination.astro";
+import config from "@config/config.json";
+import { getCollection } from "astro:content";
+import { sortByDate } from "@lib/utils/sortFunctions";
+
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
+
+const { currentLocale } = Astro;
+const fallbackLocale = "es";
+const { blog_folder, pagination } = config.settings;
+
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
+const categories = categoryEntries.map((entry) => entry.category_name);
+
+const allPosts = await getCollection("blog");
+
+const filterByLocale = (entries: any[], locale: string) =>
+  entries.filter((entry) => entry.slug.startsWith(`${locale}/`));
+
+const normalizeSlug = (slug: string) => slug.split("/").slice(1).join("/");
+
+let localePosts = filterByLocale(allPosts, currentLocale ?? fallbackLocale);
+
+if (localePosts.length === 0 && currentLocale !== fallbackLocale) {
+  localePosts = filterByLocale(allPosts, fallbackLocale);
+}
+
+const posts = localePosts
+  .filter((entry) => !entry.data.draft)
+  .map((entry) => ({
+    ...entry,
+    slug: normalizeSlug(entry.slug),
+  }));
+
+const sortedPosts = sortByDate(posts);
+const totalPages = Math.ceil(sortedPosts.length / pagination) || 1;
+const { slug } = Astro.params;
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const indexOfLastPost = currentPage * pagination;
+const indexOfFirstPost = indexOfLastPost - pagination;
+const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+const copy = currentLocale === "en"
+  ? {
+      title: "Blog",
+      description: "Explore insights, tutorials, and stories from our team organized by topic.",
+    }
+  : {
+      title: "Blog",
+      description: "Explora ideas, tutoriales e historias de nuestro equipo organizadas por temática.",
+    };
+
+const page_data = {
+  index_title: copy.title,
+  page_title: `${copy.title} / ${slug}`,
+  slug: `page / ${slug}`,
+  index_path: blog_folder,
+  content: copy.description,
+};
+
+export async function getStaticPaths() {
+  const locales = ["es", "en"];
+  const paths: { params: { lang: string; slug: string } }[] = [];
+  const entries = await getCollection("blog");
+
+  for (const lang of locales) {
+    const localePosts = filterByLocale(entries, lang).filter((entry) => !entry.data.draft);
+    const pages = Math.ceil(localePosts.length / pagination) || 1;
+
+    for (let page = 2; page <= pages; page++) {
+      paths.push({ params: { lang, slug: page.toString() } });
+    }
+  }
+
+  return paths;
+}
+---
+<Base title={copy.title} description={copy.description}>
+  <Shape />
+  <section class="page-hero pt-16">
+    <div class="container">
+      <PageHeader page_data={page_data} />
+    </div>
+  </section>
+  <section class="section mx-4 md:mx-10 lg:mx-20 mt-12">
+    <BlogCategories categories={categories} />
+    <Blogs posts={currentPosts} basePath={blog_folder} />
+    <Pagination
+      section={blog_folder}
+      totalPages={totalPages}
+      currentPage={currentPage}
+    />
+  </section>
+</Base>
