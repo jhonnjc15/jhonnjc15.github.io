@@ -1,5 +1,6 @@
 ---
 title: "Diseñamos experiencias inmersivas de entretenimiento"
+translationKey: blog-immersive-experiences
 subtitle: "Historias interactivas que conectan tecnología y emoción"
 date: 2024-05-08
 image: "/images/posts/post-6.png"

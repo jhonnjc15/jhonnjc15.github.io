@@ -1,5 +1,6 @@
 ---
 title: "Nosotros"
+translationKey: about-main
 page_title: "Sobre nuestra empresa"
 buttons:
   - label: Más información

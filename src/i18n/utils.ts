@@ -1,4 +1,5 @@
 import { ui, defaultLang, showDefaultLang, routes } from './ui';
+import { getLocalizedRouteMap } from './routes';
 
 export function getLangFromUrl(url: URL) {
 	const [, lang] = url.pathname.split('/');
@@ -12,25 +13,84 @@ export function useTranslations(lang: keyof typeof ui) {
 	};
 }
 
-export function useTranslatedPath(lang: keyof typeof ui) {
-	return function translatePath(path: string, l: string = lang) {
-		const pathName = path.replaceAll('/', '');
-		const hasTranslation =
-			defaultLang !== l &&
-			(routes[l as keyof typeof routes] as Record<string, string>)[
-				pathName
-			] !== undefined;
-		const translatedPath = hasTranslation
-			? '/' +
-			  (routes[l as keyof typeof routes] as Record<string, string>)[
-					pathName
-			  ]
-			: path;
+export async function useTranslatedPath(lang: keyof typeof ui) {
+        const localizedRoutes = await getLocalizedRouteMap();
 
-		return !showDefaultLang && l === defaultLang
-			? translatedPath
-			: `/${l}${translatedPath}`;
-	};
+        return function translatePath(path: string, l: string = lang) {
+                const normalizedSegments = path.split('/').filter(Boolean);
+                const normalizedPath = normalizedSegments.join('/');
+
+                if (!normalizedPath) {
+                        const rootPath = '/';
+                        if (!showDefaultLang && l === defaultLang) {
+                                return rootPath;
+                        }
+
+                        return `/${l}${rootPath}`;
+                }
+
+                let translatedPath = normalizedPath;
+
+                if (l !== lang) {
+                        const dynamicMatch = localizedRoutes[lang]?.[normalizedPath];
+                        const localizedTarget =
+                                typeof dynamicMatch === 'object'
+                                        ? dynamicMatch[l as keyof typeof dynamicMatch]
+                                        : undefined;
+
+                        if (localizedTarget) {
+                                translatedPath = localizedTarget;
+                        } else {
+                                const reverseLookup = localizedRoutes[l];
+                                if (reverseLookup) {
+                                        const fallback = Object.entries(reverseLookup).find(([, mapping]) => {
+                                                if (typeof mapping !== 'object') {
+                                                        return false;
+                                                }
+
+                                                return mapping[lang] === normalizedPath;
+                                        });
+
+                                        if (fallback) {
+                                                translatedPath = fallback[0];
+                                        }
+                                }
+                        }
+
+                        if (translatedPath === normalizedPath) {
+                                const staticRoutes = routes[l as keyof typeof routes] as Record<string, string>;
+                                if (staticRoutes) {
+                                        const directMatch = staticRoutes[normalizedPath];
+                                        const flattenedKey = normalizedPath.replace(/\//g, '');
+                                        const flattenedMatch = staticRoutes[flattenedKey];
+                                        const reverseStatic = Object.entries(staticRoutes).find(([, value]) => {
+                                                const normalizedValue = value.replace(/^\/+/, '');
+                                                return normalizedValue === normalizedPath;
+                                        });
+
+                                        translatedPath =
+                                                directMatch ??
+                                                flattenedMatch ??
+                                                (reverseStatic ? reverseStatic[0] : normalizedPath);
+                                }
+                        }
+                }
+
+                const sanitizedPath = translatedPath.replace(/^\/+/, '');
+                let finalPath = sanitizedPath ? `/${sanitizedPath}` : '/';
+
+                if (finalPath !== '/' && !finalPath.endsWith('/')) {
+                        finalPath = `${finalPath}/`;
+                }
+
+                if (!showDefaultLang && l === defaultLang) {
+                        return finalPath;
+                }
+
+                return finalPath === '/'
+                        ? `/${l}/`
+                        : `/${l}${finalPath}`;
+        };
 }
 
 function findIndexConvertibleToNumber(arr: string[]): number {

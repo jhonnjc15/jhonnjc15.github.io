@@ -1,5 +1,6 @@
 ---
 title: "Investigación colaborativa a cielo abierto"
+translationKey: blog-open-research
 subtitle: "Herramientas científicas creadas junto a las comunidades que las usan"
 date: 2024-06-18
 image: "/images/posts/post-10.png"

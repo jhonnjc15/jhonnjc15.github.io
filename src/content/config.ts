@@ -13,6 +13,7 @@ const blogCollection = defineCollection({
       categories: z.array(z.string()).default(["others"]),
       draft: z.boolean().optional(),
       featured: z.boolean().optional(),
+      translationKey: z.string().optional(),
     })
     .passthrough(),
 });
@@ -28,6 +29,21 @@ const pagesCollection = defineCollection({
       image: z.string().optional(),
       layout: z.string().optional(),
       draft: z.boolean().optional(),
+      translationKey: z.string().optional(),
+    })
+    .passthrough(),
+});
+
+// About collection schema
+const aboutCollection = defineCollection({
+  schema: z
+    .object({
+      id: z.string().optional(),
+      title: z.string(),
+      meta_title: z.string().optional(),
+      description: z.string().optional(),
+      image: z.string().optional(),
+      translationKey: z.string().optional(),
     })
     .passthrough(),
 });
@@ -113,5 +129,6 @@ const productsCollection = defineCollection({
 export const collections = {
   blog: blogCollection,
   pages: pagesCollection,
+  about: aboutCollection,
   products: productsCollection,
 };
