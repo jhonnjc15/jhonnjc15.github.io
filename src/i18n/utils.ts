@@ -73,57 +73,59 @@ function splitArrayAtElement(arr: string[]): [string[], string[]] {
 
 
 function concatenateWithDelimiter(str: string, arr: string[]): string {
+  if (!str) {
+    return arr.join('/');
+  }
+
+  if (arr.length === 0) {
+    return str;
+  }
+
   return `${str}/${arr.join('/')}`;
 }
 
 export function getRouteFromUrl(url: URL): string | undefined {
   const pathname = new URL(url).pathname;
-  ////console.log('Pathname:', pathname);
-
-  const parts = pathname?.split('/');
-  ////console.log('Parts:', parts);
-
+  const parts = pathname?.split('/') ?? [];
   const [firstPart, secondPart] = splitArrayAtElement(parts);
+  const currentLang = getLangFromUrl(url);
 
-  //onsole.log(secondPart)
-  const path = firstPart.pop() || firstPart.pop();
-  ////console.log('Path:', path);
+  const relevantSegments = firstPart
+    .filter((segment) => segment !== '')
+    .filter((segment, index) => !(index === 0 && segment === currentLang));
 
-  if (path === undefined) {
-      ////console.log('Path is undefined');
-      return undefined;
+  if (relevantSegments.length === 0) {
+      return '';
   }
 
-  const currentLang = getLangFromUrl(url);
-  ////console.log('Current language:', currentLang);
+  const leafSegment = relevantSegments[relevantSegments.length - 1];
+  if (!leafSegment) {
+      return '';
+  }
+
+  const baseSegments = relevantSegments.slice(0, -1);
+  const combinedSegments = [...baseSegments, leafSegment];
+  const combinedPath = combinedSegments.filter(Boolean).join('/');
+
+  const trailingSegments = secondPart.filter((segment) => segment !== '');
+  const appendTrailing = (base: string) => concatenateWithDelimiter(base, trailingSegments);
 
   if (defaultLang === currentLang) {
-      ////console.log(routes)
-      ////console.log(Object.values(routes)[0])
-      const route = Object.values(routes)[0];
-      ////console.log(route)
-      const routeValue = route[path as keyof typeof route];
-      ////console.log('Route for default language:', routeValue);
-      const concatenatedString = concatenateWithDelimiter(routeValue, secondPart);
-      ////console.log(concatenatedString)
-      return routeValue !== undefined ? concatenatedString : undefined;
+      return appendTrailing(combinedPath);
   }
 
   const getKeyByValue = (
       obj: Record<string, string>,
       value: string
   ): string | undefined => {
-      return Object.keys(obj).find(key => obj[key] === value);
+      return Object.keys(obj).find((key) => obj[key] === value);
   };
 
-  ////console.log(routes)
-  const reversedKey = getKeyByValue(routes[currentLang], path);
-  ////console.log('Reversed key:', reversedKey);
+  const reversedKey = getKeyByValue(routes[currentLang], leafSegment);
 
   if (reversedKey !== undefined) {
-      const concatenatedString = concatenateWithDelimiter(reversedKey, secondPart);
-      return concatenatedString;
+      return appendTrailing(reversedKey);
   }
 
-  return undefined;
+  return appendTrailing(combinedPath);
 }
