@@ -9,6 +9,12 @@ import Works from "@components/about/Works.astro";
 import Base from "@layouts/Base.astro";
 import { getEntryBySlug } from "astro:content";
 import { getEntry } from "astro:content";
+import CultureStorySection from "@components/about/CultureStorySection.astro";
+import AboutUsSection from "@components/about/AboutUsSection.astro";
+import VisionMissionSection from "@components/about/VisionMissionSection.astro";
+import DemocratizingScience from "@components/about/DemocratizingScience.astro";
+import LabImpactSection from "@components/about/LabImpactSection.astro";
+import PocketLabSection from "@components/about/PocketLabSection.astro";
 
 
 const { currentLocale } = Astro
@@ -69,12 +75,22 @@ const video_path = "/images/background-video.mp4"
       <!-- benifit -->
       {/*
       <!-- gellary -->
-      <Gallery gallery={gallery} />
+      
       <!-- our works -->
       <Works features={features} />
       */}
+
+      <Gallery gallery={gallery} />
+
+      <AboutUsSection/>
+      <VisionMissionSection/>
+      <CultureStorySection/>
+      <DemocratizingScience/>
+      <LabImpactSection/>
+      <PocketLabSection/>
+
       <!-- our members -->
-    <!-- Sección de miembros -->
+      <!-- Sección de miembros -->
   <section class="relative py-16">
     <div class="container">
       <OurMembers members={members} />
