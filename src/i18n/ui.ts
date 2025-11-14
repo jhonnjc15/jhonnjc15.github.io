@@ -44,9 +44,9 @@ export const ui = {
 } as const;
 
 export const routes = {
-	es: {
-		'home': '/',
-		'about': 'about',
+        es: {
+                'home': '/',
+                'about': 'about',
                 'products': 'products',
                 'blog': 'blog',
                 'blog/educational': 'blog/educational',
@@ -59,9 +59,9 @@ export const routes = {
                 'about': 'about',
                 'products': 'products',
                 'blog': 'blog',
-                'blog/educational': 'educational',
-                'blog/entertainment': 'entertainment',
-                'blog/scientific': 'scientific',
+                'blog/educational': 'blog/educational',
+                'blog/entertainment': 'blog/entertainment',
+                'blog/scientific': 'blog/scientific',
                 'contact': 'contact',
         },
 };
