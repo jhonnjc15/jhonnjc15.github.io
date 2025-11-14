@@ -10,6 +10,67 @@ buttons:
     link: "#"
     outline: true
     enable: true
+whoWeAre:
+  title: "Who We Are"
+  description: >-
+    Paqari is a collaborative initiative that blends science, creativity, and technology.
+    Our team brings together data engineers, physicists, designers, and curious minds driven
+    by a shared vision: to make learning a living experience.
+  image:
+    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+    alt: "Paqari team collaborating"
+vision:
+  title: "Our Vision"
+  description: >-
+    To awaken curiosity and turn science into a universal language — accessible to anyone,
+    anywhere. We imagine a future where technology, creativity, and knowledge come together
+    to open new paths for discovery and inclusion.
+  quote: "“Inspiring minds, connecting worlds — one experiment at a time.”"
+  image:
+    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
+    alt: "People collaborating on scientific ideas"
+mission:
+  title: "Our Mission"
+  description: >-
+    To democratize scientific learning by creating open, data-driven experiences that empower
+    people to explore, experiment, and innovate — bridging the gap between research and real life
+    through education and design.
+culture:
+  title: "Roots of Innovation"
+  description: >-
+    Born from the belief that curiosity is the most powerful catalyst for growth, our culture
+    thrives on experimentation and inclusivity. We celebrate diverse ideas, question conventions,
+    and turn imagination into discovery.
+  image:
+    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+    alt: "Colleagues sharing ideas in a creative space"
+openFrontiers:
+  title: "Open Frontiers"
+  description: >-
+    Science should be a bridge, not a barrier. Our aim is to make experimental learning and data
+    analysis accessible to students, educators, and innovators. By combining open data with creative
+    design, we break down the walls between research and real life.
+  image:
+    src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
+    alt: "Exploring open science"
+labImpact:
+  title: "Ripple of Change"
+  description: >-
+    Every experiment and every insight creates a ripple. Our initiatives spread awareness, spark
+    curiosity, and connect people through a shared pursuit of understanding the world. That is the
+    Lab Effect — knowledge that multiplies.
+  image:
+    src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1600&q=80"
+    alt: "People observing scientific breakthroughs"
+pocketLab:
+  title: "Science Anywhere"
+  description: >-
+    We bring the power of the lab to your fingertips. Through interactive platforms, simulations,
+    and real-world data experiments, anyone can explore scientific concepts without borders. A lab
+    that fits in your pocket, built for the explorers of tomorrow.
+  image:
+    src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
+    alt: "Portable technology enabling science"
 
 # counter
 counter:
@@ -29,7 +90,7 @@ counter:
     number: 20
     messurment: K
     color: "#FEC163"
-    
+
 # Gallery
 gallery:
   title: We started with one single goal, empower entrepreneurs

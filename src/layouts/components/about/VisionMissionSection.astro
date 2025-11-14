@@ -1,53 +1,55 @@
 ---
-/**
- * Sección de Visión y Misión — Paqari
- * Combina inspiración + propósito en un bloque visual equilibrado.
- */
+interface ImageData {
+  src: string;
+  alt?: string;
+}
+
+interface SectionData {
+  title: string;
+  description: string;
+  image?: ImageData;
+  quote?: string;
+}
+
+const { vision, mission } = Astro.props as {
+  vision: SectionData;
+  mission: SectionData;
+};
+
+const sharedImage = vision.image ?? mission.image;
 ---
 
 <section class="py-20 bg-background-offset text-text relative overflow-hidden">
   <div class="container mx-auto px-6 max-w-6xl flex flex-col lg:flex-row items-center gap-12">
-    
-    <!-- Imagen decorativa -->
-    <div class="lg:w-1/2">
-      <img
-        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
-        alt="Science Vision"
-        class="rounded-2xl shadow-lg w-full object-cover"
-      />
-    </div>
+    {sharedImage && (
+      <div class="lg:w-1/2">
+        <img
+          src={sharedImage.src}
+          alt={sharedImage.alt ?? vision.title}
+          class="rounded-2xl shadow-lg w-full object-cover"
+        />
+      </div>
+    )}
 
-    <!-- Texto -->
     <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
       <div data-aos="fade-up">
-        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">Our Vision</h2>
-        <p class="text-lg text-text-offset leading-relaxed">
-          To awaken curiosity and make science a universal language — accessible to anyone,
-          anywhere. We envision a future where technology, creativity, and knowledge merge to
-          illuminate new paths for discovery and inclusion.
-        </p>
+        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">{vision.title}</h2>
+        <p class="text-lg text-text-offset leading-relaxed">{vision.description}</p>
       </div>
 
       <div data-aos="fade-up" data-aos-delay="150">
-        <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-4">Our Mission</h2>
-        <p class="text-lg text-text-offset leading-relaxed">
-          To democratize scientific learning by creating open, data-driven experiences that empower
-          individuals to explore, experiment, and innovate — bridging the gap between research and
-          real life through education and design.
-        </p>
+        <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-4">{mission.title}</h2>
+        <p class="text-lg text-text-offset leading-relaxed">{mission.description}</p>
       </div>
 
-      <!-- Lema o frase corta opcional -->
-      <div data-aos="fade-up" data-aos-delay="300" class="pt-4">
-        <p class="italic text-text-offset">
-          “Inspiring minds, connecting worlds — one experiment at a time.”
-        </p>
-      </div>
+      {vision.quote && (
+        <div data-aos="fade-up" data-aos-delay="300" class="pt-4">
+          <p class="italic text-text-offset">{vision.quote}</p>
+        </div>
+      )}
     </div>
-
   </div>
 
-  <!-- Fondo decorativo sutil -->
   <span class="absolute -top-20 -right-20 w-[400px] h-[300px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-30"></span>
   <span class="absolute bottom-0 left-10 w-[300px] h-[200px] bg-gradient-to-tr from-primary to-green-400 rounded-full blur-2xl opacity-20"></span>
 </section>

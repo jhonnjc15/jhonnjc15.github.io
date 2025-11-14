@@ -82,12 +82,15 @@ const video_path = "/images/background-video.mp4"
 
       <Gallery gallery={gallery} />
 
-      <AboutUsSection/>
-      <VisionMissionSection/>
-      <CultureStorySection/>
-      <DemocratizingScience/>
-      <LabImpactSection/>
-      <PocketLabSection/>
+      <AboutUsSection section={about.data.whoWeAre} />
+      <VisionMissionSection
+        vision={about.data.vision}
+        mission={about.data.mission}
+      />
+      <CultureStorySection section={about.data.culture} />
+      <DemocratizingScience section={about.data.openFrontiers} />
+      <LabImpactSection section={about.data.labImpact} />
+      <PocketLabSection section={about.data.pocketLab} />
 
       <!-- our members -->
       <!-- Sección de miembros -->

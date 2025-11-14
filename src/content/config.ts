@@ -48,37 +48,35 @@ const aboutCollection = defineCollection({
     .passthrough(),
 });
 
-{/* 
-const faqItem = z.object({
+const aboutSectionImage = z
+  .object({
+    src: z.string(),
+    alt: z.string().optional(),
+  })
+  .optional();
+
+const aboutSection = z.object({
   title: z.string(),
-  content: z.string(),
+  description: z.string(),
+  image: aboutSectionImage,
 });
 
-// Products collection schema
-const productsCollection = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    faq: z.object({
-      title: z.string(),
-      description: z.string(),
-      faq_list: z.array(faqItem).nonempty(),
-    }),
-    id_product: z.string().optional(),
-    category:z.string().optional(),
-    id_category:z.string().optional(),
-    name: z.string().optional(),
-    title_description: z.string().optional(),
-    feature_1: z.date().optional(),
-    feature_2: z.date().optional(),
-    feature_3: z.date().optional(),
-    date: z.date().optional(),
-    image: z.string().optional(),
-    video: z.string().optional(),
-    draft: z.boolean().optional(),
-    featured: z.boolean().optional(),
-  }),
+const aboutCollection = defineCollection({
+  schema: z
+    .object({
+      whoWeAre: aboutSection,
+      vision: aboutSection.extend({
+        quote: z.string().optional(),
+      }),
+      mission: aboutSection,
+      culture: aboutSection,
+      openFrontiers: aboutSection,
+      labImpact: aboutSection,
+      pocketLab: aboutSection,
+    })
+    .passthrough(),
 });
-*/}
+
 const faqItem = z.object({
   title: z.string(),
   content: z.string(),
@@ -131,4 +129,5 @@ export const collections = {
   pages: pagesCollection,
   about: aboutCollection,
   products: productsCollection,
+  about: aboutCollection,
 };
