@@ -34,20 +34,6 @@ const pagesCollection = defineCollection({
     .passthrough(),
 });
 
-// About collection schema
-const aboutCollection = defineCollection({
-  schema: z
-    .object({
-      id: z.string().optional(),
-      title: z.string(),
-      meta_title: z.string().optional(),
-      description: z.string().optional(),
-      image: z.string().optional(),
-      translationKey: z.string().optional(),
-    })
-    .passthrough(),
-});
-
 const aboutSectionImage = z
   .object({
     src: z.string(),
@@ -61,9 +47,60 @@ const aboutSection = z.object({
   image: aboutSectionImage,
 });
 
+const aboutButton = z.object({
+  label: z.string(),
+  link: z.string().optional(),
+  enable: z.boolean().optional(),
+  outline: z.boolean().optional(),
+});
+
+const counterItem = z.object({
+  name: z.string(),
+  number: z.number(),
+  messurment: z.string().optional(),
+  color: z.string().optional(),
+});
+
+const gallerySection = z.object({
+  title: z.string(),
+  images: z.array(z.string()),
+});
+
+const featureItem = z.object({
+  title: z.string(),
+  content: z.string(),
+});
+
+const featuresSection = z.object({
+  title: z.string(),
+  button: aboutButton.optional(),
+  features_list: z.array(featureItem),
+});
+
+const memberItem = z.object({
+  name: z.string(),
+  field: z.string(),
+  image: z.string().optional(),
+});
+
+const membersSection = z.object({
+  title: z.string(),
+  description: z.string(),
+  member_list: z.array(memberItem),
+});
+
+// About collection schema
 const aboutCollection = defineCollection({
   schema: z
     .object({
+      id: z.string().optional(),
+      title: z.string(),
+      meta_title: z.string().optional(),
+      description: z.string().optional(),
+      image: z.string().optional(),
+      translationKey: z.string().optional(),
+      page_title: z.string().optional(),
+      buttons: z.array(aboutButton).optional(),
       whoWeAre: aboutSection,
       vision: aboutSection.extend({
         quote: z.string().optional(),
@@ -73,6 +110,10 @@ const aboutCollection = defineCollection({
       openFrontiers: aboutSection,
       labImpact: aboutSection,
       pocketLab: aboutSection,
+      counter: z.array(counterItem).optional(),
+      gallery: gallerySection.optional(),
+      features: featuresSection.optional(),
+      members: membersSection.optional(),
     })
     .passthrough(),
 });
@@ -129,5 +170,4 @@ export const collections = {
   pages: pagesCollection,
   about: aboutCollection,
   products: productsCollection,
-  about: aboutCollection,
 };
