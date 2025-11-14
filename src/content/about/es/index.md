@@ -9,6 +9,67 @@ buttons:
     link: "#"
     outline: true
     enable: true
+whoWeAre:
+  title: "Quiénes Somos"
+  description: >-
+    Paqari es una iniciativa colaborativa que fusiona ciencia, creatividad y tecnología.
+    Nuestro equipo está formado por ingenieras de datos, físicas, diseñadoras y mentes
+    curiosas unidas por una visión compartida: convertir el aprendizaje en una experiencia viva.
+  image:
+    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+    alt: "Equipo de Paqari colaborando"
+vision:
+  title: "Nuestra Visión"
+  description: >-
+    Despertar la curiosidad y hacer de la ciencia un lenguaje universal — accesible para
+    cualquier persona, en cualquier lugar. Imaginamos un futuro donde la tecnología, la
+    creatividad y el conocimiento se unen para abrir nuevos caminos de descubrimiento e inclusión.
+  quote: "“Inspiramos mentes, conectamos mundos — un experimento a la vez.”"
+  image:
+    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
+    alt: "Personas explorando una visión científica"
+mission:
+  title: "Nuestra Misión"
+  description: >-
+    Democratizar el aprendizaje científico mediante experiencias abiertas y basadas en datos que
+    empoderan a las personas para explorar, experimentar e innovar, cerrando la brecha entre la
+    investigación y la vida cotidiana a través de la educación y el diseño.
+culture:
+  title: "Raíces de Innovación"
+  description: >-
+    Nacimos de la convicción de que la curiosidad es el motor más poderoso para crecer. Nuestra
+    cultura se alimenta de la experimentación y la inclusión; celebramos la diversidad de ideas,
+    cuestionamos las convenciones y convertimos la imaginación en descubrimiento.
+  image:
+    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+    alt: "Personas colaborando en un espacio creativo"
+openFrontiers:
+  title: "Fronteras Abiertas"
+  description: >-
+    La ciencia debe ser un puente y no una barrera. Nuestra misión es hacer que el aprendizaje
+    experimental y el análisis de datos sean accesibles para estudiantes, docentes e innovadores.
+    Al combinar datos abiertos y diseño creativo, derribamos los muros entre la investigación y la vida real.
+  image:
+    src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
+    alt: "Explorando ciencia abierta"
+labImpact:
+  title: "Ola de Cambio"
+  description: >-
+    Cada experimento y cada hallazgo generan una onda expansiva. Nuestras iniciativas difunden
+    conocimiento, despiertan curiosidad y conectan a las personas mediante la comprensión compartida
+    del mundo. Ese es el efecto del laboratorio: conocimiento que se multiplica.
+  image:
+    src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1600&q=80"
+    alt: "Personas observando resultados científicos"
+pocketLab:
+  title: "Ciencia en cualquier lugar"
+  description: >-
+    Llevamos el poder del laboratorio a tus manos. Con plataformas interactivas, simulaciones y
+    experimentos con datos reales, cualquier persona puede explorar conceptos científicos sin
+    fronteras. Un laboratorio en tu bolsillo, pensado para las exploradoras y exploradores del mañana.
+  image:
+    src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
+    alt: "Tecnología portátil para aprender ciencia"
 
 # contador
 counter:
@@ -28,7 +89,7 @@ counter:
     number: 20
     messurment: ""
     color: "#FEC163"
-    
+
 # Gallery
 gallery:
   title: Comenzamos con un solo objetivo, empoderar a los emprendedores
