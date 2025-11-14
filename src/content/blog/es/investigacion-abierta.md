@@ -10,6 +10,41 @@ featured: false
 ---
 Trabajar con científicos y comunidades requiere transparencia total. Cada proyecto empieza con un lienzo compartido donde registramos hipótesis, necesidades de equipamiento y consideraciones éticas. Ese plan guía el diseño de hardware y los flujos de software que construimos en Paqari Open Lab.
 
+## Carta de investigación abierta
+
+Nuestra carta es la columna vertebral de cada colaboración. Define roles, pautas de contribución y cómo cuidamos los datos. Los aliados la revisan y firman antes de construir para asegurar expectativas claras.
+
+![Investigadores co-diseñando un protocolo de ciencia abierta](/images/posts/post-13.png)
+
+### Puntos clave de la carta
+
+- **Glosario compartido:** Alinea términos científicos, traducciones y referencias locales.
+- **Checklist ético:** Confirma flujos de consentimiento, rutinas de anonimización y licenciamiento abierto.
+- **Ritmo de iteración:** Establece sincronizaciones semanales y ventanas de revisión asíncrona.
+
+> **Recuerda:** Si un estudio no necesita una salvaguarda específica, deja la sección en blanco y la guía publicada la omitirá automáticamente.
+
+## Ensamblaje del kit de campo
+
+Co-creamos kits modulares para recolectar datos en distintos entornos. Cada kit incluye contenedores etiquetados, tarjetas de calibración y códigos QR que enlazan a videos de configuración.
+
+![Kit de hardware abierto con sensores y tarjetas de calibración](/images/posts/post-1.png)
+
+### Flujo de despliegue
+
+1. **Preparar:** Imprime la lista de empaque y verifica que cada componente tenga etiqueta para seguimiento.
+2. **Calibrar:** Ejecuta el script `SensorCheck` comparándolo con el conjunto de datos base.
+3. **Documentar:** Toma fotos del montaje y registra las condiciones ambientales en el repositorio compartido.
+4. **Sincronizar:** Sube paquetes de datos cada noche; el pipeline valida los esquemas y marca anomalías.
+
+## Sesiones de laboratorio comunitario
+
 Realizamos sesiones abiertas para revisar los instrumentos, calibrar sensores y validar los procesos de datos. Los participantes pueden bifurcar la documentación, probar configuraciones nuevas y proponer mejoras. Así garantizamos que la herramienta final sea adaptable y responda a quienes recolectan la información.
+
+| Tipo de sesión | Enfoque | Duración recomendada |
+| --- | --- | --- |
+| Clínica de hardware | Revisar desgaste, reemplazar consumibles y actualizar firmware | 90 minutos |
+| Inmersión en datos | Explorar conjuntos, limpiar atípicos y redactar hallazgos | 2 horas |
+| Sprint de replicación | Repetir el experimento con nuevas personas participantes | Media jornada |
 
 Publicar los resultados es solo el comienzo. Animamos a los equipos a iterar, compartir sus aprendizajes e invitar a otros a replicar los experimentos. La colaboración mantiene vivo y accesible el método científico.
