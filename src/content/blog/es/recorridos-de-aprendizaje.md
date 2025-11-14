@@ -1,5 +1,6 @@
 ---
 title: "Diseñamos recorridos de aprendizaje con Paqari"
+translationKey: blog-learning-paths
 subtitle: "Cómo convertimos conceptos complejos en experiencias educativas accesibles"
 date: 2024-04-20
 image: "/images/posts/post-2.png"

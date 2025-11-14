@@ -1,5 +1,6 @@
 ---
 title: "Designing Immersive Entertainment Experiences"
+translationKey: blog-immersive-experiences
 subtitle: "Behind the scenes of our interactive storytelling prototypes"
 date: 2024-05-02
 image: "/images/posts/post-5.png"

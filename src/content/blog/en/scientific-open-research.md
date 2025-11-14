@@ -1,5 +1,6 @@
 ---
 title: "Collaborative Research in the Open"
+translationKey: blog-open-research
 subtitle: "Building scientific tools alongside the communities that use them"
 date: 2024-06-10
 image: "/images/posts/post-9.png"

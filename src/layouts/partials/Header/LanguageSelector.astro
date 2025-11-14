@@ -5,7 +5,7 @@ import { getRouteFromUrl, useTranslatedPath, getLangFromUrl } from '@i18n/utils'
 
 const route = getRouteFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
+const translatePath = await useTranslatedPath(lang);
 const currentLocaleData = LANGUAGES[lang]
 const otherLocales = Object.values(LANGUAGES).filter(
   (locale) => locale.code !== lang

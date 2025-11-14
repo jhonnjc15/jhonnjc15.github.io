@@ -1,5 +1,6 @@
 ---
 title: "Terms & Condition Of Pinwheel"
+translationKey: page-terms-and-conditions
 excerpt: Donec sollicitudin molestie malesda. Donec sollitudin molestie male <br /> suada Mauris pellentesque nec egestas non nisi Cras
 draft: false
 ---
