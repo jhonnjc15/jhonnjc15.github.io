@@ -93,14 +93,14 @@ export async function getStaticPaths() {
   image={products.data.image}
 >
   <Shape />
-  <section class="page-hero pb-4 pt-16">
+  <section class="page-hero pb-4 pt-16" data-animate="fade-up">
     <div class="container">
       <PageHeader page_data={page_data} />
     </div>
   </section>
-  <section class="section mx-4 md:mx-10 lg:mx-20 mt-12">
-    <ProductsList 
-      products={currentPosts} 
+  <section class="section mx-4 md:mx-10 lg:mx-20 mt-12" data-animate="zoom-in">
+    <ProductsList
+      products={currentPosts}
       product_list={product_list}
     />
     <Pagination

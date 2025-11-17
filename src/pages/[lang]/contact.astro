@@ -42,7 +42,7 @@ export async function getStaticPaths() {
   description={contact.description}
   image={contact.image}
 >
-  <section class="page-hero pb-6 pt-16">
+  <section class="page-hero pb-6 pt-16" data-animate="fade-up">
     <div class="container">
       <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
 
@@ -51,16 +51,16 @@ export async function getStaticPaths() {
     </div>
   </section>
 
-  <section class="section pt-0">
+  <section class="section pt-0" data-animate="zoom-in">
     <div class="container">
       <div class="row">
-        <div class="md:col-6 order-2">
-          <Form 
+        <div class="md:col-6 order-2" data-animate="fade-up">
+          <Form
             form_content_data={form_content_data}
             transition:persist client:visible
           />
         </div>
-        <div class=" bg-gradient-to-tl pt-9 mb-10 text-center md:col-6 order-1 md:mb-0 ">
+        <div class=" bg-gradient-to-tl pt-9 mb-10 text-center md:col-6 order-1 md:mb-0 " data-animate="fade-right">
           <div class="contact-img relative inline-flex pb-5 pl-5">
             <Image
               src="/images/contact_image.jpg"

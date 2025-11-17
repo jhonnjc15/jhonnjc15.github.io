@@ -2,20 +2,26 @@
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import config from "@config/config.json";
+import { getI18N } from "@i18n/index";
 
 const { categories, basePath = config.settings.blog_folder } = Astro.props;
 const params = Astro.params;
 const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
-<div class="category-filter mb-10 mt-3 rounded-xl bg-[#EEEEEE] p-4">
-  <ul class="filter-list flex flex-wrap items-center">
+<div class="category-filter mb-10 mt-3 rounded-2xl bg-[#EEEEEE] dark:bg-background-offset/60 p-6 shadow-sm" data-animate="fade-up">
+  <div class="mb-3 flex items-center justify-between flex-wrap gap-2">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">{i18n.COMMON.browse_topics}</p>
+    <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">{i18n.COMMON.all_categories}</span>
+  </div>
+  <ul class="filter-list flex flex-wrap items-center gap-2">
     <li>
       <a
         class={`filter-btn ${
           !params.category ? "filter-btn-active" : undefined
         } btn btn-sm`}
-        href={getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}`)}>All Categories</a
+        href={getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}`)}>{i18n.COMMON.all_categories}</a
       >
     </li>
     {
