@@ -11,20 +11,25 @@ interface SectionData {
 }
 
 const { section } = Astro.props as { section: SectionData };
+import { getI18N } from "@i18n/index";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
-<section class="py-20 bg-background text-text">
-  <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12">
-    <div class="lg:w-1/2">
-      <h2 class="text-3xl font-bold text-primary mb-4">{section.title}</h2>
-      <p class="text-text-offset leading-relaxed">{section.description}</p>
+<section class="py-20 bg-background text-text relative overflow-hidden" data-animate="fade-up">
+  <span class="absolute -top-16 -right-10 w-[340px] h-[240px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
+  <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
+    <div class="lg:w-1/2 space-y-4">
+      <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.COMMON.our_team}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">{section.title}</h2>
+      <p class="text-text-offset leading-relaxed text-lg">{section.description}</p>
     </div>
     {section.image && (
-      <div class="lg:w-1/2">
+      <div class="lg:w-1/2" data-animate="zoom-in">
         <img
           src={section.image.src}
           alt={section.image.alt ?? section.title}
-          class="rounded-2xl shadow-xl w-full object-cover"
+          class="rounded-2xl shadow-xl w-full object-cover border border-primary/10"
         />
       </div>
     )}

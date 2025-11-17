@@ -1,6 +1,19 @@
 {
     "SEO_TITLE": "Tienda Paqari Open Lab",
     "SEO_DESCRIPTION": "Esta es una descripción de prueba ",
+    "COMMON": {
+        "all_categories": "Todas las categorías",
+        "browse_topics": "Explora por temática",
+        "explore_category": "Explorar categoría",
+        "discover_more": "Ver detalles",
+        "contact_cta": "Contáctanos",
+        "latest_articles": "Últimos artículos",
+        "visit_blog": "Ir al blog",
+        "product_highlights": "Destacados",
+        "our_team": "Nuestro equipo",
+        "catalog_intro_title": "Catálogo curado",
+        "catalog_intro_copy": "Recorre experiencias, kits y herramientas pensadas para despertar curiosidad con tarjetas uniformes."
+    },
     "LAYOUTS": {
         "COMPONENTS": {
             "PRODUCTS": {
@@ -11,6 +24,6 @@
         }
     },
     "contact_button": {
-        "wsp" : "Saludos%0D%0AMe interesan sus productos, me gustaría ponerme en contacto con ustedes 😀"
-    }  
+        "wsp": "Saludos%0D%0AMe interesan sus productos, me gustaría ponerme en contacto con ustedes 😀"
+    }
 }
