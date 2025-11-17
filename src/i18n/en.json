@@ -1,16 +1,47 @@
 {
     "SEO_TITLE": "Paqari Open Lab Store",
     "SEO_DESCRIPTION": "This is a test description",
-    "LAYOUTS": {
-        "COMPONENTS": {
-            "PRODUCTS": {
-                "PRODUCTSLIST": {
-                    "H2_SUBTITLE": "Total Products"
+        "LAYOUTS": {
+            "COMPONENTS": {
+                "BANNER": {
+                    "EYEBROW": "Paqari open lab",
+                    "CTA": "Discover now"
+                },
+                "PRODUCTS": {
+                    "PRODUCTSLIST": {
+                        "H2_SUBTITLE": "Total Products",
+                        "TOTAL_LABEL": "Catalog updated",
+                        "TOTAL_COPY": "Each experience has been refreshed for a smoother visit.",
+                        "STARTING_FROM": "From",
+                        "READY_LABEL": "Ready to ship",
+                        "CTA": "See details",
+                        "LABELS": {
+                            "NEW": "New"
+                        }
+                    },
+                    "EXPERIENCES": {
+                        "EYEBROW": "Experiences",
+                        "TITLE": "Choose your next immersive experience",
+                        "DESCRIPTION": "Explore curated categories that group our products by purpose and vibe, so you can find the ideal fit in seconds.",
+                        "STATS_TITLE": "Tailored collections",
+                        "STATS_COPY": "Built from our most popular requests to make browsing feel intentional.",
+                        "HIGHLIGHT_BADGE": "24/7",
+                        "HIGHLIGHT_COPY": "Guided support to help you pair experiences with your goals.",
+                        "CATEGORY_LABEL": "Category",
+                        "EXPLORE_CATEGORY": "Explore category",
+                        "LABELS": {
+                            "CURATED": "Curated"
+                        },
+                        "BLOG_TITLE": "Stories and updates",
+                        "BLOG_SUBTITLE": "Fresh reads every week",
+                        "BLOG_COPY": "Tips, behind-the-scenes, and launch notes to get the most from every product.",
+                        "BLOG_LINK": "Visit the blog"
+                    }
                 }
             }
-        }
-    },
+        },
     "contact_button": {
         "wsp" : "Greetings,%0D%0AI'm interested in your products and would like to get in touch with you 😀"
     }
 }
+

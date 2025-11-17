@@ -2,6 +2,7 @@
 import config from "@config/config.json";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { plainify } from "@lib/utils/textConverter";
+import { getI18N } from "@i18n/index";
 const { summary_length } = config.settings;
 import categoriesES from "@data/es/blog-categories.json";
 import categoriesEN from "@data/en/blog-categories.json";
@@ -9,140 +10,141 @@ import categoriesEN from "@data/en/blog-categories.json";
 const { currentLocale } = Astro;
 
 const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
+const i18n = getI18N({ currentLocale });
 ---
 
 <style>
-  /* 👇 Breakpoint personalizado: menos de 400px → una sola columna */
   @media (max-width: 400px) {
     .custom-grid {
       grid-template-columns: 1fr !important;
     }
   }
-
-  /* 👇 Hover limpio sin alterar bordes ni mover el layout */
-  .card {
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 3px solid transparent;
-    border-radius: 1.5rem; /* similar a rounded-3xl */
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-
-  .card:hover::after {
-    border-color: var(--color-secondary);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-  }
 </style>
 
-<div data-animate="zoom-in" class="max-w-7xl mx-auto px-3 sm:px-5 md:px-8 xl:px-6">
+<section
+  data-animate="zoom-in"
+  class="relative max-w-7xl mx-auto px-3 sm:px-5 md:px-8 xl:px-6 py-6 md:py-10"
+>
+  <span class="absolute -top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary/30 via-green-300/30 to-secondary/20 rounded-full blur-3xl"></span>
+  <span class="absolute -bottom-12 left-0 w-64 h-64 bg-gradient-to-tr from-secondary/20 via-green-400/20 to-primary/30 rounded-full blur-3xl"></span>
+  <div class="relative grid gap-4 md:gap-6 lg:grid-cols-[1.1fr_0.9fr] items-start">
+    <div class="space-y-3">
+      <p class="text-sm uppercase tracking-[0.18em] text-primary font-semibold">
+        {i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.EYEBROW}
+      </p>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+        {i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.TITLE}
+      </h2>
+      <p class="text-base md:text-lg text-gray-700 dark:text-gray-200 max-w-3xl">
+        {i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.DESCRIPTION}
+      </p>
+    </div>
+    <div class="flex flex-col gap-3 text-sm text-gray-600 dark:text-gray-300 bg-white/70 dark:bg-slate-900/50 rounded-2xl border border-white/50 dark:border-white/10 shadow-lg shadow-primary/5 p-5">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">{categories_data.length}</div>
+        <div>
+          <p class="text-sm font-semibold text-slate-900 dark:text-white">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.STATS_TITLE}</p>
+          <p class="text-xs opacity-80">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.STATS_COPY}</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-primary/80 flex items-center justify-center text-white font-semibold">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.HIGHLIGHT_BADGE}</span>
+        <p class="text-sm font-medium leading-tight">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.HIGHLIGHT_COPY}</p>
+      </div>
+    </div>
+  </div>
+
   <div
-    class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 
-           rounded-3xl overflow-hidden
-           my-6 md:my-10 bg-offset"
+    class="relative custom-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-6 md:mt-10"
   >
     {categories_data?.map((data) => (
       <div
-        class="card group relative 
-               min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
-               flex flex-col justify-between h-full
-               py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6
-               bg-offset transition duration-300"
+        class="group relative overflow-hidden rounded-3xl bg-white/80 dark:bg-slate-900/50 border border-white/40 dark:border-white/10 shadow-lg shadow-primary/10 p-6 flex flex-col gap-4 backdrop-blur"
       >
-        <img
-          src={data.image_url}
-          class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0"
-          width="512"
-          height="512"
-          alt={data.name}
-        />
-        <div class="space-y-2 sm:space-y-3 mt-4">
-          <h5
-            class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
-          >
-            {data.name}
-          </h5>
-          <p
-            class="block font-sans text-xs sm:text-sm md:text-sm leading-snug opacity-75 overflow-hidden group-hover:text-primary"
-          >
-            {plainify(data.short_description?.slice(0, Number(summary_length)))}
-            {data.short_description?.length > summary_length ? "..." : ""}
-          </p>
-        </div>
-        <a
-          href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
-          class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
-        >
-          <span>Explore category</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-              clip-rule="evenodd"
+        <div class="flex items-center gap-3">
+          <div class="shrink-0 rounded-2xl bg-gradient-to-tr from-primary/10 via-green-400/20 to-secondary/10 p-3">
+            <img
+              src={data.image_url}
+              class="w-12 h-12 object-contain"
+              width="512"
+              height="512"
+              alt={data.name}
+              loading="lazy"
             />
-          </svg>
-        </a>
+          </div>
+          <div class="flex-1">
+            <h5 class="text-lg font-semibold text-slate-900 dark:text-white transition group-hover:text-primary">
+              {data.name}
+            </h5>
+            <p class="text-xs uppercase tracking-[0.14em] text-primary/80 font-semibold">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.CATEGORY_LABEL}</p>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
+          {plainify(data.short_description?.slice(0, Number(summary_length)))}
+          {data.short_description?.length > summary_length ? "..." : ""}
+        </p>
+        <div class="flex items-center justify-between pt-2">
+          <a
+            href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
+            class="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition"
+          >
+            <span>{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.EXPLORE_CATEGORY}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+            {i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.LABELS?.CURATED}
+          </span>
+        </div>
       </div>
     ))}
 
-    <!-- Bloque extra -->
     <div
-      class="card group relative 
-             min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
-             flex flex-col justify-between h-full
-             py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6
-             bg-offset transition duration-300"
+      class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/80 to-secondary/70 text-white p-6 flex flex-col gap-4 shadow-lg shadow-primary/20"
     >
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
-        class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0"
-        width="512"
-        height="512"
-        alt="More features icon"
-      />
-
-      <div class="space-y-2 sm:space-y-3 mt-4">
-        <h5
-          class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
-        >
-          Latest articles
-        </h5>
-        <p
-          class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden group-hover:text-primary"
-        >
-          Stay updated with the newest stories and insights from our team.
-        </p>
+      <div class="flex items-center gap-3">
+        <div class="shrink-0 rounded-2xl bg-white/15 p-3">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
+            class="w-12 h-12 object-contain"
+            width="512"
+            height="512"
+            alt="More features icon"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <h5 class="text-xl font-semibold">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.BLOG_TITLE}</h5>
+          <p class="text-sm text-white/80">{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.BLOG_SUBTITLE}</p>
+        </div>
       </div>
-
-        <a
-          href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
-          class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
+      <p class="text-sm leading-relaxed text-white/90">
+        {i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.BLOG_COPY}
+      </p>
+      <a
+        href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white rounded-full bg-white/20 px-4 py-2 w-fit backdrop-blur hover:bg-white/30 transition"
       >
-        <span>Go to blog</span>
+        <span>{i18n.LAYOUTS?.COMPONENTS?.PRODUCTS?.EXPERIENCES?.BLOG_LINK}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="currentColor"
-          class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          class="w-4 h-4"
         >
-          <path
-            fill-rule="evenodd"
-            d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-            clip-rule="evenodd"
-          />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </a>
     </div>
   </div>
-</div>
+</section>

@@ -19,16 +19,19 @@ const buildCategoryLink = (category: string) =>
 <div class="row">
   {
     posts.map((item: any) => (
-      <div class="mb-8 md:col-6 lg:col-4">
-        <div class="card">
-          <Image
-            class="card-img"
-            width={335}
-            height={210}
-            src={item.data.image}
-            alt=""
-          />
-          <div class="card-content">
+      <div class="mb-8 md:col-6 lg:col-4" data-animate="fade-up">
+        <article class="group h-full rounded-3xl overflow-hidden bg-white/80 dark:bg-slate-900/50 border border-white/40 dark:border-white/10 shadow-lg shadow-primary/10 backdrop-blur flex flex-col">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <Image
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              width={640}
+              height={400}
+              src={item.data.image}
+              alt={item.data.title}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-slate-900/5 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <div class="card-content flex flex-col flex-1">
             <div class="card-tags space-x-1">
               {item.data.categories.map((category: any) => (
                 <a class="tag" href={buildCategoryLink(category)}>
@@ -37,13 +40,13 @@ const buildCategoryLink = (category: string) =>
               ))}
             </div>
             <h3 class="h4 card-title">
-              <a href={buildPostLink(item.slug)}>{item.data.title}</a>
+              <a class="hover:text-primary transition" href={buildPostLink(item.slug)}>{item.data.title}</a>
             </h3>
             <p class="mb-4 text-text">
               {plainify(item.body?.slice(0, Number(summary_length)))}...
             </p>
-            <div class="card-footer mt-6 flex space-x-4">
-              <span class="inline-flex items-center text-xs text-[#666]">
+            <div class="card-footer mt-auto flex space-x-4 pt-4 border-t border-slate-200/60 dark:border-white/10">
+              <span class="inline-flex items-center text-xs text-[#666] dark:text-gray-300">
                 <svg
                   class="mr-1.5"
                   width="14"
@@ -59,7 +62,7 @@ const buildCategoryLink = (category: string) =>
                 </svg>
                 {dateFormat(item.data.date)}
               </span>
-              <span class="inline-flex items-center text-xs text-[#666]">
+              <span class="inline-flex items-center text-xs text-[#666] dark:text-gray-300">
                 <svg
                   class="mr-1.5"
                   width="16"
@@ -77,7 +80,7 @@ const buildCategoryLink = (category: string) =>
               </span>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     ))
   }

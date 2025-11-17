@@ -1,15 +1,45 @@
 {
     "SEO_TITLE": "Tienda Paqari Open Lab",
     "SEO_DESCRIPTION": "Esta es una descripción de prueba ",
-    "LAYOUTS": {
-        "COMPONENTS": {
-            "PRODUCTS": {
-                "PRODUCTSLIST": {
-                    "H2_SUBTITLE": "Total de productos."
+        "LAYOUTS": {
+            "COMPONENTS": {
+                "BANNER": {
+                    "EYEBROW": "Paqari open lab",
+                    "CTA": "Descubrir ahora"
+                },
+                "PRODUCTS": {
+                    "PRODUCTSLIST": {
+                        "H2_SUBTITLE": "Total de productos.",
+                        "TOTAL_LABEL": "Catálogo actualizado",
+                        "TOTAL_COPY": "Cada experiencia fue refinada para que tu visita sea fluida.",
+                        "STARTING_FROM": "Desde",
+                        "READY_LABEL": "Listo para enviar",
+                        "CTA": "Ver detalles",
+                        "LABELS": {
+                            "NEW": "Nuevo"
+                        }
+                    },
+                    "EXPERIENCES": {
+                        "EYEBROW": "Experiencias",
+                        "TITLE": "Elige tu próxima experiencia inmersiva",
+                        "DESCRIPTION": "Explora categorías curadas que agrupan nuestros productos por propósito y estilo para encontrar el ideal en segundos.",
+                        "STATS_TITLE": "Colecciones a medida",
+                        "STATS_COPY": "Diseñadas desde las solicitudes más populares para que navegar sea natural.",
+                        "HIGHLIGHT_BADGE": "24/7",
+                        "HIGHLIGHT_COPY": "Acompañamiento para conectar cada experiencia con tus objetivos.",
+                        "CATEGORY_LABEL": "Categoría",
+                        "EXPLORE_CATEGORY": "Explorar categoría",
+                        "LABELS": {
+                            "CURATED": "Curada"
+                        },
+                        "BLOG_TITLE": "Historias y novedades",
+                        "BLOG_SUBTITLE": "Lecturas frescas cada semana",
+                        "BLOG_COPY": "Consejos, behind-the-scenes y notas de lanzamiento para aprovechar cada producto.",
+                        "BLOG_LINK": "Ir al blog"
+                    }
                 }
             }
-        }
-    },
+        },
     "contact_button": {
         "wsp" : "Saludos%0D%0AMe interesan sus productos, me gustaría ponerme en contacto con ustedes 😀"
     }  

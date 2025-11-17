@@ -4,7 +4,7 @@ banner:
   content: "A fully integrated suite of authentication and authorization products, Stytch’s platform takes the headache out of the process."
   image: /images/banner-img.png
   button:
-    label: More Information
+    label: Discover now
     link: "/"
     enable: true
 
