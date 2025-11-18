@@ -6,6 +6,8 @@ import Base from "@layouts/Base.astro";
 import { getEntryBySlug } from "astro:content";
 import Form from "@layouts/function-components/Form";
 import { getEntry } from "astro:content";
+import social from "@config/social.json";
+import { humanize } from "@lib/utils/textConverter";
 
 
 const { currentLocale } = Astro
@@ -19,6 +21,7 @@ if (!entry) {
 // console.log(entry)
 
 const { title, page_title, form_content_data } = entry.data;
+const socialLinks = Object.entries(social).filter(([, url]) => Boolean(url));
 
 const { contact_form_action } = config.params;
 const contact = entry.data;
@@ -48,9 +51,9 @@ export async function getStaticPaths() {
     </div>
   </section>
 
-  <section class="section pt-4" data-animate="zoom-in">
+  <section class="section pb-0" data-animate="zoom-in">
     <div class="container">
-      <div class="relative overflow-visible rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60 h-[520px] md:h-[600px]">
         <Image
           src="/images/contact-img.png"
           height={720}
@@ -58,22 +61,13 @@ export async function getStaticPaths() {
           class="absolute inset-0 h-full w-full object-cover"
           alt=""
         />
-        <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/80 via-emerald-700/55 to-background/40 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/80 via-emerald-700/55 to-black/50 mix-blend-multiply"></div>
 
-        <div class="relative grid min-h-[640px] gap-8 px-6 pb-16 pt-10 sm:px-10 lg:px-16 lg:grid-cols-[1.05fr,0.95fr] lg:items-start">
-          <div class="flex flex-col justify-start space-y-5 text-white max-w-2xl lg:self-start">
-            <p class="text-xs uppercase tracking-[0.3em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
+        <div class="absolute inset-0 flex items-center">
+          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white space-y-5">
+            <p class="text-xs uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
             <h2 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
             <p class="text-white/85 text-lg leading-relaxed drop-shadow">{contact.cta_text}</p>
-          </div>
-
-          <div class="relative lg:justify-self-end lg:-translate-y-6">
-            <div class="backdrop-blur-md bg-white/95 dark:bg-gray-900/85 border border-emerald-200/60 dark:border-emerald-800/50 rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-9 -mb-10 lg:-mb-14">
-              <Form
-                form_content_data={form_content_data}
-                transition:persist client:visible
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -81,6 +75,38 @@ export async function getStaticPaths() {
   </section>
 
   <section class="section pt-0" data-animate="fade-up">
+    <div class="container">
+      <div class="relative -mt-24 lg:-mt-28">
+        <div class="mx-auto max-w-5xl rounded-3xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 px-6 sm:px-10 py-10 sm:py-12">
+          <Form
+            form_content_data={form_content_data}
+            transition:persist client:visible
+          />
+
+          <div class="mt-10 border-t border-gray-200 dark:border-gray-700 pt-8">
+            <h3 class="text-xl font-semibold text-default">{contact.social_title}</h3>
+            <p class="mt-2 text-text-offset leading-relaxed">{contact.social_description}</p>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              {socialLinks.map(([network, url]) => (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:border-primary hover:text-primary dark:border-gray-300 dark:bg-white dark:text-gray-900"
+                >
+                  <span class="h-2 w-2 rounded-full bg-primary"></span>
+                  <span>{humanize(network)}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-animate="fade-up">
     <div class="container">
       <div class="rounded-3xl bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-gray-200 dark:border-gray-700 px-6 sm:px-10 py-10 text-center">
         <h3 class="text-2xl md:text-3xl font-bold text-default">{contact.closing_title}</h3>

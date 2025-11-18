@@ -22,7 +22,7 @@ const buildCategoryLink = (category: string) =>
   {
     posts.map((item: any, idx: number) => (
       <div class="mb-10 md:col-6 lg:col-4" data-animate={idx % 2 === 0 ? "fade-up" : "zoom-in"}>
-        <div class="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-4 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700">
+        <div class="relative h-full overflow-hidden rounded-3xl bg-white dark:bg-white p-4 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200">
           <div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
               class="h-full w-full object-cover"
@@ -42,13 +42,13 @@ const buildCategoryLink = (category: string) =>
           </div>
           <div class="card-content mt-5 space-y-3">
             <p class="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{i18n.COMMON.latest_articles}</p>
-            <h3 class="h4 card-title text-2xl font-bold leading-tight">
+            <h3 class="h4 card-title text-2xl font-bold leading-tight text-gray-900 dark:text-gray-900">
               <a href={buildPostLink(item.slug)} class="hover:text-primary">{item.data.title}</a>
             </h3>
-            <p class="mb-4 text-text leading-relaxed max-h-24 overflow-hidden">
+            <p class="mb-4 text-gray-700 dark:text-gray-800 leading-relaxed max-h-24 overflow-hidden">
               {plainify(item.body?.slice(0, Number(summary_length)))}...
             </p>
-            <div class="card-footer mt-4 flex flex-wrap items-center gap-4 text-sm text-text-offset">
+            <div class="card-footer mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-700">
               <span class="inline-flex items-center">
                 <svg
                   class="mr-1.5"
