@@ -148,7 +148,7 @@ const Form = ({ form_content_data }) => {
 
   return (
     <form
-      className="flex text-default flex-col justify-around sm:px-20 md:px-8 lg:px-16 items-center  h-full"
+      className="flex text-default flex-col justify-around sm:px-8 md:px-6 lg:px-10 items-center h-full"
       onSubmit={handleSubmit(onSubmit)}
     >
         {/* Name */}

@@ -5,6 +5,14 @@ import config from "@config/config.json";
 import Base from "@layouts/Base.astro";
 import { getEntryBySlug } from "astro:content";
 import Form from "@layouts/function-components/Form";
+import {
+  IoLogoFacebook,
+  IoLogoTwitter,
+  IoLogoLinkedin,
+  IoLogoInstagram,
+  IoLogoYoutube,
+  IoLogoTiktok,
+} from "react-icons/io5/index.js";
 import { getEntry } from "astro:content";
 import social from "@config/social.json";
 import { humanize } from "@lib/utils/textConverter";
@@ -21,7 +29,16 @@ if (!entry) {
 // console.log(entry)
 
 const { title, page_title, form_content_data } = entry.data;
-const socialLinks = Object.entries(social).filter(([, url]) => Boolean(url));
+const allowedNetworks = ["facebook", "twitter", "linkedin", "instagram", "youtube", "tiktok"];
+const socialIcons = {
+  facebook: IoLogoFacebook,
+  twitter: IoLogoTwitter,
+  linkedin: IoLogoLinkedin,
+  instagram: IoLogoInstagram,
+  youtube: IoLogoYoutube,
+  tiktok: IoLogoTiktok,
+};
+const socialLinks = Object.entries(social).filter(([network, url]) => allowedNetworks.includes(network) && Boolean(url));
 
 const { contact_form_action } = config.params;
 const contact = entry.data;
@@ -61,13 +78,13 @@ export async function getStaticPaths() {
           class="absolute inset-0 h-full w-full object-cover"
           alt=""
         />
-        <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/80 via-emerald-700/55 to-black/50 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/55 via-secondary/45 to-emerald-500/50 mix-blend-multiply"></div>
 
         <div class="absolute inset-0 flex items-center">
-          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white space-y-5">
-            <p class="text-xs uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
-            <h2 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
-            <p class="text-white/85 text-lg leading-relaxed drop-shadow">{contact.cta_text}</p>
+          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white space-y-4">
+            <p class="text-[0.72rem] uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
+            <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
           </div>
         </div>
       </div>
@@ -76,27 +93,28 @@ export async function getStaticPaths() {
 
   <section class="section pt-0" data-animate="fade-up">
     <div class="container">
-      <div class="relative -mt-24 lg:-mt-28">
-        <div class="mx-auto max-w-5xl rounded-3xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 px-6 sm:px-10 py-10 sm:py-12">
+      <div class="relative -mt-20 lg:-mt-24">
+        <div class="mx-auto max-w-4xl rounded-3xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 px-6 sm:px-8 md:px-10 py-8 sm:py-10">
           <Form
             form_content_data={form_content_data}
             transition:persist client:visible
           />
 
-          <div class="mt-10 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h3 class="text-xl font-semibold text-default">{contact.social_title}</h3>
-            <p class="mt-2 text-text-offset leading-relaxed">{contact.social_description}</p>
-
-            <div class="mt-5 flex flex-wrap gap-3">
+          <div class="mt-8 flex flex-col items-center gap-3">
+            <span class="sr-only">Social media</span>
+            <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-default">
               {socialLinks.map(([network, url]) => (
                 <a
                   href={url}
                   target="_blank"
                   rel="noreferrer"
-                  class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:border-primary hover:text-primary dark:border-gray-300 dark:bg-white dark:text-gray-900"
+                  aria-label={humanize(network)}
+                  class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-default shadow-sm transition hover:border-primary hover:text-primary dark:border-gray-700 dark:bg-gray-800"
                 >
-                  <span class="h-2 w-2 rounded-full bg-primary"></span>
-                  <span>{humanize(network)}</span>
+                  {(() => {
+                    const Icon = socialIcons[network];
+                    return Icon ? <Icon /> : null;
+                  })()}
                 </a>
               ))}
             </div>
