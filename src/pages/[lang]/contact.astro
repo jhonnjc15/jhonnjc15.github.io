@@ -7,7 +7,6 @@ import { getEntryBySlug } from "astro:content";
 import Form from "@layouts/function-components/Form";
 import {
   IoLogoFacebook,
-  IoLogoTwitter,
   IoLogoLinkedin,
   IoLogoInstagram,
   IoLogoYoutube,
@@ -16,6 +15,7 @@ import {
 import { getEntry } from "astro:content";
 import social from "@config/social.json";
 import { humanize } from "@lib/utils/textConverter";
+import TwitterXLogo from '@components/TwitterXLogo.astro';
 
 
 const { currentLocale } = Astro
@@ -32,7 +32,7 @@ const { title, page_title, form_content_data } = entry.data;
 const allowedNetworks = ["facebook", "twitter", "linkedin", "instagram", "youtube", "tiktok"];
 const socialIcons = {
   facebook: IoLogoFacebook,
-  twitter: IoLogoTwitter,
+  twitter: TwitterXLogo,
   linkedin: IoLogoLinkedin,
   instagram: IoLogoInstagram,
   youtube: IoLogoYoutube,
