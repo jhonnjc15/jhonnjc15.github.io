@@ -11,9 +11,8 @@ const i18n = getI18N({ currentLocale });
 
 <section class="section banner relative overflow-hidden pb-10 pt-16" data-animate="fade-right">
   <div class="container relative">
-    <div class="row items-center gap-8">
-      <div class="lg:col-6 space-y-4" data-animate="fade-right">
-        <p class="text-sm uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.COMMON.catalog_intro_title}</p>
+    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-4 lg:order-1" data-animate="fade-right">
         <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
           {title}
         </h1>
@@ -34,8 +33,8 @@ const i18n = getI18N({ currentLocale });
           </a>
         )}
       </div>
-      <div class="lg:col-6" data-animate="zoom-in">
-        <div class="relative mx-auto max-w-[560px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-6 shadow-2xl flex items-center justify-center">
+      <div class="lg:order-2" data-animate="zoom-in">
+        <div class="relative mx-auto max-w-[580px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-6 shadow-2xl flex items-center justify-center">
           <Image
             class="w-full object-contain drop-shadow-2xl"
             alt="banner"

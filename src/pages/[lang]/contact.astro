@@ -49,29 +49,32 @@ export async function getStaticPaths() {
   </section>
 
   <section class="section pt-4" data-animate="zoom-in">
-    <div class="container space-y-10">
+    <div class="container">
       <div class="relative overflow-hidden rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <Image
-          src="/images/contact_image.jpg"
-          height={640}
+          src="/images/contact-img.png"
+          height={720}
           width={1280}
-          class="w-full h-full object-cover"
+          class="absolute inset-0 h-full w-full object-cover"
           alt=""
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10"></div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 sm:px-10 space-y-4">
-          <p class="text-xs uppercase tracking-[0.3em] text-secondary font-semibold">{contact.hero_tagline}</p>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">{contact.hero_description}</h2>
-          <p class="text-white/80 text-lg">{contact.cta_text}</p>
-        </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/80 via-emerald-700/55 to-background/40 mix-blend-multiply"></div>
 
-      <div class="relative max-w-3xl mx-auto -mt-14">
-        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl p-6 sm:p-10">
-          <Form
-            form_content_data={form_content_data}
-            transition:persist client:visible
-          />
+        <div class="relative grid min-h-[640px] gap-8 px-6 py-10 sm:px-10 lg:px-16 lg:grid-cols-[1.05fr,0.95fr]">
+          <div class="flex flex-col justify-start space-y-5 text-white max-w-2xl lg:self-start">
+            <p class="text-xs uppercase tracking-[0.3em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
+            <p class="text-white/85 text-lg leading-relaxed drop-shadow">{contact.cta_text}</p>
+          </div>
+
+          <div class="self-end">
+            <div class="backdrop-blur-md bg-white/95 dark:bg-gray-900/85 border border-emerald-200/60 dark:border-emerald-800/50 rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-9 -mb-4 lg:mb-0">
+              <Form
+                form_content_data={form_content_data}
+                transition:persist client:visible
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

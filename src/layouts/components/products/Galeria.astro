@@ -26,7 +26,7 @@ const galleryImages = images.filter(img => !img.isMain);
 ---
 
 <div class="flex flex-col gap-y-5" id="galery">
-  <div class="rounded-4xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-background-offset to-background">
+  <div class="rounded-[32px] overflow-hidden border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-background-offset to-background shadow-xl">
     {mainImage && (
       <a
         href={mainImage.src}
@@ -34,18 +34,18 @@ const galleryImages = images.filter(img => !img.isMain);
         data-pswp-height="400"
         class="block"
       >
-        <div class="aspect-[4/3] w-full flex items-center justify-center overflow-hidden">
+        <div class="relative flex items-center justify-center w-full min-h-[320px] md:min-h-[420px] p-4">
           <img
             transition:name={`img-${id_product}`}
             src={mainImage.src}
-            class="w-full h-full object-contain rounded-xl transition-transform duration-300 hover:scale-105"
+            class="max-h-[520px] w-full object-contain rounded-2xl transition-transform duration-300 hover:scale-105"
             alt=""
           />
         </div>
       </a>
     )}
   </div>
-  <div class="rounded-1 grid grid-cols-4 gap-3">
+  <div class="rounded-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
     {galleryImages.map((image) => (
       <a
         href={image.src}

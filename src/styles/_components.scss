@@ -3,6 +3,10 @@
   @apply py-6;
 }
 
+.section + .section {
+  @apply border-t border-border/60;
+}
+
 // container
 .container {
   @apply mx-auto max-w-[1202px] px-3;
