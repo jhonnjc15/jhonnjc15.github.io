@@ -111,7 +111,7 @@ testimonial:
 
 galery:
   title: Paqari Gallery
-  description: Moments that inspire us: workshops, prototypes, and community gatherings.
+  description: "Moments that inspire us: workshops, prototypes, and community gatherings."
   galery_list:
     - name: David Cameron
       image: "/images/galery/imagen-1.jpg"
