@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 
   <section class="section pt-4" data-animate="zoom-in">
     <div class="container">
-      <div class="relative overflow-hidden rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      <div class="relative overflow-visible rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
         <Image
           src="/images/contact-img.png"
           height={720}
@@ -60,15 +60,15 @@ export async function getStaticPaths() {
         />
         <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/80 via-emerald-700/55 to-background/40 mix-blend-multiply"></div>
 
-        <div class="relative grid min-h-[640px] gap-8 px-6 py-10 sm:px-10 lg:px-16 lg:grid-cols-[1.05fr,0.95fr]">
+        <div class="relative grid min-h-[640px] gap-8 px-6 pb-16 pt-10 sm:px-10 lg:px-16 lg:grid-cols-[1.05fr,0.95fr] lg:items-start">
           <div class="flex flex-col justify-start space-y-5 text-white max-w-2xl lg:self-start">
             <p class="text-xs uppercase tracking-[0.3em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
             <h2 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
             <p class="text-white/85 text-lg leading-relaxed drop-shadow">{contact.cta_text}</p>
           </div>
 
-          <div class="self-end">
-            <div class="backdrop-blur-md bg-white/95 dark:bg-gray-900/85 border border-emerald-200/60 dark:border-emerald-800/50 rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-9 -mb-4 lg:mb-0">
+          <div class="relative lg:justify-self-end lg:-translate-y-6">
+            <div class="backdrop-blur-md bg-white/95 dark:bg-gray-900/85 border border-emerald-200/60 dark:border-emerald-800/50 rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-9 -mb-10 lg:-mb-14">
               <Form
                 form_content_data={form_content_data}
                 transition:persist client:visible
