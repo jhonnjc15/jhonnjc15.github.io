@@ -25,5 +25,16 @@
     },
     "contact_button": {
         "wsp" : "Greetings,%0D%0AI'm interested in your products and would like to get in touch with you 😀"
+    },
+    "HOME": {
+        "categories_title": "Products & Experiences",
+        "categories_description": "Choose from learning experiences, STEM kits, and lab tools curated to feel cohesive from the first glance.",
+        "categories_cta": "Explore category",
+        "categories_blog_title": "Latest articles",
+        "categories_blog_description": "Stay updated with news, experiments, and stories from the Paqari lab team.",
+        "gallery_title": "Paqari Gallery",
+        "gallery_description": "Snapshots from workshops, prototypes, and the community moments that inspire our work.",
+        "testimonials_title": "Voices that guide our lab",
+        "testimonials_description": "Experiences shared by educators, makers, and partners who explore with Paqari."
     }
 }

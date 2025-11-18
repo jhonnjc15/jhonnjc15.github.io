@@ -5,10 +5,12 @@ import { plainify } from "@lib/utils/textConverter";
 const { summary_length } = config.settings;
 import categoriesES from "@data/es/blog-categories.json";
 import categoriesEN from "@data/en/blog-categories.json";
+import { getI18N } from "@i18n/index";
 
 const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 
-const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
+const categories_data = currentLocale === "en" ? categoriesEN : categoriesES;
 ---
 
 <style>
@@ -41,15 +43,21 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
   }
 </style>
 
-<div data-animate="zoom-in" class="max-w-7xl mx-auto px-3 sm:px-5 md:px-8 xl:px-6">
+<div data-animate="zoom-in" class="max-w-7xl mx-auto px-3 sm:px-5 md:px-8 xl:px-6 space-y-8">
+  <div class="text-center space-y-3">
+    <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.COMMON.catalog_intro_title}</p>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-default">{i18n.HOME.categories_title}</h2>
+    <p class="max-w-3xl mx-auto text-text-offset leading-relaxed">{i18n.HOME.categories_description}</p>
+  </div>
+
   <div
-    class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 
+    class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4
            rounded-3xl overflow-hidden
-           my-6 md:my-10 bg-offset"
+           my-6 md:my-4 bg-offset"
   >
     {categories_data?.map((data) => (
       <div
-        class="card group relative 
+        class="card group relative
                min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
                flex flex-col justify-between h-full
                py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6
@@ -79,7 +87,7 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
           href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
           class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
         >
-          <span>Explore category</span>
+          <span>{i18n.HOME.categories_cta}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -116,12 +124,12 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
         <h5
           class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
         >
-          Latest articles
+          {i18n.HOME.categories_blog_title}
         </h5>
         <p
           class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden group-hover:text-primary"
         >
-          Stay updated with the newest stories and insights from our team.
+          {i18n.HOME.categories_blog_description}
         </p>
       </div>
 
@@ -129,7 +137,7 @@ const categories_data = currentLocale === "en" ? categoriesES : categoriesEN;
           href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
           class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
       >
-        <span>Go to blog</span>
+        <span>{i18n.COMMON.visit_blog}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

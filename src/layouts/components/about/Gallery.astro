@@ -2,14 +2,18 @@
 import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 //console.log(gallery)
-const { title, images } = gallery;
+const { title, description, images } = gallery;
 ---
 
 <section class="section">
   <div class="container">
     <div class="row justify-center text-center">
-      <div class="col-8">
-        <h2 set:html={markdownify(title)} />
+      <div class="col-10 lg:col-8 space-y-3">
+        <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold" set:html={markdownify(title)} />
+        <h2 class="text-3xl md:text-4xl font-extrabold text-default" set:html={markdownify(title)} />
+        {description && (
+          <p class="text-text-offset leading-relaxed" set:html={markdownify(description)} />
+        )}
       </div>
     </div>
 

@@ -94,6 +94,7 @@ counter:
 # Gallery
 gallery:
   title: Comenzamos con un solo objetivo, empoderar a los emprendedores
+  description: "Crecimos escuchando a la comunidad: estas imágenes muestran los prototipos, laboratorios y momentos que han marcado nuestro camino."
   images:
     - "/images/about/gallery-img-1.png"
     - "/images/about/gallery-img-3.png"
@@ -122,8 +123,8 @@ features:
 
 ## miembros
 members:
-  title: Así somos nosotros
-  description: Somos un equipo diverso y dedicado, apasionado por crear soluciones que marcan la diferencia.
+  title: El equipo detrás de Paqari
+  description: Somos un equipo diverso y dedicado que combina ciencia, diseño y tecnología para convertir la curiosidad en descubrimientos.
   member_list:
     - name: Eleanor Peña
       field: Cofundadora y COO

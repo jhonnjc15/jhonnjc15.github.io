@@ -1,6 +1,11 @@
 ---
 title: Contacto
 page_title: Ponte en contacto con nuestro equipo.
+hero_tagline: "Diseñemos juntas tu próximo experimento"
+hero_description: "Cuéntanos qué quieres crear y te conectamos con el kit, la experiencia o la colaboración ideal."
+cta_text: "Respondemos en menos de un día hábil."
+closing_title: "¿Buscas inspiración antes de escribirnos?"
+closing_description: "Explora nuestro catálogo o blog y comparte los enlaces en tu mensaje para guiarte más rápido."
 form_content_data:
   name: 
     title: Nombre Completo

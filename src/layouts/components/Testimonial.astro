@@ -1,21 +1,19 @@
 ---
 import TestimonialSlider from "@layouts/function-components/TestimonialSlider";
+import { getI18N } from "@i18n/index";
 const { testimonial } = Astro.props;
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section data-animate="fade-up" class="reviews">
   <div class="container">
-    <div class="row justify-between">
-      <div class="lg:col-6">
-        <h2>{testimonial.title}</h2>
-      </div>
-      <div class="lg:col-4">
-        <p>
-          {testimonial.description}
-        </p>
-      </div>
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.HOME.testimonials_title}</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-default">{testimonial.title}</h2>
+      <p class="text-text-offset leading-relaxed">{testimonial.description || i18n.HOME.testimonials_description}</p>
     </div>
-    <div class="row mt-10">
+    <div class="row mt-12">
       <div class="col-12">
         <TestimonialSlider list={testimonial.testimonial_list} client:load />
       </div>

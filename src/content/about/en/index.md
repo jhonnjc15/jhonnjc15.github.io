@@ -94,6 +94,7 @@ counter:
 # Gallery
 gallery:
   title: We started with one single goal, empower entrepreneurs
+  description: "We grew by listening to our community; these images capture the prototypes, labs, and moments that shaped our path."
   images:
     - "/images/about/gallery-img-1.png"
     - "/images/about/gallery-img-3.png"
@@ -122,8 +123,8 @@ features:
 
 ## members
 members:
-  title: This is who we aree
-  description: We are a diverse and dedicated team passionate about creating solutions that make a difference.
+  title: Meet the team behind Paqari
+  description: We are a diverse and dedicated team blending science, design, and technology to turn curiosity into discovery.
   member_list:
     - name: Eleanor Pena
       field: Co-founder & COO

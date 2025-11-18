@@ -25,5 +25,16 @@
     },
     "contact_button": {
         "wsp": "Saludos%0D%0AMe interesan sus productos, me gustaría ponerme en contacto con ustedes 😀"
+    },
+    "HOME": {
+        "categories_title": "Productos y experiencias",
+        "categories_description": "Elige entre experiencias de aprendizaje, kits STEAM y herramientas de laboratorio curadas para verse coherentes desde el primer vistazo.",
+        "categories_cta": "Explorar categoría",
+        "categories_blog_title": "Últimos artículos",
+        "categories_blog_description": "Mantente al día con noticias, experimentos e historias del equipo de laboratorio Paqari.",
+        "gallery_title": "Galería Paqari",
+        "gallery_description": "Instantáneas de talleres, prototipos y momentos comunitarios que inspiran nuestro trabajo.",
+        "testimonials_title": "Voces que guían nuestro laboratorio",
+        "testimonials_description": "Experiencias compartidas por educadores, creadoras y aliadas que exploran con Paqari."
     }
 }

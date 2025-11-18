@@ -80,8 +80,8 @@ service:
 
 #testimonial
 testimonial:
-  title: Our Clients Have Great Things to Say About Us
-  description: Discover how we help real businesses deliver secure, scalable, and effective digital experiences.
+  title: Stories from the Paqari community
+  description: Educators, makers, and partners share how Paqari elevates their projects with clear learning experiences and ready-to-use tools.
   testimonial_list:
     - author: David Cameron
       avatar: "/images/users/user-5.png"
@@ -110,8 +110,8 @@ testimonial:
       content: A complete shift in how we manage user access and security.
 
 galery:
-  title: Galery
-  description: Discover how we help real businesses deliver secure, scalable, and effective digital experiences.
+  title: Paqari Gallery
+  description: Moments that inspire us: workshops, prototypes, and community gatherings.
   galery_list:
     - name: David Cameron
       image: "/images/galery/imagen-1.jpg"

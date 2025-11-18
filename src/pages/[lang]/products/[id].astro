@@ -1,5 +1,4 @@
 ---
-import Shape from "@components/Shape.astro";
 import Base from "@layouts/Base.astro";
 import ProductPage from "@components/products/ProductPage.astro";
 import productsES from "@data/es/products.json";
@@ -59,7 +58,6 @@ const pageDescription = product.description ?? "";
   meta_title={pageTitle}
   description={pageDescription}
 >
-  <Shape />
   <section class="px-5 section mx-4 md:mx-10 lg:mx-20 mt-12">
     <ProductPage data_by_id={product} />
   </section>

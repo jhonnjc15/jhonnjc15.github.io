@@ -1,6 +1,11 @@
 ---
 title: Contact
 page_title: Get in touch with our team.
+hero_tagline: "Let's design your next experiment together"
+hero_description: "Tell us what you want to build and we will connect you with the right kit, experience, or collaborator."
+cta_text: "We reply within one business day."
+closing_title: "Need inspiration before writing to us?"
+closing_description: "Explore our catalog or blog for ideas and share the links in your message so we can guide you faster."
 form_content_data:
   name: 
     title: Full Name

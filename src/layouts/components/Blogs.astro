@@ -22,7 +22,7 @@ const buildCategoryLink = (category: string) =>
   {
     posts.map((item: any, idx: number) => (
       <div class="mb-10 md:col-6 lg:col-4" data-animate={idx % 2 === 0 ? "fade-up" : "zoom-in"}>
-        <div class="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-4 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div class="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-4 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700">
           <div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
               class="h-full w-full object-cover"

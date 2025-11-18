@@ -29,10 +29,10 @@ const enhancedProducts = products.map((item) => {
     </p>
   </div>
 
-  <div class="grid gap-8 md:grid-cols-2" data-animate="zoom-in">
+  <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3 items-stretch" data-animate="zoom-in">
     {
       enhancedProducts.map((item: any, idx: number) => (
-        <article class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-6 shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl" data-animate={idx % 2 === 0 ? "fade-up" : "fade-right"}>
+        <article class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-6 shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700" data-animate={idx % 2 === 0 ? "fade-up" : "fade-right"}>
           <span class="absolute w-3/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 right-2 rounded-full blur-3xl opacity-20"></span>
           <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
             <div class="lg:w-1/2">
