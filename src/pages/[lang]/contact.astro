@@ -70,21 +70,26 @@ export async function getStaticPaths() {
 
   <section class="section pb-0" data-animate="zoom-in">
     <div class="container">
-      <div class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60 h-[520px] md:h-[600px]">
+      <div class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60 h-[540px] md:h-[620px]">
         <Image
           src="/images/contact-img.png"
           height={720}
           width={1280}
-          class="absolute inset-0 h-full w-full object-cover"
+          quality={95}
+          class="absolute inset-0 h-full w-full object-cover [image-rendering:optimizeQuality]"
           alt=""
         />
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/55 via-secondary/45 to-emerald-500/50 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/35 to-emerald-500/35"></div>
 
         <div class="absolute inset-0 flex items-center">
-          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white space-y-4">
-            <p class="text-[0.72rem] uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">{contact.hero_tagline}</p>
-            <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
-            <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
+          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white">
+            <div class="space-y-3 rounded-2xl bg-primary/25 px-6 py-5 backdrop-blur-md shadow-lg border border-white/10 dark:bg-gray-900/50 dark:border-white/10">
+              <p class="text-[0.72rem] uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">
+                {contact.hero_tagline}
+              </p>
+              <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
+              <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -93,14 +98,16 @@ export async function getStaticPaths() {
 
   <section class="section pt-0" data-animate="fade-up">
     <div class="container">
-      <div class="relative -mt-20 lg:-mt-24">
+      <div class="relative -mt-36 md:-mt-44 lg:-mt-52">
         <div class="mx-auto max-w-4xl rounded-3xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 px-6 sm:px-8 md:px-10 py-8 sm:py-10">
           <Form
             form_content_data={form_content_data}
             transition:persist client:visible
           />
 
-          <div class="mt-8 flex flex-col items-center gap-3">
+          <div class="mt-6 border-t border-border/30 dark:border-white/10" aria-hidden="true"></div>
+
+          <div class="mt-6 flex flex-col items-center gap-3">
             <span class="sr-only">Social media</span>
             <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-default">
               {socialLinks.map(([network, url]) => (

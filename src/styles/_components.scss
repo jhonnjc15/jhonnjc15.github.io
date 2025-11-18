@@ -4,7 +4,7 @@
 }
 
 .section + .section {
-  @apply mt-14 md:mt-20 border-t border-border/60;
+  @apply mt-14 md:mt-20 border-t border-border/20 dark:border-white/5;
 }
 
 // container
