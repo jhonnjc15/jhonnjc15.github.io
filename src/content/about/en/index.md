@@ -96,9 +96,30 @@ gallery:
   title: We started with one single goal, empower entrepreneurs
   description: "We grew by listening to our community; these images capture the prototypes, labs, and moments that shaped our path."
   images:
-    - "/images/about/gallery-img-1.png"
-    - "/images/about/gallery-img-3.png"
-    - "/images/about/gallery-img-2.png"
+    - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
+      alt: "Team brainstorming around a lab table"
+      size: tall
+    - src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+      alt: "Notebook with early prototypes and design notes"
+      size: square
+    - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
+      alt: "Sensor and electronic components laid out on a desk"
+      size: wide
+    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
+      alt: "Developer testing a wearable device"
+      size: tall
+    - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
+      alt: "Open-source code glowing on a monitor"
+      size: square
+    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
+      alt: "Two collaborators pointing at an interactive display"
+      size: wide
+    - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
+      alt: "Microscope and notebook on a testing bench"
+      size: square
+    - src: "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=1600&q=80"
+      alt: "Overhead view of a laptop and hardware tools"
+      size: wide
 
 ## our works
 features:

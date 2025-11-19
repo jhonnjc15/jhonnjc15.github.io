@@ -1,8 +1,24 @@
 ---
 import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
-//console.log(gallery)
 const { title, description, images } = gallery;
+
+const defaultSizes = ["tall", "wide", "square"];
+
+const galleryItems = images.map((image: any, index: number) => {
+  if (typeof image === "string") {
+    return {
+      src: image,
+      alt: title,
+      size: defaultSizes[index % defaultSizes.length],
+    };
+  }
+
+  return {
+    ...image,
+    size: image.size || defaultSizes[index % defaultSizes.length],
+  };
+});
 ---
 
 <section class="section">
@@ -18,53 +34,26 @@ const { title, description, images } = gallery;
     </div>
 
     <div class="relative">
-      <div class="row" id="photo-gallery">
-        {
-          images.map((image: any) => (
-            <div class="picture-item col-6 mt-12">
-              {" "}
-              <img class="w-full" src={image} alt="" loading="lazy" />
+      <div
+        class="grid auto-rows-[14px] gap-5 sm:gap-6 md:gap-7 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        id="photo-gallery"
+      >
+        {galleryItems.map((image) => (
+          <div
+            class={`picture-item group relative overflow-hidden rounded-2xl bg-white/60 shadow-lg shadow-black/5 ring-1 ring-black/10 backdrop-blur`}
+            style={{ gridRowEnd: `span ${image.size === "tall" ? 26 : image.size === "wide" ? 18 : 22}` }}
+          >
+            <div class="relative h-full w-full">
+              <img
+                class="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
+                src={image.src}
+                alt={image.alt || title}
+                loading="lazy"
+              />
             </div>
-          ))
-        }
-
-        <div class="js-shuffle-sizer col-1"></div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  import Shuffle from "shufflejs";
-  const element = document.getElementById("photo-gallery");
-  const sizer = element?.querySelector(".js-shuffle-sizer");
-
-  if (element && sizer) {
-    const shuffleInstance = new Shuffle(element, {
-      itemSelector: ".picture-item",
-      sizer: sizer,
-      columnWidth: 1,
-    });
-
-    const images = Array.from(element.querySelectorAll("img"));
-    let loaded = 0;
-
-    const handleImageLoad = () => {
-      loaded += 1;
-      if (loaded === images.length) {
-        shuffleInstance.layout();
-      }
-    };
-
-    images.forEach((img) => {
-      if (img.complete) {
-        handleImageLoad();
-      } else {
-        img.addEventListener("load", handleImageLoad, { once: true });
-        img.addEventListener("error", handleImageLoad, { once: true });
-      }
-    });
-
-    window.addEventListener("resize", () => shuffleInstance.update(), { passive: true });
-  }
-</script>

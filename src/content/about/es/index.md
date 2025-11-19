@@ -96,9 +96,30 @@ gallery:
   title: Comenzamos con un solo objetivo, empoderar a los emprendedores
   description: "Crecimos escuchando a la comunidad: estas imágenes muestran los prototipos, laboratorios y momentos que han marcado nuestro camino."
   images:
-    - "/images/about/gallery-img-1.png"
-    - "/images/about/gallery-img-3.png"
-    - "/images/about/gallery-img-2.png"
+    - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
+      alt: "Equipo ideando en una mesa de laboratorio"
+      size: tall
+    - src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+      alt: "Cuaderno con prototipos y notas de diseño"
+      size: square
+    - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
+      alt: "Sensor y componentes electrónicos sobre mesa"
+      size: wide
+    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
+      alt: "Desarrolladora probando un dispositivo portátil"
+      size: tall
+    - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
+      alt: "Código abierto en pantalla con reflejos de colores"
+      size: square
+    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
+      alt: "Dos personas colaborando frente a panel interactivo"
+      size: wide
+    - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
+      alt: "Microscopio y cuaderno de notas en banco de pruebas"
+      size: square
+    - src: "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=1600&q=80"
+      alt: "Vista aérea de escritorio con laptop y herramientas de hardware"
+      size: wide
 
 ## nuestros trabajos
 features:
