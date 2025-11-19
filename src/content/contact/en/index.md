@@ -21,7 +21,7 @@ form_content_data:
     error_message: Subject field is required
   message: 
     title: Message
-    max_characters: Max. 500 characters
+    max_characters: Max. 500 chars
     required_error_message: Message field is required
     pattern_error_message: Maximum number of characters is 500
     random_error_message: Field to be completed

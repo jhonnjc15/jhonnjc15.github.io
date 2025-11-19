@@ -69,30 +69,44 @@ export async function getStaticPaths() {
   </section>
 
   <section class="section" data-animate="zoom-in">
-    <div class="container">
-      <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
-        <Image
-          src="/images/contact-img.png"
-          height={720}
-          width={1280}
-          quality={95}
-          class="absolute inset-0 h-full w-full object-cover [image-rendering:optimizeQuality]"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
+  <div class="container">
+    <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
+      <Image
+        src="/images/contact_background.jpg"
+        height={720}
+        width={1280}
+        quality={95}
+        class="absolute inset-0 h-full w-full object-cover [image-rendering:optimizeQuality]"
+        alt=""
+        data-animate="fade-up"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
 
-        <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
-          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4">
-              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">{contact.hero_tagline}</p>
-              <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
-              <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
-            </div>
+      <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          {/* Columna de texto */}
+          <div class="space-y-4 min-w-0">
+            <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">
+              {contact.hero_tagline}
+            </p>
+            <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">
+              {contact.hero_description}
+            </h2>
+            <p class="text-white/90 text-base leading-relaxed drop-shadow">
+              {contact.cta_text}
+            </p>
+          </div>
 
-            <div class="bg-white/15 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
+          {/* Columna del formulario + redes  sm:p-8 lg:p-4 */}
+          <div class="min-w-0">
+            <div
+              data-animate="fade-right"
+              class="bg-white/15 backdrop-blur-xl rounded-3xl px-4 py-8 sm:p-10 lg:p-8 border border-white/25 shadow-2xl w-full"
+            >
               <Form
                 form_content_data={form_content_data}
-                transition:persist client:visible
+                transition:persist
+                client:visible
               />
 
               <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
@@ -116,9 +130,12 @@ export async function getStaticPaths() {
             </div>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+      </div>
+    </article>
+  </div>
+</section>
+
+
 
   <section class="section" data-animate="fade-up">
     <div class="container">
@@ -129,165 +146,4 @@ export async function getStaticPaths() {
     </div>
   </section>
 
-  <section class="section" data-animate="fade-up">
-    <div class="container space-y-12">
-      <div class="text-center max-w-3xl mx-auto space-y-4">
-        <p class="text-xs uppercase tracking-[0.32em] font-semibold text-secondary">Variaciones de layout</p>
-        <h3 class="text-3xl font-extrabold text-default">Explora diferentes composiciones para la sección de contacto</h3>
-        <p class="text-text-offset leading-relaxed">Elige la disposición que prefieras y elimina el resto del código. Cada ejemplo reutiliza el mismo contenido y formulario para que compares rápidamente.</p>
-      </div>
-
-      <!-- Variante 1: Descripción junto al formulario (versión base) -->
-      <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
-        <Image
-          src="/images/contact-img.png"
-          height={720}
-          width={1280}
-          quality={95}
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
-
-        <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
-          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4">
-              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">{contact.hero_tagline}</p>
-              <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
-              <p class="text-white/90 leading-relaxed drop-shadow">{contact.cta_text}</p>
-            </div>
-
-            <div class="bg-white/15 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
-              <Form
-                form_content_data={form_content_data}
-                transition:persist client:visible
-              />
-
-              <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
-
-              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
-                {socialLinks.map(([network, url]) => (
-                  <a
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={humanize(network)}
-                  >
-                    {(() => {
-                      const Icon = socialIcons[network];
-                      return Icon ? <Icon /> : null;
-                    })()}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Variante 2: Fondo a ancho completo con la misma distribución -->
-      <article class="relative overflow-hidden shadow-2xl border border-white/25 dark:border-white/15 rounded-none md:rounded-[32px] -mx-4 sm:-mx-8 md:-mx-12 lg:-mx-16">
-        <Image
-          src="/images/contact_image.jpg"
-          height={900}
-          width={1600}
-          quality={95}
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/30 to-emerald-500/30"></div>
-
-        <div class="relative px-4 py-14 sm:px-10 md:px-16 lg:px-24 text-white">
-          <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div class="space-y-5">
-              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold drop-shadow">{contact.hero_tagline}</p>
-              <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
-              <p class="text-white/90 leading-relaxed drop-shadow">{contact.cta_text}</p>
-            </div>
-
-            <div class="bg-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
-              <Form
-                form_content_data={form_content_data}
-                transition:persist client:visible
-              />
-
-              <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
-
-              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
-                {socialLinks.map(([network, url]) => (
-                  <a
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={humanize(network)}
-                  >
-                    {(() => {
-                      const Icon = socialIcons[network];
-                      return Icon ? <Icon /> : null;
-                    })()}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Variante 3: Distribución base con filtro verdoso -->
-      <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
-        <Image
-          src="/images/home-background.jpg"
-          height={900}
-          width={1600}
-          quality={95}
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-emerald-600/35 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/25 via-primary/20 to-secondary/30"></div>
-
-        <div class="relative px-4 py-14 sm:px-8 md:px-12 lg:px-16 text-white">
-          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div class="space-y-4">
-              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">Filtro verdoso</p>
-              <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
-              <p class="text-white/90 leading-relaxed drop-shadow">{contact.cta_text}</p>
-              <div class="flex flex-wrap gap-3 text-white/90">
-                <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-sm border border-white/20">{humanize(contact.hero_tagline)}</span>
-                <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-sm border border-white/20">Filtro verde</span>
-              </div>
-            </div>
-
-            <div class="rounded-3xl bg-white/85 text-default shadow-2xl border border-white/60 backdrop-blur-xl px-6 sm:px-8 md:px-10 py-8 sm:py-10">
-              <Form
-                form_content_data={form_content_data}
-                transition:persist client:visible
-              />
-
-              <div class="my-6 border-t border-border/30 dark:border-gray-700/70" aria-hidden="true"></div>
-
-              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-default">
-                {socialLinks.map(([network, url]) => (
-                  <a
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/50 text-default border border-white/60 hover:bg-white/80 transition"
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={humanize(network)}
-                  >
-                    {(() => {
-                      const Icon = socialIcons[network];
-                      return Icon ? <Icon /> : null;
-                    })()}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
 </Base>

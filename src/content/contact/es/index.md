@@ -21,7 +21,7 @@ form_content_data:
     error_message: El campo Asunto es requerido
   message: 
     title: Mensaje
-    max_characters: Max. 500 caracteres
+    max_characters: Max. 500 carac.
     required_error_message: El campo Mensaje es requerido
     pattern_error_message: El número máximo de caracteres es 500
     random_error_message: Espacio que completar

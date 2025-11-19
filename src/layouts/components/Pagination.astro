@@ -37,14 +37,14 @@ if (totalPages <= 5) {
             indexPageLink
               ? `${section ? "/" + section : "/"}`
               : `${section ? "/" + section : ""}/page/${currentPage - 1}`)}
-          class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border text-dark hover:shadow-lg"
+          class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border text-primary hover:shadow-lg"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </a>
       ) : (
-        <span class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border bg-white text-center text-dark">
+        <span class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border bg-white text-center text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -83,14 +83,14 @@ if (totalPages <= 5) {
         <a
           href={getRelativeLocaleUrl(currentLocale ?? '',
           `${section ? "/" + section : ""}/page/${currentPage + 1}`)}
-          class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border text-dark hover:shadow-lg"
+          class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border text-primary hover:shadow-lg"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       ) : (
-        <span class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border bg-white text-center text-dark">
+        <span class="mx-1 flex h-8 w-8 items-center justify-center rounded-full border bg-white text-center text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>

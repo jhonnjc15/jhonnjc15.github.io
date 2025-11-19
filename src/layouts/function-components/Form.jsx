@@ -145,10 +145,10 @@ const Form = ({ form_content_data }) => {
   const isDirty = Object.values(currentValues).some(v => v && v.trim() !== '');
 
   useConfirmNavigation(isDirty, form_content_data);
-
+  //sm:px-8 md:px-6 lg:px-4
   return (
     <form
-      className="flex text-default flex-col justify-around sm:px-8 md:px-6 lg:px-10 items-center h-full"
+      className="flex text-default flex-col justify-around  items-center h-full"
       onSubmit={handleSubmit(onSubmit)}
     >
         {/* Name */}
@@ -222,11 +222,11 @@ const Form = ({ form_content_data }) => {
         </div>
         {/* Mensaje*/}
         <div className="flex w-full flex-col">
-          <div className="flex flex-row justify-between">
+          <div className="relative flex flex-row justify-between">
             <label className="text-base font-semibold leading-none ">
               {form_content_data?.message.title}
             </label>
-            <label className="font-xs text-base font-light leading-none text-offset">
+            <label className="absolute -bottom-2 right-0 text-xs/4 dark:text-gray-200 text-black/50 font-light leading-none">
               {form_content_data?.message.max_characters}
             </label>
           </div>
