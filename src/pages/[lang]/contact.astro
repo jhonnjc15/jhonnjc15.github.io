@@ -68,9 +68,9 @@ export async function getStaticPaths() {
     </div>
   </section>
 
-  <section class="section pb-0" data-animate="zoom-in">
+  <section class="section" data-animate="zoom-in">
     <div class="container">
-      <div class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60 h-[540px] md:h-[620px]">
+      <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
         <Image
           src="/images/contact-img.png"
           height={720}
@@ -79,55 +79,44 @@ export async function getStaticPaths() {
           class="absolute inset-0 h-full w-full object-cover [image-rendering:optimizeQuality]"
           alt=""
         />
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/35 to-emerald-500/35"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
 
-        <div class="absolute inset-0 flex items-center">
-          <div class="mx-auto max-w-3xl px-6 sm:px-10 lg:px-14 text-white">
-            <div class="space-y-3 rounded-2xl bg-primary/25 px-6 py-5 backdrop-blur-md shadow-lg border border-white/10 dark:bg-gray-900/50 dark:border-white/10">
-              <p class="text-[0.72rem] uppercase tracking-[0.32em] text-secondary font-semibold drop-shadow">
-                {contact.hero_tagline}
-              </p>
+        <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-4">
+              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">{contact.hero_tagline}</p>
               <h2 class="text-3xl md:text-4xl font-extrabold leading-tight drop-shadow-lg">{contact.hero_description}</h2>
               <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section pt-0" data-animate="fade-up">
-    <div class="container">
-      <div class="relative -mt-36 md:-mt-44 lg:-mt-52">
-        <div class="mx-auto max-w-4xl rounded-3xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 px-6 sm:px-8 md:px-10 py-8 sm:py-10">
-          <Form
-            form_content_data={form_content_data}
-            transition:persist client:visible
-          />
+            <div class="bg-white/15 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
+              <Form
+                form_content_data={form_content_data}
+                transition:persist client:visible
+              />
 
-          <div class="mt-6 border-t border-border/30 dark:border-white/10" aria-hidden="true"></div>
+              <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
 
-          <div class="mt-6 flex flex-col items-center gap-3">
-            <span class="sr-only">Social media</span>
-            <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-default">
-              {socialLinks.map(([network, url]) => (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={humanize(network)}
-                  class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-default shadow-sm transition hover:border-primary hover:text-primary dark:border-gray-700 dark:bg-gray-800"
-                >
-                  {(() => {
-                    const Icon = socialIcons[network];
-                    return Icon ? <Icon /> : null;
-                  })()}
-                </a>
-              ))}
+              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
+                {socialLinks.map(([network, url]) => (
+                  <a
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={humanize(network)}
+                  >
+                    {(() => {
+                      const Icon = socialIcons[network];
+                      return Icon ? <Icon /> : null;
+                    })()}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
@@ -148,35 +137,7 @@ export async function getStaticPaths() {
         <p class="text-text-offset leading-relaxed">Elige la disposición que prefieras y elimina el resto del código. Cada ejemplo reutiliza el mismo contenido y formulario para que compares rápidamente.</p>
       </div>
 
-      <!-- Variante 1: Fondo a ancho completo con todo centrado -->
-      <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-white/30 dark:border-white/10">
-        <Image
-          src="/images/contact_image.jpg"
-          height={900}
-          width={1600}
-          quality={95}
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/45 via-secondary/35 to-emerald-500/35"></div>
-        <div class="relative px-4 py-16 sm:px-8 md:px-12 lg:px-16 text-white">
-          <div class="mx-auto max-w-5xl text-center space-y-6">
-            <div class="space-y-3">
-              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold drop-shadow">{contact.hero_tagline}</p>
-              <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
-              <p class="text-white/90 text-base leading-relaxed drop-shadow">{contact.cta_text}</p>
-            </div>
-            <div class="mx-auto max-w-3xl bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl">
-              <Form
-                form_content_data={form_content_data}
-                transition:persist client:visible
-              />
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Variante 2: Descripción al lado del formulario sobre la misma imagen -->
+      <!-- Variante 1: Descripción junto al formulario (versión base) -->
       <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
         <Image
           src="/images/contact-img.png"
@@ -189,12 +150,22 @@ export async function getStaticPaths() {
         <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
 
         <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
-          <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div class="space-y-4">
               <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">{contact.hero_tagline}</p>
               <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
               <p class="text-white/90 leading-relaxed drop-shadow">{contact.cta_text}</p>
-              <div class="flex flex-wrap gap-2">
+            </div>
+
+            <div class="bg-white/15 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
+              <Form
+                form_content_data={form_content_data}
+                transition:persist client:visible
+              />
+
+              <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
+
+              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
                 {socialLinks.map(([network, url]) => (
                   <a
                     class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
@@ -211,36 +182,60 @@ export async function getStaticPaths() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </article>
 
-            <div class="bg-white/15 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
+      <!-- Variante 2: Fondo a ancho completo con la misma distribución -->
+      <article class="relative overflow-hidden shadow-2xl border border-white/25 dark:border-white/15 rounded-none md:rounded-[32px] -mx-4 sm:-mx-8 md:-mx-12 lg:-mx-16">
+        <Image
+          src="/images/contact_image.jpg"
+          height={900}
+          width={1600}
+          quality={95}
+          class="absolute inset-0 h-full w-full object-cover"
+          alt=""
+        />
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/30 to-emerald-500/30"></div>
+
+        <div class="relative px-4 py-14 sm:px-10 md:px-16 lg:px-24 text-white">
+          <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div class="space-y-5">
+              <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold drop-shadow">{contact.hero_tagline}</p>
+              <h3 class="text-3xl md:text-4xl font-bold drop-shadow-lg">{contact.hero_description}</h3>
+              <p class="text-white/90 leading-relaxed drop-shadow">{contact.cta_text}</p>
+            </div>
+
+            <div class="bg-white/15 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/25 shadow-2xl">
               <Form
                 form_content_data={form_content_data}
                 transition:persist client:visible
               />
+
+              <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
+
+              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
+                {socialLinks.map(([network, url]) => (
+                  <a
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={humanize(network)}
+                  >
+                    {(() => {
+                      const Icon = socialIcons[network];
+                      return Icon ? <Icon /> : null;
+                    })()}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Variante 3: Descripción arriba y formulario debajo en tarjeta clara -->
-      <article class="relative overflow-hidden rounded-[32px] border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white via-white to-primary/5 dark:from-gray-900 dark:via-gray-900 dark:to-primary/10 shadow-2xl">
-        <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16">
-          <div class="mx-auto max-w-4xl space-y-6 text-center">
-            <p class="text-xs uppercase tracking-[0.32em] font-semibold text-secondary">{contact.hero_tagline}</p>
-            <h3 class="text-3xl md:text-4xl font-bold text-default">{contact.hero_description}</h3>
-            <p class="text-text-offset leading-relaxed max-w-3xl mx-auto">{contact.cta_text}</p>
-          </div>
-
-          <div class="mx-auto mt-8 max-w-3xl rounded-3xl bg-white dark:bg-gray-900 shadow-xl border border-gray-200 dark:border-gray-700 px-6 sm:px-8 md:px-10 py-8 sm:py-10">
-            <Form
-              form_content_data={form_content_data}
-              transition:persist client:visible
-            />
-          </div>
-        </div>
-      </article>
-
-      <!-- Variante 4: Fondo con filtro verdoso y formulario flotante -->
+      <!-- Variante 3: Distribución base con filtro verdoso -->
       <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
         <Image
           src="/images/home-background.jpg"
@@ -270,6 +265,25 @@ export async function getStaticPaths() {
                 form_content_data={form_content_data}
                 transition:persist client:visible
               />
+
+              <div class="my-6 border-t border-border/30 dark:border-gray-700/70" aria-hidden="true"></div>
+
+              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-default">
+                {socialLinks.map(([network, url]) => (
+                  <a
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/50 text-default border border-white/60 hover:bg-white/80 transition"
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={humanize(network)}
+                  >
+                    {(() => {
+                      const Icon = socialIcons[network];
+                      return Icon ? <Icon /> : null;
+                    })()}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
