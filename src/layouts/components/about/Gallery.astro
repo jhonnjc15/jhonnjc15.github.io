@@ -3,7 +3,7 @@ import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 const { title, description, images } = gallery;
 
-const defaultSizes = ["tall", "wide", "square"];
+const defaultSizes = ["tall", "square", "wide", "square"];
 
 const galleryItems = images.map((image: any, index: number) => {
   if (typeof image === "string") {
@@ -33,15 +33,15 @@ const galleryItems = images.map((image: any, index: number) => {
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative max-w-6xl mx-auto">
       <div
-        class="grid auto-rows-[14px] gap-5 sm:gap-6 md:gap-7 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        class="grid auto-rows-[12px] gap-4 sm:gap-5 md:gap-6 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-dense"
         id="photo-gallery"
       >
         {galleryItems.map((image) => (
           <div
             class={`picture-item group relative overflow-hidden rounded-2xl bg-white/60 shadow-lg shadow-black/5 ring-1 ring-black/10 backdrop-blur`}
-            style={{ gridRowEnd: `span ${image.size === "tall" ? 26 : image.size === "wide" ? 18 : 22}` }}
+            style={{ gridRowEnd: `span ${image.size === "tall" ? 24 : image.size === "wide" ? 16 : 20}` }}
           >
             <div class="relative h-full w-full">
               <img
