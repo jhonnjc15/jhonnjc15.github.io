@@ -35,8 +35,8 @@ input#nav-toggle:checked ~ #nav-menu {
 
   /* estilo visual del navbar al hacer scroll */
   .header-sticky .navbar {
-    @apply border-[#217276] shadow-[0_4px_20px_rgba(0,0,0,0.15)]
-           bg-white/80 backdrop-blur-sm dark:bg-gray-900/80;
+    @apply border-[#217276] shadow-[0_8px_30px_rgba(0,0,0,0.18)]
+           bg-white/85 backdrop-blur-md dark:bg-gray-900/85 scale-[1.01] ring-1 ring-primary/30;
   }
 }
 
@@ -51,8 +51,8 @@ input#nav-toggle:checked ~ #nav-menu {
   }
 
   .header-sticky .navbar {
-    @apply border-[#217276] shadow-[0_6px_25px_rgba(0,0,0,0.2)]
-           bg-white/80 backdrop-blur-md dark:bg-gray-900/80;
+    @apply border-[#217276] shadow-[0_10px_35px_rgba(0,0,0,0.22)]
+           bg-white/85 backdrop-blur-lg dark:bg-gray-900/85 scale-[1.015] ring-1 ring-primary/40;
   }
 }
 
@@ -65,7 +65,7 @@ input#nav-toggle:checked ~ #nav-menu {
 
   /* navbar con scroll → opaco y blur */
   .header-sticky .navbar {
-    @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-transparent;
+    @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-transparent shadow-[0_6px_24px_rgba(0,0,0,0.18)] ring-1 ring-primary/25 scale-[1.01];
   }
 
   /* sin movimiento */
@@ -103,7 +103,8 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-dropdown-list {
-  @apply z-10  ml-1 my-2 rounded-lg border-0 border-solid  border-primary bg-default px-4 py-3  shadow-sm duration-300  lg:mt-0 lg:border lg:bg-white lg:shadow-[0_0.9rem_1.56rem_rgb(0,0,0,0.1)];
+  @apply z-10 ml-1 my-2 rounded-lg border-0 border-solid border-primary bg-default px-4 py-3 shadow-sm duration-300 lg:mt-0 lg:border lg:bg-white lg:shadow-[0_0.9rem_1.56rem_rgb(0,0,0,0.1)];
+  @apply absolute left-1/2 -translate-x-1/2 top-full mt-3 min-w-[14rem] opacity-0 scale-95 transition-all ease-out origin-top;
 }
 
 .nav-dropdown-item {
@@ -112,4 +113,8 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .nav-dropdown-link {
   @apply min-w-[150px] py-1 text-sm xl:text-dark font-medium transition hover:text-primary;
+}
+
+.nav-dropdown-open {
+  @apply block opacity-100 scale-100 pointer-events-auto shadow-lg ring-1 ring-primary/20 bg-white dark:bg-gray-900;
 }

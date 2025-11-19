@@ -22,8 +22,7 @@ const { title, description, images } = gallery;
         {
           images.map((image: any) => (
             <div class="picture-item col-6 mt-12">
-              {" "}
-              <img class="w-full" src={image} alt="" />
+              <img class="w-full rounded-2xl aspect-[4/3] object-cover shadow-md" src={image} alt="" loading="lazy" />
             </div>
           ))
         }
@@ -36,12 +35,35 @@ const { title, description, images } = gallery;
 
 <script>
   import Shuffle from "shufflejs";
-  const element = document.getElementById("photo-gallery");
-  const sizer = element.querySelector(".js-shuffle-sizer");
-  // Assumes you're using the UMD version of Shuffle (for example, from unpkg.com).
-  const shuffleInstance = new Shuffle(element, {
-    itemSelector: ".picture-item",
-    sizer: sizer,
-    columnWidth: 1,
-  });
+  function initGallery() {
+    const element = document.getElementById("photo-gallery");
+    if (!element) return;
+
+    if (element.dataset.shuffleBound === "true") return;
+    element.dataset.shuffleBound = "true";
+
+    const sizer = element.querySelector(".js-shuffle-sizer");
+    const shuffleInstance = new Shuffle(element, {
+      itemSelector: ".picture-item",
+      sizer: sizer,
+      columnWidth: 1,
+    });
+
+    const requestLayout = () => shuffleInstance.layout();
+    const images = Array.from(element.querySelectorAll("img"));
+
+    images.forEach((img) => {
+      if (img.complete) {
+        requestLayout();
+      } else {
+        img.addEventListener("load", requestLayout, { once: true });
+        img.addEventListener("error", requestLayout, { once: true });
+      }
+    });
+
+    window.addEventListener("resize", requestLayout);
+  }
+
+  initGallery();
+  document.addEventListener("astro:after-swap", initGallery);
 </script>

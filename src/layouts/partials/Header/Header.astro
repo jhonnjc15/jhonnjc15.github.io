@@ -115,7 +115,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                 {/* Dropdown cambio de posicion (nav-dropdown-list) tamaño, color de fondo, etc*/}
                 <ul
                   id="dropdown"
-                  class=" border-2 border-primary lg:p-8  nav-dropdown-list hidden duration-400  lg:invisible lg:absolute lg:-left-[18rem] lg:top-12           lg:h-[300px] lg:w-[666px] mx-auto w-[13.5rem] lg:flex lg:flex-row lg:gap-8             lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100"
+                  class="nav-dropdown-list hidden border-2 border-primary lg:p-8 lg:invisible lg:-left-[18rem] lg:top-12 lg:h-[300px] lg:w-[666px] mx-auto w-[13.5rem] lg:flex lg:flex-row lg:gap-8 lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100"
                 >
                   <div class="lg:flex lg:flex-col lg:divide-y lg:justify-center lg:w-1/2">
                   {menu.children?.map((child) => (
@@ -208,28 +208,77 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 <script> 
   //Se cambio <script is:inline> por solo <script>
   
-  function button_2() {  
-  const button = document.getElementById("dropdown-button");
-  button.addEventListener("click", () => {
+  let dropdownDocumentHandlerAdded = false;
+  let activeDropdown;
+  let activeDropdownButton;
+
+  function button_2() {
+    const button = document.getElementById("dropdown-button");
     const dropdown = document.getElementById("dropdown");
-    dropdown.classList.toggle(dropdown.style === "hidden" ? "block" : "hidden");
-  });
+    if (!button || !dropdown || button.dataset.bound === "true") return;
+
+    button.dataset.bound = "true";
+    button.setAttribute("aria-expanded", "false");
+    dropdown.classList.add("hidden");
+
+    const closeDropdown = () => {
+      if (!activeDropdown || !activeDropdownButton) return;
+      activeDropdown.classList.add("hidden");
+      activeDropdown.classList.remove("nav-dropdown-open");
+      activeDropdownButton.setAttribute("aria-expanded", "false");
+    };
+
+    const toggleDropdown = (event) => {
+      event.preventDefault();
+      const isHidden = dropdown.classList.contains("hidden");
+      if (isHidden) {
+        dropdown.classList.remove("hidden");
+        dropdown.classList.add("nav-dropdown-open");
+        button.setAttribute("aria-expanded", "true");
+      } else {
+        closeDropdown();
+      }
+    };
+
+    activeDropdown = dropdown;
+    activeDropdownButton = button;
+
+    button.addEventListener("click", toggleDropdown);
+
+    if (!dropdownDocumentHandlerAdded) {
+      document.addEventListener("click", (event) => {
+        if (!activeDropdown || !activeDropdownButton) return;
+        if (!activeDropdown.contains(event.target) && !activeDropdownButton.contains(event.target)) {
+          closeDropdown();
+        }
+      });
+      dropdownDocumentHandlerAdded = true;
+    }
   }
-  button_2()
+  button_2();
   //sticky header
 
-  function header_2() {  
-  const header = document.querySelector(".header");
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 0) {
-      header.classList.add("header-sticky");
-    } else {
-      header.classList.remove("header-sticky");
-    }
-  });
+  let headerListenerBound = false;
+
+  function header_2() {
+    if (headerListenerBound) return;
+    const header = document.querySelector(".header");
+    if (!header) return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 0) {
+        header.classList.add("header-sticky");
+      } else {
+        header.classList.remove("header-sticky");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    headerListenerBound = true;
   }
-  header_2()
+  header_2();
 
   document.addEventListener('astro:after-swap', button_2);
   document.addEventListener('astro:after-swap', header_2);
