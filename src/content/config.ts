@@ -61,9 +61,18 @@ const counterItem = z.object({
   color: z.string().optional(),
 });
 
+const galleryImage = z.union([
+  z.string(),
+  z.object({
+    src: z.string(),
+    alt: z.string().optional(),
+    size: z.enum(["tall", "wide", "square"]).optional(),
+  }),
+]);
+
 const gallerySection = z.object({
   title: z.string(),
-  images: z.array(z.string()),
+  images: z.array(galleryImage),
 });
 
 const featureItem = z.object({
