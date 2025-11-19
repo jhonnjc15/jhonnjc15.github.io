@@ -21,6 +21,32 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply relative flex flex-wrap items-center justify-between bg-transparent py-2 transition-colors duration-500 ease-in-out;
 }
 
+/* Estilo sticky base */
+.header-sticky .navbar {
+  @apply border-transparent shadow-[0_10px_35px_rgba(0,0,0,0.16)] scale-[1.01]
+         bg-white/85 backdrop-blur-md dark:bg-gray-900/85;
+}
+
+.header-sticky .navbar::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  border-radius: 16px;
+  background: conic-gradient(from_0deg, #217276, #f3a415, #217276);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header-sticky .navbar:hover::before {
+  opacity: 1;
+  transform: scale(1.01);
+}
+
 
 /* Estilo sticky para XL (>=1280px) */
 @media (min-width: 1280px) {
@@ -35,8 +61,8 @@ input#nav-toggle:checked ~ #nav-menu {
 
   /* estilo visual del navbar al hacer scroll */
   .header-sticky .navbar {
-    @apply border-[#217276] shadow-[0_4px_20px_rgba(0,0,0,0.15)]
-           bg-white/80 backdrop-blur-sm dark:bg-gray-900/80;
+    @apply shadow-[0_12px_38px_rgba(0,0,0,0.18)] scale-[1.015];
+    border-radius: 9999px;
   }
 }
 
@@ -51,8 +77,7 @@ input#nav-toggle:checked ~ #nav-menu {
   }
 
   .header-sticky .navbar {
-    @apply border-[#217276] shadow-[0_6px_25px_rgba(0,0,0,0.2)]
-           bg-white/80 backdrop-blur-md dark:bg-gray-900/80;
+    @apply shadow-[0_16px_45px_rgba(0,0,0,0.2)] scale-[1.02];
   }
 }
 
@@ -65,7 +90,8 @@ input#nav-toggle:checked ~ #nav-menu {
 
   /* navbar con scroll → opaco y blur */
   .header-sticky .navbar {
-    @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-transparent;
+    @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-transparent shadow-[0_12px_32px_rgba(0,0,0,0.2)];
+    border-radius: 18px;
   }
 
   /* sin movimiento */
