@@ -66,12 +66,14 @@ const galleryImage = z.union([
   z.object({
     src: z.string(),
     alt: z.string().optional(),
-    size: z.enum(["tall", "wide", "square"]).optional(),
+    size: z.enum(["tall", "wide", "square", "medium"]).optional(),
+    rows: z.number().optional(),
   }),
 ]);
 
 const gallerySection = z.object({
   title: z.string(),
+  description: z.string().optional(),
   images: z.array(galleryImage),
 });
 
