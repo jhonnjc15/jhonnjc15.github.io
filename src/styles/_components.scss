@@ -473,7 +473,11 @@ select:invalid {
 }
 
 .blog-category-tag {
-  @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 12px 36px rgba(33, 114, 118, 0.14);
+  }
 }
 
 //featured-posts
