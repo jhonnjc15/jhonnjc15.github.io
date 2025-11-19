@@ -3,45 +3,120 @@ import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 const { title, description, images } = gallery;
 
-const defaultSizes = ["tall", "square", "wide", "medium"];
+const TARGET_WIDTH = 1200;
+const TARGET_HEIGHT = 1300;
 
-const sizeMap: Record<string, number> = {
-  tall: 30,
-  square: 20,
-  wide: 16,
-  medium: 18,
+const defaultSizes = ["feature", "portrait", "landscape", "portrait", "statement"];
+
+const sizeMap: Record<string, { rows: number; cols: number }> = {
+  feature: { rows: 26, cols: 2 },
+  portrait: { rows: 22, cols: 1 },
+  landscape: { rows: 18, cols: 2 },
+  square: { rows: 18, cols: 1 },
+  tall: { rows: 26, cols: 1 },
+  wide: { rows: 18, cols: 2 },
+  medium: { rows: 20, cols: 1 },
+  statement: { rows: 24, cols: 1 },
 };
 
-const columnMap: Record<string, number> = {
-  tall: 1,
-  square: 1,
-  medium: 1,
-  wide: 2,
-};
-
-const galleryItems = images.map((image: any, index: number) => {
+const normalizeImage = (image: any, index: number) => {
   if (typeof image === "string") {
     const size = defaultSizes[index % defaultSizes.length];
-    const rows = sizeMap[size] || sizeMap.square;
+    const base = sizeMap[size] || sizeMap.portrait;
+
     return {
       src: image,
       alt: title,
       size,
-      rows,
-      cols: columnMap[size] || 1,
+      rows: base.rows,
+      cols: base.cols,
     };
   }
 
   const normalizedSize = image.size || defaultSizes[index % defaultSizes.length];
-  const rows = image.rows || sizeMap[normalizedSize] || sizeMap.square;
+  const base = sizeMap[normalizedSize] || sizeMap.portrait;
 
   return {
     ...image,
     size: normalizedSize,
-    rows,
-    cols: columnMap[normalizedSize] || 1,
+    rows: image.rows || base.rows,
+    cols: image.cols || base.cols,
   };
+};
+
+const computeLayout = (
+  normalized: Array<{ rows: number; cols: number }>,
+  opts: { width?: number; height?: number } = {},
+) => {
+  const targetWidth = opts.width || TARGET_WIDTH;
+  const targetHeight = opts.height || TARGET_HEIGHT;
+
+  const columns = targetWidth >= 900 ? 3 : 2;
+  const rowUnit = Math.max(12, Math.round(targetHeight / 120));
+  const targetRows = Math.max(28, Math.round(targetHeight / rowUnit));
+
+  const columnHeights = Array.from({ length: columns }).fill(0) as number[];
+  const placements: Array<{ rows: number; cols: number; column: number }> = [];
+
+  normalized.forEach((image) => {
+    const spanCols = Math.min(image.cols || 1, columns);
+    const candidateRows = Math.max(10, image.rows);
+
+    let bestColumn = 0;
+    let bestHeight = Number.POSITIVE_INFINITY;
+
+    for (let col = 0; col <= columns - spanCols; col++) {
+      const heightHere = Math.max(...columnHeights.slice(col, col + spanCols));
+      if (heightHere < bestHeight) {
+        bestHeight = heightHere;
+        bestColumn = col;
+      }
+    }
+
+    for (let offset = 0; offset < spanCols; offset++) {
+      columnHeights[bestColumn + offset] += candidateRows;
+    }
+
+    placements.push({ rows: candidateRows, cols: spanCols, column: bestColumn });
+  });
+
+  const maxHeight = Math.max(...columnHeights, targetRows);
+
+  // Stretch the last tile in each column so every column reaches the same height.
+  columnHeights.forEach((height, columnIndex) => {
+    const gap = maxHeight - height;
+    if (gap <= 0) return;
+
+    const lastIndex = [...placements]
+      .map((placement, idx) => ({ ...placement, idx }))
+      .filter((placement) =>
+        placement.column === columnIndex && placement.cols === 1
+          ? true
+          : placement.column <= columnIndex && columnIndex < placement.column + placement.cols,
+      )
+      .map((placement) => placement.idx)
+      .pop();
+
+    if (lastIndex === undefined) return;
+
+    placements[lastIndex].rows += gap;
+    columnHeights[columnIndex] += gap;
+  });
+
+  return { placements, columns, rowUnit };
+};
+
+const baseItems = images.map((image: any, index: number) => normalizeImage(image, index));
+const { placements, columns, rowUnit } = computeLayout(baseItems, {
+  width: TARGET_WIDTH,
+  height: TARGET_HEIGHT,
 });
+
+const galleryItems = baseItems.map((item, index) => ({
+  ...item,
+  rows: placements[index]?.rows || item.rows,
+  cols: placements[index]?.cols || item.cols,
+}));
 ---
 
 <section class="section">
@@ -57,7 +132,13 @@ const galleryItems = images.map((image: any, index: number) => {
     </div>
 
     <div class="gallery-shell" id="photo-gallery">
-      <div class="masonry">
+      <div
+        class="masonry"
+        style={{
+          "--columns": columns,
+          "--row-unit": `${rowUnit}px`,
+        }}
+      >
         {galleryItems.map((image) => (
           <div
             class={`picture-item group ${image.cols > 1 ? "picture-item--wide" : ""}`}
@@ -84,7 +165,7 @@ const galleryItems = images.map((image: any, index: number) => {
 <style lang="scss">
   .gallery-shell {
     position: relative;
-    max-width: 74rem;
+    max-width: 76rem;
     margin: 0 auto;
     padding: clamp(1rem, 2.25vw, 1.75rem);
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(238, 243, 255, 0.95));
@@ -95,24 +176,10 @@ const galleryItems = images.map((image: any, index: number) => {
 
   .masonry {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    grid-auto-rows: 9px;
+    grid-template-columns: repeat(var(--columns, 3), minmax(0, 1fr));
+    grid-auto-rows: var(--row-unit, 12px);
     grid-auto-flow: dense;
-    gap: clamp(0.75rem, 1.25vw, 1rem);
-  }
-
-  @media (min-width: 768px) {
-    .masonry {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-auto-rows: 10px;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .masonry {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      grid-auto-rows: 11px;
-    }
+    gap: clamp(0.65rem, 1vw, 0.9rem);
   }
 
   .picture-item {

@@ -98,36 +98,19 @@ gallery:
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Team brainstorming around a lab table"
-      size: tall
-      rows: 30
-    - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
-      alt: "Sensor and electronic components laid out on a desk"
-      size: wide
-      rows: 18
+      size: feature
     - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
       alt: "Open-source code glowing on a monitor"
-      size: square
-      rows: 20
+      size: portrait
     - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
       alt: "Developer testing a wearable device"
-      size: tall
-      rows: 28
+      size: landscape
     - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
       alt: "Two collaborators pointing at an interactive display"
-      size: wide
-      rows: 17
+      size: square
     - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
       alt: "Microscope and notebook on a testing bench"
-      size: square
-      rows: 19
-    - src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1600&q=80"
-      alt: "Hands adjusting a circuit board"
-      size: medium
-      rows: 18
-    - src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80"
-      alt: "Code editor with bright syntax highlighting"
-      size: square
-      rows: 18
+      size: statement
 
 ## our works
 features:

@@ -66,7 +66,9 @@ const galleryImage = z.union([
   z.object({
     src: z.string(),
     alt: z.string().optional(),
-    size: z.enum(["tall", "wide", "square", "medium"]).optional(),
+    size: z
+      .enum(["tall", "wide", "square", "medium", "feature", "portrait", "landscape", "statement"])
+      .optional(),
     rows: z.number().optional(),
   }),
 ]);

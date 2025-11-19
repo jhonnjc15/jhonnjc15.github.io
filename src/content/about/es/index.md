@@ -98,36 +98,19 @@ gallery:
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Equipo ideando en una mesa de laboratorio"
-      size: tall
-      rows: 30
-    - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
-      alt: "Sensor y componentes electrónicos sobre mesa"
-      size: wide
-      rows: 18
+      size: feature
     - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
       alt: "Código abierto en pantalla con reflejos de colores"
-      size: square
-      rows: 20
+      size: portrait
     - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
       alt: "Desarrolladora probando un dispositivo portátil"
-      size: tall
-      rows: 28
+      size: landscape
     - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
       alt: "Dos personas colaborando frente a panel interactivo"
-      size: wide
-      rows: 17
+      size: square
     - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
       alt: "Microscopio y cuaderno de notas en banco de pruebas"
-      size: square
-      rows: 19
-    - src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1600&q=80"
-      alt: "Manos ajustando una placa electrónica"
-      size: medium
-      rows: 18
-    - src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80"
-      alt: "Editor de código con resaltado brillante"
-      size: square
-      rows: 18
+      size: statement
 
 ## nuestros trabajos
 features:
