@@ -34,7 +34,10 @@ const buildCategoryLink = (category: string) =>
             <span class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></span>
             <div class="absolute left-4 right-4 top-4 flex flex-wrap gap-2">
               {item.data.categories.map((category: any) => (
-                <a class="tag !text-white !border-white/30 !bg-black/30 backdrop-blur" href={buildCategoryLink(category)}>
+                <a
+                  class="tag blog-category-tag !text-white !border-white/30 !bg-black/30 backdrop-blur"
+                  href={buildCategoryLink(category)}
+                >
                   {humanize(category)}
                 </a>
               ))}
