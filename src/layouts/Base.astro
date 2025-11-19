@@ -243,6 +243,36 @@ const i18n = getI18N({ currentLocale })
       document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
       });
 
+      const SCROLL_STORAGE_KEY = 'lang-switch-scroll-ratio';
+
+      function restoreScrollPosition() {
+        try {
+          const stored = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+          if (!stored) return;
+
+          sessionStorage.removeItem(SCROLL_STORAGE_KEY);
+          const { ratio } = JSON.parse(stored);
+
+          requestAnimationFrame(() => {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollable <= 0) return;
+
+            const target = Math.max(0, Math.round(scrollable * (typeof ratio === 'number' ? ratio : 0)));
+            window.scrollTo({ top: target, behavior: 'auto' });
+          });
+        } catch (error) {
+          console.warn('No se pudo restaurar la posición de scroll', error);
+        }
+      }
+
+      if (document.readyState === 'complete') {
+        restoreScrollPosition();
+      } else {
+        window.addEventListener('load', restoreScrollPosition, { once: true });
+      }
+
+      document.addEventListener('astro:after-swap', restoreScrollPosition);
+
     </script>
 
   </body>

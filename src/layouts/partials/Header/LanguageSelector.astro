@@ -35,6 +35,7 @@ const otherLocales = Object.values(LANGUAGES).filter(
           <li class="py-[2px]">
             <a
               class="rounded-md bg-overlay hover:bg-overlay_hover whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
+              data-lang-switch
               href={translatePath(`/${route ? route : ''}`, locale.code)}
             >
               <locale.flag />
@@ -46,3 +47,29 @@ const otherLocales = Object.values(LANGUAGES).filter(
     </ul>
   </div>
 </div>
+
+<script>
+  const SCROLL_STORAGE_KEY = 'lang-switch-scroll-ratio';
+
+  function saveScrollPosition() {
+    try {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+      sessionStorage.setItem(SCROLL_STORAGE_KEY, JSON.stringify({ ratio }));
+    } catch (error) {
+      console.warn('No se pudo guardar la posición de scroll', error);
+    }
+  }
+
+  function setupLanguageLinks() {
+    document.querySelectorAll('[data-lang-switch]').forEach((link) => {
+      if (link.dataset.scrollHandlerAttached === 'true') return;
+
+      link.addEventListener('click', saveScrollPosition);
+      link.dataset.scrollHandlerAttached = 'true';
+    });
+  }
+
+  setupLanguageLinks();
+  document.addEventListener('astro:after-swap', setupLanguageLinks);
+</script>
