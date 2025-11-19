@@ -98,52 +98,36 @@ gallery:
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Team brainstorming around a lab table"
-      size: medium
-      rows: 20
-    - src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
-      alt: "Notebook with early prototypes and design notes"
-      size: square
-      rows: 18
+      size: tall
+      rows: 30
     - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
       alt: "Sensor and electronic components laid out on a desk"
       size: wide
-      rows: 14
-    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
-      alt: "Developer testing a wearable device"
-      size: tall
-      rows: 24
+      rows: 18
     - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
       alt: "Open-source code glowing on a monitor"
       size: square
-      rows: 18
+      rows: 20
+    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
+      alt: "Developer testing a wearable device"
+      size: tall
+      rows: 28
     - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
       alt: "Two collaborators pointing at an interactive display"
       size: wide
-      rows: 15
+      rows: 17
     - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
       alt: "Microscope and notebook on a testing bench"
       size: square
-      rows: 17
-    - src: "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=1600&q=80"
-      alt: "Overhead view of a laptop and hardware tools"
-      size: wide
-      rows: 16
+      rows: 19
     - src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1600&q=80"
       alt: "Hands adjusting a circuit board"
       size: medium
-      rows: 16
+      rows: 18
     - src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80"
       alt: "Code editor with bright syntax highlighting"
       size: square
       rows: 18
-    - src: "https://images.unsplash.com/photo-1520607162513-85b5348bf785?auto=format&fit=crop&w=1600&q=80"
-      alt: "Prototype sketches pinned on a wall"
-      size: wide
-      rows: 14
-    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80&sat=-20"
-      alt: "Close-up of a neon-lit interface"
-      size: square
-      rows: 17
 
 ## our works
 features:

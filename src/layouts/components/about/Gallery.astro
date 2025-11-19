@@ -3,16 +3,21 @@ import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 const { title, description, images } = gallery;
 
-const defaultSizes = ["tall", "square", "wide", "square", "medium"];
+const defaultSizes = ["tall", "square", "wide", "medium"];
 
 const sizeMap: Record<string, number> = {
-  tall: 22,
-  square: 17,
-  wide: 14,
-  medium: 15,
+  tall: 30,
+  square: 20,
+  wide: 16,
+  medium: 18,
 };
 
-const heightUnit = 7;
+const columnMap: Record<string, number> = {
+  tall: 1,
+  square: 1,
+  medium: 1,
+  wide: 2,
+};
 
 const galleryItems = images.map((image: any, index: number) => {
   if (typeof image === "string") {
@@ -23,7 +28,7 @@ const galleryItems = images.map((image: any, index: number) => {
       alt: title,
       size,
       rows,
-      height: rows * heightUnit,
+      cols: columnMap[size] || 1,
     };
   }
 
@@ -34,7 +39,7 @@ const galleryItems = images.map((image: any, index: number) => {
     ...image,
     size: normalizedSize,
     rows,
-    height: rows * heightUnit,
+    cols: columnMap[normalizedSize] || 1,
   };
 });
 ---
@@ -54,7 +59,13 @@ const galleryItems = images.map((image: any, index: number) => {
     <div class="gallery-shell" id="photo-gallery">
       <div class="masonry">
         {galleryItems.map((image) => (
-          <div class={`picture-item group`} style={{ height: `${image.height}px` }}>
+          <div
+            class={`picture-item group ${image.cols > 1 ? "picture-item--wide" : ""}`}
+            style={{
+              "--rows": image.rows,
+              "--cols": image.cols,
+            }}
+          >
             <div class="picture-surface">
               <img
                 class="picture-img"
@@ -73,46 +84,56 @@ const galleryItems = images.map((image: any, index: number) => {
 <style lang="scss">
   .gallery-shell {
     position: relative;
-    max-width: 62rem;
+    max-width: 74rem;
     margin: 0 auto;
-    padding: clamp(0.75rem, 2vw, 1.5rem);
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 244, 255, 0.92));
-    border-radius: 20px;
-    border: 2px solid rgba(89, 116, 255, 0.16);
-    box-shadow: 0 25px 50px -24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(12, 18, 43, 0.05);
+    padding: clamp(1rem, 2.25vw, 1.75rem);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(238, 243, 255, 0.95));
+    border-radius: 22px;
+    border: 2px solid rgba(89, 116, 255, 0.14);
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(12, 18, 43, 0.06);
   }
 
   .masonry {
-    column-count: 1;
-    column-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-rows: 9px;
+    grid-auto-flow: dense;
+    gap: clamp(0.75rem, 1.25vw, 1rem);
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .masonry {
-      column-count: 2;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 10px;
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1200px) {
     .masonry {
-      column-count: 3;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-rows: 11px;
     }
   }
 
   .picture-item {
-    break-inside: avoid;
-    margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    grid-row-end: span var(--rows, 18);
+    grid-column-end: span var(--cols, 1);
     border-radius: 16px;
     overflow: hidden;
+    min-height: 140px;
+  }
+
+  .picture-item--wide {
+    min-height: 180px;
   }
 
   .picture-surface {
     position: relative;
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(15, 23, 42, 0.06);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: inherit;
     overflow: hidden;
   }
