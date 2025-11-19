@@ -53,9 +53,46 @@ const otherLocales = Object.values(LANGUAGES).filter(
 
   function saveScrollPosition() {
     try {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
-      sessionStorage.setItem(SCROLL_STORAGE_KEY, JSON.stringify({ ratio }));
+      const doc = document.documentElement;
+      const totalScrollable = doc.scrollHeight - window.innerHeight;
+
+      let scrollY = window.scrollY || doc.scrollTop || 0;
+
+      const isMobile = window.innerWidth < 992; // tu breakpoint
+      let headerHeight = 0;
+      let offset = 0;
+      let scrollYAdjusted = scrollY;
+
+      if (isMobile) {
+        const header = document.querySelector('header');
+        headerHeight = header && header.offsetHeight ? header.offsetHeight : 0;
+
+        // ⚠️ IMPORTANTE:
+        // En lugar de usar todo el headerHeight (391),
+        // hacemos un offset razonable y estable.
+        offset = Math.min(headerHeight || 80, 120); // máx 120px
+
+        scrollYAdjusted = Math.max(0, scrollY - offset);
+      }
+
+      const ratio =
+        totalScrollable > 0 ? scrollYAdjusted / totalScrollable : 0;
+
+      console.log('[scroll-debug save]', {
+        isMobile,
+        scrollYOriginal: scrollY,
+        headerHeight,
+        offset,
+        scrollYAdjusted,
+        totalScrollable,
+        ratio,
+        innerHeight: window.innerHeight,
+      });
+
+      sessionStorage.setItem(
+        SCROLL_STORAGE_KEY,
+        JSON.stringify({ ratio })
+      );
     } catch (error) {
       console.warn('No se pudo guardar la posición de scroll', error);
     }
