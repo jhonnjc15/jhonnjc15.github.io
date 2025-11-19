@@ -98,28 +98,52 @@ gallery:
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Equipo ideando en una mesa de laboratorio"
-      size: tall
+      size: medium
+      rows: 20
     - src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
       alt: "Cuaderno con prototipos y notas de diseño"
       size: square
+      rows: 18
     - src: "https://images.unsplash.com/photo-1520607162513-4be18c0c90aa?auto=format&fit=crop&w=1600&q=80"
       alt: "Sensor y componentes electrónicos sobre mesa"
       size: wide
+      rows: 14
     - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
       alt: "Desarrolladora probando un dispositivo portátil"
       size: tall
+      rows: 24
     - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
       alt: "Código abierto en pantalla con reflejos de colores"
       size: square
+      rows: 18
     - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
       alt: "Dos personas colaborando frente a panel interactivo"
       size: wide
+      rows: 15
     - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
       alt: "Microscopio y cuaderno de notas en banco de pruebas"
       size: square
+      rows: 17
     - src: "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=1600&q=80"
       alt: "Vista aérea de escritorio con laptop y herramientas de hardware"
       size: wide
+      rows: 16
+    - src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1600&q=80"
+      alt: "Manos ajustando una placa electrónica"
+      size: medium
+      rows: 16
+    - src: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80"
+      alt: "Editor de código con resaltado brillante"
+      size: square
+      rows: 18
+    - src: "https://images.unsplash.com/photo-1520607162513-85b5348bf785?auto=format&fit=crop&w=1600&q=80"
+      alt: "Bocetos de prototipos fijados en un muro"
+      size: wide
+      rows: 14
+    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80&sat=-20"
+      alt: "Primer plano de una interfaz iluminada con neón"
+      size: square
+      rows: 17
 
 ## nuestros trabajos
 features:

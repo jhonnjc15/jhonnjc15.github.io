@@ -3,20 +3,32 @@ import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 const { title, description, images } = gallery;
 
-const defaultSizes = ["tall", "square", "wide", "square"];
+const defaultSizes = ["tall", "square", "wide", "square", "medium"];
+
+const sizeMap: Record<string, number> = {
+  tall: 24,
+  square: 18,
+  wide: 14,
+  medium: 16,
+};
 
 const galleryItems = images.map((image: any, index: number) => {
   if (typeof image === "string") {
+    const size = defaultSizes[index % defaultSizes.length];
     return {
       src: image,
       alt: title,
-      size: defaultSizes[index % defaultSizes.length],
+      size,
+      rows: sizeMap[size] || sizeMap.square,
     };
   }
 
+  const normalizedSize = image.size || defaultSizes[index % defaultSizes.length];
+
   return {
     ...image,
-    size: image.size || defaultSizes[index % defaultSizes.length],
+    size: normalizedSize,
+    rows: image.rows || sizeMap[normalizedSize] || sizeMap.square,
   };
 });
 ---
@@ -33,15 +45,15 @@ const galleryItems = images.map((image: any, index: number) => {
       </div>
     </div>
 
-    <div class="relative max-w-6xl mx-auto">
+    <div class="relative max-w-5xl mx-auto">
       <div
-        class="grid auto-rows-[12px] gap-4 sm:gap-5 md:gap-6 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-dense"
+        class="grid auto-rows-[10px] gap-3 sm:gap-4 md:gap-5 lg:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-dense"
         id="photo-gallery"
       >
         {galleryItems.map((image) => (
           <div
-            class={`picture-item group relative overflow-hidden rounded-2xl bg-white/60 shadow-lg shadow-black/5 ring-1 ring-black/10 backdrop-blur`}
-            style={{ gridRowEnd: `span ${image.size === "tall" ? 24 : image.size === "wide" ? 16 : 20}` }}
+            class={`picture-item group relative overflow-hidden rounded-xl bg-white/70 shadow-lg shadow-black/5 ring-1 ring-black/10 backdrop-blur`}
+            style={{ gridRowEnd: `span ${image.rows || sizeMap[image.size] || sizeMap.square}` }}
           >
             <div class="relative h-full w-full">
               <img
