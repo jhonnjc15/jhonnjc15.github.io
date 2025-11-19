@@ -5,117 +5,67 @@ const { title, description, images } = gallery;
 
 const TARGET_WIDTH = 1200;
 const TARGET_HEIGHT = 1300;
-
-const defaultSizes = ["feature", "portrait", "landscape", "portrait", "statement"];
-
-const sizeMap: Record<string, { rows: number; cols: number }> = {
-  feature: { rows: 26, cols: 2 },
-  portrait: { rows: 22, cols: 1 },
-  landscape: { rows: 18, cols: 2 },
-  square: { rows: 18, cols: 1 },
-  tall: { rows: 26, cols: 1 },
-  wide: { rows: 18, cols: 2 },
-  medium: { rows: 20, cols: 1 },
-  statement: { rows: 24, cols: 1 },
-};
+const TARGET_ROWS_DESKTOP = 13;
+const TARGET_ROWS_MOBILE = 16;
+const GAP_PX = 12;
 
 const normalizeImage = (image: any, index: number) => {
   if (typeof image === "string") {
-    const size = defaultSizes[index % defaultSizes.length];
-    const base = sizeMap[size] || sizeMap.portrait;
-
     return {
       src: image,
       alt: title,
-      size,
-      rows: base.rows,
-      cols: base.cols,
+      size: "feature",
     };
   }
 
-  const normalizedSize = image.size || defaultSizes[index % defaultSizes.length];
-  const base = sizeMap[normalizedSize] || sizeMap.portrait;
-
   return {
+    alt: title,
     ...image,
-    size: normalizedSize,
-    rows: image.rows || base.rows,
-    cols: image.cols || base.cols,
   };
 };
 
-const computeLayout = (
-  normalized: Array<{ rows: number; cols: number }>,
-  opts: { width?: number; height?: number } = {},
-) => {
+const computeLayout = (opts: { width?: number; height?: number; count: number }) => {
   const targetWidth = opts.width || TARGET_WIDTH;
   const targetHeight = opts.height || TARGET_HEIGHT;
+  const isDesktop = targetWidth >= 900;
+  const columns = isDesktop ? 3 : 2;
+  const totalRows = isDesktop ? TARGET_ROWS_DESKTOP : TARGET_ROWS_MOBILE;
+  const rowUnit = Math.max(60, Math.floor((targetHeight - GAP_PX * (totalRows - 1)) / totalRows));
 
-  const columns = targetWidth >= 900 ? 3 : 2;
-  const rowUnit = Math.max(12, Math.round(targetHeight / 120));
-  const targetRows = Math.max(28, Math.round(targetHeight / rowUnit));
+  const desktopPlacements = [
+    { colStart: 1, cols: 2, rowStart: 1, rows: 8 },
+    { colStart: 3, cols: 1, rowStart: 1, rows: 5 },
+    { colStart: 3, cols: 1, rowStart: 6, rows: 8 },
+    { colStart: 1, cols: 1, rowStart: 9, rows: 5 },
+    { colStart: 2, cols: 1, rowStart: 9, rows: 5 },
+  ];
 
-  const columnHeights = Array.from({ length: columns }).fill(0) as number[];
-  const placements: Array<{ rows: number; cols: number; column: number }> = [];
+  const mobilePlacements = [
+    { colStart: 1, cols: 2, rowStart: 1, rows: 8 },
+    { colStart: 1, cols: 1, rowStart: 9, rows: 4 },
+    { colStart: 2, cols: 1, rowStart: 9, rows: 4 },
+    { colStart: 1, cols: 1, rowStart: 13, rows: 4 },
+    { colStart: 2, cols: 1, rowStart: 13, rows: 4 },
+  ];
 
-  normalized.forEach((image) => {
-    const spanCols = Math.min(image.cols || 1, columns);
-    const candidateRows = Math.max(10, image.rows);
-
-    let bestColumn = 0;
-    let bestHeight = Number.POSITIVE_INFINITY;
-
-    for (let col = 0; col <= columns - spanCols; col++) {
-      const heightHere = Math.max(...columnHeights.slice(col, col + spanCols));
-      if (heightHere < bestHeight) {
-        bestHeight = heightHere;
-        bestColumn = col;
-      }
-    }
-
-    for (let offset = 0; offset < spanCols; offset++) {
-      columnHeights[bestColumn + offset] += candidateRows;
-    }
-
-    placements.push({ rows: candidateRows, cols: spanCols, column: bestColumn });
-  });
-
-  const maxHeight = Math.max(...columnHeights, targetRows);
-
-  // Stretch the last tile in each column so every column reaches the same height.
-  columnHeights.forEach((height, columnIndex) => {
-    const gap = maxHeight - height;
-    if (gap <= 0) return;
-
-    const lastIndex = [...placements]
-      .map((placement, idx) => ({ ...placement, idx }))
-      .filter((placement) =>
-        placement.column === columnIndex && placement.cols === 1
-          ? true
-          : placement.column <= columnIndex && columnIndex < placement.column + placement.cols,
-      )
-      .map((placement) => placement.idx)
-      .pop();
-
-    if (lastIndex === undefined) return;
-
-    placements[lastIndex].rows += gap;
-    columnHeights[columnIndex] += gap;
-  });
+  const placements = (isDesktop ? desktopPlacements : mobilePlacements).slice(0, opts.count);
 
   return { placements, columns, rowUnit };
 };
 
 const baseItems = images.map((image: any, index: number) => normalizeImage(image, index));
-const { placements, columns, rowUnit } = computeLayout(baseItems, {
+const { placements, columns, rowUnit } = computeLayout({
   width: TARGET_WIDTH,
   height: TARGET_HEIGHT,
+  count: baseItems.length,
 });
 
 const galleryItems = baseItems.map((item, index) => ({
   ...item,
-  rows: placements[index]?.rows || item.rows,
-  cols: placements[index]?.cols || item.cols,
+  rows: placements[index]?.rows || TARGET_ROWS_DESKTOP,
+  cols: placements[index]?.cols || 1,
+  rowStart: placements[index]?.rowStart || 1,
+  colStart: placements[index]?.colStart || 1,
 }));
 ---
 
@@ -137,6 +87,7 @@ const galleryItems = baseItems.map((item, index) => ({
         style={{
           "--columns": columns,
           "--row-unit": `${rowUnit}px`,
+          "--gap": `${GAP_PX}px`,
         }}
       >
         {galleryItems.map((image) => (
@@ -145,6 +96,8 @@ const galleryItems = baseItems.map((item, index) => ({
             style={{
               "--rows": image.rows,
               "--cols": image.cols,
+              gridColumnStart: image.colStart,
+              gridRowStart: image.rowStart,
             }}
           >
             <div class="picture-surface">
@@ -179,7 +132,7 @@ const galleryItems = baseItems.map((item, index) => ({
     grid-template-columns: repeat(var(--columns, 3), minmax(0, 1fr));
     grid-auto-rows: var(--row-unit, 12px);
     grid-auto-flow: dense;
-    gap: clamp(0.65rem, 1vw, 0.9rem);
+    gap: var(--gap, 12px);
   }
 
   .picture-item {
