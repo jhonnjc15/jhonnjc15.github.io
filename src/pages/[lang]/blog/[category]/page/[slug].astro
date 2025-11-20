@@ -66,6 +66,7 @@ export async function getStaticPaths() {
   const locales = ["es", "en"];
   const entries = await getCollection("blog");
   const paths: { params: { lang: string; category: string; slug: string } }[] = [];
+  const pageSize = config.settings.pagination;
 
   for (const lang of locales) {
     const categoriesData = lang === "en" ? categoriesEN : categoriesES;
@@ -75,7 +76,7 @@ export async function getStaticPaths() {
         .filter((post) => !post.data.draft)
         .filter((post) => post.data.categories.includes(entry.category_name));
 
-      const pages = Math.ceil(posts.length / pagination) || 1;
+      const pages = Math.ceil(posts.length / pageSize) || 1;
 
       for (let page = 2; page <= pages; page++) {
         paths.push({

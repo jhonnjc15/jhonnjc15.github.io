@@ -67,10 +67,11 @@ export async function getStaticPaths() {
   const locales = ["es", "en"];
   const paths: { params: { lang: string; slug: string } }[] = [];
   const entries = await getCollection("blog");
+  const pageSize = config.settings.pagination;
 
   for (const lang of locales) {
     const localePosts = filterByLocale(entries, lang).filter((entry) => !entry.data.draft);
-    const pages = Math.ceil(localePosts.length / pagination) || 1;
+    const pages = Math.ceil(localePosts.length / pageSize) || 1;
 
     for (let page = 2; page <= pages; page++) {
       paths.push({ params: { lang, slug: page.toString() } });
