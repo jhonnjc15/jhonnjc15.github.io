@@ -3,21 +3,22 @@ import Base from "@layouts/Base.astro";
 import Shape from "@components/Shape.astro";
 import BlogSingle from "@layouts/BlogSingle.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
+import { filterByLocale } from "@lib/utils/filterByLocale";
 const { currentLocale } = Astro;
 const fallbackLocale = "es";
 
 export async function getStaticPaths() {
+  const locales = ["es", "en"];
   const posts = await getCollection("blog");
 
-  return posts.map((post) => {
-    const [lang, ...rest] = post.slug.split("/");
-    return {
+  return locales.flatMap((lang) =>
+    filterByLocale(posts, lang).map((post) => ({
       params: {
         lang,
-        slug: rest.join("/"),
+        slug: post.slug.split("/").slice(1).join("/"),
       },
-    };
-  });
+    }))
+  );
 }
 
 const { slug } = Astro.params;
