@@ -9,6 +9,7 @@ import "@styles/main.scss";
 import ContactButton from "./function-components/ContactButton";
 import ChatWidget from "./function-components/ChatWidget";
 import { ViewTransitions } from "astro:transitions";
+import { getCollection } from "astro:content";
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -36,6 +37,15 @@ import { ContentSchemaContainsSlugError } from "node_modules/astro/dist/core/err
 const i18n = getI18N({ currentLocale })
 // console.log("currentLocale")
 // console.log(currentLocale)
+
+const chatbotCollection = await getCollection("chatbot");
+const chatContent =
+  chatbotCollection.find((entry) => entry.slug === currentLocale) ||
+  chatbotCollection.find((entry) =>
+    entry.data.locale.toLowerCase().startsWith(currentLocale?.toLowerCase() || "")
+  ) ||
+  chatbotCollection.find((entry) => entry.data.locale === "es") ||
+  chatbotCollection[0];
 ---
 
 <!DOCTYPE html>
@@ -192,7 +202,7 @@ const i18n = getI18N({ currentLocale })
     <ContactButton
       i18n={i18n}
       client:load/>
-    <ChatWidget client:load />
+    <ChatWidget chatContent={chatContent?.data} client:load />
 
     <script>
       const observer = new IntersectionObserver((entries) => {

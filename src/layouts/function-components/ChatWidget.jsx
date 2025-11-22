@@ -1,25 +1,97 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { marked } from "marked";
 
 const STORAGE_KEY = "paqari-rag-chat-history";
 const ENDPOINT =
   import.meta.env.PUBLIC_RAG_ENDPOINT ||
   "http://127.0.0.1:8000/api/v1/rag/query";
 
-const initialMessages = [];
+marked.setOptions({ gfm: true, breaks: true });
 
-const ChatWidget = () => {
+const defaultCopy = {
+  locale: "es",
+  headerTitle: "Paqari AI",
+  headerSubtitle: "Chatbot RAG",
+  greeting: "Hola 👋",
+  greetingQuestion: "¿Cómo te puedo ayudar hoy?",
+  description: "Elige una de las preguntas rápidas o escribe tu consulta para comenzar.",
+  emptyState: "Escribe tu primera pregunta para comenzar a conversar.",
+  placeholder: "Escribe tu mensaje...",
+  disclaimer: "Paqari puede equivocarse. Verifica las respuestas.",
+  loaderLabel: "El bot está escribiendo…",
+  quickPrompts: [
+    {
+      label: "Quiero migrar a Hostinger",
+      message:
+        "¡Hola! Quiero migrar a Hostinger. ¿Puedes ayudarme a planificar la migración paso a paso?",
+    },
+    {
+      label: "Quiero crear un sitio web",
+      message:
+        "¡Hola! Quiero crear un sitio web. ¿Puedes guiarme sobre la mejor forma de hacerlo y recomendarme un plan de hosting?",
+    },
+    {
+      label: "Elegir plan adecuado",
+      message:
+        "Necesito ayuda para elegir el plan de hosting adecuado. ¿Qué me recomiendas según mi tipo de proyecto?",
+    },
+  ],
+  actions: {
+    download: {
+      title: "Descargar conversación",
+      message: "¿Quieres descargar el historial del chat en un archivo de texto?",
+      confirm: "Descargar",
+      cancel: "Cancelar",
+    },
+    clear: {
+      title: "Borrar conversación",
+      message: "¿Seguro que deseas borrar el historial del chat? Esta acción no se puede deshacer.",
+      confirm: "Borrar",
+      cancel: "Cancelar",
+    },
+  },
+};
+
+const ChatWidget = ({ chatContent }) => {
+  const copy = useMemo(() => {
+    const actions = {
+      download: {
+        ...defaultCopy.actions.download,
+        ...chatContent?.actions?.download,
+      },
+      clear: {
+        ...defaultCopy.actions.clear,
+        ...chatContent?.actions?.clear,
+      },
+    };
+
+    return {
+      ...defaultCopy,
+      ...chatContent,
+      actions,
+      quickPrompts:
+        chatContent?.quickPrompts?.length > 0
+          ? chatContent.quickPrompts
+          : defaultCopy.quickPrompts,
+    };
+  }, [chatContent]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [locale, setLocale] = useState("es");
+  const [locale, setLocale] = useState(copy.locale || "es");
+  const [confirmAction, setConfirmAction] = useState(null);
+  const [isPreviewingPrompt, setIsPreviewingPrompt] = useState(false);
+
   const endRef = useRef(null);
   const isMountedRef = useRef(false);
+  const previousInputRef = useRef("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setLocale(window.navigator?.language || "es");
+    setLocale(copy.locale || window.navigator?.language || "es");
 
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -30,7 +102,8 @@ const ChatWidget = () => {
         console.error("Failed to parse chat history", err);
       }
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [copy.locale]);
 
   useEffect(() => {
     if (!isMountedRef.current) {
@@ -46,17 +119,22 @@ const ChatWidget = () => {
     endRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages, isOpen]);
 
-  const isSpanish = locale?.toLowerCase().startsWith("es");
+  const isSpanish = (locale || copy.locale || "es").toLowerCase().startsWith("es");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const renderMarkdown = (content) => ({
+    __html: marked.parse(content || ""),
+  });
 
-    const userMessage = { role: "user", content: input.trim() };
+  const sendMessage = async (text) => {
+    const trimmed = text.trim();
+    if (!trimmed || isLoading) return;
+
+    const userMessage = { role: "user", content: trimmed };
     const nextHistory = [...messages, userMessage];
 
     setMessages(nextHistory);
     setInput("");
+    setIsPreviewingPrompt(false);
     setIsLoading(true);
     setError("");
 
@@ -77,7 +155,11 @@ const ChatWidget = () => {
       const data = await response.json();
       const botMessage = {
         role: "assistant",
-        content: data.answer || "No encontramos una respuesta en este momento.",
+        content:
+          data.answer ||
+          (isSpanish
+            ? "No encontramos una respuesta en este momento."
+            : "We could not find an answer right now."),
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -85,13 +167,24 @@ const ChatWidget = () => {
       console.error("Chat request failed", err);
       const fallbackMessage = {
         role: "assistant",
-        content: "Ups, algo salió mal. Inténtalo nuevamente en un momento.",
+        content: isSpanish
+          ? "Ups, algo salió mal. Inténtalo nuevamente en un momento."
+          : "Oops, something went wrong. Please try again soon.",
       };
       setMessages((prev) => [...prev, fallbackMessage]);
-      setError("No pudimos obtener respuesta. Por favor, vuelve a intentarlo.");
+      setError(
+        isSpanish
+          ? "No pudimos obtener respuesta. Por favor, vuelve a intentarlo."
+          : "We couldn't get a response. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    sendMessage(input);
   };
 
   const handleClear = () => {
@@ -107,7 +200,7 @@ const ChatWidget = () => {
 
     const transcript = messages
       .map((message) => {
-        const author = message.role === "assistant" ? "PaqariBot" : "Usuario";
+        const author = message.role === "assistant" ? "PaqariBot" : isSpanish ? "Usuario" : "User";
         return `${author}: ${message.content}`;
       })
       .join("\n\n");
@@ -121,6 +214,42 @@ const ChatWidget = () => {
     URL.revokeObjectURL(url);
   };
 
+  const openConfirmation = (type) => {
+    if (!copy.actions?.[type]) return;
+    setConfirmAction({ type, ...copy.actions[type] });
+  };
+
+  const confirmAndExecute = () => {
+    if (!confirmAction) return;
+    if (confirmAction.type === "download") {
+      handleDownload();
+    }
+    if (confirmAction.type === "clear") {
+      handleClear();
+    }
+    setConfirmAction(null);
+  };
+
+  const cancelConfirmation = () => setConfirmAction(null);
+
+  const handleQuickPrompt = (prompt) => {
+    setInput(prompt.message);
+    sendMessage(prompt.message);
+  };
+
+  const handlePromptHover = (prompt) => {
+    previousInputRef.current = input;
+    setInput(prompt.message);
+    setIsPreviewingPrompt(true);
+  };
+
+  const handlePromptLeave = () => {
+    if (isPreviewingPrompt) {
+      setInput(previousInputRef.current);
+      setIsPreviewingPrompt(false);
+    }
+  };
+
   const handleHide = () => setIsOpen(false);
 
   const renderMessage = (message, index) => {
@@ -130,38 +259,75 @@ const ChatWidget = () => {
       ? "bg-paqariYellow text-gray-900 rounded-2xl rounded-br-md"
       : "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100 rounded-2xl rounded-bl-md";
 
+    if (isUser) {
+      return (
+        <div
+          key={`${message.role}-${index}-${message.content.slice(0, 8)}`}
+          className={`flex ${alignment}`}
+        >
+          <div className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles} ml-auto`}>
+            <p className="text-right font-semibold text-xs text-gray-700 dark:text-gray-200 mb-1">
+              {isSpanish ? "Tú" : "You"}
+            </p>
+            <p className="whitespace-pre-wrap">{message.content}</p>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div
         key={`${message.role}-${index}-${message.content.slice(0, 8)}`}
         className={`flex ${alignment}`}
       >
-        {!isUser && (
-          <div className="mr-2 flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
-            <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-paqariGreen text-white shadow-sm">
-              <span className="text-xs font-semibold">P</span>
-            </div>
-            <div>
-              <p className="text-xs font-semibold leading-tight">PaqariBot</p>
-              <div className={`mt-1 max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
-                {message.content}
-              </div>
+        <div className="mr-2 flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
+          <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-paqariGreen text-white shadow-sm">
+            <span className="text-xs font-semibold">P</span>
+          </div>
+          <div>
+            <p className="text-xs font-semibold leading-tight">PaqariBot</p>
+            <div
+              className={`mt-1 max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}
+            >
+              <div
+                className="prose prose-sm prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 dark:prose-invert"
+                dangerouslySetInnerHTML={renderMarkdown(message.content)}
+              />
             </div>
           </div>
-        )}
-        {isUser && (
-          <div className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
-            {message.content}
-          </div>
-        )}
+        </div>
       </div>
     );
   };
+
+  const quickPromptButtons = copy.quickPrompts.map((prompt, idx) => (
+    <button
+      key={`${prompt.label}-${idx}`}
+      type="button"
+      onClick={() => handleQuickPrompt(prompt)}
+      onMouseEnter={() => handlePromptHover(prompt)}
+      onMouseLeave={handlePromptLeave}
+      className="flex w-full items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-left text-sm font-medium text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:border-paqariGreen hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+    >
+      <span>{prompt.label}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="h-4 w-4"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  ));
 
   return (
     <div className="fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
       <div
         aria-hidden={!isOpen}
-        className={`w-[320px] sm:w-[380px] rounded-2xl border border-gray-200/80 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl transition-all duration-300 ease-out origin-bottom-right ${
+        className={`relative w-[320px] sm:w-[380px] rounded-2xl border border-gray-200/80 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl transition-all duration-300 ease-out origin-bottom-right ${
           isOpen
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-4 scale-95 pointer-events-none"
@@ -169,14 +335,15 @@ const ChatWidget = () => {
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
           <div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">Paqari AI</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Chatbot RAG</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.headerTitle}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{copy.headerSubtitle}</p>
           </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
-              aria-label="Descargar conversación"
-              onClick={handleDownload}
+              aria-label={copy.actions.download.title}
+              title={copy.actions.download.title}
+              onClick={() => openConfirmation("download")}
               className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
             >
               <svg
@@ -192,8 +359,9 @@ const ChatWidget = () => {
             </button>
             <button
               type="button"
-              aria-label="Limpiar chat"
-              onClick={handleClear}
+              aria-label={copy.actions.clear.title}
+              title={copy.actions.clear.title}
+              onClick={() => openConfirmation("clear")}
               className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
             >
               <svg
@@ -204,12 +372,13 @@ const ChatWidget = () => {
                 stroke="currentColor"
                 className="w-5 h-5"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M10 11v6m4-6v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             <button
               type="button"
-              aria-label="Ocultar chat"
+              aria-label={isSpanish ? "Ocultar chat" : "Hide chat"}
+              title={isSpanish ? "Ocultar chat" : "Hide chat"}
               onClick={handleHide}
               className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
             >
@@ -227,12 +396,70 @@ const ChatWidget = () => {
           </div>
         </div>
 
-        <div className="max-h-[420px] min-h-[260px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
-          {messages.length === 0 && !isLoading && (
-            <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-              Escribe tu primera pregunta para comenzar a conversar.
+        <div className="relative max-h-[460px] min-h-[300px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+          {confirmAction && (
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
+              <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.6"
+                      stroke="currentColor"
+                      className="h-5 w-5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0 3.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white">{confirmAction.title}</h3>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{confirmAction.message}</p>
+                  </div>
+                </div>
+                <div className="mt-5 flex flex-wrap justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={confirmAndExecute}
+                    className="inline-flex items-center justify-center rounded-lg bg-paqariYellow px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-paqariYellowHover focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+                  >
+                    {confirmAction.confirm}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={cancelConfirmation}
+                    className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                  >
+                    {confirmAction.cancel}
+                  </button>
+                </div>
+              </div>
             </div>
           )}
+
+          {messages.length === 0 && !isLoading && (
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-paqariGreen text-white shadow-sm">
+                  <span className="text-base font-semibold">P</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.greeting}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{copy.greetingQuestion}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">{copy.description}</p>
+              <div className="mt-4 space-y-2">{quickPromptButtons}</div>
+            </div>
+          )}
+
+          {messages.length === 0 && isLoading && (
+            <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
+              {copy.emptyState}
+            </div>
+          )}
+
           {messages.map((message, index) => renderMessage(message, index))}
           {isLoading && (
             <div className="flex items-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
@@ -241,7 +468,7 @@ const ChatWidget = () => {
                 <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse [animation-delay:120ms]"></span>
                 <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse [animation-delay:240ms]"></span>
               </span>
-              <span>El bot está escribiendo…</span>
+              <span>{copy.loaderLabel}</span>
             </div>
           )}
           <div ref={endRef} />
@@ -255,19 +482,26 @@ const ChatWidget = () => {
           onSubmit={handleSubmit}
           className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 backdrop-blur"
         >
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
+          <div className="flex items-start gap-2">
+            <textarea
+              rows={3}
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder={isSpanish ? "Escribe tu mensaje..." : "Type your message..."}
-              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paqariYellow focus:border-transparent px-3 py-3"
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && !event.shiftKey) {
+                  event.preventDefault();
+                  handleSubmit(event);
+                }
+              }}
+              placeholder={copy.placeholder}
+              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paqariYellow focus:border-transparent px-3 py-3 min-h-[72px]"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="inline-flex items-center justify-center rounded-xl bg-paqariGreen text-white px-3 py-3 text-sm font-semibold shadow-lg transition hover:bg-paqariGreenDark disabled:opacity-60 disabled:cursor-not-allowed"
+              aria-label={isSpanish ? "Enviar mensaje" : "Send message"}
+              className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-paqariGreen text-white shadow-lg transition hover:bg-paqariGreenDark disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -275,17 +509,13 @@ const ChatWidget = () => {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.8"
-                className="w-4 h-4"
+                className="w-5 h-5"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h13M12 5l7 7-7 7" />
               </svg>
             </button>
           </div>
-          <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">
-            {isSpanish
-              ? "Paqari puede equivocarse. Verifica las respuestas."
-              : "Paqari can make mistakes. Double-check replies."}
-          </p>
+          <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">{copy.disclaimer}</p>
         </form>
       </div>
 

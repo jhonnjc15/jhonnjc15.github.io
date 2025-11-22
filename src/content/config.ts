@@ -84,6 +84,38 @@ const featureItem = z.object({
   content: z.string(),
 });
 
+const quickPrompt = z.object({
+  label: z.string(),
+  message: z.string(),
+});
+
+const confirmBlock = z.object({
+  title: z.string(),
+  message: z.string(),
+  confirm: z.string(),
+  cancel: z.string(),
+});
+
+const chatbotCollection = defineCollection({
+  schema: z.object({
+    locale: z.string(),
+    headerTitle: z.string(),
+    headerSubtitle: z.string(),
+    greeting: z.string(),
+    greetingQuestion: z.string(),
+    description: z.string(),
+    emptyState: z.string(),
+    placeholder: z.string(),
+    disclaimer: z.string(),
+    loaderLabel: z.string(),
+    quickPrompts: z.array(quickPrompt),
+    actions: z.object({
+      download: confirmBlock,
+      clear: confirmBlock,
+    }),
+  }),
+});
+
 const featuresSection = z.object({
   title: z.string(),
   button: aboutButton.optional(),
@@ -183,4 +215,5 @@ export const collections = {
   pages: pagesCollection,
   about: aboutCollection,
   products: productsCollection,
+  chatbot: chatbotCollection,
 };
