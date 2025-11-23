@@ -139,3 +139,15 @@ input#nav-toggle:checked ~ #nav-menu {
 .nav-dropdown-link {
   @apply min-w-[150px] py-1 text-sm xl:text-dark font-medium transition hover:text-primary;
 }
+
+/* Cuando el chat está abierto en móviles, solidificar fondos de dropdowns/menús */
+@media (max-width: 1023px) {
+  body.chat-open .navbar,
+  body.chat-open .nav-dropdown-list {
+    @apply bg-white/95 dark:bg-gray-900/95 backdrop-blur-md;
+  }
+
+  body.chat-open .nav-dropdown-list {
+    @apply border border-gray-200 shadow-md dark:border-gray-700;
+  }
+}
