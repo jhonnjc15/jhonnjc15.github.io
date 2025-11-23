@@ -10,7 +10,7 @@ const ContactButton = ({i18n}) => {
     const telegramUsarname = "VRaulJC"
     const telegramMessage = `https://telegram.me/${telegramUsarname}?text=${defaultMessage}`
     return (
-        <div className='group fixed z-[60] bottom-24 right-4 sm:right-8 w-16 h-16 hover:h-48'>
+        <div className='group fixed contact-button z-[60] bottom-24 right-4 sm:right-8 w-16 h-16 hover:h-48'>
             <div className='hidden group-hover:flex group-hover:flex-col h-32 justify-center items-center gap-4'>
                 <a href={whatsappMessage} target="_blank" className='comein-animation hover:drop-shadow-2xl'>
                     <svg

@@ -15,3 +15,9 @@
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
+
+@media (max-width: 639px) {
+  body.chat-open .contact-button {
+    z-index: 20;
+  }
+}
