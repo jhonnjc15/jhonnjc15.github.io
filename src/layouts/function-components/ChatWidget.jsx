@@ -281,8 +281,13 @@ const ChatWidget = ({ chatContent }) => {
         className={`flex ${alignment}`}
       >
         <div className="mr-2 flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
-          <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-paqariGreen text-white shadow-sm">
-            <span className="text-xs font-semibold">P</span>
+          <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 shadow-sm">
+            <img
+              src="/images/hoja_rayo_logo.ico"
+              alt="PaqariBot"
+              className="h-6 w-6 object-contain"
+              loading="lazy"
+            />
           </div>
           <div>
             <p className="text-xs font-semibold leading-tight">PaqariBot</p>
@@ -324,10 +329,10 @@ const ChatWidget = ({ chatContent }) => {
   ));
 
   return (
-    <div className="fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
+    <div className="pointer-events-none fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
       <div
         aria-hidden={!isOpen}
-        className={`relative w-[320px] sm:w-[380px] rounded-2xl border border-gray-200/80 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl transition-all duration-300 ease-out origin-bottom-right ${
+        className={`relative mr-14 sm:mr-20 flex h-[560px] w-[360px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
           isOpen
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-4 scale-95 pointer-events-none"
@@ -372,7 +377,11 @@ const ChatWidget = ({ chatContent }) => {
                 stroke="currentColor"
                 className="w-5 h-5"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 6h18M8 6v12a2 2 0 002 2h4a2 2 0 002-2V6m-6 4v6m4-6v6"
+                />
               </svg>
             </button>
             <button
@@ -396,53 +405,59 @@ const ChatWidget = ({ chatContent }) => {
           </div>
         </div>
 
-        <div className="relative max-h-[460px] min-h-[300px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
-          {confirmAction && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
-              <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.6"
-                      stroke="currentColor"
-                      className="h-5 w-5"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0 3.75h.007v.008H12v-.008z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-gray-900 dark:text-white">{confirmAction.title}</h3>
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{confirmAction.message}</p>
-                  </div>
+        {confirmAction && (
+          <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
+            <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.6"
+                    stroke="currentColor"
+                    className="h-5 w-5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0 3.75h.007v.008H12v-.008z" />
+                  </svg>
                 </div>
-                <div className="mt-5 flex flex-wrap justify-end gap-2">
-                  <button
-                    type="button"
-                    onClick={confirmAndExecute}
-                    className="inline-flex items-center justify-center rounded-lg bg-paqariYellow px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-paqariYellowHover focus:outline-none focus:ring-2 focus:ring-paqariYellow"
-                  >
-                    {confirmAction.confirm}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={cancelConfirmation}
-                    className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-                  >
-                    {confirmAction.cancel}
-                  </button>
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white">{confirmAction.title}</h3>
+                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{confirmAction.message}</p>
                 </div>
               </div>
+              <div className="mt-5 flex flex-wrap justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={confirmAndExecute}
+                  className="inline-flex items-center justify-center rounded-lg bg-paqariYellow px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-paqariYellowHover focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+                >
+                  {confirmAction.confirm}
+                </button>
+                <button
+                  type="button"
+                  onClick={cancelConfirmation}
+                  className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                >
+                  {confirmAction.cancel}
+                </button>
+              </div>
             </div>
-          )}
+          </div>
+        )}
 
-          {messages.length === 0 && !isLoading && (
-            <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="relative flex-1 overflow-hidden">
+          <div className="max-h-full min-h-[320px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 text-[13px]">
+            {messages.length === 0 && !isLoading && (
+              <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-paqariGreen text-white shadow-sm">
-                  <span className="text-base font-semibold">P</span>
+                <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 shadow-sm">
+                  <img
+                    src="/images/hoja_rayo_logo.ico"
+                    alt="PaqariBot"
+                    className="h-7 w-7 object-contain"
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.greeting}</p>
@@ -484,7 +499,7 @@ const ChatWidget = ({ chatContent }) => {
         >
           <div className="flex items-start gap-2">
             <textarea
-              rows={3}
+              rows={4}
               value={input}
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={(event) => {
@@ -494,7 +509,7 @@ const ChatWidget = ({ chatContent }) => {
                 }
               }}
               placeholder={copy.placeholder}
-              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paqariYellow focus:border-transparent px-3 py-3 min-h-[72px]"
+              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paqariYellow focus:border-transparent px-3 py-3 min-h-[96px]"
               disabled={isLoading}
             />
             <button
@@ -523,7 +538,7 @@ const ChatWidget = ({ chatContent }) => {
         type="button"
         aria-label="Abrir chat con el bot"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center justify-center h-14 w-14 rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paqariYellow ${
+        className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paqariYellow ${
           isOpen ? "translate-y-1 opacity-0 pointer-events-none" : "hover:scale-105"
         }`}
       >
