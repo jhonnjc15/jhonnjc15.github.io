@@ -50,7 +50,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 }
 ---
 
-<header  class="header">
+<header  class="header relative z-[90]">
   <nav
     class="border border-transparent navbar container rounded-md lg:rounded-full transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
   >
@@ -86,9 +86,9 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
     </label>
     <!-- /navbar toggler -->
 
-    <ul   
+    <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden w-full lg:order-1 lg:flex lg:w-auto lg:space-x-2"
+      class="navbar-nav order-3 hidden w-full lg:order-1 lg:flex lg:w-auto lg:space-x-2 relative z-[95]"
     >
       {
         main.map((menu) => (
@@ -115,7 +115,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                 {/* Dropdown cambio de posicion (nav-dropdown-list) tamaño, color de fondo, etc*/}
                 <ul
                   id="dropdown"
-                  class=" border-2 border-primary lg:p-8  nav-dropdown-list hidden duration-400  lg:invisible lg:absolute lg:-left-[18rem] lg:top-12           lg:h-[300px] lg:w-[666px] mx-auto w-[13.5rem] lg:flex lg:flex-row lg:gap-8             lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100"
+                  class=" border-2 border-primary lg:p-8  nav-dropdown-list hidden duration-400  lg:invisible lg:absolute lg:-left-[18rem] lg:top-12 lg:z-[95]           lg:h-[300px] lg:w-[666px] mx-auto w-[13.5rem] lg:flex lg:flex-row lg:gap-8             lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100"
                 >
                   <div class="lg:flex lg:flex-col lg:divide-y lg:justify-center lg:w-1/2">
                   {menu.children?.map((child) => (
