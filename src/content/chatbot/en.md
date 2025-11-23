@@ -10,12 +10,12 @@ placeholder: "Type your message..."
 disclaimer: "Paqari can make mistakes. Double-check replies."
 loaderLabel: "The bot is typing…"
 quickPrompts:
-  - label: "Migrate to Hostinger"
-    message: "Hi! I want to migrate to Hostinger. Can you help me plan the migration step by step?"
-  - label: "Create a website"
-    message: "Hi! I want to create a website. Can you guide me on the best way to do it and recommend a hosting plan?"
-  - label: "Choose the right plan"
-    message: "I need help choosing the right hosting plan. What do you recommend based on my type of project?"
+  - label: "What is Paqari?"
+    message: "Hi, can you explain what Paqari is and what its main purpose is?"
+  - label: "Project overview"
+    message: "I want to understand the Paqari project better. Can you give me a general overview?"
+  - label: "How to use Paqari"
+    message: "Can you explain how Paqari is used and who it is designed for?"
 actions:
   download:
     title: "Download conversation"
