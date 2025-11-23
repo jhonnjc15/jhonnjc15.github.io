@@ -342,10 +342,10 @@ const ChatWidget = ({ chatContent }) => {
   ));
 
     return (
-      <div className="pointer-events-none fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 z-[70] sm:z-[70] flex flex-col items-end gap-3">
+      <div className="pointer-events-none fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 z-[40] flex flex-col items-end gap-3 sm:flex-row sm:items-end sm:justify-end sm:gap-4">
         <div
           aria-hidden={!isOpen}
-          className={`relative sm:mr-16 flex h-[70vh] max-h-[640px] w-full sm:h-[560px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
+          className={`relative flex h-[70vh] max-h-[640px] w-full sm:h-[560px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
             isOpen
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
               : "opacity-0 translate-y-4 scale-95 pointer-events-none"
