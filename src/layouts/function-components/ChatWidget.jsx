@@ -328,237 +328,236 @@ const ChatWidget = ({ chatContent }) => {
     </button>
   ));
 
-  return (
-    <div className="pointer-events-none fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
-      <div
-        aria-hidden={!isOpen}
-        className={`relative mr-14 sm:mr-20 flex h-[560px] w-[360px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
-          isOpen
-            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-            : "opacity-0 translate-y-4 scale-95 pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-          <div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.headerTitle}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">{copy.headerSubtitle}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              aria-label={copy.actions.download.title}
-              title={copy.actions.download.title}
-              onClick={() => openConfirmation("download")}
-              className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.6"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5M6 20h12" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              aria-label={copy.actions.clear.title}
-              title={copy.actions.clear.title}
-              onClick={() => openConfirmation("clear")}
-              className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.6"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 6h18M8 6v12a2 2 0 002 2h4a2 2 0 002-2V6m-6 4v6m4-6v6"
-                />
-              </svg>
-            </button>
-            <button
-              type="button"
-              aria-label={isSpanish ? "Ocultar chat" : "Hide chat"}
-              title={isSpanish ? "Ocultar chat" : "Hide chat"}
-              onClick={handleHide}
-              className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {confirmAction && (
-          <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
-            <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
-              <div className="flex items-start gap-3">
-                <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.6"
-                    stroke="currentColor"
-                    className="h-5 w-5"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0 3.75h.007v.008H12v-.008z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-gray-900 dark:text-white">{confirmAction.title}</h3>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{confirmAction.message}</p>
-                </div>
-              </div>
-              <div className="mt-5 flex flex-wrap justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={confirmAndExecute}
-                  className="inline-flex items-center justify-center rounded-lg bg-paqariYellow px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-paqariYellowHover focus:outline-none focus:ring-2 focus:ring-paqariYellow"
-                >
-                  {confirmAction.confirm}
-                </button>
-                <button
-                  type="button"
-                  onClick={cancelConfirmation}
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-                >
-                  {confirmAction.cancel}
-                </button>
-              </div>
+    return (
+      <div className="pointer-events-none fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
+        <div
+          aria-hidden={!isOpen}
+          className={`relative mr-14 sm:mr-20 flex h-[560px] w-[360px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
+            isOpen
+              ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+              : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+          }`}
+        >
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+            <div>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.headerTitle}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{copy.headerSubtitle}</p>
             </div>
-          </div>
-        )}
-
-        <div className="relative flex-1 overflow-hidden">
-          <div className="max-h-full min-h-[320px] overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 text-[13px]">
-            {messages.length === 0 && !isLoading && (
-              <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 shadow-sm">
-                  <img
-                    src="/images/hoja_rayo_logo.ico"
-                    alt="PaqariBot"
-                    className="h-7 w-7 object-contain"
-                    loading="lazy"
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label={copy.actions.download.title}
+                title={copy.actions.download.title}
+                onClick={() => openConfirmation("download")}
+                className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.6"
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5M6 20h12" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                aria-label={copy.actions.clear.title}
+                title={copy.actions.clear.title}
+                onClick={() => openConfirmation("clear")}
+                className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.6"
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 6h18M8 6v12a2 2 0 002 2h4a2 2 0 002-2V6m-6 4v6m4-6v6"
                   />
+                </svg>
+              </button>
+              <button
+                type="button"
+                aria-label={isSpanish ? "Ocultar chat" : "Hide chat"}
+                title={isSpanish ? "Ocultar chat" : "Hide chat"}
+                onClick={handleHide}
+                className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {confirmAction && (
+            <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
+              <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.6"
+                      stroke="currentColor"
+                      className="h-5 w-5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m0 3.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white">{confirmAction.title}</h3>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{confirmAction.message}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.greeting}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{copy.greetingQuestion}</p>
+                <div className="mt-5 flex flex-wrap justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={confirmAndExecute}
+                    className="inline-flex items-center justify-center rounded-lg bg-paqariYellow px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-paqariYellowHover focus:outline-none focus:ring-2 focus:ring-paqariYellow"
+                  >
+                    {confirmAction.confirm}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={cancelConfirmation}
+                    className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                  >
+                    {confirmAction.cancel}
+                  </button>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">{copy.description}</p>
-              <div className="mt-4 space-y-2">{quickPromptButtons}</div>
             </div>
           )}
 
-          {messages.length === 0 && isLoading && (
-            <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-              {copy.emptyState}
-            </div>
-          )}
+          <div className="relative flex-1 overflow-hidden">
+            <div className="max-h-full min-h-[320px] overflow-y-auto space-y-4 bg-gradient-to-b from-white to-gray-50 p-4 text-[13px] dark:from-gray-900 dark:to-gray-950">
+              {messages.length === 0 && !isLoading && (
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 shadow-sm dark:bg-gray-800 dark:ring-gray-700">
+                      <img
+                        src="/images/hoja_rayo_logo.ico"
+                        alt="PaqariBot"
+                        className="h-7 w-7 object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900 dark:text-white">{copy.greeting}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{copy.greetingQuestion}</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">{copy.description}</p>
+                  <div className="mt-4 space-y-2">{quickPromptButtons}</div>
+                </div>
+              )}
 
-          {messages.map((message, index) => renderMessage(message, index))}
-          {isLoading && (
-            <div className="flex items-start gap-2 text-gray-500 dark:text-gray-400 text-sm">
-              <span className="mt-1 inline-flex gap-1">
-                <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse"></span>
-                <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse [animation-delay:120ms]"></span>
-                <span className="w-2 h-2 rounded-full bg-gray-300 animate-pulse [animation-delay:240ms]"></span>
-              </span>
-              <span>{copy.loaderLabel}</span>
+              {messages.length === 0 && isLoading && (
+                <div className="text-center text-xs text-gray-500 dark:text-gray-400">{copy.emptyState}</div>
+              )}
+
+              {messages.map((message, index) => renderMessage(message, index))}
+
+              {isLoading && (
+                <div className="flex items-start gap-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="mt-1 inline-flex gap-1">
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-gray-300"></span>
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-gray-300 [animation-delay:120ms]"></span>
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-gray-300 [animation-delay:240ms]"></span>
+                  </span>
+                  <span>{copy.loaderLabel}</span>
+                </div>
+              )}
+
+              <div ref={endRef} />
             </div>
-          )}
-          <div ref={endRef} />
+          </div>
+
+          {error && <div className="px-4 pb-1 text-xs text-red-500">{error}</div>}
+
+          <form
+            onSubmit={handleSubmit}
+            className="backdrop-blur p-3 border-t border-gray-200 bg-white/90 dark:border-gray-700 dark:bg-gray-900/90"
+          >
+            <div className="flex items-start gap-2">
+              <textarea
+                rows={4}
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    handleSubmit(event);
+                  }
+                }}
+                placeholder={copy.placeholder}
+                className="min-h-[96px] flex-1 rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-paqariYellow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                aria-label={isSpanish ? "Enviar mensaje" : "Send message"}
+                className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-paqariGreen text-white shadow-lg transition hover:bg-paqariGreenDark disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  className="h-5 w-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h13M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">{copy.disclaimer}</p>
+          </form>
         </div>
 
-        {error && (
-          <div className="px-4 pb-1 text-xs text-red-500">{error}</div>
-        )}
-
-        <form
-          onSubmit={handleSubmit}
-          className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 backdrop-blur"
+        <button
+          type="button"
+          aria-label="Abrir chat con el bot"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paqariYellow ${
+            isOpen ? "translate-y-1 opacity-0 pointer-events-none" : "hover:scale-105"
+          }`}
         >
-          <div className="flex items-start gap-2">
-            <textarea
-              rows={4}
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" && !event.shiftKey) {
-                  event.preventDefault();
-                  handleSubmit(event);
-                }
-              }}
-              placeholder={copy.placeholder}
-              className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-paqariYellow focus:border-transparent px-3 py-3 min-h-[96px]"
-              disabled={isLoading}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M7 8h10M7 12h6m6 0c0 3.314-3.582 6-8 6-.97 0-1.903-.116-2.776-.329L4 19l1.425-2.85C4.527 14.907 4 13.511 4 12c0-3.314 3.582-6 8-6s8 2.686 8 6z"
             />
-            <button
-              type="submit"
-              disabled={isLoading || !input.trim()}
-              aria-label={isSpanish ? "Enviar mensaje" : "Send message"}
-              className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-paqariGreen text-white shadow-lg transition hover:bg-paqariGreenDark disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h13M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-          <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">{copy.disclaimer}</p>
-        </form>
+          </svg>
+        </button>
       </div>
+    );
+  };
 
-      <button
-        type="button"
-        aria-label="Abrir chat con el bot"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paqariYellow ${
-          isOpen ? "translate-y-1 opacity-0 pointer-events-none" : "hover:scale-105"
-        }`}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          className="w-7 h-7"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M7 8h10M7 12h6m6 0c0 3.314-3.582 6-8 6-.97 0-1.903-.116-2.776-.329L4 19l1.425-2.85C4.527 14.907 4 13.511 4 12c0-3.314 3.582-6 8-6s8 2.686 8 6z"
-          />
-        </svg>
-      </button>
-    </div>
-  );
-};
-
-export default ChatWidget;
+  export default ChatWidget;
