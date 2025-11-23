@@ -265,11 +265,13 @@ const ChatWidget = ({ chatContent }) => {
           key={`${message.role}-${index}-${message.content.slice(0, 8)}`}
           className={`flex ${alignment}`}
         >
-          <div className={`max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles} ml-auto`}>
-            <p className="text-right font-semibold text-xs text-gray-700 dark:text-gray-200 mb-1">
+          <div className="flex flex-col items-end max-w-[80%] ml-auto">
+            <p className="mb-1 text-xs font-semibold text-gray-700 dark:text-gray-200">
               {isSpanish ? "Tú" : "You"}
             </p>
-            <p className="whitespace-pre-wrap">{message.content}</p>
+            <div className={`w-full px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
+              <p className="whitespace-pre-wrap text-right">{message.content}</p>
+            </div>
           </div>
         </div>
       );
@@ -289,11 +291,9 @@ const ChatWidget = ({ chatContent }) => {
               loading="lazy"
             />
           </div>
-          <div>
+          <div className="flex flex-col">
             <p className="text-xs font-semibold leading-tight">PaqariBot</p>
-            <div
-              className={`mt-1 max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}
-            >
+            <div className={`mt-1 max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
               <div
                 className="prose prose-sm prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 dark:prose-invert"
                 dangerouslySetInnerHTML={renderMarkdown(message.content)}
@@ -329,10 +329,10 @@ const ChatWidget = ({ chatContent }) => {
   ));
 
     return (
-      <div className="pointer-events-none fixed bottom-4 right-8 z-50 flex flex-col items-end gap-3">
+      <div className="pointer-events-none fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 z-[70] sm:z-50 flex flex-col items-end gap-3">
         <div
           aria-hidden={!isOpen}
-          className={`relative mr-14 sm:mr-20 flex h-[560px] w-[360px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
+          className={`relative sm:mr-16 flex h-[70vh] max-h-[640px] w-full sm:h-[560px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
             isOpen
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
               : "opacity-0 translate-y-4 scale-95 pointer-events-none"
@@ -380,7 +380,7 @@ const ChatWidget = ({ chatContent }) => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M3 6h18M8 6v12a2 2 0 002 2h4a2 2 0 002-2V6m-6 4v6m4-6v6"
+                    d="M4 7h16m-9-3h2a1 1 0 011 1v2H9V5a1 1 0 011-1zm8 3l-.8 12.01A2 2 0 0116.207 21H7.793a2 2 0 01-1.993-1.99L5 7"
                   />
                 </svg>
               </button>
@@ -406,7 +406,7 @@ const ChatWidget = ({ chatContent }) => {
           </div>
 
           {confirmAction && (
-            <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
+            <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/20 px-4 backdrop-blur-sm">
               <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-5 shadow-xl dark:border-gray-700 dark:bg-gray-900">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-200">
@@ -529,7 +529,7 @@ const ChatWidget = ({ chatContent }) => {
                 </svg>
               </button>
             </div>
-            <p className="mt-2 text-[11px] text-gray-500 dark:text-gray-400">{copy.disclaimer}</p>
+            <p className="mt-2 text-center text-[11px] text-gray-500 dark:text-gray-400">{copy.disclaimer}</p>
           </form>
         </div>
 
@@ -537,8 +537,8 @@ const ChatWidget = ({ chatContent }) => {
           type="button"
           aria-label="Abrir chat con el bot"
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-paqariYellow ${
-            isOpen ? "translate-y-1 opacity-0 pointer-events-none" : "hover:scale-105"
+          className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-0 focus:ring-offset-0 active:scale-95 ${
+            isOpen ? "scale-95" : "hover:scale-105"
           }`}
         >
           <svg
