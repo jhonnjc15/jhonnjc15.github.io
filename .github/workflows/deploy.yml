@@ -13,6 +13,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_URL: "https://${{ github.repository_owner }}.github.io/"
     steps:
       - name: Checkout your repository
         uses: actions/checkout@v4

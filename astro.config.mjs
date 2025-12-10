@@ -8,6 +8,9 @@ import config from "./src/config/config.json";
 import mdx from '@astrojs/mdx';
 import AutoImport from 'astro-auto-import';
 
+
+const SITE_URL = process.env.SITE_URL ?? "http://localhost:4321";
+
 // https://astro.build/config
 export default defineConfig({
   build: {
@@ -19,8 +22,8 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/noop'
     }
   },
-  site: "https://jhonnjc15.github.io/",
-  base: "/",
+  site: SITE_URL,
+  base: "/",  
   //trailingSlash: config.site.trailing_slash ? "always" : "never",
   integrations: [
     react({
