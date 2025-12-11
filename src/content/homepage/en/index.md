@@ -1,11 +1,11 @@
 ---
 banner:
-  title: "Scale Your Design and Development Operations with Avocode Enterprise"
-  content: "A fully integrated suite of authentication and authorization products, Stytch’s platform takes the headache out of the process."
+  title: "Featured journey"
+  content: "Paqari: where science and community help ideas grow. Explore our open lab that blends hands-on learning, technology, and creativity to build sustainable solutions together."
   image: /images/banner-img.png
   button:
-    label: More Information
-    link: "/"
+    label: Learn more about us
+    link: "/about"
     enable: true
 
 ##key features

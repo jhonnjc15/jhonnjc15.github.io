@@ -21,14 +21,25 @@ const i18n = getI18N({ currentLocale });
         </p>
         {button.enable && (
           <a
-            class="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl group focus:outline-none"
+            class="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl p-[1.5px] text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-paqariYellow/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             href={getRelativeLocaleUrl(currentLocale ?? "", button.link || "/contact")}
           >
-            <span class="absolute inset-0 rounded-xl bg-[conic-gradient(from_0deg,#217276,#f3a415,#217276)] [animation:spin_6s_linear_infinite] group-hover:[animation:none] transition-all duration-500"></span>
+            <span class="absolute inset-0 -z-10 rounded-2xl bg-[conic-gradient(#217276_0deg,#f3a415_120deg,#217276_240deg,#f3a415_360deg)] opacity-70 animate-rotate-sheen" />
+            <span class="absolute inset-[1.5px] -z-[1] rounded-[1.25rem] bg-gradient-to-br from-white/30 via-white/10 to-white/5 blur" />
             <span
-              class="relative z-10 px-6 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
+              class="relative z-10 flex items-center gap-2 rounded-[1.15rem] bg-white/90 px-7 py-3 text-gray-900 shadow-lg transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl dark:bg-gray-900/90 dark:text-white"
             >
-              {i18n.COMMON.contact_cta}
+              {button.label || i18n.COMMON.contact_cta}
+              <svg
+                aria-hidden="true"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+              </svg>
             </span>
           </a>
         )}

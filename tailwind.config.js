@@ -82,6 +82,17 @@ module.exports = {
         overlay_hover: "var(--color-overlay-hover)"
       },
 
+      animation: {
+        "rotate-sheen": "rotate-sheen 9s linear infinite",
+      },
+
+      keyframes: {
+        "rotate-sheen": {
+          "0%": { transform: "rotate(0deg) scale(1.4)" },
+          "100%": { transform: "rotate(360deg) scale(1.4)" },
+        },
+      },
+
       borderColor: {
         default: "var(--color-border)",
         offset: "var(--color-border-offset)",
