@@ -34,13 +34,13 @@ export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
 }
 ---
-<Base>
+<Base backgroundVideoSrc="/images/background-video.mp4">
   {/*
   <div class="-z-50 absolute w-full h-screen bg-no-repeat bg-center lg:bg-cover bg-[url('/images/home-background.jpg')] top-0 opacity-50 ">
   </div>
   */}
   <!-- banner -->
-  <Banner banner={banner} videoSrc="/images/background-video.mp4" />
+  <Banner banner={banner} />
 
   <!-- Demo video -->
   <DemoVideo video_demo={video_demo} />

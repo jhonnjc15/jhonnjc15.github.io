@@ -1,9 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getI18N } from "@i18n/index";
-import BackgroundVideo from "./BackgroundVideo.astro";
-
-const { banner, videoSrc } = Astro.props;
+const { banner } = Astro.props;
 const { title, button, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -17,9 +15,6 @@ const buttonLabel = button?.label || i18n.COMMON.contact_cta;
   class="section banner relative isolate overflow-hidden min-h-screen flex items-center justify-center sm:justify-start text-center sm:text-left pb-14 sm:pb-20 pt-20 sm:pt-28 lg:pt-40"
   data-animate="fade-right"
 >
-  {videoSrc && (
-    <BackgroundVideo src={videoSrc} />
-  )}
   <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(243,164,21,0.22),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(33,114,118,0.18),transparent_32%),radial-gradient(circle_at_40%_70%,rgba(33,114,118,0.16),transparent_36%)] blur-3xl"></div>
   <div class="absolute inset-0 -z-20 bg-gradient-to-b from-black/30 via-black/40 to-black/55"></div>
   <div class="container relative flex justify-center sm:justify-start">
