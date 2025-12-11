@@ -1,8 +1,9 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getI18N } from "@i18n/index";
+import BackgroundVideo from "./BackgroundVideo.astro";
 
-const { banner } = Astro.props;
+const { banner, videoSrc } = Astro.props;
 const { title, button, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -12,32 +13,32 @@ const aboutPath = currentLocale === "es" ? "/Nosotros" : "/about";
 const buttonLabel = button?.label || i18n.COMMON.contact_cta;
 ---
 
-<section class="section banner relative overflow-hidden pb-16 pt-20 mt-14" data-animate="fade-right">
+<section class="section banner relative overflow-hidden pb-16 pt-28" data-animate="fade-right">
+  {videoSrc && (
+    <BackgroundVideo src={videoSrc} />
+  )}
   <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(243,164,21,0.22),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(33,114,118,0.18),transparent_32%),radial-gradient(circle_at_40%_70%,rgba(33,114,118,0.16),transparent_36%)] blur-3xl"></div>
+  <div class="absolute inset-0 -z-20 bg-gradient-to-b from-black/30 via-black/40 to-black/55"></div>
   <div class="container relative">
-    <div class="max-w-3xl space-y-7" data-animate="fade-right">
-      <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] flex flex-wrap gap-3">
-        {title.split(" ").map((word: string, index: number) => (
-          <span
-            class="inline-flex animate-word-rise bg-gradient-to-br from-white/10 via-transparent to-transparent px-1"
-            style={`animation-delay: ${index * 70}ms`}
-          >
-            {word}
-          </span>
-        ))}
+    <div class="max-w-4xl space-y-7" data-animate="fade-right">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-paqariYellow">
+        {currentLocale === "en" ? "Featured journey" : "Recorrido destacado"}
+      </p>
+      <h1 class="banner-title text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+        {title}
       </h1>
-      <p class="my-4 text-lg text-text-offset max-w-2xl">
+      <p class="my-4 text-lg text-white/80 max-w-2xl">
         {content}
       </p>
       {button.enable && (
         <a
-          class="group relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none"
+          class="group relative inline-flex items-center justify-center p-[3px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none shadow-[0_0_0_3px_rgba(243,164,21,0.35)]"
           href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
         >
-          <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.35),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.4),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_10px_30px_rgba(33,114,118,0.35))] animate-liquid-orbit group-hover:animate-none"></span>
-          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-50 animate-liquid-glow group-hover:opacity-0"></span>
+          <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.55),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.55),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_12px_40px_rgba(33,114,118,0.45))] animate-liquid-orbit group-hover:animate-none"></span>
+          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-60 animate-liquid-glow group-hover:opacity-0"></span>
           <span
-            class="relative z-10 px-7 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
+            class="relative z-10 px-8 py-3.5 bg-white/90 backdrop-blur text-gray-900 rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white shadow-lg border border-white/60"
           >
             {buttonLabel}
           </span>

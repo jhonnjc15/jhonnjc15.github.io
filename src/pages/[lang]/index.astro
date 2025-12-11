@@ -8,7 +8,6 @@ import Cta from "@layouts/partials/Cta.astro";
 import { getEntryBySlug } from "astro:content";
 import ProductsExperiencesHome from "@components/products/ProductsExperiencesHome.astro"
 import { getEntry } from "astro:content";
-import BackgroundVideo from "@components/BackgroundVideo.astro";
 import GaleriaPaqari from "@components/Galeria_Paqari.astro";
 import DemoVideo from "@layouts/components/DemoVideo.astro";
 
@@ -34,16 +33,14 @@ const { banner, key_features, service, testimonial, galery, video_demo } = homep
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
 }
-const video_path = "/images/background-video.mp4"
 ---
 <Base>
   {/*
   <div class="-z-50 absolute w-full h-screen bg-no-repeat bg-center lg:bg-cover bg-[url('/images/home-background.jpg')] top-0 opacity-50 ">
   </div>
   */}
-  <BackgroundVideo src={video_path}/>
   <!-- banner -->
-  <Banner banner={banner} />
+  <Banner banner={banner} videoSrc="/images/background-video.mp4" />
 
   <!-- Demo video -->
   <DemoVideo video_demo={video_demo} />
