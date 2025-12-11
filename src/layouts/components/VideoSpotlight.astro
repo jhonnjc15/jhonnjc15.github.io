@@ -1,0 +1,49 @@
+---
+import VideoComponent from "@layouts/function-components/VideoComponent";
+
+const { videoSection } = Astro.props;
+---
+<section class="section relative overflow-hidden py-16">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
+  <div class="container grid gap-12 lg:grid-cols-[1fr_minmax(0,1.1fr)] lg:items-center">
+    <div class="space-y-5" data-animate="fade-right">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
+        {videoSection.sectionLabel}
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold text-default leading-tight">
+        {videoSection.title}
+      </h2>
+      <p class="text-lg text-text-offset">
+        {videoSection.description}
+      </p>
+
+      {videoSection.highlights.length > 0 && (
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {videoSection.highlights.map((item: string) => (
+            <li class="flex items-start gap-3 rounded-xl bg-background-offset/60 p-4 shadow-sm ring-1 ring-border/50">
+              <span class="mt-1 inline-block h-2 w-2 rounded-full bg-paqariYellow shadow-[0_0_0_6px_rgba(243,164,21,0.25)]"></span>
+              <span class="text-base text-default">{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <div class="relative" data-animate="zoom-in">
+      <div class="relative overflow-hidden rounded-[28px] border border-white/10 bg-background/70 p-2 shadow-[0_20px_80px_-24px_rgba(0,0,0,0.45)] backdrop-blur">
+        <div class="absolute inset-6 -z-10 animate-rotate-sheen rounded-full bg-[conic-gradient(#217276_10deg,transparent_140deg)] opacity-80 blur-3xl"></div>
+        <div class="relative rounded-3xl bg-gradient-to-br from-background via-background-offset/60 to-background p-4">
+          <VideoComponent
+            client:load
+            src={`https://img.youtube.com/vi/${videoSection.id}/maxresdefault.jpg`}
+            height={520}
+            width={920}
+            title={videoSection.title}
+            video_id={videoSection.id}
+            video_width="w-full"
+            video_height="h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
