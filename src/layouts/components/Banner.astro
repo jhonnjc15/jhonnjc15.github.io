@@ -12,13 +12,13 @@ const buttonLabel = button?.label || i18n.COMMON.contact_cta;
 ---
 
 <section
-  class="section banner relative isolate overflow-hidden min-h-screen flex items-center justify-center sm:justify-start text-center sm:text-left pb-16 sm:pb-24 pt-24 sm:pt-32 lg:pt-40"
+  class="section banner relative isolate overflow-hidden min-h-screen flex items-center justify-center sm:justify-start text-center sm:text-left pb-14 sm:pb-20 lg:pb-24 pt-16 sm:pt-20 lg:pt-24"
   data-animate="fade-right"
 >
   <div class="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_20%_10%,rgba(243,164,21,0.22),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(33,114,118,0.18),transparent_32%),radial-gradient(circle_at_40%_70%,rgba(33,114,118,0.16),transparent_36%)] blur-3xl pointer-events-none"></div>
   <div class="absolute inset-0 -z-20 bg-gradient-to-b from-black/35 via-black/45 to-black/60 pointer-events-none"></div>
   <div class="container relative flex justify-center sm:justify-start">
-    <div class="max-w-4xl space-y-7" data-animate="fade-right">
+    <div class="max-w-4xl space-y-7 sm:-mt-6 lg:-mt-8" data-animate="fade-right">
       <p class="text-sm font-semibold uppercase tracking-[0.28em] text-paqariYellow">
         {currentLocale === "en" ? "Featured journey" : "Recorrido destacado"}
       </p>
@@ -30,14 +30,11 @@ const buttonLabel = button?.label || i18n.COMMON.contact_cta;
       </p>
       {button.enable && (
         <a
-          class="group relative inline-flex items-center justify-center p-[3px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none shadow-[0_0_0_3px_rgba(243,164,21,0.35)]"
+          class="group relative inline-flex items-center justify-center rounded-2xl p-[2px] overflow-hidden focus:outline-none"
           href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
         >
-          <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.55),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.55),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_12px_40px_rgba(33,114,118,0.45))] animate-liquid-orbit group-hover:animate-none"></span>
-          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-60 animate-liquid-glow group-hover:opacity-0"></span>
-          <span
-            class="relative z-10 px-8 py-3.5 bg-white/90 backdrop-blur text-gray-900 rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white shadow-lg border border-white/60"
-          >
+          <span class="pointer-events-none absolute inset-0 rounded-2xl bg-[conic-gradient(#f3a415_20deg,transparent_120deg)] opacity-80 blur-[0.5px] animate-border-rotate"></span>
+          <span class="relative z-10 inline-flex items-center justify-center rounded-[1rem] bg-white/90 px-8 py-3.5 text-base font-semibold text-gray-900 shadow-[0_12px_35px_rgba(33,114,118,0.35)] transition duration-300 group-hover:text-white group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415]">
             {buttonLabel}
           </span>
         </a>

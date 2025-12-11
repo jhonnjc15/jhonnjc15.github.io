@@ -116,6 +116,10 @@ module.exports = {
       },
 
       keyframes: {
+        borderRotate: {
+          "0%": { transform: "rotate(0deg) scale(10)" },
+          "100%": { transform: "rotate(-360deg) scale(10)" },
+        },
         liquidGlow: {
           "0%": { opacity: "0.6", transform: "scale(0.98)" },
           "50%": { opacity: "0.2", transform: "scale(1.08)" },
@@ -134,6 +138,7 @@ module.exports = {
       },
 
       animation: {
+        "border-rotate": "borderRotate 12s linear infinite",
         "liquid-glow": "liquidGlow 3.2s ease-in-out infinite",
         "liquid-orbit": "liquidOrbit 8s linear infinite",
         "word-rise": "wordRise 700ms ease-out forwards",
