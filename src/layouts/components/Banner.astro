@@ -1,49 +1,44 @@
 ---
-import { Image } from 'astro:assets';
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getI18N } from "@i18n/index";
-
 const { banner } = Astro.props;
-const { title, button, image, content } = banner;
+const { title, button, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+const aboutPath = currentLocale === "es" ? "/Nosotros" : "/about";
+
+const buttonLabel = button?.label || i18n.COMMON.contact_cta;
 ---
 
-<section class="section banner relative overflow-hidden pb-10 pt-16 mt-14" data-animate="fade-right">
-  <div class="container relative">
-    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-      <div class="space-y-4 lg:order-1" data-animate="fade-right">
-        <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-          {title}
-        </h1>
-        <p class="my-4 text-lg text-text-offset">
-          {content}
-        </p>
-        {button.enable && (
-          <a
-            class="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl group focus:outline-none"
-            href={getRelativeLocaleUrl(currentLocale ?? "", button.link || "/contact")}
-          >
-            <span class="absolute inset-0 rounded-xl bg-[conic-gradient(from_0deg,#217276,#f3a415,#217276)] [animation:spin_6s_linear_infinite] group-hover:[animation:none] transition-all duration-500"></span>
-            <span
-              class="relative z-10 px-6 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
-            >
-              {i18n.COMMON.contact_cta}
-            </span>
-          </a>
-        )}
-      </div>
-      <div class="lg:order-2" data-animate="zoom-in">
-        <div class="relative mx-auto max-w-[580px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-6 shadow-2xl flex items-center justify-center">
-          <Image
-            class="w-full object-contain drop-shadow-2xl"
-            alt="banner"
-            src={image}
-            width={720}
-            height={470}
-          />
-        </div>
-      </div>
+<section
+  class="section banner relative isolate overflow-hidden min-h-screen flex items-center justify-center sm:justify-start text-center sm:text-left pb-14 sm:pb-20 lg:pb-24 pt-16 sm:pt-20 lg:pt-24"
+  data-animate="fade-right"
+>
+  <div class="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_20%_10%,rgba(243,164,21,0.22),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(33,114,118,0.18),transparent_32%),radial-gradient(circle_at_40%_70%,rgba(33,114,118,0.16),transparent_36%)] blur-3xl pointer-events-none"></div>
+  <div class="absolute inset-0 -z-20 bg-gradient-to-b from-black/35 via-black/45 to-black/60 pointer-events-none"></div>
+  <div class="container relative flex justify-center sm:justify-start">
+    <div class="max-w-4xl space-y-7 sm:-mt-6 lg:-mt-8" data-animate="fade-right">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-paqariYellow">
+        {currentLocale === "en" ? "Featured journey" : "Recorrido destacado"}
+      </p>
+      <h1 class="banner-title text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05]">
+        {title}
+      </h1>
+      <p class="my-4 text-lg text-white/80 max-w-2xl mx-auto sm:mx-0">
+        {content}
+      </p>
+      {button.enable && (
+        <a
+          class="group relative inline-flex items-center justify-center rounded-2xl p-[2px] overflow-hidden focus:outline-none"
+          href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
+        >
+          <span class="pointer-events-none absolute inset-0 rounded-2xl bg-[conic-gradient(#f3a415_20deg,transparent_120deg)] opacity-80 blur-[0.5px] animate-border-rotate"></span>
+          <span class="relative z-10 inline-flex items-center justify-center rounded-[1rem] bg-white/90 px-8 py-3.5 text-base font-semibold text-gray-900 shadow-[0_12px_35px_rgba(33,114,118,0.35)] transition duration-300 group-hover:text-white group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415]">
+            {buttonLabel}
+          </span>
+        </a>
+      )}
     </div>
   </div>
 </section>

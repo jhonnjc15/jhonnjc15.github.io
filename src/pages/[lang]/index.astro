@@ -8,8 +8,8 @@ import Cta from "@layouts/partials/Cta.astro";
 import { getEntryBySlug } from "astro:content";
 import ProductsExperiencesHome from "@components/products/ProductsExperiencesHome.astro"
 import { getEntry } from "astro:content";
-import BackgroundVideo from "@components/BackgroundVideo.astro";
 import GaleriaPaqari from "@components/Galeria_Paqari.astro";
+import DemoVideo from "@layouts/components/DemoVideo.astro";
 
 
 const { currentLocale } = Astro
@@ -28,21 +28,31 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery } = homepage.data;
+const { banner, key_features, service, testimonial, galery, video_demo } = homepage.data;
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
 }
-const video_path = "/images/background-video.mp4"
 ---
 <Base>
-  {/*
-  <div class="-z-50 absolute w-full h-screen bg-no-repeat bg-center lg:bg-cover bg-[url('/images/home-background.jpg')] top-0 opacity-50 ">
+  <div class="-z-50 absolute w-full h-screen inset-x-0 top-0 overflow-hidden">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="pointer-events-none h-full w-full object-cover opacity-50"
+    >
+      <source src="/images/background-video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
-  */}
-  <BackgroundVideo src={video_path}/>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-screen w-full -z-40 bg-[radial-gradient(circle_at_20%_15%,rgba(243,164,21,0.18),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(33,114,118,0.22),transparent_38%),radial-gradient(circle_at_50%_65%,rgba(33,114,118,0.2),transparent_42%)] blur-3xl opacity-80"></div>
   <!-- banner -->
   <Banner banner={banner} />
+
+  <!-- Demo video -->
+  <DemoVideo video_demo={video_demo} />
 
   <!-- Porductos Categorías  -->
   <ProductsExperiencesHome/>

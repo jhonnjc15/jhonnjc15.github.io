@@ -114,6 +114,35 @@ module.exports = {
         primary: [fontPrimary, fontPrimaryType],
         secondary: [fontSecondary, fontSecondaryType],
       },
+
+      keyframes: {
+        borderRotate: {
+          "0%": { transform: "rotate(0deg) scale(10)" },
+          "100%": { transform: "rotate(-360deg) scale(10)" },
+        },
+        liquidGlow: {
+          "0%": { opacity: "0.6", transform: "scale(0.98)" },
+          "50%": { opacity: "0.2", transform: "scale(1.08)" },
+          "100%": { opacity: "0", transform: "scale(1.16)" },
+        },
+        liquidOrbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(180deg) scale(1.02)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        wordRise: {
+          "0%": { opacity: "0", transform: "translateY(16px) scale(0.98)" },
+          "40%": { opacity: "1" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+      },
+
+      animation: {
+        "border-rotate": "borderRotate 12s linear infinite",
+        "liquid-glow": "liquidGlow 3.2s ease-in-out infinite",
+        "liquid-orbit": "liquidOrbit 8s linear infinite",
+        "word-rise": "wordRise 700ms ease-out forwards",
+      },
     },
   },
   plugins: [
