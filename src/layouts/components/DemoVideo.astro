@@ -1,0 +1,57 @@
+---
+import VideoComponent from "@layouts/function-components/VideoComponent";
+
+const { video_demo } = Astro.props;
+const { currentLocale } = Astro;
+const { title, description, highlights = [], video } = video_demo ?? {};
+const demoLabel = currentLocale === "en" ? "Live demo" : "Demo en vivo";
+---
+
+{video_demo && (
+  <section class="section py-16" data-animate="fade-up">
+    <div class="container">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div class="space-y-5">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
+            {demoLabel}
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold text-default leading-tight">
+            {title}
+          </h2>
+          <p class="text-lg text-text-offset">
+            {description}
+          </p>
+
+          {highlights.length > 0 && (
+            <ul class="grid gap-3 sm:grid-cols-2">
+              {highlights.map((item: string) => (
+                <li class="flex items-start gap-3 rounded-xl bg-background-offset/60 p-4 shadow-sm ring-1 ring-border/50">
+                  <span class="mt-1 inline-block h-2 w-2 rounded-full bg-paqariYellow shadow-[0_0_0_6px_rgba(243,164,21,0.25)]"></span>
+                  <span class="text-base text-default">{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {video && (
+          <div class="relative">
+            <div class="absolute inset-0 -z-10 blur-3xl bg-[radial-gradient(circle_at_20%_20%,rgba(243,164,21,0.2),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(33,114,118,0.22),transparent_35%),radial-gradient(circle_at_60%_80%,rgba(33,114,118,0.18),transparent_45%)]"></div>
+            <div class="relative overflow-hidden rounded-3xl border border-border/60 bg-background shadow-2xl">
+              <VideoComponent
+                client:load
+                src={video.thumbnail}
+                height={360}
+                width={900}
+                title={title}
+                video_id={video.video_id}
+                video_width="w-full"
+                video_height="h-[220px] sm:h-[260px] md:h-[320px] lg:h-[360px]"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+)}

@@ -10,6 +10,7 @@ import ProductsExperiencesHome from "@components/products/ProductsExperiencesHom
 import { getEntry } from "astro:content";
 import BackgroundVideo from "@components/BackgroundVideo.astro";
 import GaleriaPaqari from "@components/Galeria_Paqari.astro";
+import DemoVideo from "@layouts/components/DemoVideo.astro";
 
 
 const { currentLocale } = Astro
@@ -28,7 +29,7 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery } = homepage.data;
+const { banner, key_features, service, testimonial, galery, video_demo } = homepage.data;
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -43,6 +44,9 @@ const video_path = "/images/background-video.mp4"
   <BackgroundVideo src={video_path}/>
   <!-- banner -->
   <Banner banner={banner} />
+
+  <!-- Demo video -->
+  <DemoVideo video_demo={video_demo} />
 
   <!-- Porductos Categorías  -->
   <ProductsExperiencesHome/>

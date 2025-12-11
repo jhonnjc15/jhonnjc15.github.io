@@ -7,6 +7,10 @@ const { banner } = Astro.props;
 const { title, button, image, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+const aboutPath = currentLocale === "es" ? "/Nosotros" : "/about";
+
+const buttonLabel = button?.label || i18n.COMMON.contact_cta;
 ---
 
 <section class="section banner relative overflow-hidden pb-10 pt-16 mt-14" data-animate="fade-right">
@@ -21,14 +25,15 @@ const i18n = getI18N({ currentLocale });
         </p>
         {button.enable && (
           <a
-            class="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl group focus:outline-none"
-            href={getRelativeLocaleUrl(currentLocale ?? "", button.link || "/contact")}
+            class="group relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none"
+            href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
           >
-            <span class="absolute inset-0 rounded-xl bg-[conic-gradient(from_0deg,#217276,#f3a415,#217276)] [animation:spin_6s_linear_infinite] group-hover:[animation:none] transition-all duration-500"></span>
+            <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.35),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.4),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_10px_30px_rgba(33,114,118,0.35))] animate-liquid-orbit group-hover:animate-none"></span>
+            <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-50 animate-liquid-glow group-hover:opacity-0"></span>
             <span
-              class="relative z-10 px-6 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
+              class="relative z-10 px-7 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
             >
-              {i18n.COMMON.contact_cta}
+              {buttonLabel}
             </span>
           </a>
         )}
