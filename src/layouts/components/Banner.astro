@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getI18N } from "@i18n/index";
 
 const { banner } = Astro.props;
-const { title, button, image, content } = banner;
+const { title, button, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 
@@ -13,42 +12,37 @@ const aboutPath = currentLocale === "es" ? "/Nosotros" : "/about";
 const buttonLabel = button?.label || i18n.COMMON.contact_cta;
 ---
 
-<section class="section banner relative overflow-hidden pb-10 pt-16 mt-14" data-animate="fade-right">
+<section class="section banner relative overflow-hidden pb-16 pt-20 mt-14" data-animate="fade-right">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(243,164,21,0.22),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(33,114,118,0.18),transparent_32%),radial-gradient(circle_at_40%_70%,rgba(33,114,118,0.16),transparent_36%)] blur-3xl"></div>
   <div class="container relative">
-    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-      <div class="space-y-4 lg:order-1" data-animate="fade-right">
-        <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-          {title}
-        </h1>
-        <p class="my-4 text-lg text-text-offset">
-          {content}
-        </p>
-        {button.enable && (
-          <a
-            class="group relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none"
-            href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
+    <div class="max-w-3xl space-y-7" data-animate="fade-right">
+      <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] flex flex-wrap gap-3">
+        {title.split(" ").map((word: string, index: number) => (
+          <span
+            class="inline-flex animate-word-rise bg-gradient-to-br from-white/10 via-transparent to-transparent px-1"
+            style={`animation-delay: ${index * 70}ms`}
           >
-            <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.35),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.4),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_10px_30px_rgba(33,114,118,0.35))] animate-liquid-orbit group-hover:animate-none"></span>
-            <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-50 animate-liquid-glow group-hover:opacity-0"></span>
-            <span
-              class="relative z-10 px-7 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
-            >
-              {buttonLabel}
-            </span>
-          </a>
-        )}
-      </div>
-      <div class="lg:order-2" data-animate="zoom-in">
-        <div class="relative mx-auto max-w-[580px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-6 shadow-2xl flex items-center justify-center">
-          <Image
-            class="w-full object-contain drop-shadow-2xl"
-            alt="banner"
-            src={image}
-            width={720}
-            height={470}
-          />
-        </div>
-      </div>
+            {word}
+          </span>
+        ))}
+      </h1>
+      <p class="my-4 text-lg text-text-offset max-w-2xl">
+        {content}
+      </p>
+      {button.enable && (
+        <a
+          class="group relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl focus:outline-none"
+          href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
+        >
+          <span class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_15%_20%,rgba(243,164,21,0.35),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(33,114,118,0.4),transparent_40%),linear-gradient(120deg,#217276,#f3a415)] opacity-90 blur-[0.5px] [filter:drop-shadow(0_10px_30px_rgba(33,114,118,0.35))] animate-liquid-orbit group-hover:animate-none"></span>
+          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-[#217276] via-[#f3a415] to-[#217276] opacity-50 animate-liquid-glow group-hover:opacity-0"></span>
+          <span
+            class="relative z-10 px-7 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
+          >
+            {buttonLabel}
+          </span>
+        </a>
+      )}
     </div>
   </div>
 </section>

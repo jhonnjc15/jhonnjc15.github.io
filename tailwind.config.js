@@ -126,11 +126,17 @@ module.exports = {
           "50%": { transform: "rotate(180deg) scale(1.02)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        wordRise: {
+          "0%": { opacity: "0", transform: "translateY(16px) scale(0.98)" },
+          "40%": { opacity: "1" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
       },
 
       animation: {
         "liquid-glow": "liquidGlow 3.2s ease-in-out infinite",
         "liquid-orbit": "liquidOrbit 8s linear infinite",
+        "word-rise": "wordRise 700ms ease-out forwards",
       },
     },
   },

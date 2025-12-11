@@ -9,12 +9,12 @@ banner:
     enable: true
 
 video_demo:
-  title: "Watch the full Paqari experience demo"
-  description: "See how we guide every participant from curiosity to prototype-ready concepts with clear, step-by-step support."
+  title: "Watch the Paqari experience in action"
+  description: "Follow how we guide every participant from first spark to prototype-ready ideas with clear milestones along the way."
   highlights:
-    - "Tour of the Paqari virtual classroom and experimentation kits."
-    - "Real examples of projects co-created with our community."
-    - "Support tools that keep every team moving at their own pace."
+    - "Walkthrough of the Paqari virtual classroom and hands-on kits."
+    - "Stories of prototypes co-created with our community."
+    - "Support tools that adapt to each team's own pace."
   video:
     thumbnail: "/images/intro-thumbnail.png"
     video_id: "ysz5S6PUM-U"
