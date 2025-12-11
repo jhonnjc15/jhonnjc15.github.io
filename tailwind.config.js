@@ -84,12 +84,17 @@ module.exports = {
 
       animation: {
         "rotate-sheen": "rotate-sheen 9s linear infinite",
+        "border-rotate": "border-rotate 12s linear infinite",
       },
 
       keyframes: {
         "rotate-sheen": {
           "0%": { transform: "rotate(0deg) scale(1.4)" },
           "100%": { transform: "rotate(360deg) scale(1.4)" },
+        },
+        "border-rotate": {
+          "0%": { transform: "rotate(0deg) scale(1.6)" },
+          "100%": { transform: "rotate(360deg) scale(1.6)" },
         },
       },
 

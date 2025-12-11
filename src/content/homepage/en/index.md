@@ -1,7 +1,7 @@
 ---
 banner:
-  title: "Featured journey"
-  content: "Paqari: where science and community help ideas grow. Explore our open lab that blends hands-on learning, technology, and creativity to build sustainable solutions together."
+  title: "Paqari: where science and community help ideas grow"
+  content: "Explore our open lab that blends hands-on learning, technology, and creativity to build sustainable solutions together."
   image: /images/banner-img.png
   button:
     label: Learn more about us

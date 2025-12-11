@@ -31,12 +31,29 @@ const page_data = {
 //console.log(homepage)
 const { banner, key_features, service, testimonial, galery } = homepage.data;
 
-const demoVideo = {
-  id: "ysz5S6PUM-U",
-  title: "Paqari open lab in action",
-  description:
-    "Watch a quick walkthrough of how our community collaborates with technology, prototypes, and hands-on experiments to bring ideas to life.",
-};
+const videoSection = currentLocale === "en"
+  ? {
+    id: "ysz5S6PUM-U",
+    sectionLabel: "Live lab spotlight",
+    title: "See how our open lab connects ideas",
+    description:
+      "Watch how we co-create with community, technology, and hands-on experiments to turn bold concepts into sustainable prototypes.",
+    highlights: [
+      "Full audio so you catch every explanation and reaction on site.",
+      "On-screen controls that let you play or pause whenever you're ready.",
+    ],
+  }
+  : {
+    id: "ysz5S6PUM-U",
+    sectionLabel: "Vista del laboratorio en vivo",
+    title: "Mira cómo nuestro laboratorio conecta ideas",
+    description:
+      "Observa cómo co-creamos con la comunidad, la tecnología y la experimentación práctica para convertir conceptos audaces en prototipos sostenibles.",
+    highlights: [
+      "Audio completo para que escuches cada explicación y reacción en el espacio.",
+      "Controles visibles en pantalla para reproducir o pausar cuando prefieras.",
+    ],
+  };
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -55,34 +72,39 @@ const video_path = "/images/background-video.mp4"
   <section class="section relative overflow-hidden py-16">
     <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
     <div class="container grid gap-12 lg:grid-cols-[1fr_minmax(0,1.1fr)] lg:items-center">
-      <div class="space-y-4 max-w-2xl">
-        <p class="text-sm uppercase tracking-[0.2em] text-paqariGreen">Demo en vivo</p>
-        <h2 class="text-3xl font-extrabold leading-tight text-default md:text-4xl">Experimenta el laboratorio abierto de Paqari</h2>
-        <p class="text-lg text-text-offset leading-relaxed">
-          {demoVideo.description}
+      <div class="space-y-5" data-animate="fade-right">
+        <p class="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
+          {videoSection.sectionLabel}
         </p>
-        <ul class="space-y-2 text-text-offset">
-          <li class="flex items-start gap-3">
-            <span class="mt-1 h-2.5 w-2.5 rounded-full bg-paqariYellow"></span>
-            <span>Audio completo y narración clara para que no te pierdas ningún detalle.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 h-2.5 w-2.5 rounded-full bg-paqariGreen"></span>
-            <span>Controles visibles en pantalla para que decidas cuándo reproducir o pausar.</span>
-          </li>
-        </ul>
+        <h2 class="text-3xl md:text-4xl font-bold text-default leading-tight">
+          {videoSection.title}
+        </h2>
+        <p class="text-lg text-text-offset">
+          {videoSection.description}
+        </p>
+
+        {videoSection.highlights.length > 0 && (
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {videoSection.highlights.map((item: string) => (
+              <li class="flex items-start gap-3 rounded-xl bg-background-offset/60 p-4 shadow-sm ring-1 ring-border/50">
+                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-paqariYellow shadow-[0_0_0_6px_rgba(243,164,21,0.25)]"></span>
+                <span class="text-base text-default">{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div class="relative">
+      <div class="relative" data-animate="zoom-in">
         <div class="relative overflow-hidden rounded-[28px] border border-white/10 bg-background/70 p-2 shadow-[0_20px_80px_-24px_rgba(0,0,0,0.45)] backdrop-blur">
           <div class="absolute inset-6 -z-10 animate-rotate-sheen rounded-full bg-[conic-gradient(#217276_10deg,transparent_140deg)] opacity-80 blur-3xl"></div>
           <div class="relative rounded-3xl bg-gradient-to-br from-background via-background-offset/60 to-background p-4">
             <VideoComponent
               client:load
-              src="https://img.youtube.com/vi/ysz5S6PUM-U/maxresdefault.jpg"
+              src={`https://img.youtube.com/vi/${videoSection.id}/maxresdefault.jpg`}
               height={520}
               width={920}
-              title={demoVideo.title}
-              video_id={demoVideo.id}
+              title={videoSection.title}
+              video_id={videoSection.id}
               video_width="w-full"
               video_height="h-auto"
             />
