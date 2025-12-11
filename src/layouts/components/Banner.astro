@@ -7,34 +7,42 @@ const { banner } = Astro.props;
 const { title, button, image, content } = banner;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const aboutPath = "/about";
+const buttonLabel = button.label || i18n.COMMON.contact_cta;
+const badgeLabel = currentLocale === "en" ? "Featured journey" : "Recorrido destacado";
 ---
 
-<section class="section banner relative overflow-hidden pb-10 pt-16 mt-14" data-animate="fade-right">
+<section class="section banner relative overflow-hidden pb-12 pt-12 sm:pb-16 sm:pt-16 mt-8 sm:mt-14" data-animate="fade-right">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
   <div class="container relative">
-    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-      <div class="space-y-4 lg:order-1" data-animate="fade-right">
-        <h1 class="banner-title text-default text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-          {title}
-        </h1>
-        <p class="my-4 text-lg text-text-offset">
-          {content}
-        </p>
-        {button.enable && (
-          <a
-            class="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden text-base font-semibold rounded-xl group focus:outline-none"
-            href={getRelativeLocaleUrl(currentLocale ?? "", button.link || "/contact")}
-          >
-            <span class="absolute inset-0 rounded-xl bg-[conic-gradient(from_0deg,#217276,#f3a415,#217276)] [animation:spin_6s_linear_infinite] group-hover:[animation:none] transition-all duration-500"></span>
-            <span
-              class="relative z-10 px-6 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] group-hover:text-white dark:group-hover:text-gray-900 shadow-lg"
+    <div class="grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_minmax(0,0.95fr)] lg:items-center">
+      <div class="relative flex justify-center sm:justify-start lg:order-1" data-animate="fade-right">
+        <div class="max-w-4xl space-y-6 sm:space-y-7 sm:-mt-4 lg:-mt-6 text-center sm:text-left px-2 sm:px-0">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-paqariYellow dark:text-paqariYellow">
+            {badgeLabel}
+          </p>
+          <h1 class="banner-title text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
+            {title}
+          </h1>
+          <p class="my-4 text-lg text-gray-700 dark:text-white/80 max-w-2xl mx-auto sm:mx-0">
+            {content}
+          </p>
+          {button.enable && (
+            <a
+              class="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl px-[3px] py-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paqariYellow/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
             >
-              {i18n.COMMON.contact_cta}
-            </span>
-          </a>
-        )}
+              <span class="absolute inset-0 rounded-2xl bg-slate-900/60 blur-sm dark:blur-md"></span>
+              <span class="pointer-events-none absolute inset-[-6px] rounded-[18px] bg-[conic-gradient(#f3a415_18deg,transparent_140deg)] opacity-80 animate-border-rotate"></span>
+              <span class="relative z-10 inline-flex items-center justify-center rounded-xl bg-white/90 px-8 py-3.5 text-base font-semibold text-gray-900 shadow-[0_12px_35px_rgba(33,114,118,0.35)] transition duration-300 group-hover:text-white group-hover:bg-gradient-to-br group-hover:from-[#217276] group-hover:to-[#f3a415] dark:bg-slate-900/90 dark:text-white">
+                {buttonLabel}
+              </span>
+            </a>
+          )}
+        </div>
       </div>
-      <div class="lg:order-2" data-animate="zoom-in">
-        <div class="relative mx-auto max-w-[580px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-6 shadow-2xl flex items-center justify-center">
+      <div class="hidden sm:flex lg:order-2" data-animate="zoom-in">
+        <div class="relative mx-auto max-w-[560px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-5 shadow-[0_25px_90px_-28px_rgba(0,0,0,0.5)] flex items-center justify-center">
           <Image
             class="w-full object-contain drop-shadow-2xl"
             alt="banner"
