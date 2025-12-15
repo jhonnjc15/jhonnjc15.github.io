@@ -21,7 +21,12 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar {
-  @apply relative flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border border-primary/25 bg-white/80 px-5 py-3 text-sm text-gray-700 shadow-[0_12px_32px_rgba(33,114,118,0.15)] backdrop-blur-md dark:border-primary/30 dark:bg-gray-900/70 dark:text-gray-100;
+  @apply relative flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border bg-white/80 px-5 py-3 text-sm text-gray-700 shadow-[0_12px_32px_rgba(33,114,118,0.15)] backdrop-blur-md dark:bg-gray-900/70 dark:text-gray-100;
+
+  /* Color manual para evitar clases faltantes en Tailwind */
+  border-color: rgba(33, 114, 118, 0.25);
+
+  @apply dark:border-[#2172764d];
 }
 
 .topbar::before {
