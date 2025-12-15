@@ -23,7 +23,7 @@ input#nav-toggle:checked ~ #nav-menu {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--color-border-soft);
+  border-bottom: 1px solid var(--color-border-offset);
   background: transparent;
 }
 
@@ -35,12 +35,17 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-contact {
-  @apply relative z-10 flex flex-wrap items-center gap-3 lg:gap-4;
+  @apply relative z-10 flex flex-wrap items-center gap-4 lg:gap-5;
 }
 
 .topbar-link {
-  @apply inline-flex items-center gap-1 transition hover:opacity-80;
+  @apply inline-flex items-center gap-1 transition;
   color: var(--color-text);
+}
+
+.topbar-link:hover {
+  color: var(--color-primary);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 .topbar-icon {
@@ -59,9 +64,16 @@ input#nav-toggle:checked ~ #nav-menu {
 
   a {
     @apply inline-flex items-center justify-center rounded-full transition hover:-translate-y-[1px];
-    width: 10px;
-    height: 10px;
+    width: 22px;
+    height: 22px;
     color: var(--color-text);
+    background: color-mix(in srgb, var(--color-text) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-text) 20%, transparent);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -88,7 +100,7 @@ input#nav-toggle:checked ~ #nav-menu {
 .header-sticky .navbar {
   @apply border-transparent shadow-[0_10px_35px_rgba(0,0,0,0.16)] scale-[1.01]
          bg-white/85 backdrop-blur-md dark:bg-gray-900/85;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .header-sticky .navbar::before {
