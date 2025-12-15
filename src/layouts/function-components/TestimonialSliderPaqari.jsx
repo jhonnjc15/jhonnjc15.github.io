@@ -19,15 +19,13 @@ const TestimonialSlider = ({ list }) => {
   SwiperCore.use([Pagination, Navigation, Autoplay]);
   const [swiper, setSwiper] = useState(null);
 
-  const containerRef = useRef(null);
-
   // 👇 sin tipos TS aquí (estás en .jsx/.js)
   const paginationRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   useEffect(() => {
-    const gallery = containerRef.current;
+    const gallery = document.getElementById("paqari-gallery");
     if (!gallery) return undefined;
 
     let lightbox;
@@ -72,7 +70,7 @@ const TestimonialSlider = ({ list }) => {
       if (isDestroyed) return;
 
       lightbox = new PhotoSwipeLightbox({
-        gallery,
+        gallery: "#paqari-gallery",
         children: "a[data-pswp-item]",
         pswpModule: () => import("photoswipe"),
         showHideAnimationType: "fade",
@@ -93,7 +91,7 @@ const TestimonialSlider = ({ list }) => {
   }, [list]);
 
   return (
-    <div className="reviews-carousel relative" ref={containerRef}>
+    <div className="reviews-carousel relative">
       <Swiper
         pagination={{
           type: "bullets",
@@ -163,10 +161,11 @@ const TestimonialSlider = ({ list }) => {
               {/* Capa oscura (solo visible en pantallas grandes) */}
               <div
                 className="
-                  absolute inset-0 hidden lg:block 
-                  bg-black/60 opacity-100 
+                  absolute inset-0 hidden lg:block
+                  bg-black/60 opacity-100
                   lg:group-hover:opacity-0 lg:group-hover:shadow-lg
                   transition duration-500
+                  pointer-events-none
                 "
               ></div>
             </div>
