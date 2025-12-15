@@ -35,16 +35,44 @@ const i18n = getI18N({ currentLocale });
   }
 
   document.addEventListener("astro:page-load", async () => {
-    const anchors = document.querySelectorAll("#paqari-gallery a[data-pswp-item]");
+    const galleryEl = document.querySelector("#paqari-gallery");
 
-    for (const a of anchors) {
+    if (!galleryEl) return;
+
+    const ensureAnchorSize = async (a) => {
+      if (!a || (a.dataset.pswpWidth && a.dataset.pswpHeight)) return;
+
       const img = a.querySelector("img");
       if (img) {
         const { width, height } = await getImageSize(img.src);
         a.dataset.pswpWidth = width;
         a.dataset.pswpHeight = height;
       }
-    }
+    };
+
+    const hydrateAnchors = async (root) => {
+      const anchors = root.querySelectorAll("a[data-pswp-item]");
+      for (const a of anchors) {
+        await ensureAnchorSize(a);
+      }
+    };
+
+    await hydrateAnchors(galleryEl);
+
+    const observer = new MutationObserver(async (mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+          if (node.matches && node.matches("a[data-pswp-item]")) {
+            await ensureAnchorSize(node);
+          } else {
+            await hydrateAnchors(node);
+          }
+        }
+      }
+    });
+
+    observer.observe(galleryEl, { childList: true, subtree: true });
 
     const { default: PhotoSwipeLightbox } = await import("photoswipe/lightbox");
 
