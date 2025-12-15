@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Star } from "react-feather";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
@@ -6,17 +6,94 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+const getImageSize = (src) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    };
+  });
+
 const TestimonialSlider = ({ list }) => {
   SwiperCore.use([Pagination, Navigation, Autoplay]);
   const [swiper, setSwiper] = useState(null);
+
+  const containerRef = useRef(null);
 
   // 👇 sin tipos TS aquí (estás en .jsx/.js)
   const paginationRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  useEffect(() => {
+    const gallery = containerRef.current;
+    if (!gallery) return undefined;
+
+    let lightbox;
+    let isDestroyed = false;
+
+    const setAnchorSize = async (anchor) => {
+      if (!anchor || (anchor.dataset.pswpWidth && anchor.dataset.pswpHeight)) return;
+
+      const img = anchor.querySelector("img");
+      if (!img) return;
+
+      const { width, height } = await getImageSize(img.src);
+      anchor.dataset.pswpWidth = width;
+      anchor.dataset.pswpHeight = height;
+    };
+
+    const hydrateAnchors = async (root) => {
+      const anchors = root.querySelectorAll("a[data-pswp-item]");
+      await Promise.all(Array.from(anchors).map((anchor) => setAnchorSize(anchor)));
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+          if (node.matches && node.matches("a[data-pswp-item]")) {
+            void setAnchorSize(node);
+          } else {
+            void hydrateAnchors(node);
+          }
+        }
+      }
+    });
+
+    observer.observe(gallery, { childList: true, subtree: true });
+
+    const initLightbox = async () => {
+      await hydrateAnchors(gallery);
+
+      const { default: PhotoSwipeLightbox } = await import("photoswipe/lightbox");
+
+      if (isDestroyed) return;
+
+      lightbox = new PhotoSwipeLightbox({
+        gallery,
+        children: "a[data-pswp-item]",
+        pswpModule: () => import("photoswipe"),
+        showHideAnimationType: "fade",
+        showAnimationDuration: 300,
+        hideAnimationDuration: 200,
+      });
+
+      lightbox.init();
+    };
+
+    void initLightbox();
+
+    return () => {
+      isDestroyed = true;
+      observer.disconnect();
+      lightbox?.destroy?.();
+    };
+  }, [list]);
+
   return (
-    <div className="reviews-carousel relative">
+    <div className="reviews-carousel relative" ref={containerRef}>
       <Swiper
         pagination={{
           type: "bullets",
