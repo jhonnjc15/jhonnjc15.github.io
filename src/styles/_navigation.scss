@@ -18,18 +18,20 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .topbar-container {
   @apply sticky top-0 z-[60] mb-2;
-  height: 15px;
-  min-height: 15px;
+  height: 30px;
+  min-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(90deg, #1c5b5f, #217276, #f3a415, #217276);
+  border-bottom: 1px solid var(--color-secondary);
+  background: transparent;
 }
 
 .topbar {
-  @apply relative mx-auto flex w-full max-w-6xl items-center justify-between gap-3 text-[11px] font-medium text-white;
-  min-height: 15px;
+  @apply relative flex w-full items-center justify-between gap-3 text-[10px] font-medium;
+  min-height: 30px;
   line-height: 1;
+  color: var(--color-secondary);
 }
 
 .topbar-contact {
@@ -37,37 +39,44 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-link {
-  @apply inline-flex items-center gap-1 text-white/90 transition hover:text-white;
+  @apply inline-flex items-center gap-1 transition hover:opacity-80;
+  color: var(--color-secondary);
 }
 
 .topbar-icon {
-  @apply grid place-items-center rounded-sm text-white;
-  width: 14px;
-  height: 14px;
+  @apply grid place-items-center rounded-sm;
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
 }
 
 .topbar-text {
-  @apply whitespace-nowrap text-[11px] sm:text-[12px];
+  @apply whitespace-nowrap text-[10px] sm:text-[11px];
 }
 
 .topbar-social-icons {
-  @apply flex items-center gap-2 text-[13px];
+  @apply flex items-center gap-1 text-[12px];
 
   a {
-    @apply inline-flex items-center justify-center rounded-full text-white transition hover:-translate-y-[1px] hover:bg-white/20;
-    width: 14px;
-    height: 14px;
+    @apply inline-flex items-center justify-center rounded-full transition hover:-translate-y-[1px];
+    width: 12px;
+    height: 12px;
+    color: var(--color-secondary);
   }
 }
 
 @media (max-width: 1023px) {
   .topbar {
-    @apply justify-center gap-4;
+    @apply justify-center gap-2;
   }
 
   .topbar-contact {
     @apply hidden;
   }
+}
+
+.header-sticky .topbar-container {
+  display: none;
 }
 
 /* NAVBAR BASE */
