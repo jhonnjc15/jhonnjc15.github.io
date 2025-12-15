@@ -13,15 +13,16 @@ input#nav-toggle:checked ~ #nav-menu {
 
 /* HEADER BASE */
 .header {
-  @apply sticky top-0 z-50 bg-transparent px-5 sm:px-10 py-6 transition-all duration-300;
+  @apply sticky top-0 z-50 bg-transparent px-5 sm:px-10 pt-0 pb-5 transition-all duration-300;
 }
 
 .topbar-container {
-  @apply relative mb-4;
+  @apply sticky top-0 z-[60] mb-3 px-5 sm:px-10;
+  background: linear-gradient(90deg, #1c5b5f, #217276, #f3a415, #217276);
 }
 
 .topbar {
-  @apply relative flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border bg-white/80 px-5 py-3 text-sm text-gray-700 shadow-[0_12px_32px_rgba(33,114,118,0.15)] backdrop-blur-md dark:bg-gray-900/70 dark:text-gray-100;
+  @apply relative flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border bg-white/80 px-4 py-2 text-sm text-gray-700 shadow-[0_12px_32px_rgba(33,114,118,0.15)] backdrop-blur-md dark:bg-gray-900/70 dark:text-gray-100;
 
   /* Color manual para evitar clases faltantes en Tailwind */
   border-color: rgba(33, 114, 118, 0.25);
@@ -33,22 +34,24 @@ input#nav-toggle:checked ~ #nav-menu {
   content: "";
   @apply absolute inset-0 opacity-80;
   background: linear-gradient(
-    to right,
-    rgba(33, 114, 118, 0.15),
-    transparent,
-    rgba(33, 114, 118, 0.15)
+    90deg,
+    rgba(28, 91, 95, 0.18),
+    rgba(33, 114, 118, 0.12),
+    rgba(243, 164, 21, 0.14),
+    rgba(33, 114, 118, 0.12),
+    rgba(28, 91, 95, 0.18)
   );
 }
 
 .topbar::after {
   content: "";
-  @apply absolute -left-24 top-1/2 h-24 w-24 -translate-y-1/2 rounded-full blur-[60px];
-  background-color: rgba(33, 114, 118, 0.2);
+  @apply absolute -left-20 top-1/2 h-16 w-16 -translate-y-1/2 rounded-full blur-[50px];
+  background-color: rgba(33, 114, 118, 0.22);
 }
 
 .topbar-glow {
-  @apply pointer-events-none absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full blur-[70px];
-  background-color: rgba(243, 164, 21, 0.3);
+  @apply pointer-events-none absolute -right-12 top-1/2 h-20 w-20 -translate-y-1/2 rounded-full blur-[60px];
+  background-color: rgba(243, 164, 21, 0.32);
 }
 
 .topbar-contact {
@@ -56,11 +59,11 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-link {
-  @apply inline-flex items-center gap-2 rounded-full bg-white/60 px-3 py-2 font-medium text-gray-800 transition hover:-translate-y-[1px] hover:text-primary hover:shadow-md dark:bg-gray-800/70 dark:text-gray-100;
+  @apply inline-flex items-center gap-2 rounded-full bg-white/60 px-3 py-1.5 font-medium text-gray-800 transition hover:-translate-y-[1px] hover:text-primary hover:shadow-md dark:bg-gray-800/70 dark:text-gray-100;
 }
 
 .topbar-icon {
-  @apply grid h-8 w-8 place-items-center rounded-full text-primary;
+  @apply grid h-7 w-7 place-items-center rounded-full text-primary;
   background-color: rgba(33, 114, 118, 0.15);
 }
 
@@ -88,7 +91,7 @@ input#nav-toggle:checked ~ #nav-menu {
 
 @media (max-width: 1023px) {
   .topbar {
-    @apply flex-col items-start gap-3 rounded-xl px-4 py-3;
+    @apply flex-col items-start gap-3 rounded-xl px-4 py-2;
   }
 
   .topbar-contact,

@@ -36,13 +36,14 @@ const blogCtaText = currentLocale === 'en' ? 'Discover our blog categories' : 'E
 const blogCtaHighlight = currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS';
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const { email, phone, location } = config.params;
+const { email, phone } = config.params;
 const topbarSocial = {
   facebook: social.facebook,
   instagram: social.instagram,
   youtube: social.youtube,
   linkedin: social.linkedin,
 };
+const mapUrl = "https://www.google.com/maps/search/?api=1&query=PaqariOpenLab";
 
 // console.log('Astro.props.is404')
 // console.log(Astro.props.is404)
@@ -77,12 +78,12 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           </span>
           <span class="topbar-text">{email}</span>
         </a>
-        <div class="topbar-link">
+        <a class="topbar-link" href={mapUrl} target="_blank" rel="noopener noreferrer">
           <span class="topbar-icon">
             <IoLocationOutline />
           </span>
-          <span class="topbar-text">{location}</span>
-        </div>
+          <span class="topbar-text">PaqariOpenLab</span>
+        </a>
       </div>
       <div class="topbar-social">
         <span class="topbar-badge">Síguenos</span>
