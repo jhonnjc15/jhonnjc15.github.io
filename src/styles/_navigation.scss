@@ -18,36 +18,36 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .topbar-container {
   @apply sticky top-0 z-[60] mb-2;
-  height: 30px;
-  min-height: 30px;
+  height: 40px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-border-soft);
   background: transparent;
 }
 
 .topbar {
   @apply relative flex w-full items-center justify-between gap-3 text-[10px] font-medium;
-  min-height: 30px;
+  min-height: 40px;
   line-height: 1;
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .topbar-contact {
-  @apply relative z-10 flex flex-wrap items-center gap-2 lg:gap-3;
+  @apply relative z-10 flex flex-wrap items-center gap-3 lg:gap-4;
 }
 
 .topbar-link {
   @apply inline-flex items-center gap-1 transition hover:opacity-80;
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .topbar-icon {
   @apply grid place-items-center rounded-sm;
-  width: 12px;
-  height: 12px;
-  font-size: 12px;
+  width: 11px;
+  height: 11px;
+  font-size: 11px;
 }
 
 .topbar-text {
@@ -55,13 +55,13 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-social-icons {
-  @apply flex items-center gap-1 text-[12px];
+  @apply flex items-center gap-1 text-[11px];
 
   a {
     @apply inline-flex items-center justify-center rounded-full transition hover:-translate-y-[1px];
-    width: 12px;
-    height: 12px;
-    color: var(--color-secondary);
+    width: 10px;
+    height: 10px;
+    color: var(--color-text);
   }
 }
 
@@ -88,6 +88,7 @@ input#nav-toggle:checked ~ #nav-menu {
 .header-sticky .navbar {
   @apply border-transparent shadow-[0_10px_35px_rgba(0,0,0,0.16)] scale-[1.01]
          bg-white/85 backdrop-blur-md dark:bg-gray-900/85;
+  margin-top: 8px;
 }
 
 .header-sticky .navbar::before {
