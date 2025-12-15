@@ -31,16 +31,24 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .topbar::before {
   content: "";
-  @apply absolute inset-0 bg-gradient-to-r from-primary/15 via-transparent to-primary/15 opacity-80;
+  @apply absolute inset-0 opacity-80;
+  background: linear-gradient(
+    to right,
+    rgba(33, 114, 118, 0.15),
+    transparent,
+    rgba(33, 114, 118, 0.15)
+  );
 }
 
 .topbar::after {
   content: "";
-  @apply absolute -left-24 top-1/2 h-24 w-24 -translate-y-1/2 rounded-full bg-primary/20 blur-[60px];
+  @apply absolute -left-24 top-1/2 h-24 w-24 -translate-y-1/2 rounded-full blur-[60px];
+  background-color: rgba(33, 114, 118, 0.2);
 }
 
 .topbar-glow {
-  @apply pointer-events-none absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-secondary/30 blur-[70px];
+  @apply pointer-events-none absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full blur-[70px];
+  background-color: rgba(243, 164, 21, 0.3);
 }
 
 .topbar-contact {
@@ -52,7 +60,8 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-icon {
-  @apply grid h-8 w-8 place-items-center rounded-full bg-primary/15 text-primary;
+  @apply grid h-8 w-8 place-items-center rounded-full text-primary;
+  background-color: rgba(33, 114, 118, 0.15);
 }
 
 .topbar-text {
@@ -64,14 +73,16 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-badge {
-  @apply rounded-full bg-primary/15 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-primary;
+  @apply rounded-full px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-primary;
+  background-color: rgba(33, 114, 118, 0.15);
 }
 
 .topbar-social-icons {
   @apply flex items-center gap-3 text-lg;
 
   a {
-    @apply inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition hover:-translate-y-[1px] hover:bg-primary hover:text-white;
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full text-primary transition hover:-translate-y-[1px] hover:bg-primary hover:text-white;
+    background-color: rgba(33, 114, 118, 0.1);
   }
 }
 
