@@ -64,7 +64,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 
 <header  class="header">
   <div class="topbar-container">
-    <div class="container topbar">
+    <div class="topbar">
       <div class="topbar-contact">
         <a class="topbar-link" href={`tel:${phone}`}>
           <span class="topbar-icon">
@@ -85,11 +85,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           <span class="topbar-text">PaqariOpenLab</span>
         </a>
       </div>
-      <div class="topbar-social">
-        <span class="topbar-badge">Síguenos</span>
-        <Social source={topbarSocial} className="social-icons topbar-social-icons" />
-      </div>
-      <span class="topbar-glow" aria-hidden="true"></span>
+      <Social source={topbarSocial} className="social-icons topbar-social-icons" />
     </div>
   </div>
   <nav
