@@ -16,6 +16,79 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply sticky top-0 z-50 bg-transparent px-5 sm:px-10 py-6 transition-all duration-300;
 }
 
+.topbar-container {
+  @apply relative mb-4;
+}
+
+.topbar {
+  @apply relative flex flex-wrap items-center justify-between gap-4 overflow-hidden rounded-2xl border border-primary/25 bg-white/80 px-5 py-3 text-sm text-gray-700 shadow-[0_12px_32px_rgba(33,114,118,0.15)] backdrop-blur-md dark:border-primary/30 dark:bg-gray-900/70 dark:text-gray-100;
+}
+
+.topbar::before {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-r from-primary/15 via-transparent to-primary/15 opacity-80;
+}
+
+.topbar::after {
+  content: "";
+  @apply absolute -left-24 top-1/2 h-24 w-24 -translate-y-1/2 rounded-full bg-primary/20 blur-[60px];
+}
+
+.topbar-glow {
+  @apply pointer-events-none absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-secondary/30 blur-[70px];
+}
+
+.topbar-contact {
+  @apply relative z-10 flex flex-wrap items-center gap-3 lg:gap-4;
+}
+
+.topbar-link {
+  @apply inline-flex items-center gap-2 rounded-full bg-white/60 px-3 py-2 font-medium text-gray-800 transition hover:-translate-y-[1px] hover:text-primary hover:shadow-md dark:bg-gray-800/70 dark:text-gray-100;
+}
+
+.topbar-icon {
+  @apply grid h-8 w-8 place-items-center rounded-full bg-primary/15 text-primary;
+}
+
+.topbar-text {
+  @apply whitespace-nowrap text-[13px] sm:text-[14px];
+}
+
+.topbar-social {
+  @apply relative z-10 flex items-center gap-3 rounded-full bg-white/70 px-3 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/80;
+}
+
+.topbar-badge {
+  @apply rounded-full bg-primary/15 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-primary;
+}
+
+.topbar-social-icons {
+  @apply flex items-center gap-3 text-lg;
+
+  a {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition hover:-translate-y-[1px] hover:bg-primary hover:text-white;
+  }
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    @apply flex-col items-start gap-3 rounded-xl px-4 py-3;
+  }
+
+  .topbar-contact,
+  .topbar-social {
+    @apply w-full;
+  }
+
+  .topbar-social {
+    @apply justify-between;
+  }
+
+  .topbar-text {
+    @apply whitespace-normal leading-tight;
+  }
+}
+
 /* NAVBAR BASE */
 .navbar {
   @apply relative flex flex-wrap items-center justify-between bg-transparent py-2 transition-colors duration-500 ease-in-out;

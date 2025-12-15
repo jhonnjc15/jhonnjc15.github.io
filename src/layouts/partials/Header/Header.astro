@@ -1,12 +1,16 @@
 ---
 import Logo from "@components/Logo.astro";
+import Social from "@components/Social.astro";
 import menu from "@config/menu.json";
+import config from "@config/config.json";
+import social from "@config/social.json";
 
 import LanguageSelector from "../Header/LanguageSelector.astro"
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import ChevronIcon from "./Chevron.astro"
 import ThemeToggle from "./ThemeToggle.astro";
+import { IoCall, IoLocationOutline, IoMail } from "react-icons/io5/index.js";
 
 export interface ChildNavigationLink {
   name: string;
@@ -32,6 +36,13 @@ const blogCtaText = currentLocale === 'en' ? 'Discover our blog categories' : 'E
 const blogCtaHighlight = currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS';
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
+const { email, phone, location } = config.params;
+const topbarSocial = {
+  facebook: social.facebook,
+  instagram: social.instagram,
+  youtube: social.youtube,
+  linkedin: social.linkedin,
+};
 
 // console.log('Astro.props.is404')
 // console.log(Astro.props.is404)
@@ -51,6 +62,35 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 ---
 
 <header  class="header">
+  <div class="topbar-container">
+    <div class="container topbar">
+      <div class="topbar-contact">
+        <a class="topbar-link" href={`tel:${phone}`}>
+          <span class="topbar-icon">
+            <IoCall />
+          </span>
+          <span class="topbar-text">{phone}</span>
+        </a>
+        <a class="topbar-link" href={`mailto:${email}`}>
+          <span class="topbar-icon">
+            <IoMail />
+          </span>
+          <span class="topbar-text">{email}</span>
+        </a>
+        <div class="topbar-link">
+          <span class="topbar-icon">
+            <IoLocationOutline />
+          </span>
+          <span class="topbar-text">{location}</span>
+        </div>
+      </div>
+      <div class="topbar-social">
+        <span class="topbar-badge">Síguenos</span>
+        <Social source={topbarSocial} className="social-icons topbar-social-icons" />
+      </div>
+      <span class="topbar-glow" aria-hidden="true"></span>
+    </div>
+  </div>
   <nav
     class="border border-transparent navbar container rounded-md lg:rounded-full transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
   >
