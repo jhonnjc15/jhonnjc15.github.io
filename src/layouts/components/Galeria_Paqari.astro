@@ -1,4 +1,5 @@
 ---
+import "photoswipe/style.css";
 import TestimonialSliderPaqari from "@layouts/function-components/TestimonialSliderPaqari";
 import { getI18N } from "@i18n/index";
 const { galery } = Astro.props;
@@ -14,10 +15,48 @@ const i18n = getI18N({ currentLocale });
       <p class="text-text-offset leading-relaxed">{galery.description}</p>
     </div>
 
-    <div class="mt-12">
+    <div class="mt-12" id="paqari-gallery">
       <div class="col-12">
         <TestimonialSliderPaqari list={galery.galery_list} client:load />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  async function getImageSize(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        resolve({ width: img.naturalWidth, height: img.naturalHeight });
+      };
+    });
+  }
+
+  document.addEventListener("astro:page-load", async () => {
+    const anchors = document.querySelectorAll("#paqari-gallery a[data-pswp-item]");
+
+    for (const a of anchors) {
+      const img = a.querySelector("img");
+      if (img) {
+        const { width, height } = await getImageSize(img.src);
+        a.dataset.pswpWidth = width;
+        a.dataset.pswpHeight = height;
+      }
+    }
+
+    const { default: PhotoSwipeLightbox } = await import("photoswipe/lightbox");
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#paqari-gallery",
+      children: "a[data-pswp-item]",
+      pswpModule: () => import("photoswipe"),
+      showHideAnimationType: "fade",
+      showAnimationDuration: 300,
+      hideAnimationDuration: 200,
+    });
+
+    lightbox.init();
+  });
+</script>

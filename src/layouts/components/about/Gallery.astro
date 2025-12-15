@@ -1,4 +1,5 @@
 ---
+import "photoswipe/style.css";
 import { markdownify } from "@lib/utils/textConverter";
 const { gallery } = Astro.props;
 const { title, description, images } = gallery;
@@ -100,20 +101,62 @@ const galleryItems = baseItems.map((item, index) => ({
               gridRowStart: image.rowStart,
             }}
           >
-            <div class="picture-surface">
+            <a
+              href={image.src}
+              data-pswp-item
+              class="picture-surface"
+            >
               <img
                 class="picture-img"
                 src={image.src}
                 alt={image.alt || title}
                 loading="lazy"
               />
-            </div>
+            </a>
           </div>
         ))}
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  async function getImageSize(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        resolve({ width: img.naturalWidth, height: img.naturalHeight });
+      };
+    });
+  }
+
+  document.addEventListener("astro:page-load", async () => {
+    const anchors = document.querySelectorAll("#photo-gallery a[data-pswp-item]");
+
+    for (const a of anchors) {
+      const img = a.querySelector("img");
+      if (img) {
+        const { width, height } = await getImageSize(img.src);
+        a.dataset.pswpWidth = width;
+        a.dataset.pswpHeight = height;
+      }
+    }
+
+    const { default: PhotoSwipeLightbox } = await import("photoswipe/lightbox");
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#photo-gallery",
+      children: "a[data-pswp-item]",
+      pswpModule: () => import("photoswipe"),
+      showHideAnimationType: "fade",
+      showAnimationDuration: 300,
+      hideAnimationDuration: 200,
+    });
+
+    lightbox.init();
+  });
+</script>
 
 <style lang="scss">
   .gallery-shell {
@@ -151,6 +194,7 @@ const galleryItems = baseItems.map((item, index) => ({
     position: relative;
     height: 100%;
     width: 100%;
+    display: block;
     background: rgba(255, 255, 255, 0.78);
     box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(15, 23, 42, 0.08);

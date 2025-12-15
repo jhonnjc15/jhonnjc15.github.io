@@ -71,11 +71,17 @@ const TestimonialSlider = ({ list }) => {
           <SwiperSlide key={"feature-" + i}>
             <div className="relative overflow-hidden group">
               {/* Imagen */}
-              <img
-                src={item.image}
-                alt=""
-                className="h-[420px] w-full object-cover transition duration-700 transform lg:group-hover:scale-105"
-              />
+              <a
+                href={item.image}
+                data-pswp-item
+                className="block h-full"
+              >
+                <img
+                  src={item.image}
+                  alt=""
+                  className="h-[420px] w-full object-cover transition duration-700 transform lg:group-hover:scale-105"
+                />
+              </a>
 
               {/* Capa oscura (solo visible en pantallas grandes) */}
               <div
