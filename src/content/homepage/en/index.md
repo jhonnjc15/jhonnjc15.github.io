@@ -8,6 +8,15 @@ banner:
     link: "/about"
     enable: true
 
+video_section:
+  id: "ysz5S6PUM-U"
+  sectionLabel: "Live lab spotlight"
+  title: "See how our open lab connects ideas"
+  description: "Watch how we co-create with community, technology, and hands-on experiments to turn bold concepts into sustainable prototypes."
+  highlights:
+    - "Full audio so you catch every explanation and reaction on site."
+    - "On-screen controls that let you play or pause whenever you're ready."
+
 ##key features
 key_features:
   title: "The Highlight of Our Solution"

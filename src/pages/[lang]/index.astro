@@ -27,31 +27,7 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery } = homepage.data;
-
-const videoSection = currentLocale === "en"
-  ? {
-    id: "ysz5S6PUM-U",
-    sectionLabel: "Live lab spotlight",
-    title: "See how our open lab connects ideas",
-    description:
-      "Watch how we co-create with community, technology, and hands-on experiments to turn bold concepts into sustainable prototypes.",
-    highlights: [
-      "Full audio so you catch every explanation and reaction on site.",
-      "On-screen controls that let you play or pause whenever you're ready.",
-    ],
-  }
-  : {
-    id: "ysz5S6PUM-U",
-    sectionLabel: "Vista del laboratorio en vivo",
-    title: "Mira cómo nuestro laboratorio conecta ideas",
-    description:
-      "Observa cómo co-creamos con la comunidad, la tecnología y la experimentación práctica para convertir conceptos audaces en prototipos sostenibles.",
-    highlights: [
-      "Audio completo para que escuches cada explicación y reacción en el espacio.",
-      "Controles visibles en pantalla para reproducir o pausar cuando prefieras.",
-    ],
-  };
+const { banner, key_features, service, testimonial, galery, video_section } = homepage.data;
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -67,7 +43,7 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
   <!-- banner -->
   <Banner banner={banner} />
 
-  <VideoSpotlight videoSection={videoSection} />
+  <VideoSpotlight videoSection={video_section} />
 
   <!-- Porductos Categorías  -->
   <ProductsExperiencesHome/>

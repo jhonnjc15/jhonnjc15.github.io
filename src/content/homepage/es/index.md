@@ -8,6 +8,15 @@ banner:
     link: "/about"
     enable: true
 
+video_section:
+  id: "ysz5S6PUM-U"
+  sectionLabel: "Vista del laboratorio en vivo"
+  title: "Mira cómo nuestro laboratorio conecta ideas"
+  description: "Observa cómo co-creamos con la comunidad, la tecnología y la experimentación práctica para convertir conceptos audaces en prototipos sostenibles."
+  highlights:
+    - "Audio completo para que escuches cada explicación y reacción en el espacio."
+    - "Controles visibles en pantalla para reproducir o pausar cuando prefieras."
+
 ##key features
 key_features:
   title: "La Parte Más Destacada de Nuestra Solución"
