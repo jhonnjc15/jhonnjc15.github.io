@@ -22,6 +22,20 @@ const ChatWidget = ({ chatContent }) => {
     [chatContent]
   );
 
+  const locale = (copy.locale || "es").toLowerCase();
+  const requestErrorMessage =
+    copy.errorMessage?.trim() ||
+    (locale.startsWith("es")
+      ? "No pudimos obtener respuesta. Por favor, vuelve a intentarlo."
+      : "We couldn't get a response. Please try again.");
+  const botErrorFallback =
+    copy.botErrorFallback?.trim() ||
+    (locale.startsWith("es")
+      ? "Ups, algo salió mal. Inténtalo nuevamente en un momento."
+      : "Oops, something went wrong. Please try again soon.");
+  const botNoAnswerFallback =
+    copy.botNoAnswerFallback?.trim() || requestErrorMessage;
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -110,7 +124,7 @@ const ChatWidget = ({ chatContent }) => {
       const data = await response.json();
       const botMessage = {
         role: "assistant",
-        content: data.answer || copy.botNoAnswerFallback || "",
+        content: data.answer || botNoAnswerFallback,
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -118,10 +132,10 @@ const ChatWidget = ({ chatContent }) => {
       console.error("Chat request failed", err);
       const fallbackMessage = {
         role: "assistant",
-        content: copy.botErrorFallback || copy.botNoAnswerFallback || "",
+        content: botErrorFallback,
       };
       setMessages((prev) => [...prev, fallbackMessage]);
-      setError(copy.errorMessage || "");
+      setError(requestErrorMessage);
     } finally {
       setIsLoading(false);
     }
