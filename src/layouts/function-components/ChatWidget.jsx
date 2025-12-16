@@ -8,80 +8,25 @@ const ENDPOINT =
 
 marked.setOptions({ gfm: true, breaks: true });
 
-const defaultCopy = {
-  locale: "es",
-  headerTitle: "Paqari AI",
-  headerSubtitle: "Chatbot RAG",
-  greeting: "Hola 👋",
-  greetingQuestion: "¿Cómo te puedo ayudar hoy?",
-  description: "Elige una de las preguntas rápidas o escribe tu consulta para comenzar.",
-  emptyState: "Escribe tu primera pregunta para comenzar a conversar.",
-  placeholder: "Escribe tu mensaje...",
-  disclaimer: "Paqari puede equivocarse. Verifica las respuestas.",
-  loaderLabel: "El bot está escribiendo…",
-  quickPrompts: [
-    {
-      label: "Quiero migrar a Hostinger",
-      message:
-        "¡Hola! Quiero migrar a Hostinger. ¿Puedes ayudarme a planificar la migración paso a paso?",
-    },
-    {
-      label: "Quiero crear un sitio web",
-      message:
-        "¡Hola! Quiero crear un sitio web. ¿Puedes guiarme sobre la mejor forma de hacerlo y recomendarme un plan de hosting?",
-    },
-    {
-      label: "Elegir plan adecuado",
-      message:
-        "Necesito ayuda para elegir el plan de hosting adecuado. ¿Qué me recomiendas según mi tipo de proyecto?",
-    },
-  ],
-  actions: {
-    download: {
-      title: "Descargar conversación",
-      message: "¿Quieres descargar el historial del chat en un archivo de texto?",
-      confirm: "Descargar",
-      cancel: "Cancelar",
-    },
-    clear: {
-      title: "Borrar conversación",
-      message: "¿Seguro que deseas borrar el historial del chat? Esta acción no se puede deshacer.",
-      confirm: "Borrar",
-      cancel: "Cancelar",
-    },
-  },
-};
-
 const ChatWidget = ({ chatContent }) => {
-  const copy = useMemo(() => {
-    const actions = {
-      download: {
-        ...defaultCopy.actions.download,
-        ...chatContent?.actions?.download,
+  const copy = useMemo(
+    () => ({
+      locale: chatContent?.locale || "es",
+      ...(chatContent || {}),
+      actions: {
+        download: chatContent?.actions?.download || {},
+        clear: chatContent?.actions?.clear || {},
       },
-      clear: {
-        ...defaultCopy.actions.clear,
-        ...chatContent?.actions?.clear,
-      },
-    };
-
-    return {
-      ...defaultCopy,
-      ...chatContent,
-      actions,
-      quickPrompts:
-        chatContent?.quickPrompts?.length > 0
-          ? chatContent.quickPrompts
-          : defaultCopy.quickPrompts,
-    };
-  }, [chatContent]);
+      quickPrompts: chatContent?.quickPrompts || [],
+    }),
+    [chatContent]
+  );
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [locale, setLocale] = useState(copy.locale || "es");
   const [confirmAction, setConfirmAction] = useState(null);
   const [isPreviewingPrompt, setIsPreviewingPrompt] = useState(false);
 
@@ -91,7 +36,6 @@ const ChatWidget = ({ chatContent }) => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setLocale(copy.locale || window.navigator?.language || "es");
 
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -103,7 +47,7 @@ const ChatWidget = ({ chatContent }) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [copy.locale]);
+  }, []);
 
   useEffect(() => {
     if (!isMountedRef.current) {
@@ -131,8 +75,6 @@ const ChatWidget = ({ chatContent }) => {
 
     return () => document.body.classList.remove(className);
   }, [isOpen]);
-
-  const isSpanish = (locale || copy.locale || "es").toLowerCase().startsWith("es");
 
   const renderMarkdown = (content) => ({
     __html: marked.parse(content || ""),
@@ -168,11 +110,7 @@ const ChatWidget = ({ chatContent }) => {
       const data = await response.json();
       const botMessage = {
         role: "assistant",
-        content:
-          data.answer ||
-          (isSpanish
-            ? "No encontramos una respuesta en este momento."
-            : "We could not find an answer right now."),
+        content: data.answer || copy.botNoAnswerFallback || "",
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -180,16 +118,10 @@ const ChatWidget = ({ chatContent }) => {
       console.error("Chat request failed", err);
       const fallbackMessage = {
         role: "assistant",
-        content: isSpanish
-          ? "Ups, algo salió mal. Inténtalo nuevamente en un momento."
-          : "Oops, something went wrong. Please try again soon.",
+        content: copy.botErrorFallback || copy.botNoAnswerFallback || "",
       };
       setMessages((prev) => [...prev, fallbackMessage]);
-      setError(
-        isSpanish
-          ? "No pudimos obtener respuesta. Por favor, vuelve a intentarlo."
-          : "We couldn't get a response. Please try again."
-      );
+      setError(copy.errorMessage || "");
     } finally {
       setIsLoading(false);
     }
@@ -213,7 +145,10 @@ const ChatWidget = ({ chatContent }) => {
 
     const transcript = messages
       .map((message) => {
-        const author = message.role === "assistant" ? "PaqariBot" : isSpanish ? "Usuario" : "User";
+        const author =
+          message.role === "assistant"
+            ? copy.botName || "Bot"
+            : copy.userLabel || "You";
         return `${author}: ${message.content}`;
       })
       .join("\n\n");
@@ -222,7 +157,7 @@ const ChatWidget = ({ chatContent }) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "paqari-chat.txt";
+    link.download = copy.downloadFilename || "paqari-chat.txt";
     link.click();
     URL.revokeObjectURL(url);
   };
@@ -280,7 +215,7 @@ const ChatWidget = ({ chatContent }) => {
         >
           <div className="flex flex-col items-end max-w-[80%] ml-auto">
             <p className="mb-1 text-xs font-semibold text-gray-700 dark:text-gray-200">
-              {isSpanish ? "Tú" : "You"}
+              {copy.userLabel || "You"}
             </p>
             <div className={`w-full px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
               <p className="whitespace-pre-wrap text-right">{message.content}</p>
@@ -299,13 +234,13 @@ const ChatWidget = ({ chatContent }) => {
           <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 shadow-sm">
             <img
               src="/images/shared/logos/hoja_rayo_logo.ico"
-              alt="PaqariBot"
+              alt={copy.botAvatarAlt || copy.botName || "Bot"}
               className="h-6 w-6 object-contain"
               loading="lazy"
             />
           </div>
           <div className="flex flex-col">
-            <p className="text-xs font-semibold leading-tight">PaqariBot</p>
+            <p className="text-xs font-semibold leading-tight">{copy.botName || "Bot"}</p>
             <div className={`mt-1 max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${bubbleStyles}`}>
               <div
                 className="prose prose-sm prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 dark:prose-invert"
@@ -341,10 +276,10 @@ const ChatWidget = ({ chatContent }) => {
     </button>
   ));
 
-    return (
-      <div className="pointer-events-none fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 z-[40] flex flex-col items-end gap-3 sm:flex-row sm:items-end sm:justify-end sm:gap-4">
-        <div
-          aria-hidden={!isOpen}
+  return (
+    <div className="pointer-events-none fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 z-[40] flex flex-col items-end gap-3 sm:flex-row sm:items-end sm:justify-end sm:gap-4">
+      <div
+        aria-hidden={!isOpen}
           className={`relative flex h-[70vh] max-h-[640px] w-full sm:h-[560px] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-2xl transition-all duration-300 ease-out dark:border-gray-700 dark:bg-gray-900 origin-bottom-right ${
             isOpen
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -359,8 +294,8 @@ const ChatWidget = ({ chatContent }) => {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                aria-label={copy.actions.download.title}
-                title={copy.actions.download.title}
+                aria-label={copy.actions.download.title || "Download conversation"}
+                title={copy.actions.download.title || "Download conversation"}
                 onClick={() => openConfirmation("download")}
                 className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
               >
@@ -377,8 +312,8 @@ const ChatWidget = ({ chatContent }) => {
               </button>
               <button
                 type="button"
-                aria-label={copy.actions.clear.title}
-                title={copy.actions.clear.title}
+                aria-label={copy.actions.clear.title || "Clear conversation"}
+                title={copy.actions.clear.title || "Clear conversation"}
                 onClick={() => openConfirmation("clear")}
                 className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
               >
@@ -399,8 +334,8 @@ const ChatWidget = ({ chatContent }) => {
               </button>
               <button
                 type="button"
-                aria-label={isSpanish ? "Ocultar chat" : "Hide chat"}
-                title={isSpanish ? "Ocultar chat" : "Hide chat"}
+                aria-label={copy.hideLabel || "Hide chat"}
+                title={copy.hideLabel || "Hide chat"}
                 onClick={handleHide}
                 className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-paqariYellow"
               >
@@ -467,7 +402,7 @@ const ChatWidget = ({ chatContent }) => {
                     <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 shadow-sm dark:bg-gray-800 dark:ring-gray-700">
                       <img
                         src="/images/shared/logos/hoja_rayo_logo.ico"
-                        alt="PaqariBot"
+                        alt={copy.botAvatarAlt || copy.botName || "Bot"}
                         className="h-7 w-7 object-contain"
                         loading="lazy"
                       />
@@ -527,7 +462,7 @@ const ChatWidget = ({ chatContent }) => {
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                aria-label={isSpanish ? "Enviar mensaje" : "Send message"}
+                aria-label={copy.sendMessageLabel || "Send message"}
                 className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-paqariGreen text-white shadow-lg transition hover:bg-paqariGreenDark disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <svg
@@ -548,7 +483,7 @@ const ChatWidget = ({ chatContent }) => {
 
         <button
           type="button"
-          aria-label="Abrir chat con el bot"
+          aria-label={copy.openLabel || "Open chat"}
           onClick={() => setIsOpen((prev) => !prev)}
           className={`pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full bg-paqariGreen text-white shadow-xl transition transform focus:outline-none focus:ring-0 focus:ring-offset-0 active:scale-95 ${
             isOpen ? "scale-95" : "hover:scale-105"
