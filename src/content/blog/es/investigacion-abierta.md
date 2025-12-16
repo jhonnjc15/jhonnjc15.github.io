@@ -3,7 +3,7 @@ title: "Investigación colaborativa a cielo abierto"
 translationKey: blog-open-research
 subtitle: "Herramientas científicas creadas junto a las comunidades que las usan"
 date: 2024-06-18
-image: "/images/posts/post-10.png"
+image: "/images/blog/posts/post-10.png"
 author: "Equipo Paqari"
 categories:
   - scientific
@@ -15,7 +15,7 @@ Trabajar con científicos y comunidades requiere transparencia total. Cada proye
 
 Nuestra carta es la columna vertebral de cada colaboración. Define roles, pautas de contribución y cómo cuidamos los datos. Los aliados la revisan y firman antes de construir para asegurar expectativas claras.
 
-![Investigadores co-diseñando un protocolo de ciencia abierta](/images/posts/post-13.png)
+![Investigadores co-diseñando un protocolo de ciencia abierta](/images/blog/posts/post-13.png)
 
 ### Puntos clave de la carta
 
@@ -29,7 +29,7 @@ Nuestra carta es la columna vertebral de cada colaboración. Define roles, pauta
 
 Co-creamos kits modulares para recolectar datos en distintos entornos. Cada kit incluye contenedores etiquetados, tarjetas de calibración y códigos QR que enlazan a videos de configuración.
 
-![Kit de hardware abierto con sensores y tarjetas de calibración](/images/posts/post-1.png)
+![Kit de hardware abierto con sensores y tarjetas de calibración](/images/blog/posts/post-1.png)
 
 ### Flujo de despliegue
 

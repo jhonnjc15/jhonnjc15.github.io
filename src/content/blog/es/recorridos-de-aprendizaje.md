@@ -3,7 +3,7 @@ title: "Diseñamos recorridos de aprendizaje con Paqari"
 translationKey: blog-learning-paths
 subtitle: "Cómo convertimos conceptos complejos en experiencias educativas accesibles"
 date: 2024-04-20
-image: "/images/posts/post-2.png"
+image: "/images/blog/posts/post-2.png"
 author: "Equipo Paqari"
 categories:
   - educational
@@ -15,7 +15,7 @@ Aprender debería sentirse como una conversación, no como una lista interminabl
 
 Siempre abrimos el proyecto con un mapa visual que muestra cómo cada módulo fortalece una habilidad concreta. Incluye los materiales necesarios, el tiempo estimado por actividad y enlaces a complementos opcionales. Los facilitadores pueden imprimirlo o llevarlo en una tableta mientras se desplazan.
 
-![Facilitadores organizando un tablero curricular](/images/posts/post-4.png)
+![Facilitadores organizando un tablero curricular](/images/blog/posts/post-4.png)
 
 ### Paso 1 — Sesión de descubrimiento
 
@@ -29,7 +29,7 @@ Siempre abrimos el proyecto con un mapa visual que muestra cómo cada módulo fo
 
 Adaptamos nuestra biblioteca de microexperiencias según los hallazgos de descubrimiento. Cada tarjeta de actividad incluye instrucciones de montaje, notas para facilitadores y escenarios de resolución de problemas. Cambia o elimina tarjetas libremente; si una sección no está en el cuaderno Markdown simplemente no se mostrará en el sitio.
 
-![Tarjetas de prototipo y guías digitales sobre la mesa](/images/posts/post-8.png)
+![Tarjetas de prototipo y guías digitales sobre la mesa](/images/blog/posts/post-8.png)
 
 ### Paso 3 — Implementación y medición
 
@@ -50,7 +50,7 @@ Todos los entregables viven en nuestro repositorio abierto. Los facilitadores pu
 | Lista de verificación de evaluación | Registra habilidades, actitudes e indicadores de colaboración | Después de cada piloto |
 | Correos de seguimiento comunitario | Mantienen al grupo activo con nuevos retos | Trimestralmente o por cohorte |
 
-![Estudiantes explorando un kit práctico de electrónica](/images/posts/post-12.png)
+![Estudiantes explorando un kit práctico de electrónica](/images/blog/posts/post-12.png)
 
 ## Lista de verificación para facilitadores
 

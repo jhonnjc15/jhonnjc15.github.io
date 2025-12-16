@@ -140,12 +140,12 @@ members:
   member_list:
     - name: Eleanor Peña
       field: Cofundadora y COO
-      image: "/images/users/user-1.png"
+      image: "/images/shared/users/user-1.png"
     - name: Bukiakta Bansalo
       field: Gerente de Producto
-      image: "/images/users/user-2.png"
+      image: "/images/shared/users/user-2.png"
     - name: Ortrin Okaster
       field: Ingeniero de Software
-      image: "/images/users/user-3.png"
+      image: "/images/shared/users/user-3.png"
 ---
 Nuestra empresa se dedica a ofrecer soluciones innovadoras que impulsan el crecimiento de nuestros clientes. Con un enfoque en la calidad y la excelencia, trabajamos para transformar ideas en resultados tangibles. Estamos comprometidos con la satisfacción y el éxito de quienes confían en nosotros.

@@ -3,7 +3,7 @@ title: "Collaborative Research in the Open"
 translationKey: blog-open-research
 subtitle: "Building scientific tools alongside the communities that use them"
 date: 2024-06-18
-image: "/images/posts/post-10.png"
+image: "/images/blog/posts/post-10.png"
 author: "Paqari Team"
 categories:
   - scientific
@@ -15,7 +15,7 @@ Working with scientists and citizen researchers means embracing transparency. Ev
 
 Our charter acts as the backbone for every collaboration. It outlines roles, contribution guidelines, and how we handle data stewardship. Partners sign it before building to ensure expectations are clear.
 
-![Researchers co-designing an open science protocol](/images/posts/post-13.png)
+![Researchers co-designing an open science protocol](/images/blog/posts/post-13.png)
 
 ### Charter highlights
 
@@ -29,7 +29,7 @@ Our charter acts as the backbone for every collaboration. It outlines roles, con
 
 We co-create modular field kits so teams can collect data in diverse environments. Each kit includes labeled containers, calibration cards, and QR codes that link to setup videos.
 
-![Open hardware kit with sensors and calibration cards](/images/posts/post-1.png)
+![Open hardware kit with sensors and calibration cards](/images/blog/posts/post-1.png)
 
 ### Deployment workflow
 

@@ -3,7 +3,7 @@ title: "Laboratorios abiertos en movimiento"
 translationKey: blog-community-open-labs
 subtitle: "Cómo llevamos los talleres de Paqari a barrios y espacios aliados"
 date: 2024-07-12
-image: "/images/posts/post-11.png"
+image: "/images/blog/posts/post-11.png"
 author: "Equipo Paqari"
 categories:
   - community
@@ -19,7 +19,7 @@ Nuestro kit viajero se centra en lo esencial para que el montaje tome menos de 2
 - Tabletas con tutoriales y listas de verificación precargadas.
 - Una mini estación de impresión para etiquetas, códigos QR y consentimientos.
 
-![Facilitadores alineando un tablero curricular](/images/posts/post-3.png)
+![Facilitadores alineando un tablero curricular](/images/blog/posts/post-3.png)
 
 > **Consejo:** Si el espacio ya tiene buena conectividad, cambia los tutoriales a modo en línea y libera almacenamiento en las tabletas para capturar evidencia.
 
@@ -31,7 +31,7 @@ Dividimos cada visita en tres bloques repetibles que cualquier equipo anfitrión
 2. **Construir + probar (45 min):** Armar sensores o elementos narrativos y documentar qué cambia.
 3. **Cierre (20 min):** Grabar notas de voz, fotos y próximos pasos en el espacio compartido.
 
-![Muro de storyboard con los beats interactivos de la historia](/images/posts/post-5.png)
+![Muro de storyboard con los beats interactivos de la historia](/images/blog/posts/post-5.png)
 
 ## Entregar el laboratorio
 

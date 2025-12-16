@@ -298,7 +298,7 @@ const ChatWidget = ({ chatContent }) => {
         <div className="mr-2 flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
           <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 shadow-sm">
             <img
-              src="/images/hoja_rayo_logo.ico"
+              src="/images/shared/logos/hoja_rayo_logo.ico"
               alt="PaqariBot"
               className="h-6 w-6 object-contain"
               loading="lazy"
@@ -466,7 +466,7 @@ const ChatWidget = ({ chatContent }) => {
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200 shadow-sm dark:bg-gray-800 dark:ring-gray-700">
                       <img
-                        src="/images/hoja_rayo_logo.ico"
+                        src="/images/shared/logos/hoja_rayo_logo.ico"
                         alt="PaqariBot"
                         className="h-7 w-7 object-contain"
                         loading="lazy"

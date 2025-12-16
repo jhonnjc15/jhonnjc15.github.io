@@ -4,8 +4,8 @@
     "base_url": "https://jhonnjc15.github.io",
     "base_path": "/",
     "trailing_slash": true,
-    "favicon": "/images/hoja_rayo_logo.ico",
-    "logo": "/images/PqOL_logo.png",
+    "favicon": "/images/shared/logos/hoja_rayo_logo.ico",
+    "logo": "/images/shared/logos/PqOL_logo.png",
     "logo_width": "157",
     "logo_height": "61",
     "logo_text": ""

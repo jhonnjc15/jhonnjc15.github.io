@@ -140,12 +140,12 @@ members:
   member_list:
     - name: Eleanor Pena
       field: Co-founder & COO
-      image: "/images/users/user-1.png"
+      image: "/images/shared/users/user-1.png"
     - name: Bukiakta Bansalo
       field: Product Manager
-      image: "/images/users/user-2.png"
+      image: "/images/shared/users/user-2.png"
     - name: Ortrin Okaster
       field: Software Engineer
-      image: "/images/users/user-3.png"
+      image: "/images/shared/users/user-3.png"
 ---
 Our company is dedicated to providing innovative solutions that drive our clients' growth. With a focus on quality and excellence, we strive to turn ideas into tangible results. We are committed to the satisfaction and success of those who trust us.

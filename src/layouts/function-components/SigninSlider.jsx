@@ -16,7 +16,7 @@ const SigninSlider = ({ title }) => {
       {/*
       <img
         className="absolute left-0 top-0 h-full w-full"
-        src="/images/login-banner-bg.png"
+        src="/images/auth/login-banner-bg.png"
         alt=""
       />
       */} 
@@ -45,7 +45,7 @@ const SigninSlider = ({ title }) => {
                 width="667"
                 height="557"
                 className="mx-auto"
-                src="/images/signup-carousel-img-1.png"
+                src="/images/auth/signup-carousel-img-1.png"
                 alt=""
               />
             </SwiperSlide>
@@ -54,7 +54,7 @@ const SigninSlider = ({ title }) => {
                 width="667"
                 height="557"
                 className="mx-auto"
-                src="/images/signup-carousel-img-1.png"
+                src="/images/auth/signup-carousel-img-1.png"
                 alt=""
               />
             </SwiperSlide>
@@ -63,7 +63,7 @@ const SigninSlider = ({ title }) => {
                 width="667"
                 height="557"
                 className="mx-auto"
-                src="/images/signup-carousel-img-1.png"
+                src="/images/auth/signup-carousel-img-1.png"
                 alt=""
               />
             </SwiperSlide>

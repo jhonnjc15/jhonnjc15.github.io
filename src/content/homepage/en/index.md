@@ -2,7 +2,7 @@
 banner:
   title: "Paqari: where science and community help ideas grow"
   content: "Explore our open lab that blends hands-on learning, technology, and creativity to build sustainable solutions together."
-  image: /images/banner-img.png
+  image: /images/home/banner/banner-img.png
   button:
     label: Learn more about us
     link: "/about"
@@ -52,18 +52,18 @@ service:
     tab_list:
         - title: Essential for Building Sustainable Habits
           icon: "lock"
-          image: "/images/sells-by-country.png"
+          image: "/images/home/sections/sells-by-country.png"
         - title: Get a Global View of Your Daily Habits
           icon: "clock"
-          image: "/images/collaboration.png"
+          image: "/images/home/sections/collaboration.png"
         - title: Start Growing with the Habitify Platform
           icon: "bell"
-          image: "/images/sells-by-country.png"
+          image: "/images/home/sections/sells-by-country.png"
 
   our_service:
     - title: Accept Payments Anywhere in the World
       desctiption: Offer a smooth, frictionless payment experience no matter where your users are.
-      image: "/images/collaboration.png"
+      image: "/images/home/sections/collaboration.png"
       list:
         - Supports over 119 countries worldwide
         - Open transactions in over 100 currencies
@@ -71,7 +71,7 @@ service:
     - title: Responsibility That Works for You
       description: We offer tools to ensure your business complies with global regulations without sacrificing efficiency.
       video:
-        thumbnail: "/images/intro-thumbnail.png"
+        thumbnail: "/images/home/sections/intro-thumbnail.png"
         video_id: "g3-VxLQO7do"
       button:
         label: Meet Us
@@ -84,27 +84,27 @@ testimonial:
   description: Educators, makers, and partners share how Paqari elevates their projects with clear learning experiences and ready-to-use tools.
   testimonial_list:
     - author: David Cameron
-      avatar: "/images/users/user-5.png"
+      avatar: "/images/shared/users/user-5.png"
       organization: meta limited
       rating: four
       content: Our platform enables secure authentication experiences that better connect with users. Nosotros construimos.
     - author: David Cameron
-      avatar: "/images/users/user-6.png"
+      avatar: "/images/shared/users/user-6.png"
       organization: meta limited
       rating: five
       content: Thanks to this solution, we’ve simplified our access processes without compromising security.
     - author: David Cameron
-      avatar: "/images/users/user-2.png"
+      avatar: "/images/shared/users/user-2.png"
       organization: meta limited
       rating: five
       content: Thanks to this solution, we’ve simplified our access processes without compromising security.
     - author: David Cameron
-      avatar: "/images/users/user-1.png"
+      avatar: "/images/shared/users/user-1.png"
       organization: meta limited
       rating: four
       content: Our platform enables secure authentication experiences that better connect with users. Nosotros construimos.
     - author: David Cameron
-      avatar: "/images/users/user-4.png"
+      avatar: "/images/shared/users/user-4.png"
       organization: meta limited
       rating: three
       content: A complete shift in how we manage user access and security.
@@ -114,20 +114,20 @@ galery:
   description: "Moments that inspire us: workshops, prototypes, and community gatherings."
   galery_list:
     - name: David Cameron
-      image: "/images/galery_home/Baterias2025.png"
+      image: "/images/home/gallery/Baterias2025.png"
     - name: David Cameron
-      image: "/images/galery_home/Pqlab_catal_96pi.png"
+      image: "/images/home/gallery/Pqlab_catal_96pi.png"
     - name: David Cameron
-      image: "/images/galery_home/PqOl_hack_matter.png"
+      image: "/images/home/gallery/PqOl_hack_matter.png"
     - name: David Cameron
-      image: "/images/galery_home/pqol2025_egqds.png"
+      image: "/images/home/gallery/pqol2025_egqds.png"
     - name: David Cameron
-      image: "/images/galery_home/pqol2025_egraphen.png"
+      image: "/images/home/gallery/pqol2025_egraphen.png"
     - name: David Cameron
-      image: "/images/galery_home/pqol2025_qgqds.png"
+      image: "/images/home/gallery/pqol2025_qgqds.png"
     - name: David Cameron
-      image: "/images/galery_home/PqOLab_applicaciones_2.png"
+      image: "/images/home/gallery/PqOLab_applicaciones_2.png"
     - name: David Cameron
-      image: "/images/galery_home/Superficies2025.png"
+      image: "/images/home/gallery/Superficies2025.png"
 ---
 

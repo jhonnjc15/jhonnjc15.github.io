@@ -3,7 +3,7 @@ title: "Diseñamos experiencias inmersivas de entretenimiento"
 translationKey: blog-immersive-experiences
 subtitle: "Historias interactivas que conectan tecnología y emoción"
 date: 2024-05-08
-image: "/images/posts/post-6.png"
+image: "/images/blog/posts/post-6.png"
 author: "Equipo Paqari"
 categories:
   - entertainment
@@ -15,7 +15,7 @@ El entretenimiento es una puerta poderosa para explorar la ciencia y la tecnolog
 
 Cada espectáculo o instalación inicia con un plano que mapea el flujo de visitantes, los momentos emocionales y los disparadores técnicos. Lo co-diseñamos con los aliados para que sepan qué insumos preparar y qué pasos pueden personalizar.
 
-![Storyboard con los puntos clave de la historia](/images/posts/post-7.png)
+![Storyboard con los puntos clave de la historia](/images/blog/posts/post-7.png)
 
 ### Kit de módulos
 
@@ -29,7 +29,7 @@ Cada espectáculo o instalación inicia con un plano que mapea el flujo de visit
 
 Sincronizamos las pistas de audio y las transiciones de iluminación directamente desde el plano. Los facilitadores pueden activarlas manualmente o dejar que nuestra app de control administre los tiempos. Cada señal referencia un paquete de recursos descargable para que los equipos localicen voces y música.
 
-![Equipo probando sensores dentro de un set inmersivo](/images/posts/post-9.png)
+![Equipo probando sensores dentro de un set inmersivo](/images/blog/posts/post-9.png)
 
 ## Escenarios de implementación
 
