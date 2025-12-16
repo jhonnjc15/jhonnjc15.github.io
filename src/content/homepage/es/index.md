@@ -134,20 +134,20 @@ galery:
   description: "Momentos que nos inspiran: talleres, prototipos y encuentros con la comunidad."
   galery_list:
     - name: David Cameron
-      image: "/images/galery/imagen-1.jpg"
+      image: "/images/galery_home/Baterias2025.png"
     - name: David Cameron
-      image: "/images/galery/imagen-2.jpg"
+      image: "/images/galery_home/Pqlab_catal_96pi.png"
     - name: David Cameron
-      image: "/images/galery/imagen-3.jpg"
+      image: "/images/galery_home/PqOl_hack_matter.png"
     - name: David Cameron
-      image: "/images/galery/imagen-4.jpg"
+      image: "/images/galery_home/pqol2025_egqds.png"
     - name: David Cameron
-      image: "/images/galery/imagen-5.jpg"
+      image: "/images/galery_home/pqol2025_egraphen.png"
     - name: David Cameron
-      image: "/images/galery/imagen-6.png"
+      image: "/images/galery_home/pqol2025_qgqds.png"
     - name: David Cameron
-      image: "/images/galery/imagen-7.jpg"
+      image: "/images/galery_home/PqOLab_applicaciones_2.png"
     - name: David Cameron
-      image: "/images/galery/imagen-8.jpg"
+      image: "/images/galery_home/Superficies2025.png"
 ---
 
