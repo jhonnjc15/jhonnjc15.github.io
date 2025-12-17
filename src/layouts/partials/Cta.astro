@@ -11,23 +11,23 @@ const {
 } = config;
 ---
 
-<section class="section px-5 py-10 xl:py-[80px]">
+<section class="section px-5 py-10 xl:py-16">
   <div class="container">
     <div
-      class="bg-gradient row items-center justify-center gap-10 rounded-[80px] px-[30px] py-10 lg:py-16"
+      class="bg-gradient row items-center justify-center gap-8 lg:gap-12 rounded-[48px] px-5 py-8 lg:px-10 lg:py-12"
     >
       <div class="lg:col-6">
-        <div class="space-y-6">
-          <h2 class="h1 text-white">{title}</h2>
-          <p class="text-white text-lg leading-relaxed">
+        <div class="space-y-5">
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">{title}</h2>
+          <p class="text-white text-base md:text-lg leading-relaxed">
             {description}
           </p>
-          <a class="btn btn-white inline-flex w-auto items-center" href={link}>{label}</a>
+          <a class="btn btn-white inline-flex w-auto items-center" href={link} target="_blank" rel="noreferrer">{label}</a>
         </div>
       </div>
       <div class="lg:col-6">
         {image && (
-          <div class="overflow-hidden rounded-[32px] border border-white/20 bg-white/10 p-4 shadow-2xl backdrop-blur">
+          <div class="overflow-hidden rounded-[28px] border border-white/20 bg-white/10 p-3 md:p-4 shadow-2xl backdrop-blur max-w-xl mx-auto">
             <img
               src={image}
               alt="Divulgación científica 2025"

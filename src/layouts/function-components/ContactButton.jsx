@@ -4,11 +4,10 @@ import './ContactButtonStyles.css';
 const ContactButton = ({i18n}) => {
     const [state, setState] = useState(false)
 
-    const PhoneNumber = 940780152
+    const PhoneNumber = 993896226
     const defaultMessage = `${i18n.contact_button.wsp}`
     const whatsappMessage = `https://api.whatsapp.com/send/?phone=51${PhoneNumber}&text=${defaultMessage}&type=phone_number&app_absent=0`
-    const telegramUsarname = "VRaulJC"
-    const telegramMessage = `https://telegram.me/${telegramUsarname}?text=${defaultMessage}`
+    const telegramMessage = `https://t.me/+51${PhoneNumber}?text=${defaultMessage}`
     return (
         <div className='group fixed contact-button z-[60] bottom-24 right-4 sm:right-8 w-16 h-16 hover:h-48'>
             <div className='hidden group-hover:flex group-hover:flex-col h-32 justify-center items-center gap-4'>

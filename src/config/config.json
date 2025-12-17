@@ -22,7 +22,7 @@
     "title": "Divulgación científica para todas y todos",
     "description": "Sumérgete en nuestras guías, demostraciones y charlas sobre energía, tecnología y medio ambiente creadas en Paqari Open Lab.",
     "button": {
-      "label": "Ver canal en YouTube",
+      "label": "Visitar canal en YouTube",
       "link": "https://www.youtube.com/@PaqariOpenLab"
     },
     "image": "/images/home/cta/sci_divulg2025.png"
@@ -35,7 +35,7 @@
   },
 
   "params": {
-    "footer_description": "Paqari Open Lab comparte conocimiento abierto con kits, guías y comunidad para inspirar proyectos que cuidan el planeta.",
+    "footer_description": "",
     "email": "paqari.openlab@gmail.com",
     "location": "Puerta N° 5 - UNI, Av. Túpac Amaru 210, Rímac, Lima",
     "phone": "+51 993 896 226",

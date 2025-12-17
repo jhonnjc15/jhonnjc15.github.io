@@ -12,12 +12,12 @@ const buttonLabel = button.label || i18n.COMMON.contact_cta;
 const badgeLabel = currentLocale === "en" ? "Featured journey" : "Recorrido destacado";
 ---
 
-<section class="section banner relative overflow-hidden pb-12 pt-12 sm:pb-16 sm:pt-16 mt-8 sm:mt-14" data-animate="fade-right">
+<section class="section banner relative overflow-hidden pb-10 pt-10 sm:pb-14 sm:pt-14 mt-4 sm:mt-8" data-animate="fade-right">
   <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
   <div class="container relative">
-    <div class="grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_minmax(0,0.95fr)] lg:items-center">
+    <div class="grid gap-8 lg:gap-12 lg:grid-cols-[1.05fr_minmax(0,0.9fr)] lg:items-center">
       <div class="relative flex justify-center sm:justify-start lg:order-1" data-animate="fade-right">
-        <div class="max-w-4xl space-y-6 sm:space-y-7 sm:-mt-4 lg:-mt-6 text-center sm:text-left px-2 sm:px-0">
+        <div class="max-w-4xl space-y-6 sm:space-y-7 sm:-mt-2 lg:-mt-2 text-center sm:text-left px-2 sm:px-0">
           <p class="text-xs font-semibold uppercase tracking-[0.28em] text-paqariYellow dark:text-paqariYellow">
             {badgeLabel}
           </p>
@@ -41,8 +41,8 @@ const badgeLabel = currentLocale === "en" ? "Featured journey" : "Recorrido dest
           )}
         </div>
       </div>
-      <div class="hidden sm:flex lg:order-2" data-animate="zoom-in">
-        <div class="relative mx-auto max-w-[560px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-5 shadow-[0_25px_90px_-28px_rgba(0,0,0,0.5)] flex items-center justify-center">
+      <div class="hidden lg:flex lg:order-2" data-animate="zoom-in">
+        <div class="relative mx-auto max-w-[460px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-5 shadow-[0_25px_90px_-28px_rgba(0,0,0,0.5)] flex items-center justify-center">
           <Image
             class="w-full object-contain drop-shadow-2xl"
             alt="banner"

@@ -12,7 +12,7 @@ video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "Historias en YouTube"
   title: "Mira nuestros videos de divulgación y guías"
-  description: "Somos un emprendimiento dedicado a inspirar la curiosidad y fomentar la cultura científica con videos divulgativos, guías de uso de nuestros productos y curiosidades sobre educación🚀📚🎓, ciencia 💡 🧪🔬, tecnología💻🔧, energía⚡️🔋 y medio ambiente."
+  description: "Publicamos videos de divulgación y guías de uso de nuestros productos para compartir aprendizajes en educación, ciencia, tecnología, energía y medio ambiente."
   highlights:
     - "Colecciones de videos divulgativos y tutoriales prácticos publicados en nuestro canal."
     - "Guías para usar los kits de Paqari y replicar experimentos con la comunidad."

@@ -12,7 +12,7 @@ video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "YouTube highlights"
   title: "Watch our outreach videos and how-to guides"
-  description: "We’re a venture focused on inspiring curiosity and sparking scientific culture with outreach videos, product walkthroughs, and curiosities about education🚀📚🎓, science 💡 🧪🔬, technology💻🔧, energy⚡️🔋, and the environment."
+  description: "We share outreach videos and product walkthroughs to explore education, science, technology, energy, and the environment."
   highlights:
     - "Playlists of outreach pieces and practical tutorials published on our channel."
     - "Step-by-step guides to use Paqari kits and replicate experiments with your community."

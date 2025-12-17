@@ -15,6 +15,7 @@ const t = useTranslations(lang);
 const { footer } = menu;
 const { copyright, location, email, phone, footer_description } = config.params;
 const mapLink = social.address;
+const footerSocial = { ...social, whatsapp: "", telegram: "", email: "", phone: "", address: "" };
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 ---
 
@@ -24,7 +25,7 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <Logo />
         <div class="mt-6 space-y-2 leading-relaxed">
-          <p>{footer_description}</p>
+          {footer_description && <p>{footer_description}</p>}
           <p class="font-semibold" style="color: #002060;">Construyendo un futuro sostenible</p>
           <p class="font-semibold" style="color: #ae2012;">Building a sustainable future</p>
           <p class="font-semibold" style="color: #00b050;">Hamuq pachata aswan allin huqarispa</p>
@@ -33,7 +34,7 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <h6>Socials</h6>
 
-        <Social source={social} className="social-icons mt-4 lg:mt-6" />
+        <Social source={footerSocial} className="social-icons mt-4 lg:mt-6" />
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <h6>Quick Links</h6>
