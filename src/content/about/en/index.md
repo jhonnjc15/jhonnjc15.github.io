@@ -13,88 +13,87 @@ buttons:
 whoWeAre:
   title: "Who We Are"
   description: >-
-    Paqari is a collaborative initiative that blends science, creativity, and technology.
-    Our team brings together data engineers, physicists, designers, and curious minds driven
-    by a shared vision: to make learning a living experience.
+    Paqari OpenLab takes its name from the Quechua word for “dawn,” representing the future of
+    accessible science. We build a modular, portable lab that blends technology, creativity, and
+    community so any classroom can experiment with chemistry, energy, and nanotech without barriers.
   image:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Paqari team collaborating"
 vision:
   title: "Our Vision"
   description: >-
-    To awaken curiosity and turn science into a universal language — accessible to anyone,
-    anywhere. We imagine a future where technology, creativity, and knowledge come together
-    to open new paths for discovery and inclusion.
-  quote: "“Inspiring minds, connecting worlds — one experiment at a time.”"
+    We aim for chemistry and nanotechnology to be as reachable as Raspberry Pi made electronics:
+    a lab in every backpack that sparks educational, environmental, and industrial innovation
+    anywhere.
+  quote: "“Tomorrow’s dawn is built by sharing practical science for everyone.”"
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "People collaborating on scientific ideas"
 mission:
   title: "Our Mission"
   description: >-
-    To democratize scientific learning by creating open, data-driven experiences that empower
-    people to explore, experiment, and innovate — bridging the gap between research and real life
-    through education and design.
+    To democratize STEM learning with real, offline, and safe experiences linking education,
+    industry, and research; to prepare students, teachers, and makers for the jobs of the future
+    while reducing gender and technology gaps.
 culture:
   title: "Roots of Innovation"
   description: >-
-    Born from the belief that curiosity is the most powerful catalyst for growth, our culture
-    thrives on experimentation and inclusivity. We celebrate diverse ideas, question conventions,
-    and turn imagination into discovery.
+    We believe in curiosity, collaboration, and sustainability. We favor rapid prototyping,
+    open data, and diverse community participation to turn ideas into solutions that serve
+    schools and productive sectors.
   image:
     src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
     alt: "Colleagues sharing ideas in a creative space"
 openFrontiers:
   title: "Open Frontiers"
   description: >-
-    Science should be a bridge, not a barrier. Our aim is to make experimental learning and data
-    analysis accessible to students, educators, and innovators. By combining open data with creative
-    design, we break down the walls between research and real life.
+    Our lab-on-a-device model works with solar power, free apps, and offline operation for schools
+    without internet or traditional labs, connecting applied science with real-world contexts.
   image:
     src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
     alt: "Exploring open science"
 labImpact:
   title: "Ripple of Change"
   description: >-
-    Every experiment and every insight creates a ripple. Our initiatives spread awareness, spark
-    curiosity, and connect people through a shared pursuit of understanding the world. That is the
-    Lab Effect — knowledge that multiplies.
+    By 2030, 170 million new STEM jobs are projected. Every practice we enable brings learners
+    closer to those opportunities through safe, low-consumption methods replicable in classrooms,
+    in the field, or in industry.
   image:
     src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1600&q=80"
     alt: "People observing scientific breakthroughs"
 pocketLab:
   title: "Science Anywhere"
   description: >-
-    We bring the power of the lab to your fingertips. Through interactive platforms, simulations,
-    and real-world data experiments, anyone can explore scientific concepts without borders. A lab
-    that fits in your pocket, built for the explorers of tomorrow.
+    PQ-central and our free apps (Paqari OpenLab and PQOL Academic) put the lab on your phone:
+    remote control, downloadable guides, and electrochemistry, energy, and spectroscopy practices
+    that fit in a portable device.
   image:
     src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
     alt: "Portable technology enabling science"
 
 # counter
 counter:
-  - name: "Customers"
-    number: 25
+  - name: "New STEM jobs by 2030"
+    number: 170
     messurment: M
     color: "#A3A1FB"
-  - name: "Customers"
-    number: 440
-    messurment: M
-    color: "#5EE2A0"
-  - name: "Customers"
+  - name: "Institutions supported"
     number: 50
-    messurment: K
+    messurment: ""
+    color: "#5EE2A0"
+  - name: "Hands-on experiences deployed"
+    number: 200
+    messurment: ""
     color: "#FE6019"
-  - name: "Customers"
-    number: 20
-    messurment: K
+  - name: "Countries with free apps"
+    number: 10
+    messurment: "+"
     color: "#FEC163"
 
 # Gallery
 gallery:
-  title: We started with one single goal, empower entrepreneurs
-  description: "We grew by listening to our community; these images capture the prototypes, labs, and moments that shaped our path."
+  title: We grew by listening to classrooms without labs
+  description: "These scenes show prototypes, solar workshops, and real practices we bring to schools and communities."
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Team brainstorming around a lab table"
@@ -114,38 +113,38 @@ gallery:
 
 ## our works
 features:
-  title: The six core pillars that drive everything we do
+  title: The six pillars powering our mission
   button:
     label: More Information
     link: "/"
     enable: true
   features_list:
-    - title: Accessibility
-      content: We ensure our products are easy to use for everyone.
-    - title: Empowerment
-      content: We provide tools so users can achieve their goals with confidence.
-    - title: Excellence
-      content: We strive for the highest quality in every project we undertake.
-    - title: Innovation
-      content: We always explore new ideas to improve and evolve.
-    - title: Collaboration
-      content: We work as a team to achieve the best results.
-    - title: Sustainability
-      content: We are committed to responsible and lasting practices.
+    - title: Offline access
+      content: Designed for classrooms without internet or labs.
+    - title: Portable modularity
+      content: One device integrates the core experimental areas.
+    - title: Education safety
+      content: Low-risk protocols with minimal material consumption.
+    - title: Active learning
+      content: Practical guides that link theory with real experiments.
+    - title: Equity in STEM
+      content: We reduce gender and technology access gaps.
+    - title: Open community
+      content: We share knowledge and improvements with makers and teachers.
 
 ## members
 members:
   title: Meet the team behind Paqari
-  description: We are a diverse and dedicated team blending science, design, and technology to turn curiosity into discovery.
+  description: We combine science, design, and technology to democratize hands-on experimentation in STEM.
   member_list:
-    - name: Eleanor Pena
-      field: Co-founder & COO
+    - name: PhD(c) Allison V. Córdova Huamán
+      field: Co-founder, research and development
       image: "/images/shared/users/user-1.png"
-    - name: Bukiakta Bansalo
-      field: Product Manager
+    - name: Bach. Diego A. Jauja Ccana
+      field: Co-founder, community and education
       image: "/images/shared/users/user-2.png"
-    - name: Ortrin Okaster
-      field: Software Engineer
+    - name: PhD Víctor Raúl Jauja Ccana
+      field: Co-founder, electrochemistry and product
       image: "/images/shared/users/user-3.png"
 ---
-Our company is dedicated to providing innovative solutions that drive our clients' growth. With a focus on quality and excellence, we strive to turn ideas into tangible results. We are committed to the satisfaction and success of those who trust us.
+Paqari OpenLab is a hands-on learning platform that brings applied science to any classroom through a modular device, free apps, and teacher support. We drive the transition toward future jobs with safe, sustainable, and accessible experiences.

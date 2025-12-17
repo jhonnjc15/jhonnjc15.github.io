@@ -1,13 +1,13 @@
 ---
 title: Contacto
 page_title: Ponte en contacto con nuestro equipo.
-hero_tagline: "Diseñemos juntas tu próximo experimento"
-hero_description: "Cuéntanos qué quieres crear y te conectamos con el kit, la experiencia o la colaboración ideal."
+hero_tagline: "Diseñemos tu próximo experimento con Paqari OpenLab"
+hero_description: "Cuéntanos qué quieres crear y te conectamos con el kit, la guía offline o la colaboración ideal para tu aula o comunidad."
 cta_text: "Respondemos en menos de un día hábil."
 social_title: "¿Prefieres escribirnos por otro canal?"
-social_description: "Cuéntanos tu idea en la red que te sea más cómoda e incluye los enlaces que quieras que revisemos."
+social_description: "Comparte tu idea y los enlaces de referencia; podemos sugerir módulos, apps gratuitas o capacitación según tu contexto."
 closing_title: "¿Buscas inspiración antes de escribirnos?"
-closing_description: "Explora nuestro catálogo o blog y comparte los enlaces en tu mensaje para guiarte más rápido."
+closing_description: "Explora nuestro catálogo o blog y envíanos los experimentos que quieras adaptar para acelerar tu propuesta."
 form_content_data:
   name: 
     title: Nombre Completo

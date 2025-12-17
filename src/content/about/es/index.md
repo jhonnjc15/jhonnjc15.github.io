@@ -13,88 +13,88 @@ buttons:
 whoWeAre:
   title: "Quiénes Somos"
   description: >-
-    Paqari es una iniciativa colaborativa que fusiona ciencia, creatividad y tecnología.
-    Nuestro equipo está formado por ingenieras de datos, físicas, diseñadoras y mentes
-    curiosas unidas por una visión compartida: convertir el aprendizaje en una experiencia viva.
+    Paqari OpenLab nace del quechua “amanecer” y simboliza el futuro de la ciencia accesible.
+    Diseñamos un laboratorio modular y portátil que combina tecnología, creatividad y comunidad
+    para que cualquier aula experimente con química, energía y nanotecnología sin barreras.
   image:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Equipo de Paqari colaborando"
 vision:
   title: "Nuestra Visión"
   description: >-
-    Despertar la curiosidad y hacer de la ciencia un lenguaje universal — accesible para
-    cualquier persona, en cualquier lugar. Imaginamos un futuro donde la tecnología, la
-    creatividad y el conocimiento se unen para abrir nuevos caminos de descubrimiento e inclusión.
-  quote: "“Inspiramos mentes, conectamos mundos — un experimento a la vez.”"
+    Aspiramos a que la química y la nanotecnología sean tan accesibles como lo hizo Raspberry Pi
+    con la electrónica: un laboratorio en cada mochila que impulse innovación educativa,
+    ambiental e industrial en cualquier territorio.
+  quote: "“El amanecer del mañana se construye compartiendo ciencia práctica para todas y todos.”"
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "Personas explorando una visión científica"
 mission:
   title: "Nuestra Misión"
   description: >-
-    Democratizar el aprendizaje científico mediante experiencias abiertas y basadas en datos que
-    empoderan a las personas para explorar, experimentar e innovar, cerrando la brecha entre la
-    investigación y la vida cotidiana a través de la educación y el diseño.
+    Democratizar el aprendizaje STEM con experiencias reales, offline y seguras que vinculen
+    educación, industria e investigación; formar a estudiantes, docentes y makers para los
+    trabajos del futuro y reducir brechas de género y acceso tecnológico.
 culture:
   title: "Raíces de Innovación"
   description: >-
-    Nacimos de la convicción de que la curiosidad es el motor más poderoso para crecer. Nuestra
-    cultura se alimenta de la experimentación y la inclusión; celebramos la diversidad de ideas,
-    cuestionamos las convenciones y convertimos la imaginación en descubrimiento.
+    Creemos en la curiosidad, la colaboración y la sostenibilidad. Favorecemos el prototipado
+    rápido, los datos abiertos y la participación de comunidades diversas para transformar ideas
+    en soluciones que sirvan a escuelas y sectores productivos.
   image:
     src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
     alt: "Personas colaborando en un espacio creativo"
 openFrontiers:
   title: "Fronteras Abiertas"
   description: >-
-    La ciencia debe ser un puente y no una barrera. Nuestra misión es hacer que el aprendizaje
-    experimental y el análisis de datos sean accesibles para estudiantes, docentes e innovadores.
-    Al combinar datos abiertos y diseño creativo, derribamos los muros entre la investigación y la vida real.
+    El modelo lab-on-a-device permite experimentar sin infraestructura tradicional: funciona con
+    energía solar, apps gratuitas y operación offline para colegios sin internet ni laboratorios,
+    conectando ciencia aplicada con contextos reales.
   image:
     src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
     alt: "Explorando ciencia abierta"
 labImpact:
   title: "Ola de Cambio"
   description: >-
-    Cada experimento y cada hallazgo generan una onda expansiva. Nuestras iniciativas difunden
-    conocimiento, despiertan curiosidad y conectan a las personas mediante la comprensión compartida
-    del mundo. Ese es el efecto del laboratorio: conocimiento que se multiplica.
+    Para 2030 se proyectan 170 millones de nuevos trabajos STEM. Cada práctica que habilitamos
+    acerca a las y los estudiantes a esas oportunidades, con metodologías seguras y de bajo
+    consumo que pueden replicarse en aula, campo o industria.
   image:
     src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1600&q=80"
     alt: "Personas observando resultados científicos"
 pocketLab:
   title: "Ciencia en cualquier lugar"
   description: >-
-    Llevamos el poder del laboratorio a tus manos. Con plataformas interactivas, simulaciones y
-    experimentos con datos reales, cualquier persona puede explorar conceptos científicos sin
-    fronteras. Un laboratorio en tu bolsillo, pensado para las exploradoras y exploradores del mañana.
+    PQ-central y nuestras apps gratuitas (Paqari OpenLab y PQOL Académico) ponen el laboratorio
+    en el celular: control remoto, guías descargables y prácticas de electroquímica, energía y
+    espectroscopía que caben en un dispositivo portátil.
   image:
     src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
     alt: "Tecnología portátil para aprender ciencia"
 
 # contador
 counter:
-  - name: "Clientes"
-    number: 25
+  - name: "Nuevos trabajos STEM hacia 2030"
+    number: 170
     messurment: M
     color: "#A3A1FB"
-  - name: "Proyectos Completados"
-    number: 440
-    messurment: K
-    color: "#5EE2A0"
-  - name: "Socios"
+  - name: "Instituciones acompañadas"
     number: 50
-    messurment: K
-    color: "#FE6019"
-  - name: "Premios"
-    number: 20
     messurment: ""
+    color: "#5EE2A0"
+  - name: "Experiencias prácticas desplegadas"
+    number: 200
+    messurment: ""
+    color: "#FE6019"
+  - name: "Países con apps gratuitas"
+    number: 10
+    messurment: "+"
     color: "#FEC163"
 
 # Gallery
 gallery:
-  title: Comenzamos con un solo objetivo, empoderar a los emprendedores
-  description: "Crecimos escuchando a la comunidad: estas imágenes muestran los prototipos, laboratorios y momentos que han marcado nuestro camino."
+  title: Crecimos escuchando a las aulas que no tenían laboratorio
+  description: "Estas escenas muestran prototipos, talleres solares y prácticas reales que llevamos a escuelas y comunidades."
   images:
     - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
       alt: "Equipo ideando en una mesa de laboratorio"
@@ -114,38 +114,38 @@ gallery:
 
 ## nuestros trabajos
 features:
-  title: Los seis pilares fundamentales que impulsan todo lo que hacemos
+  title: Los seis pilares que impulsan nuestra misión
   button:
     label: Mas información
     link: "/"
     enable: true
   features_list:
-    - title: Accesibilidad
-      content: Nos aseguramos de que nuestros productos sean fáciles de usar para todas las personas.
-    - title: Empoderamiento
-      content: Brindamos herramientas para que los usuarios logren sus objetivos con confianza.
-    - title: Excelencia
-      content: Buscamos la máxima calidad en cada proyecto que emprendemos.
-    - title: Innovación
-      content: Siempre exploramos nuevas ideas para mejorar y evolucionar.
-    - title: Colaboración
-      content: Trabajamos en equipo para alcanzar los mejores resultados.
-    - title: Sostenibilidad
-      content: Nos comprometemos con prácticas responsables y duraderas.
+    - title: Acceso offline
+      content: Diseñamos para aulas sin internet ni laboratorios.
+    - title: Modularidad portátil
+      content: Un solo equipo integra áreas clave de experimentación.
+    - title: Seguridad educativa
+      content: Protocolos de bajo riesgo y bajo consumo de insumos.
+    - title: Aprendizaje activo
+      content: Guías prácticas que conectan teoría y experimentos reales.
+    - title: Equidad en STEM
+      content: Reducimos brechas de género y acceso tecnológico.
+    - title: Comunidad abierta
+      content: Compartimos conocimiento y mejoras con makers y docentes.
 
 ## miembros
 members:
   title: El equipo detrás de Paqari
-  description: Somos un equipo diverso y dedicado que combina ciencia, diseño y tecnología para convertir la curiosidad en descubrimientos.
+  description: Somos un equipo que combina ciencia, diseño y tecnología para democratizar la experimentación práctica en STEM.
   member_list:
-    - name: Eleanor Peña
-      field: Cofundadora y COO
+    - name: PhD(c) Allison V. Córdova Huamán
+      field: Cofundadora, investigación y desarrollo
       image: "/images/shared/users/user-1.png"
-    - name: Bukiakta Bansalo
-      field: Gerente de Producto
+    - name: Bach. Diego A. Jauja Ccana
+      field: Cofundador, comunidad y educación
       image: "/images/shared/users/user-2.png"
-    - name: Ortrin Okaster
-      field: Ingeniero de Software
+    - name: PhD Víctor Raúl Jauja Ccana
+      field: Cofundador, electroquímica y producto
       image: "/images/shared/users/user-3.png"
 ---
-Nuestra empresa se dedica a ofrecer soluciones innovadoras que impulsan el crecimiento de nuestros clientes. Con un enfoque en la calidad y la excelencia, trabajamos para transformar ideas en resultados tangibles. Estamos comprometidos con la satisfacción y el éxito de quienes confían en nosotros.
+Paqari OpenLab es una plataforma de aprendizaje práctico que acerca la ciencia aplicada a cualquier aula mediante un dispositivo modular, apps gratuitas y acompañamiento docente. Impulsamos la transición hacia los trabajos del futuro con experiencias seguras, sostenibles y accesibles.

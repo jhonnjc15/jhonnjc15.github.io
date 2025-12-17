@@ -1,7 +1,7 @@
 ---
 banner:
-  title: "Paqari: where science and community help ideas grow"
-  content: "Explore our open lab that blends hands-on learning, technology, and creativity to build sustainable solutions together."
+  title: "Paqari OpenLab: where practical science begins"
+  content: "Explore our lab-on-a-device that democratizes STEM with real experiments, even in schools without internet or traditional labs."
   image: /images/home/banner/PQOL_IMG_WEB5.png
   button:
     label: Learn more about us
@@ -12,74 +12,74 @@ video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "YouTube highlights"
   title: "Watch our outreach videos and how-to guides"
-  description: "We share outreach videos and product walkthroughs to explore education, science, technology, energy, and the environment."
+  description: "We share demos and tutorials on education, applied chemistry, energy, and environment using Paqari OpenLab and its free apps."
   highlights:
-    - "Playlists of outreach pieces and practical tutorials published on our channel."
-    - "Step-by-step guides to use Paqari kits and replicate experiments with your community."
-    - "Short stories about technology, energy, and the environment for sustainable projects."
+    - "Outreach playlists and quick guides that show how our modular lab works."
+    - "Steps to run chemistry, energy, and nanotech practices with the kit and your community."
+    - "Short stories on real experiments you can adapt offline in classrooms or in the field."
 
 ##key features
 key_features:
-  title: "The Highlight of Our Solution"
-  description: Discover how our solution can transform your digital operations with powerful and user-friendly features.
+  title: "What makes our solution unique"
+  description: "See how the lab-on-a-device model brings real STEM practice to any classroom without complex infrastructure."
   feature_list:
     - icon: "map"
-      title: Live View
-      content: Instantly view and manage your progress anytime.
+      title: Modular lab
+      content: Combines electrochemistry, energy, and spectroscopy in one compact device.
     - icon: "lock"
-      title: Smart Security
-      content: Protect your data with advanced authentication and encryption.
+      title: Safe operation
+      content: Built to lower risks and material use in education spaces.
     - icon: "link"
-      title: Simplified Integration
-      content: Seamlessly connect your favorite tools with no hassle.
+      title: PQ-central connected
+      content: Control experiments from your phone and sync modules as a team.
     - icon: "bell"
-      title: Efficient Notifications
-      content: Stay informed with real-time personalized alerts.
+      title: Offline education
+      content: Apps work without internet for schools with limited connectivity.
     - icon: "monitor"
-      title: Centralized Monitoring
-      content: Oversee everything from one intuitive and comprehensive dashboard.
+      title: Sustainable power
+      content: Solar-ready design keeps practices and measurements running in the field.
     - icon: "map"
-      title: Dynamic Geolocation
-      content: Use interactive maps for better decision-making.
+      title: Free apps
+      content: Paqari OpenLab and PQOL Academic are free to download with guides.
     - icon: "link"
-      title: Borderless Connection
-      content: Collaborate globally with unlimited integrations.
+      title: Training included
+      content: Every package adds support for teachers and local facilitators.
     - icon: "bell"
-      title: Automated Alerts
-      content: Set up automatic notifications for key events.
+      title: Core experiments
+      content: Build sensors, microreactors, and Tafel curves with ready protocols.
     - icon: "map"
-      title: Territorial Analytics
-      content: Gain insights based on your users’ locations.
+      title: Practical data
+      content: Clear results for STEM learning and the green transition in schools.
     - icon: "monitor"
-      title: Clear Visualization
-      content: Understand complex data through clean graphs and interfaces.
+      title: Open community
+      content: Makers, students, and partners share learnings and improve the kit together.
 
 #service
 service:
   homepage_tab:
-    title: Prevent Failure from Damaging Your Reputation
-    description: Our platform helps you build secure authentication experiences that retain and engage your users. We build the infrastructure so you can focus on your business.
+    title: Hands-on education without barriers
+    description: We bring lab experiences to institutions lacking equipment, labs, or stable connectivity, prioritizing safety and sustainability.
     tab_list:
-        - title: Essential for Building Sustainable Habits
+        - title: Bring the lab to any school
           icon: "lock"
           image: "/images/home/sections/sells-by-country.png"
-        - title: Get a Global View of Your Daily Habits
+        - title: Downloadable guides ready to use
           icon: "clock"
           image: "/images/home/sections/collaboration.png"
-        - title: Start Growing with the Habitify Platform
+        - title: Teacher coaching and ongoing support
           icon: "bell"
           image: "/images/home/sections/sells-by-country.png"
 
   our_service:
-    - title: Accept Payments Anywhere in the World
-      desctiption: Offer a smooth, frictionless payment experience no matter where your users are.
+    - title: PQ-central and free apps
+      desctiption: The modular device and free applications enable real STEM practice where resources are limited.
       image: "/images/home/sections/collaboration.png"
       list:
-        - Supports over 119 countries worldwide
-        - Open transactions in over 100 currencies
-        - Customer support available in 79 languages
-    - title: Responsibility That Works for You
-      description: We offer tools to ensure your business complies with global regulations without sacrificing efficiency.
+        - Solar-powered and controlled from your phone
+        - Offline operation for classrooms without connectivity
+        - Kits include training and supporting materials
+    - title: Methods for the future of work
+      description: We connect school practices to the green and tech transition, preparing students for the jobs emerging by 2030.
       video:
         thumbnail: "/images/home/sections/intro-thumbnail.png"
         video_id: "g3-VxLQO7do"
@@ -91,52 +91,72 @@ service:
 #testimonial
 testimonial:
   title: Stories from the Paqari community
-  description: Educators, makers, and partners share how Paqari elevates their projects with clear learning experiences and ready-to-use tools.
+  description: Teachers, students, and partners explain how Paqari brings applied science to classrooms without labs or reliable internet.
   testimonial_list:
-    - author: David Cameron
+    - author: Allison V. Córdova
       avatar: "/images/shared/users/user-5.png"
-      organization: meta limited
+      organization: Higher education
       rating: four
-      content: Our platform enables secure authentication experiences that better connect with users. Nosotros construimos.
-    - author: David Cameron
+      content: Paqari makes electrochemistry practices viable with low consumption and controlled risks in the field.
+    - author: Diego A. Jauja
       avatar: "/images/shared/users/user-6.png"
-      organization: meta limited
-      rating: five
-      content: Thanks to this solution, we’ve simplified our access processes without compromising security.
-    - author: David Cameron
-      avatar: "/images/shared/users/user-2.png"
-      organization: meta limited
-      rating: five
-      content: Thanks to this solution, we’ve simplified our access processes without compromising security.
-    - author: David Cameron
-      avatar: "/images/shared/users/user-1.png"
-      organization: meta limited
+      organization: School community
       rating: four
-      content: Our platform enables secure authentication experiences that better connect with users. Nosotros construimos.
-    - author: David Cameron
+      content: The free apps and support help teachers guide experiments without depending on internet access.
+    - author: Víctor R. Jauja
+      avatar: "/images/shared/users/user-2.png"
+      organization: Industry and energy
+      rating: five
+      content: The modular approach simplifies training on corrosion and batteries in remote settings.
+    - author: IB Clemente Althaus Teacher
+      avatar: "/images/shared/users/user-3.png"
+      organization: Secondary education
+      rating: five
+      content: The kit speeds up active learning and motivates students to test sensors and microreactors.
+    - author: UTEC Maker
       avatar: "/images/shared/users/user-4.png"
-      organization: meta limited
+      organization: Maker community
+      rating: five
+      content: Controlling the lab from a phone opens new ways to experiment together.
+    - author: Green transition ally
+      avatar: "/images/shared/users/user-1.png"
+      organization: Sustainable projects
       rating: three
-      content: A complete shift in how we manage user access and security.
+      content: The energy and environment practices are clear and adaptable to each territory.
+    - author: UPCH Facilitator
+      avatar: "/images/shared/users/user-5.png"
+      organization: STEM training
+      rating: five
+      content: The lab-on-a-device model lowers barriers for girls and youth starting in science.
+    - author: Community coordinator
+      avatar: "/images/shared/users/user-5.png"
+      organization: Local innovation
+      rating: five
+      content: Paqari mentorship builds confidence to replicate protocols and share results.
+    - author: Energy mentor
+      avatar: "/images/shared/users/user-5.png"
+      organization: Technical workshop
+      rating: five
+      content: Battery and corrosion exercises show clear paths toward the jobs of the future.
 
 galery:
   title: Paqari Gallery
   description: "Moments that inspire us: workshops, prototypes, and community gatherings."
   galery_list:
-    - name: David Cameron
+    - name: Tafel curves in class
       image: "/images/home/gallery/Baterias2025.png"
-    - name: David Cameron
+    - name: Catalysts on plates
       image: "/images/home/gallery/Pqlab_catal_96pi.png"
-    - name: David Cameron
+    - name: Hacking matter
       image: "/images/home/gallery/PqOl_hack_matter.png"
-    - name: David Cameron
+    - name: Environmental sensing
       image: "/images/home/gallery/pqol2025_egqds.png"
-    - name: David Cameron
+    - name: 2D materials
       image: "/images/home/gallery/pqol2025_egraphen.png"
-    - name: David Cameron
+    - name: Community prototypes
       image: "/images/home/gallery/pqol2025_qgqds.png"
-    - name: David Cameron
+    - name: PQOL applications
       image: "/images/home/gallery/PqOLab_applicaciones_2.png"
-    - name: David Cameron
+    - name: Surfaces and energy
       image: "/images/home/gallery/Superficies2025.png"
 ---
