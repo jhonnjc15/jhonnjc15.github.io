@@ -3,7 +3,7 @@
     "category_name": "educational",
     "name": "Educativo",
     "url": "/blog/educational",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/3135/3135755.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
     "id_category": 1,
     "short_description": "Guías paso a paso, recursos didácticos y proyectos para aprender en comunidad.",
     "long_description": "Reúne artículos con metodologías, fichas y actividades para docentes, estudiantes y familias que quieren experimentar y comprender la ciencia desde cero."
@@ -12,7 +12,7 @@
     "category_name": "entertainment",
     "name": "Entretenimiento",
     "url": "/blog/entertainment",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4072/4072305.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/747/747376.png",
     "id_category": 2,
     "short_description": "Historias ligeras, curiosidades y retos creativos para disfrutar mientras exploras la ciencia.",
     "long_description": "Aquí encontrarás publicaciones que combinan divulgación con entretenimiento: trivias, dinámicas, experimentos sencillos y relatos que despiertan la curiosidad de cualquier persona."
@@ -21,7 +21,7 @@
     "category_name": "scientific",
     "name": "Científico",
     "url": "/blog/scientific",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/3095/3095194.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/2620/2620403.png",
     "id_category": 3,
     "short_description": "Notas de divulgación y avances de laboratorio que inspiran innovación sostenible.",
     "long_description": "Comparte investigaciones, aprendizajes de campo y aplicaciones de tecnología, energía y medio ambiente para quienes buscan profundizar en el impacto científico de nuestros proyectos."
