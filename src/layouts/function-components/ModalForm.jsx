@@ -1,7 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const ModalForm = ({ modal_content_data, modalStateForm, setModalStateForm, onConfirm }) => {
   const anchorRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     if (!modalStateForm) return;
@@ -27,9 +33,9 @@ const ModalForm = ({ modal_content_data, modalStateForm, setModalStateForm, onCo
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [modalStateForm, setModalStateForm]);
 
-  if (!modalStateForm) return null;
+  if (!modalStateForm || !isClient || typeof document === "undefined") return null;
 
-  return (
+  const modalContent = (
     <div
       className="fixed inset-0 z-[120] flex min-h-screen w-screen items-center justify-center bg-black/70 px-4 py-8"
       role="dialog"
@@ -91,6 +97,8 @@ const ModalForm = ({ modal_content_data, modalStateForm, setModalStateForm, onCo
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ModalForm;

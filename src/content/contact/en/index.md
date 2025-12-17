@@ -3,7 +3,7 @@ title: Contact
 page_title: Get in touch with our team.
 hero_tagline: "Let's design your next experiment with Paqari OpenLab"
 hero_description: "Tell us what you want to build and we will connect you with the right kit, offline guide, or collaborator for your classroom or community."
-cta_text: "We coordinate next steps with you in under one business day."
+cta_text: "We coordinate the next steps with you."
 social_title: "Prefer to chat somewhere else?"
 social_description: "Share your idea and any links; we can recommend modules, free apps, or training that match your context."
 closing_title: "Need inspiration before writing to us?"
