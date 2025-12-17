@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import Modal from "./Modal";
+import ModalForm from "./ModalForm";
 //import { usePrompt } from "./usePrompt";
 //import usePrompt from './usePrompt';
 import React from 'react';
@@ -276,11 +276,10 @@ const Form = ({ form_content_data }) => {
           {loading ? `${form_content_data?.send_message_button.sending_label} ...` : `${form_content_data?.send_message_button.label}`}
           </div>
         </button>
-        <Modal
+        <ModalForm
           modal_content_data={form_content_data.modal}
           modalStateForm={modalStateForm}
           setModalStateForm={setModalStateForm}
-          fullScreen
           onConfirm={handleConfirmSend}
         />
       {response && (

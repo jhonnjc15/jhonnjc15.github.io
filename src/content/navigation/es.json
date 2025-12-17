@@ -2,9 +2,9 @@
   "blog": {
     "subtitle": "Historias por categoría",
     "cta": {
-      "title": "Historias creadas con la comunidad Paqari OpenLab.",
-      "description": "Guías, experimentos y relatos listos para inspirar tu próximo proyecto.",
-      "highlight": "Artículos que amamos"
+      "title": "Historias con la comunidad Paqari OpenLab.",
+      "description": "Guías, experimentos e ideas para tu siguiente proyecto.",
+      "highlight": "Selecciones destacadas"
     },
     "categories": {
       "educational": {
