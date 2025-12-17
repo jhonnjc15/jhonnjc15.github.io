@@ -1,0 +1,21 @@
+{
+  "blog": {
+    "subtitle": "Historias por categoría",
+    "cta": {
+      "title": "Historias creadas con la comunidad Paqari OpenLab.",
+      "description": "Guías, experimentos y relatos listos para inspirar tu próximo proyecto.",
+      "highlight": "Artículos que amamos"
+    },
+    "categories": {
+      "educational": {
+        "description": "Actividades guiadas con kits y rutas para el aula o talleres con estudiantes."
+      },
+      "entertainment": {
+        "description": "Retos lúdicos y demostraciones rápidas para ferias, clubes y familias."
+      },
+      "scientific": {
+        "description": "Prototipos, datos abiertos y hallazgos para proyectos de ciencia ciudadana."
+      }
+    }
+  }
+}

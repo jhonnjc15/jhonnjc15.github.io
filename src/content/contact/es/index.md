@@ -3,7 +3,7 @@ title: Contacto
 page_title: Ponte en contacto con nuestro equipo.
 hero_tagline: "Diseñemos tu próximo experimento con Paqari OpenLab"
 hero_description: "Cuéntanos qué quieres crear y te conectamos con el kit, la guía offline o la colaboración ideal para tu aula o comunidad."
-cta_text: "Respondemos en menos de un día hábil."
+cta_text: "Coordinamos los siguientes pasos contigo en menos de 24 horas hábiles."
 social_title: "¿Prefieres escribirnos por otro canal?"
 social_description: "Comparte tu idea y los enlaces de referencia; podemos sugerir módulos, apps gratuitas o capacitación según tu contexto."
 closing_title: "¿Buscas inspiración antes de escribirnos?"

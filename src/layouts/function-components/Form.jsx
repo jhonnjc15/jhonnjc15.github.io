@@ -280,6 +280,7 @@ const Form = ({ form_content_data }) => {
           modal_content_data={form_content_data.modal}
           modalStateForm={modalStateForm}
           setModalStateForm={setModalStateForm}
+          fullScreen
           onConfirm={handleConfirmSend}
         />
       {response && (
