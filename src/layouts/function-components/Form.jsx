@@ -50,7 +50,7 @@ const Form = ({ form_content_data }) => {
   const handleConfirmSend = () => {
     if (!formData) return;
     setLoading(true);
-    fetch("https://formsubmit.co/ajax/706ef5302b0527fc015fef24978ffc55 ", {
+    fetch("https://formsubmit.co/ajax/paqari.openlab@gmail.com ", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
