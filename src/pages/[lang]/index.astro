@@ -6,7 +6,7 @@ import Testimonial from "@layouts/components/Testimonial.astro";
 import Service from "@layouts/components/Service.astro";
 import Cta from "@layouts/partials/Cta.astro";
 import { getEntryBySlug } from "astro:content";
-import ProductsExperiencesHome from "@components/products/ProductsExperiencesHome.astro"
+import BlogThemesHome from "@components/blog/BlogThemesHome.astro"
 import { getEntry } from "astro:content";
 import BackgroundVideo from "@components/BackgroundVideo.astro";
 import GaleriaPaqari from "@components/Galeria_Paqari.astro";
@@ -45,8 +45,8 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
 
   <VideoSpotlight videoSection={video_section} />
 
-  <!-- Porductos Categorías  -->
-  <ProductsExperiencesHome/>
+  <!-- Blog Themes -->
+  <BlogThemesHome/>
   {/* 
   <!-- key features -->
   <KeyFeatures key_features={key_features} />

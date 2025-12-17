@@ -36,14 +36,15 @@ const blogCtaText = currentLocale === 'en' ? 'Discover our blog categories' : 'E
 const blogCtaHighlight = currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS';
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const { email, phone } = config.params;
+const { email, phone, location } = config.params;
+const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 const topbarSocial = {
   facebook: social.facebook,
   instagram: social.instagram,
   youtube: social.youtube,
   linkedin: social.linkedin,
 };
-const mapUrl = "https://www.google.com/maps/search/?api=1&query=PaqariOpenLab";
+const mapUrl = social.address || "https://www.google.com/maps/search/?api=1&query=PaqariOpenLab";
 
 // console.log('Astro.props.is404')
 // console.log(Astro.props.is404)
@@ -66,7 +67,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
   <div class="topbar-container">
     <div class="topbar">
       <div class="topbar-contact">
-        <a class="topbar-link" href={`tel:${phone}`}>
+        <a class="topbar-link" href={`tel:${phoneLink}`}>
           <span class="topbar-icon">
             <IoCall />
           </span>
@@ -82,7 +83,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           <span class="topbar-icon">
             <IoLocationOutline />
           </span>
-          <span class="topbar-text">PaqariOpenLab</span>
+          <span class="topbar-text">{location}</span>
         </a>
       </div>
       <Social source={topbarSocial} className="social-icons topbar-social-icons" />
@@ -271,5 +272,3 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
   document.addEventListener('astro:after-swap', button_2);
   document.addEventListener('astro:after-swap', header_2);
 </script>
-
-

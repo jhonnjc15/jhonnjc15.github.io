@@ -5,6 +5,7 @@ const {
   call_to_action: {
     title,
     description,
+    image,
     button: { label, link },
   },
 } = config;
@@ -13,20 +14,28 @@ const {
 <section class="section px-5 py-10 xl:py-[80px]">
   <div class="container">
     <div
-      class="bg-gradient row justify-center rounded-[80px] px-[30px] pb-[75px] pt-16"
+      class="bg-gradient row items-center justify-center gap-10 rounded-[80px] px-[30px] py-10 lg:py-16"
     >
-      <div class="lg:col-11">
-        <div class="row">
-          <div class="lg:col-7">
-            <h2 class="h1 text-white">{title}</h2>
-            <a class="btn btn-white mt-8" href={link}>{label}</a>
-          </div>
-          <div class="mt-8 lg:col-5 lg:mt-0">
-            <p class="text-white">
-              {description}
-            </p>
-          </div>
+      <div class="lg:col-6">
+        <div class="space-y-6">
+          <h2 class="h1 text-white">{title}</h2>
+          <p class="text-white text-lg leading-relaxed">
+            {description}
+          </p>
+          <a class="btn btn-white inline-flex w-auto items-center" href={link}>{label}</a>
         </div>
+      </div>
+      <div class="lg:col-6">
+        {image && (
+          <div class="overflow-hidden rounded-[32px] border border-white/20 bg-white/10 p-4 shadow-2xl backdrop-blur">
+            <img
+              src={image}
+              alt="Divulgación científica 2025"
+              class="mx-auto h-full w-full rounded-2xl object-cover"
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
     </div>
   </div>

@@ -3,27 +3,27 @@
     "category_name": "educational",
     "name": "Educativo",
     "url": "/blog/educational",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341160.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/1157/1157034.png",
     "id_category": 1,
-    "short_description": "Recursos y materiales para apoyar el aprendizaje y la enseñanza.",
-    "long_description": "Esta categoría incluye productos diseñados para facilitar la educación en diversos niveles. Aquí encontrarás libros, software educativo, cursos en línea y herramientas que fomentan el desarrollo del conocimiento y habilidades en distintas áreas."
+    "short_description": "Guías paso a paso, recursos didácticos y proyectos para aprender en comunidad.",
+    "long_description": "Reúne artículos con metodologías, fichas y actividades para docentes, estudiantes y familias que quieren experimentar y comprender la ciencia desde cero."
   },
   {
     "category_name": "entertainment",
     "name": "Entretenimiento",
     "url": "/blog/entertainment",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341139.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/3208/3208676.png",
     "id_category": 2,
-    "short_description": "Productos para el ocio y el disfrute personal, desde juegos hasta multimedia.",
-    "long_description": "La categoría de entretenimiento abarca una variedad de productos que incluyen videojuegos, películas, música y aplicaciones interactivas. Está diseñada para ofrecer diversión y relax a personas de todas las edades."
+    "short_description": "Historias ligeras, curiosidades y retos creativos para disfrutar mientras exploras la ciencia.",
+    "long_description": "Aquí encontrarás publicaciones que combinan divulgación con entretenimiento: trivias, dinámicas, experimentos sencillos y relatos que despiertan la curiosidad de cualquier persona."
   },
   {
     "category_name": "scientific",
     "name": "Científico",
     "url": "/blog/scientific",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341134.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/2870/2870531.png",
     "id_category": 3,
-    "short_description": "Equipos y recursos para investigación y desarrollo científico.",
-    "long_description": "Esta sección ofrece productos especializados para laboratorios, universidades e instituciones de investigación. Incluye instrumentos de medición, software analítico y materiales para experimentación y estudio científico."
+    "short_description": "Notas de divulgación y avances de laboratorio que inspiran innovación sostenible.",
+    "long_description": "Comparte investigaciones, aprendizajes de campo y aplicaciones de tecnología, energía y medio ambiente para quienes buscan profundizar en el impacto científico de nuestros proyectos."
   }
 ]

@@ -26,11 +26,11 @@
         "wsp" : "Greetings,%0D%0AI'm interested in your products and would like to get in touch with you 😀"
     },
     "HOME": {
-        "categories_title": "Products & Experiences",
-        "categories_description": "Choose from learning experiences, STEM kits, and lab tools curated to feel cohesive from the first glance.",
-        "categories_cta": "Explore category",
-        "categories_blog_title": "Latest articles",
-        "categories_blog_description": "Stay updated with news, experiments, and stories from the Paqari lab team.",
+        "categories_title": "Blog themes",
+        "categories_description": "Explore guides, experiments, and news about our outreach and open education lines.",
+        "categories_cta": "Explore theme",
+        "categories_blog_title": "Visit the blog",
+        "categories_blog_description": "Discover stories, curiosities, and tutorials created with the Paqari Open Lab community.",
         "gallery_title": "Paqari Gallery",
         "gallery_description": "Snapshots from workshops, prototypes, and the community moments that inspire our work.",
         "testimonials_title": "Voices that guide our lab",

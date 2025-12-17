@@ -3,27 +3,27 @@
     "category_name": "educational",
     "name": "Educational",
     "url": "/blog/educational",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341160.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/1157/1157034.png",
     "id_category": 1,
-    "short_description": "Resources and materials to support learning and teaching.",
-    "long_description": "This category includes products designed to facilitate education at various levels. Here you will find books, educational software, online courses, and tools that promote the development of knowledge and skills in different fields."
+    "short_description": "Step-by-step guides, learning resources, and projects to learn together.",
+    "long_description": "Collects articles with methods, worksheets, and activities for teachers, students, and families who want to experiment and understand science from scratch."
   },
   {
     "category_name": "entertainment",
     "name": "Entertainment",
     "url": "/blog/entertainment",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341139.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/3208/3208676.png",
     "id_category": 2,
-    "short_description": "Products for leisure and personal enjoyment, from games to multimedia.",
-    "long_description": "The entertainment category covers a variety of products including video games, movies, music, and interactive applications. It is designed to offer fun and relaxation for people of all ages."
+    "short_description": "Light stories, curiosities, and creative challenges to enjoy while exploring science.",
+    "long_description": "Find publications that mix outreach with entertainment: trivia, activities, simple experiments, and narratives that spark curiosity in everyone."
   },
   {
     "category_name": "scientific",
     "name": "Scientific",
     "url": "/blog/scientific",
-    "image_url": "https://cdn-icons-png.flaticon.com/512/4341/4341134.png",
+    "image_url": "https://cdn-icons-png.flaticon.com/512/2870/2870531.png",
     "id_category": 3,
-    "short_description": "Equipment and resources for scientific research and development.",
-    "long_description": "This section offers specialized products for laboratories, universities, and research institutions. It includes measuring instruments, analytical software, and materials for experimentation and scientific study."
+    "short_description": "Outreach notes and lab learnings that inspire sustainable innovation.",
+    "long_description": "Shares research, field learnings, and applications of technology, energy, and the environment for readers who want to dive deeper into the scientific impact of our projects."
   }
 ]

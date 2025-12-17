@@ -14,6 +14,8 @@ const t = useTranslations(lang);
 
 const { footer } = menu;
 const { copyright, location, email, phone, footer_description } = config.params;
+const mapLink = social.address;
+const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 ---
 
 <footer class="footer bg-default">
@@ -21,9 +23,12 @@ const { copyright, location, email, phone, footer_description } = config.params;
     <div class="gx-5 row pb-10 pt-[52px]">
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <Logo />
-        <p class="mt-6">
-          {footer_description}
-        </p>
+        <div class="mt-6 space-y-2 leading-relaxed">
+          <p>{footer_description}</p>
+          <p class="font-semibold" style="color: #002060;">Construyendo un futuro sostenible</p>
+          <p class="font-semibold" style="color: #ae2012;">Building a sustainable future</p>
+          <p class="font-semibold" style="color: #00b050;">Hamuq pachata aswan allin huqarispa</p>
+        </div>
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <h6>Socials</h6>
@@ -50,13 +55,21 @@ const { copyright, location, email, phone, footer_description } = config.params;
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <h6>Location & Contact</h6>
         <ul>
-          <li class="mb-2">{location}</li>
+          <li class="mb-2">
+            {mapLink ? (
+              <a class="hover:text-primary hover:underline" href={mapLink} target="_blank" rel="noreferrer">
+                {location}
+              </a>
+            ) : (
+              location
+            )}
+          </li>
           <li class="mb-2">
             <a class="mb-2 hover:text-primary" href={`mailto:${email}`}
               >{email}</a>
           </li>
           <li>
-            <a class="hover:text-primary hover:underline" href={`tel:${phone}`}
+            <a class="hover:text-primary hover:underline" href={`tel:${phoneLink}`}
               >{phone}</a>
           </li>
         </ul>

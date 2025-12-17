@@ -19,12 +19,13 @@
   },
 
   "call_to_action": {
-    "title": "Helping teams in the world with focus",
-    "description": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
+    "title": "Divulgación científica para todas y todos",
+    "description": "Sumérgete en nuestras guías, demostraciones y charlas sobre energía, tecnología y medio ambiente creadas en Paqari Open Lab.",
     "button": {
-      "label": "More Information",
-      "link": "#"
-    }
+      "label": "Ver canal en YouTube",
+      "link": "https://www.youtube.com/@PaqariOpenLab"
+    },
+    "image": "/images/home/cta/sci_divulg2025.png"
   },
 
   "disqus": {
@@ -34,10 +35,10 @@
   },
 
   "params": {
-    "footer_description": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
-    "email": "jhonatanjcca@gmail.com",
-    "location": "2118 Thornridge Cir. Syracuse, Connecticut 35624",
-    "phone": "+704-555-0127",
+    "footer_description": "Paqari Open Lab comparte conocimiento abierto con kits, guías y comunidad para inspirar proyectos que cuidan el planeta.",
+    "email": "paqari.openlab@gmail.com",
+    "location": "Puerta N° 5 - UNI, Av. Túpac Amaru 210, Rímac, Lima",
+    "phone": "+51 993 896 226",
     "contact_form_action": "#",
     "copyright": "Copyright © 2023 a theme by [PaqariOpenLab](https://google.com)"
   },

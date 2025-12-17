@@ -1,6 +1,7 @@
 ---
 const { source, className } = Astro.props;
 import TwitterX from "./TwitterXLogo.astro";
+import { RiTelegramFill } from "react-icons/ri/index.js";
 
 import {
   IoCall,
@@ -28,10 +29,10 @@ import {
   IoLogoSoundcloud,
   IoLogoTiktok,
   IoLogoTumblr,
+  IoLogoWhatsapp,
   IoLogoTwitter,
   IoLogoVimeo,
   IoLogoVk,
-  IoLogoWhatsapp,
   IoLogoYoutube,
   IoMail
 } from "react-icons/io5/index.js";
@@ -68,6 +69,7 @@ const {
   address,
   skype,
   website,
+  telegram,
 } = source;
 ---
 
@@ -96,6 +98,20 @@ const {
           rel="noopener noreferrer nofollow"
         >
           <TwitterX/>
+        </a>
+      </li>
+    )
+  }
+  {
+    telegram && (
+      <li class="inline-block">
+        <a
+          aria-label="telegram"
+          href={telegram}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <RiTelegramFill />
         </a>
       </li>
     )

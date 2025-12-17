@@ -2,20 +2,21 @@
 banner:
   title: "Paqari: donde la ciencia y la comunidad hacen crecer ideas"
   content: "Explora nuestro laboratorio abierto que combina aprendizaje práctico, tecnología y creatividad para construir soluciones sostenibles en comunidad."
-  image: /images/home/banner/banner-img.png
+  image: /images/home/banner/PQOL_IMG_WEB5.png
   button:
     label: Conoce más sobre nosotros
     link: "/about"
     enable: true
 
 video_section:
-  id: "ysz5S6PUM-U"
-  sectionLabel: "Vista del laboratorio en vivo"
-  title: "Mira cómo nuestro laboratorio conecta ideas"
-  description: "Observa cómo co-creamos con la comunidad, la tecnología y la experimentación práctica para convertir conceptos audaces en prototipos sostenibles."
+  id: "IlNIGFlt4KI"
+  sectionLabel: "Historias en YouTube"
+  title: "Mira nuestros videos de divulgación y guías"
+  description: "Somos un emprendimiento dedicado a inspirar la curiosidad y fomentar la cultura científica con videos divulgativos, guías de uso de nuestros productos y curiosidades sobre educación🚀📚🎓, ciencia 💡 🧪🔬, tecnología💻🔧, energía⚡️🔋 y medio ambiente."
   highlights:
-    - "Audio completo para que escuches cada explicación y reacción en el espacio."
-    - "Controles visibles en pantalla para reproducir o pausar cuando prefieras."
+    - "Colecciones de videos divulgativos y tutoriales prácticos publicados en nuestro canal."
+    - "Guías para usar los kits de Paqari y replicar experimentos con la comunidad."
+    - "Historias breves sobre tecnología, energía y medio ambiente para proyectos sostenibles."
 
 ##key features
 key_features:
@@ -159,4 +160,3 @@ galery:
     - name: David Cameron
       image: "/images/home/gallery/Superficies2025.png"
 ---
-

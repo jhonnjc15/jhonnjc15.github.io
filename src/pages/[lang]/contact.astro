@@ -11,11 +11,12 @@ import {
   IoLogoInstagram,
   IoLogoYoutube,
   IoLogoTiktok,
+  IoLogoWhatsapp,
 } from "react-icons/io5/index.js";
 import { getEntry } from "astro:content";
 import social from "@config/social.json";
 import { humanize } from "@lib/utils/textConverter";
-import TwitterXLogo from '@components/TwitterXLogo.astro';
+import { RiTelegramFill } from "react-icons/ri/index.js";
 
 
 const { currentLocale } = Astro
@@ -29,14 +30,15 @@ if (!entry) {
 // console.log(entry)
 
 const { title, page_title, form_content_data } = entry.data;
-const allowedNetworks = ["facebook", "twitter", "linkedin", "instagram", "youtube", "tiktok"];
+const allowedNetworks = ["facebook", "linkedin", "instagram", "youtube", "tiktok", "whatsapp", "telegram"];
 const socialIcons = {
   facebook: IoLogoFacebook,
-  twitter: TwitterXLogo,
   linkedin: IoLogoLinkedin,
   instagram: IoLogoInstagram,
   youtube: IoLogoYoutube,
   tiktok: IoLogoTiktok,
+  whatsapp: IoLogoWhatsapp,
+  telegram: RiTelegramFill,
 };
 const socialLinks = Object.entries(social).filter(([network, url]) => allowedNetworks.includes(network) && Boolean(url));
 
