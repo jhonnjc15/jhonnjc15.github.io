@@ -13,16 +13,16 @@ buttons:
 whoWeAre:
   title: "Who We Are"
   description: >-
-    Paqari OpenLab takes its name from the Quechua word for “dawn,” representing the future of
-    accessible science. We build a modular, portable lab that blends technology, creativity, and
-    community so any classroom can experiment with chemistry, energy, and nanotech without barriers.
+    Paqari OpenLab draws from the Quechua word for “dawn,” signaling a future of accessible science.
+    We build a modular, portable lab that blends technology, creativity, and community so any
+    classroom can experiment with chemistry, energy, and nanotech without barriers.
   image:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Paqari team collaborating"
 vision:
   title: "Our Vision"
   description: >-
-    We aim for chemistry and nanotechnology to be as reachable as Raspberry Pi made electronics:
+    We aim for chemistry and nanotechnology to feel as reachable as Raspberry Pi made electronics:
     a lab in every backpack that sparks educational, environmental, and industrial innovation
     anywhere.
   quote: "“Tomorrow’s dawn is built by sharing practical science for everyone.”"

@@ -13,18 +13,18 @@ buttons:
 whoWeAre:
   title: "Quiénes Somos"
   description: >-
-    Paqari OpenLab nace del quechua “amanecer” y simboliza el futuro de la ciencia accesible.
-    Diseñamos un laboratorio modular y portátil que combina tecnología, creatividad y comunidad
-    para que cualquier aula experimente con química, energía y nanotecnología sin barreras.
+    Paqari OpenLab toma su nombre del quechua para “amanecer” y representa una ciencia más accesible.
+    Diseñamos un laboratorio modular y portátil que une tecnología, creatividad y comunidad para que
+    cualquier aula experimente con química, energía y nanotecnología sin barreras.
   image:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Equipo de Paqari colaborando"
 vision:
   title: "Nuestra Visión"
   description: >-
-    Aspiramos a que la química y la nanotecnología sean tan accesibles como lo hizo Raspberry Pi
-    con la electrónica: un laboratorio en cada mochila que impulse innovación educativa,
-    ambiental e industrial en cualquier territorio.
+    Aspiramos a que la química y la nanotecnología sean tan cercanas como Raspberry Pi lo fue para
+    la electrónica: un laboratorio en cada mochila que impulse innovación educativa, ambiental e
+    industrial en cualquier territorio.
   quote: "“El amanecer del mañana se construye compartiendo ciencia práctica para todas y todos.”"
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
@@ -32,14 +32,14 @@ vision:
 mission:
   title: "Nuestra Misión"
   description: >-
-    Democratizar el aprendizaje STEM con experiencias reales, offline y seguras que vinculen
+    Democratizar el aprendizaje STEM con experiencias reales, offline y seguras que conecten
     educación, industria e investigación; formar a estudiantes, docentes y makers para los
-    trabajos del futuro y reducir brechas de género y acceso tecnológico.
+    trabajos del futuro y cerrar brechas de género y acceso tecnológico.
 culture:
   title: "Raíces de Innovación"
   description: >-
     Creemos en la curiosidad, la colaboración y la sostenibilidad. Favorecemos el prototipado
-    rápido, los datos abiertos y la participación de comunidades diversas para transformar ideas
+    rápido, los datos abiertos y la participación de comunidades diversas para convertir ideas
     en soluciones que sirvan a escuelas y sectores productivos.
   image:
     src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
@@ -49,7 +49,7 @@ openFrontiers:
   description: >-
     El modelo lab-on-a-device permite experimentar sin infraestructura tradicional: funciona con
     energía solar, apps gratuitas y operación offline para colegios sin internet ni laboratorios,
-    conectando ciencia aplicada con contextos reales.
+    conectando ciencia aplicada con el contexto de cada comunidad.
   image:
     src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
     alt: "Explorando ciencia abierta"
