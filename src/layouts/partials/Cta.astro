@@ -11,27 +11,41 @@ const {
 } = config;
 ---
 
-<section class="section px-5 py-10 xl:py-14">
+<section class="section px-5 py-0 xl:py-14">
   <div class="container">
     <div
-      class="bg-gradient row items-center justify-center gap-6 lg:gap-10 rounded-[40px] px-4 py-7 lg:px-8 lg:py-10"
+      class="bg-gradient
+            grid grid-cols-1 lg:grid-cols-2
+            items-center gap-6 lg:gap-10
+            rounded-[40px] px-4 py-7 lg:px-8 lg:py-10"
     >
-      <div class="lg:col-6">
-        <div class="space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">{title}</h2>
+      <div class="flex justify-center lg:justify-start">
+        <div class="space-y-4 text-center lg:text-left max-w-xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+            {title}
+          </h2>
+
           <p class="text-white text-base md:text-lg leading-relaxed">
             {description}
           </p>
-          <a class="btn btn-white inline-flex w-auto items-center" href={link} target="_blank" rel="noreferrer">{label}</a>
+
+          <a
+            class="btn btn-white inline-flex w-auto items-center justify-center lg:justify-start"
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {label}
+          </a>
         </div>
       </div>
-      <div class="lg:col-6">
+            <div class="flex justify-center">
         {image && (
-          <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg mx-auto">
+          <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg">
             <img
               src={image}
               alt="Divulgación científica 2025"
-              class="mx-auto h-full w-full rounded-2xl object-cover"
+              class="h-full w-full rounded-2xl object-cover"
               loading="lazy"
             />
           </div>

@@ -11,17 +11,37 @@ const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 
 const categories_data = currentLocale === "en" ? categoriesEN : categoriesES;
+
+// ICONOS
+const iconMap: Record<string, string> = {
+  cientifico: "https://cdn-icons-png.flaticon.com/512/3212/3212608.png",
+  educativo: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png",
+  entretenimiento: "https://cdn-icons-png.flaticon.com/512/1087/1087840.png",
+};
+
+const normalizeKey = (s: string = "") =>
+  s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "");
+
+const lastSegment = (url: string = "") => url.split("/").filter(Boolean).pop() ?? "";
+
+const getCategoryKey = (data: any) => {
+  const byUrl = normalizeKey(lastSegment(data?.url ?? ""));
+  if (iconMap[byUrl]) return byUrl;
+
+  const byName = normalizeKey(data?.name ?? "");
+  if (iconMap[byName]) return byName;
+
+  return "";
+};
 ---
 
 <style>
-  /* 👇 Breakpoint personalizado: menos de 400px → una sola columna */
   @media (max-width: 400px) {
     .custom-grid {
       grid-template-columns: 1fr !important;
     }
   }
 
-  /* 👇 Hover limpio sin alterar bordes ni mover el layout */
   .card {
     position: relative;
     transition: all 0.3s ease;
@@ -32,13 +52,13 @@ const categories_data = currentLocale === "en" ? categoriesEN : categoriesES;
     position: absolute;
     inset: 0;
     border: 3px solid transparent;
-    border-radius: 1.5rem; /* similar a rounded-3xl */
+    border-radius: 1.5rem;
     pointer-events: none;
     transition: all 0.3s ease;
   }
 
   .card:hover::after {
-    border-color: var(--color-secondary);
+    @apply border-paqariYellow;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
   }
 </style>
@@ -50,106 +70,75 @@ const categories_data = currentLocale === "en" ? categoriesEN : categoriesES;
       <p class="max-w-3xl mx-auto text-text-offset leading-relaxed">{i18n.HOME.categories_description}</p>
     </div>
 
-    <div
-      class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4
-             rounded-3xl overflow-hidden
-             my-6 md:my-4 bg-offset"
-    >
-      {categories_data?.map((data) => (
-        <div
-          class="card group relative
-                 min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
-                 flex flex-col justify-between h-full
-                 py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6
-                 bg-offset transition duration-300"
-        >
-          <img
-            src={data.image_url}
-            class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0"
-            width="512"
-            height="512"
-            alt={data.name}
-          />
-          <div class="space-y-2 sm:space-y-3 mt-4">
-            <h5
-              class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
+    <div class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 rounded-3xl overflow-hidden my-6 md:my-4 bg-offset">
+      {categories_data?.map((data) => {
+        const key = getCategoryKey(data);
+        const iconSrc = key ? iconMap[key] : data.image_url;
+
+        return (
+          <div class="card group relative min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
+                      flex flex-col justify-between h-full py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6 bg-offset">
+            <img src={iconSrc} class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0" alt={data.name} loading="lazy" />
+
+            <div class="space-y-2 sm:space-y-3 mt-4">
+              <h5 class="text-base sm:text-lg md:text-lg font-semibold">
+                {data.name}
+              </h5>
+              <p class="block font-sans text-xs sm:text-sm md:text-sm leading-snug opacity-75 overflow-hidden">
+                {plainify(data.short_description?.slice(0, Number(summary_length)))}
+                {data.short_description?.length > summary_length ? "..." : ""}
+              </p>
+            </div>
+
+            <!-- ✅ SOLO EL <a> TIENE HOVER -->
+            <a
+              href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
+              class="flex items-center justify-between text-xs sm:text-sm md:text-sm mt-4
+                    transition-colors
+                    hover:text-paqariYellow
+                    group-hover:text-paqariYellow"
             >
-              {data.name}
-            </h5>
-            <p
-              class="block font-sans text-xs sm:text-sm md:text-sm leading-snug opacity-75 overflow-hidden group-hover:text-primary"
-            >
-              {plainify(data.short_description?.slice(0, Number(summary_length)))}
-              {data.short_description?.length > summary_length ? "..." : ""}
-            </p>
+              <span>{i18n.HOME.categories_cta}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                   class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300
+                          group-hover:translate-x-0 group-hover:opacity-100">
+                <path fill-rule="evenodd"
+                  d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" />
+              </svg>
+            </a>
           </div>
-          <a
-            href={getRelativeLocaleUrl(currentLocale ?? "", `${data.url}`)}
-            class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
-          >
-            <span>{i18n.HOME.categories_cta}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-      ))}
+        );
+      })}
 
-      <!-- Bloque extra -->
-      <div
-        class="card group relative
-               min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
-               flex flex-col justify-between h-full
-               py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6
-               bg-offset transition duration-300"
-      >
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/271/271210.png"
-          class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0"
-          width="512"
-          height="512"
-          alt="More features icon"
-        />
-
+      <!-- BLOQUE BLOG -->
+      <div class="card group relative min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
+                  flex flex-col justify-between h-full py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6 bg-offset">
+        <img class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0" src="data:image/png;base64,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" alt="external-blog-content-creator-xnimrodx-lineal-color-xnimrodx-2">
         <div class="space-y-2 sm:space-y-3 mt-4">
-          <h5
-            class="text-base sm:text-lg md:text-lg font-semibold transition group-hover:text-primary"
-          >
+          <h5 class="text-base sm:text-lg md:text-lg font-semibold">
             {i18n.HOME.categories_blog_title}
           </h5>
-          <p
-            class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden group-hover:text-primary"
-          >
+          <p class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden opacity-75">
             {i18n.HOME.categories_blog_description}
           </p>
         </div>
 
-          <a
-            href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
-            class="flex items-center justify-between text-xs sm:text-sm md:text-sm group-hover:text-primary mt-4"
+        <!-- ✅ SOLO HOVER EN EL <a> -->
+        <a
+          href={getRelativeLocaleUrl(currentLocale ?? "", "/blog")}
+          class="flex items-center justify-between text-xs sm:text-sm md:text-sm mt-4
+                transition-colors
+                hover:text-paqariYellow
+                group-hover:text-paqariYellow"
         >
           <span>{i18n.COMMON.visit_blog}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-              clip-rule="evenodd"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+               class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300
+                      group-hover:translate-x-0 group-hover:opacity-100">
+            <path fill-rule="evenodd"
+              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" />
           </svg>
+
         </a>
       </div>
     </div>
