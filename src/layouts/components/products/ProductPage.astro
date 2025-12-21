@@ -13,7 +13,7 @@ const { currentLocale } = Astro;
 
 const allProducts = currentLocale === "en" ? productsEN : productsES;
 const productCopy = (currentLocale === "en" ? productPageContentEn : productPageContentEs).frontmatter;
-const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs)?.frontmatter ?? {};
 const contactInfo = siteContent.contact ?? {};
 const relatedProducts = (data_by_id.related_products ?? [])
   .map((id: number) => allProducts.find((p) => p.id_product === id && p.show !== false))

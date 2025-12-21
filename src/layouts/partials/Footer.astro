@@ -15,10 +15,16 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { footer } = menu;
-const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
-const { contact, footer: footerContent } = siteContent;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs)?.frontmatter ?? {};
+const { contact = {}, footer: footerContent = {} } = siteContent;
 const { description: footer_description, taglines, headings, copyright } = footerContent;
-const { location, email, phone, map_url, location_label } = contact;
+const {
+  location = "",
+  email = "",
+  phone = "",
+  map_url = "",
+  location_label = "",
+} = contact;
 const mapLink = social.address || map_url;
 const footerSocial = { ...social, whatsapp: "", telegram: "", email: "", phone: "", address: "" };
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
