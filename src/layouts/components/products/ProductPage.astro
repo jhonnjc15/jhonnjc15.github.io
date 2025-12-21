@@ -2,19 +2,37 @@
 import Galeria from "./Galeria.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
+import VideoComponent from "@layouts/function-components/VideoComponent";
 
 const { data_by_id } = Astro.props;
 const { currentLocale } = Astro;
 
 const allProducts = currentLocale === "en" ? productsEN : productsES;
 const relatedProducts = (data_by_id.related_products ?? [])
-  .map((id: number) => allProducts.find((p) => p.id_product === id))
+  .map((id: number) => allProducts.find((p) => p.id_product === id && p.show !== false))
   .filter(Boolean);
+
+const getYouTubeEmbed = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtube.com")) {
+      return parsed.searchParams.get("v");
+    }
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.replace("/", "");
+    }
+  } catch (e) {
+    return undefined;
+  }
+};
 
 const features = data_by_id.features ?? [];
 const blogArticles = data_by_id.blog_articles ?? [];
 const pdfGuides = data_by_id.pdf_guides ?? [];
 const youtubeVideos = data_by_id.youtube_videos ?? [];
+const youtubeEmbeds = youtubeVideos
+  .map((video: string) => ({ url: video, id: getYouTubeEmbed(video) }))
+  .filter((item: { id?: string }) => !!item.id);
 const available = data_by_id.available ?? true;
 const contactLabel = currentLocale === "en" ? "Contact Us" : "Contáctanos";
 const availabilityLabel = available ? (currentLocale === "en" ? "Available" : "Disponible") : (currentLocale === "en" ? "Unavailable" : "No disponible");
@@ -33,20 +51,6 @@ const contactMessage = currentLocale === "en"
 const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text=${encodeURIComponent(contactMessage)}`;
 
 const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}`;
-
-const getYouTubeEmbed = (url: string) => {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname.includes("youtube.com")) {
-      return parsed.searchParams.get("v");
-    }
-    if (parsed.hostname.includes("youtu.be")) {
-      return parsed.pathname.replace("/", "");
-    }
-  } catch (e) {
-    return undefined;
-  }
-};
 ---
 
 <div class="flex flex-col lg:flex-row gap-12 items-start">
@@ -106,7 +110,7 @@ const getYouTubeEmbed = (url: string) => {
       {contactLabel}
     </a>
 
-    {(blogArticles.length > 0 || pdfGuides.length > 0 || youtubeVideos.length > 0 || relatedProducts.length > 0) && (
+    {(blogArticles.length > 0 || pdfGuides.length > 0 || youtubeEmbeds.length > 0 || relatedProducts.length > 0) && (
       <div class="space-y-8">
         <div class="grid gap-6 md:grid-cols-2">
           {blogArticles.length > 0 && (
@@ -143,31 +147,27 @@ const getYouTubeEmbed = (url: string) => {
           )}
         </div>
 
-        {youtubeVideos.length > 0 && (
+        {youtubeEmbeds.length > 0 && (
           <div class="space-y-3">
             <h3 class="text-xl font-semibold">{currentLocale === "en" ? "Related YouTube videos" : "Videos de YouTube relacionados"}</h3>
             <div class="grid gap-4 md:grid-cols-2">
-              {youtubeVideos.map((video: string) => {
-                const id = getYouTubeEmbed(video);
-                const embedUrl = id ? `https://www.youtube.com/embed/${id}` : undefined;
-                return (
-                  <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-black/80 shadow">
-                    {embedUrl ? (
-                      <iframe
-                        class="aspect-video w-full"
-                        src={embedUrl}
-                        title={data_by_id.name || data_by_id.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      ></iframe>
-                    ) : (
-                      <a class="block p-4 text-primary hover:underline" href={video} target="_blank" rel="noreferrer">
-                        {video}
-                      </a>
-                    )}
+              {youtubeEmbeds.map((video: { url: string; id: string }) => (
+                <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-background via-background-offset to-background shadow">
+                  <div class="relative p-3">
+                    <div class="absolute inset-3 -z-10 rounded-2xl bg-primary/10 blur-2xl"></div>
+                    <VideoComponent
+                      client:load
+                      src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                      height={520}
+                      width={920}
+                      title={data_by_id.name || data_by_id.title}
+                      video_id={video.id}
+                      video_width="w-full"
+                      video_height="h-auto"
+                    />
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         )}
