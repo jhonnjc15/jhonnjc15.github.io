@@ -17,39 +17,103 @@ const { vision, mission } = Astro.props as {
 };
 
 const sharedImage = vision.image ?? mission.image;
+
+const formatSections = (text: string) => {
+  if (!text) return [];
+
+  return text
+    .split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÜÑ])/)
+    .map((segment) => segment.trim())
+    .filter(Boolean)
+    .map((segment) => {
+      const match = segment.match(/^([^:]+):\s*(.*)$/);
+
+      if (match) {
+        const [, label, body] = match;
+        return {
+          label: label.trim(),
+          body: body.trim(),
+        };
+      }
+
+      return { body: segment };
+    });
+};
+
+const visionSections = formatSections(vision.description);
+const missionSections = formatSections(mission.description);
 ---
 
-<section class="py-20 bg-background-offset text-text relative overflow-hidden" data-animate="fade-up">
-  <div class="container mx-auto px-6 max-w-6xl flex flex-col lg:flex-row items-center gap-12">
-    {sharedImage && (
-      <div class="lg:w-1/2">
-        <img
-          src={sharedImage.src}
-          alt={sharedImage.alt ?? vision.title}
-          class="rounded-2xl shadow-lg w-full object-cover"
-        />
-      </div>
-    )}
+<section
+  class="relative overflow-hidden bg-background-offset py-20 text-text"
+  data-animate="fade-up"
+>
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-secondary/10"></div>
+  <div class="relative container mx-auto max-w-6xl px-6">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div class="space-y-8 rounded-3xl border border-white/40 bg-white/70 p-8 shadow-2xl backdrop-blur-xl lg:p-10">
+        <div class="flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+          <span class="rounded-full bg-primary/10 px-3 py-1">Our Vision</span>
+          <span class="rounded-full bg-secondary/10 px-3 py-1">Our Mission</span>
+        </div>
 
-    <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
-      <div data-animate="fade-up">
-        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">{vision.title}</h2>
-        <p class="text-lg text-text-offset leading-relaxed">{vision.description}</p>
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-primary/70">{vision.title}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Vision</h2>
+            {visionSections.length ? (
+              <ul class="space-y-3">
+                {visionSections.map((item) => (
+                  <li class="rounded-2xl bg-primary/5 px-4 py-3 text-left shadow-sm">
+                    {item.label && <span class="font-semibold text-primary">{item.label}: </span>}
+                    <span class="text-text-offset leading-relaxed">{item.body}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-lg leading-relaxed text-text-offset">{vision.description}</p>
+            )}
+          </div>
+
+          <div class="space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-secondary/70">{mission.title}</p>
+            <h3 class="text-3xl md:text-4xl font-bold text-secondary">Our Mission</h3>
+            <ul class="space-y-3">
+              {missionSections.map((item) => (
+                <li class="rounded-2xl bg-secondary/5 px-4 py-3 text-left shadow-sm">
+                  {item.label && <span class="font-semibold text-secondary">{item.label}: </span>}
+                  <span class="text-text-offset leading-relaxed">{item.body}</span>
+                </li>
+              ))}
+              {!missionSections.length && (
+                <li class="rounded-2xl bg-secondary/5 px-4 py-3 text-left shadow-sm text-text-offset">
+                  {mission.description}
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+
+        {vision.quote && (
+          <div class="rounded-2xl border border-primary/20 bg-primary/5 px-5 py-4 text-center text-base italic text-text-offset">
+            {vision.quote}
+          </div>
+        )}
       </div>
 
-      <div data-animate="fade-right">
-        <h2 class="text-4xl md:text-5xl font-bold text-secondary mb-4">{mission.title}</h2>
-        <p class="text-lg text-text-offset leading-relaxed">{mission.description}</p>
-      </div>
-
-      {vision.quote && (
-        <div data-animate="zoom-in" class="pt-4">
-          <p class="italic text-text-offset">{vision.quote}</p>
+      {sharedImage && (
+        <div class="relative h-full w-full" data-animate="fade-left">
+          <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary/20 to-secondary/30 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/60">
+            <img
+              src={sharedImage.src}
+              alt={sharedImage.alt ?? vision.title}
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       )}
     </div>
   </div>
-
-  <span class="absolute -top-20 -right-20 w-[400px] h-[300px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-30"></span>
-  <span class="absolute bottom-0 left-10 w-[300px] h-[200px] bg-gradient-to-tr from-primary to-green-400 rounded-full blur-2xl opacity-20"></span>
 </section>
