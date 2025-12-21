@@ -9,7 +9,7 @@ import "@styles/main.scss";
 import ContactButton from "./function-components/ContactButton";
 import ChatWidget from "./function-components/ChatWidget";
 import { ViewTransitions } from "astro:transitions";
-import { getCollection } from "astro:content";
+import { getEntryBySlug } from "astro:content";
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -38,14 +38,11 @@ const i18n = getI18N({ currentLocale })
 // console.log("currentLocale")
 // console.log(currentLocale)
 
-const chatbotCollection = await getCollection("chatbot");
-const chatContent =
-  chatbotCollection.find((entry) => entry.slug === currentLocale) ||
-  chatbotCollection.find((entry) =>
-    entry.data.locale.toLowerCase().startsWith(currentLocale?.toLowerCase() || "")
-  ) ||
-  chatbotCollection.find((entry) => entry.data.locale === "es") ||
-  chatbotCollection[0];
+const fallbackLocale = "es";
+let chatContent = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/chatbot`);
+if (!chatContent) {
+  chatContent = await getEntryBySlug("layout", `${fallbackLocale}/chatbot`);
+}
 ---
 
 <!DOCTYPE html>

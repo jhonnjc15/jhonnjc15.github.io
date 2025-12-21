@@ -12,9 +12,6 @@ import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import ChevronIcon from "./Chevron.astro"
 import ThemeToggle from "./ThemeToggle.astro";
 import { IoCall, IoLocationOutline, IoMail } from "react-icons/io5/index.js";
-import blogNavigationEs from "../../../content/navigation/es.json";
-import blogNavigationEn from "../../../content/navigation/en.json";
-
 export interface ChildNavigationLink {
   name: string;
   url: string;
@@ -35,14 +32,19 @@ const t = useTranslations(lang);
 const { currentLocale } = Astro
 const fallbackLocale = 'es';
 
-let siteInfo = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/footer`);
+let siteInfo = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/footer`);
 if (!siteInfo) {
-  siteInfo = await getEntryBySlug("ui", `${fallbackLocale}/footer`);
+  siteInfo = await getEntryBySlug("layout", `${fallbackLocale}/footer`);
 }
 
 const contactContent = siteInfo?.data?.contact ?? {};
 
-const navigationContent = currentLocale === 'en' ? blogNavigationEn : blogNavigationEs;
+let navigationEntry = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/navigation`);
+if (!navigationEntry) {
+  navigationEntry = await getEntryBySlug("layout", `${fallbackLocale}/navigation`);
+}
+
+const navigationContent = navigationEntry?.data ?? {};
 const blogContent = navigationContent.blog ?? {};
 const blogCategoriesCopy = blogContent.categories ?? {};
 const blogDropdownSubtitle = blogContent.subtitle ?? (currentLocale === 'en' ? 'Stories by category' : 'Historias por categoría');

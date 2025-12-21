@@ -9,9 +9,9 @@ const { data_by_id } = Astro.props;
 const { currentLocale } = Astro;
 const fallbackLocale = 'es';
 
-let productCopy = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/product-page`);
+let productCopy = await getEntryBySlug("products", `${currentLocale ?? fallbackLocale}/product-page`);
 if (!productCopy) {
-  productCopy = await getEntryBySlug("ui", `${fallbackLocale}/product-page`);
+  productCopy = await getEntryBySlug("products", `${fallbackLocale}/product-page`);
 }
 
 const productContent = productCopy?.data ?? {};

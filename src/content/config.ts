@@ -5,7 +5,7 @@ const blogCollection = defineCollection({
   schema: z
     .object({
       id: z.string().optional(),
-      title: z.string(),
+      title: z.string().optional(),
       subtitle: z.string().optional(),
       date: z.date().optional(),
       image: z.string().optional(),
@@ -102,26 +102,6 @@ const localizedContent = defineCollection({
   }).passthrough(),
 });
 
-const chatbotCollection = defineCollection({
-  schema: z.object({
-    locale: z.string(),
-    headerTitle: z.string(),
-    headerSubtitle: z.string(),
-    greeting: z.string(),
-    greetingQuestion: z.string(),
-    description: z.string(),
-    emptyState: z.string(),
-    placeholder: z.string(),
-    disclaimer: z.string(),
-    loaderLabel: z.string(),
-    quickPrompts: z.array(quickPrompt),
-    actions: z.object({
-      download: confirmBlock,
-      clear: confirmBlock,
-    }),
-  }),
-});
-
 const featuresSection = z.object({
   title: z.string(),
   button: aboutButton.optional(),
@@ -145,7 +125,7 @@ const aboutCollection = defineCollection({
   schema: z
     .object({
       id: z.string().optional(),
-      title: z.string(),
+      title: z.string().optional(),
       meta_title: z.string().optional(),
       description: z.string().optional(),
       image: z.string().optional(),
@@ -177,10 +157,10 @@ const faqItem = z.object({
 
 const productsCollection = defineCollection({
   schema: z
-    .object({
-      id_product: z.number().optional(),
-      name: z.string().optional(),
-      title: z.string(),
+      .object({
+        id_product: z.number().optional(),
+        name: z.string().optional(),
+        title: z.string().optional(),
       page_title: z.string().optional(),
       meta_title: z.string().optional(),
       description: z.string().optional(),
@@ -226,8 +206,7 @@ export const collections = {
   pages: pagesCollection,
   about: aboutCollection,
   products: productsCollection,
-  chatbot: chatbotCollection,
   homepage: localizedContent,
   contact: localizedContent,
-  ui: localizedContent,
+  layout: localizedContent,
 };

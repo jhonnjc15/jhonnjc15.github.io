@@ -1,4 +1,5 @@
 ---
+translationKey: chatbot
 locale: es
 headerTitle: "Asistente con IA"
 headerSubtitle: "Chatbot RAG"

@@ -14,9 +14,9 @@ const t = useTranslations(lang);
 const { pathname } = Astro.url;
 const fallbackLocale = 'es';
 
-let footerEntry = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/footer`);
+let footerEntry = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/footer`);
 if (!footerEntry) {
-  footerEntry = await getEntryBySlug("ui", `${fallbackLocale}/footer`);
+  footerEntry = await getEntryBySlug("layout", `${fallbackLocale}/footer`);
 }
 
 const footerContent = footerEntry?.data ?? {};
