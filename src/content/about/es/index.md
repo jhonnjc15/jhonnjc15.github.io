@@ -3,11 +3,11 @@ title: "Nosotros"
 translationKey: about-main
 page_title: "Sobre nuestra empresa"
 buttons:
-  - label: Más información
-    link: "/"
+  - label: Conoce nuestros productos
+    link: "/products"
     enable: true
-  - label: Aprende Más
-    link: "#"
+  - label: Contáctanos
+    link: "/contact"
     outline: true
     enable: true
 whoWeAre:

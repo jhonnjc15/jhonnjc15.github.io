@@ -11,7 +11,7 @@
       "Rango de corrientes: -250 µA a +250 µA"
     ],
     "images": [
-      { "src": "/images/products/1/product-1-1.jpg", "isMain": true }
+      { "src": "/images/products/1/product-1-1.png", "isMain": true }
     ],
     "video": "url_video_1.mp4",
     "youtube_videos": [
@@ -70,9 +70,9 @@
       "Máximo 2 módulos por equipo de Pq-Central"
     ],
     "images": [
-      { "src": "/images/products/4/product-4-1.jpg", "isMain": true }
+      { "src": "/images/products/3/product-3-1.png", "isMain": true }
     ],
-    "video": "url_video_4.mp4",
+    "video": "url_video_3.mp4",
     "youtube_videos": [
       "https://www.youtube.com/watch?v=IlNIGFlt4KI&t=6s"
     ],
@@ -98,7 +98,7 @@
       "Semicuantitativo"
     ],
     "images": [
-      { "src": "/images/products/5/product-5-1.jpg", "isMain": true }
+      { "src": "/images/products/4/product-4-1.jpg", "isMain": true }
     ],
     "video": "url_video_5.mp4",
     "youtube_videos": [
@@ -126,9 +126,9 @@
       "Barra de escala en el aplicativo"
     ],
     "images": [
-      { "src": "/images/products/3/product-3-1.jpg", "isMain": true }
+      { "src": "/images/products/5/product-5-1.png", "isMain": true }
     ],
-    "video": "url_video_3.mp4",
+    "video": "url_video_5.mp4",
     "youtube_videos": [
       "https://www.youtube.com/watch?v=nqqN8soQNKw"
     ],
@@ -154,9 +154,9 @@
       "Incluye un puntero laser rojo de baja intensidad"
     ],
     "images": [
-      { "src": "/images/products/7/product-7-1.jpg", "isMain": true }
+      { "src": "/images/products/6/product-6-1.png", "isMain": true }
     ],
-    "video": "url_video_7.mp4",
+    "video": "url_video_6.mp4",
     "youtube_videos": [
       "https://www.youtube.com/watch?v=KISoPp34sGg"
     ],
