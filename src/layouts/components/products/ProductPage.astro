@@ -3,17 +3,17 @@ import Galeria from "./Galeria.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
 import VideoComponent from "@layouts/function-components/VideoComponent";
-import productPageContentEn from "@content/ui/product-page/en.json";
-import productPageContentEs from "@content/ui/product-page/es.json";
-import siteContentEn from "@content/site/en.json";
-import siteContentEs from "@content/site/es.json";
+import productPageContentEn from "@content/ui/product-page/en.md";
+import productPageContentEs from "@content/ui/product-page/es.md";
+import siteContentEn from "@content/site/en.md";
+import siteContentEs from "@content/site/es.md";
 
 const { data_by_id } = Astro.props;
 const { currentLocale } = Astro;
 
 const allProducts = currentLocale === "en" ? productsEN : productsES;
-const productCopy = currentLocale === "en" ? productPageContentEn : productPageContentEs;
-const siteContent = currentLocale === "en" ? siteContentEn : siteContentEs;
+const productCopy = (currentLocale === "en" ? productPageContentEn : productPageContentEs).frontmatter;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
 const contactInfo = siteContent.contact ?? {};
 const relatedProducts = (data_by_id.related_products ?? [])
   .map((id: number) => allProducts.find((p) => p.id_product === id && p.show !== false))

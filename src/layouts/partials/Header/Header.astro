@@ -12,8 +12,8 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { IoCall, IoLocationOutline, IoMail } from "react-icons/io5/index.js";
 import blogNavigationEs from "../../../content/navigation/es.json";
 import blogNavigationEn from "../../../content/navigation/en.json";
-import siteContentEn from "@content/site/en.json";
-import siteContentEs from "@content/site/es.json";
+import siteContentEn from "@content/site/en.md";
+import siteContentEs from "@content/site/es.md";
 
 export interface ChildNavigationLink {
   name: string;
@@ -43,7 +43,7 @@ const blogCtaDescription = blogContent.cta?.description ?? '';
 const blogCtaHighlight = blogContent.cta?.highlight ?? (currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS');
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const siteContent = currentLocale === "en" ? siteContentEn : siteContentEs;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
 const { contact } = siteContent;
 const { email, phone, map_url, location_label } = contact;
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;

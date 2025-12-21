@@ -6,21 +6,33 @@ import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import siteContentEn from "@content/site/en.json";
-import siteContentEs from "@content/site/es.json";
+import siteContentEn from "@content/site/en.md";
+import siteContentEs from "@content/site/es.md";
 
 const { currentLocale } = Astro
+const { pathname } = Astro.url;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { footer } = menu;
-const siteContent = currentLocale === "en" ? siteContentEn : siteContentEs;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
 const { contact, footer: footerContent } = siteContent;
 const { description: footer_description, taglines, headings, copyright } = footerContent;
 const { location, email, phone, map_url, location_label } = contact;
 const mapLink = social.address || map_url;
 const footerSocial = { ...social, whatsapp: "", telegram: "", email: "", phone: "", address: "" };
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
+
+function isActive(pathname: string, baseUrl: string, locale: string) {
+  const cleanPath = pathname.replace(/\/$/, '');
+  const expectedBase = `/${locale}${baseUrl === '/' ? '' : baseUrl}`;
+
+  if (baseUrl === '/') {
+    return cleanPath === `/${locale}`;
+  }
+
+  return cleanPath.startsWith(expectedBase);
+}
 ---
 
 <footer class="footer bg-default">
@@ -48,9 +60,13 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
           {
             footer.map((item, i) => (
               <li class={footer.length - 1 === i ? "mb-0" : "mb-4"}>
-                <a 
+                <a
                   href={getRelativeLocaleUrl(currentLocale ?? '',`${item.url}`)}
-                  class="hover:text-primary hover:underline "
+                  class={`relative inline-block hover:text-primary hover:underline ${
+                    isActive(pathname, item.url, currentLocale ?? '')
+                      ? 'text-primary font-semibold after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-primary'
+                      : ''
+                  }`}
                 >
                   {t(`nav.${item.name.toLowerCase()}`)}
                 </a>
