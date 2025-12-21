@@ -8,6 +8,14 @@ banner:
     link: "/about"
     enable: true
 
+call_to_action:
+  title: "Divulgación científica para todas y todos"
+  description: "Sumérgete en nuestras guías, demostraciones y charlas sobre energía, tecnología y medio ambiente creadas en Paqari Open Lab."
+  button:
+    label: "Visitanos en YouTube"
+    link: "https://www.youtube.com/@PaqariOpenLab"
+  image: "/images/home/cta/sci_divulg2025.png"
+
 video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "Historias en YouTube"

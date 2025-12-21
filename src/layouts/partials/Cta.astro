@@ -1,14 +1,12 @@
 ---
-import config from "@config/config.json";
+const { call_to_action } = Astro.props;
 
 const {
-  call_to_action: {
-    title,
-    description,
-    image,
-    button: { label, link },
-  },
-} = config;
+  title = "",
+  description = "",
+  image = "",
+  button: { label = "", link = "" } = {},
+} = call_to_action ?? {};
 ---
 
 <section class="section px-5 py-0 xl:py-14">
@@ -29,14 +27,26 @@ const {
             {description}
           </p>
 
-          <a
-            class="btn btn-white inline-flex w-auto items-center justify-center lg:justify-start"
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {label}
-          </a>
+          {label && link && (
+            <a
+              class="btn btn-white inline-flex w-auto items-center justify-center lg:justify-start gap-3"
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.25 5.75 12 5.75 12 5.75s-6.25 0-7.86.311a2.75 2.75 0 0 0-1.94 1.94C2 9.611 2 12 2 12s0 2.389.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.75 18.25 12 18.25 12 18.25s6.25 0 7.86-.311a2.75 2.75 0 0 0 1.94-1.94C22 14.389 22 12 22 12s0-2.389-.2-3.999Z" />
+                <path fill="#fff" d="M10 14.857 14.5 12 10 9.143v5.714Z" />
+              </svg>
+              {label}
+            </a>
+          )}
         </div>
       </div>
             <div class="flex justify-center">
@@ -44,7 +54,7 @@ const {
           <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg">
             <img
               src={image}
-              alt="Divulgación científica 2025"
+              alt={title || "Call to action image"}
               class="h-full w-full rounded-2xl object-cover"
               loading="lazy"
             />

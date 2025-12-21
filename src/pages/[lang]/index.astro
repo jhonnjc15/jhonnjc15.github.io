@@ -27,7 +27,7 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery, video_section } = homepage.data;
+const { banner, key_features, service, testimonial, galery, video_section, call_to_action } = homepage.data;
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -61,5 +61,5 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
   <Testimonial testimonial={testimonial} />
 
   <!-- call to action -->
-  <Cta />
+  <Cta call_to_action={call_to_action} />
 </Base>

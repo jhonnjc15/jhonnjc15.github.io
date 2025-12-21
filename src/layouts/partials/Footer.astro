@@ -1,20 +1,24 @@
 ---
 import Logo from "@components/Logo.astro";
 import Social from "@components/Social.astro";
-import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import siteContentEn from "@content/site/en.json";
+import siteContentEs from "@content/site/es.json";
 
 const { currentLocale } = Astro
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { footer } = menu;
-const { copyright, location, email, phone, footer_description } = config.params;
-const mapLink = social.address;
+const siteContent = currentLocale === "en" ? siteContentEn : siteContentEs;
+const { contact, footer: footerContent } = siteContent;
+const { description: footer_description, taglines, headings, copyright } = footerContent;
+const { location, email, phone, map_url, location_label } = contact;
+const mapLink = social.address || map_url;
 const footerSocial = { ...social, whatsapp: "", telegram: "", email: "", phone: "", address: "" };
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 ---
@@ -26,18 +30,20 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
         <Logo />
         <div class="mt-6 space-y-2 leading-relaxed">
           {footer_description && <p>{footer_description}</p>}
-          <p class="font-semibold" style="color: #002060;">Construyendo un futuro sostenible</p>
-          <p class="font-semibold" style="color: #ae2012;">Building a sustainable future</p>
-          <p class="font-semibold" style="color: #00b050;">Hamuq pachata aswan allin huqarispa</p>
+          {taglines?.map((tagline) => (
+            <p class="font-semibold" style={`color: ${tagline.color ?? '#002060'};`} key={tagline.text}>
+              {tagline.text}
+            </p>
+          ))}
         </div>
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Socials</h6>
+        <h6>{headings?.socials ?? "Socials"}</h6>
 
         <Social source={footerSocial} className="social-icons mt-4 lg:mt-6" />
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Quick Links</h6>
+        <h6>{headings?.quick_links ?? "Quick Links"}</h6>
         <ul>
           {
             footer.map((item, i) => (
@@ -54,15 +60,15 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
         </ul>
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Location & Contact</h6>
+        <h6>{headings?.location ?? "Location & Contact"}</h6>
         <ul>
           <li class="mb-2">
             {mapLink ? (
               <a class="hover:text-primary hover:underline" href={mapLink} target="_blank" rel="noreferrer">
-                {location}
+                {location_label || location}
               </a>
             ) : (
-              location
+              location_label || location
             )}
           </li>
           <li class="mb-2">

@@ -8,6 +8,14 @@ banner:
     link: "/about"
     enable: true
 
+call_to_action:
+  title: "Science outreach for everyone"
+  description: "Dive into our guides, demos, and talks about energy, technology, and the environment created with Paqari Open Lab."
+  button:
+    label: "Visit us on YouTube"
+    link: "https://www.youtube.com/@PaqariOpenLab"
+  image: "/images/home/cta/sci_divulg2025.png"
+
 video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "YouTube highlights"

@@ -2,7 +2,6 @@
 import Logo from "@components/Logo.astro";
 import Social from "@components/Social.astro";
 import menu from "@config/menu.json";
-import config from "@config/config.json";
 import social from "@config/social.json";
 
 import LanguageSelector from "../Header/LanguageSelector.astro"
@@ -13,6 +12,8 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { IoCall, IoLocationOutline, IoMail } from "react-icons/io5/index.js";
 import blogNavigationEs from "../../../content/navigation/es.json";
 import blogNavigationEn from "../../../content/navigation/en.json";
+import siteContentEn from "@content/site/en.json";
+import siteContentEs from "@content/site/es.json";
 
 export interface ChildNavigationLink {
   name: string;
@@ -42,7 +43,9 @@ const blogCtaDescription = blogContent.cta?.description ?? '';
 const blogCtaHighlight = blogContent.cta?.highlight ?? (currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS');
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const { email, phone, location } = config.params;
+const siteContent = currentLocale === "en" ? siteContentEn : siteContentEs;
+const { contact } = siteContent;
+const { email, phone, map_url, location_label } = contact;
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 const topbarSocial = {
   facebook: social.facebook,
@@ -50,7 +53,7 @@ const topbarSocial = {
   youtube: social.youtube,
   linkedin: social.linkedin,
 };
-const mapUrl = social.address || "https://www.google.com/maps/search/?api=1&query=PaqariOpenLab";
+const mapUrl = social.address || map_url;
 
 // console.log('Astro.props.is404')
 // console.log(Astro.props.is404)
@@ -89,7 +92,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           <span class="topbar-icon">
             <IoLocationOutline />
           </span>
-          <span class="topbar-text">Paqari OpenLab</span>
+          <span class="topbar-text">{location_label || 'Paqari OpenLab'}</span>
         </a>
       </div>
       <Social source={topbarSocial} className="social-icons topbar-social-icons" />
