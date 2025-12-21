@@ -43,9 +43,14 @@ const blogCtaDescription = blogContent.cta?.description ?? '';
 const blogCtaHighlight = blogContent.cta?.highlight ?? (currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS');
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs).frontmatter;
-const { contact } = siteContent;
-const { email, phone, map_url, location_label } = contact;
+const siteContent = (currentLocale === "en" ? siteContentEn : siteContentEs)?.frontmatter ?? {};
+const { contact = {} } = siteContent;
+const {
+  email = "",
+  phone = "",
+  map_url = "",
+  location_label = "Paqari OpenLab",
+} = contact;
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 const topbarSocial = {
   facebook: social.facebook,
