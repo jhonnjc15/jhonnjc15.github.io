@@ -17,25 +17,33 @@ const {
     <div class="row mt-12 justify-center">
       <div class="lg:col-10">
         <div class="row justify-center text-center">
-          {
-            member_list.map((item: any) => (
-              <div class="mb-6 flex flex-col px-6 text-center sm:col-6 lg:col-4 sm:items-center lg:items-center">
-                <div class="member-avatar inline-flex justify-center">
-                  <Image
-                    height={112}
-                    width={112}
-                    class="rouded-full h-28 w-28"
-                    src={item.image}
-                    alt=""
-                  />
-                </div>
-                <div class="mt-6 w-full text-text flex-1 rounded-xl bg-white px-4 py-8 shadow-lg">
-                  <h5 class="font-primary">{item.name}</h5>
-                  <p class="mt-1.5">{item.field}</p>
-                </div>
+          {member_list.map((item: any) => (
+            <div class="mb-6 flex flex-col px-6 text-center sm:col-8 md:col-6 lg:col-5 xl:col-4 sm:items-center lg:items-center">
+              <div class="member-avatar inline-flex justify-center">
+                <Image
+                  height={128}
+                  width={128}
+                  class="rouded-full h-32 w-32"
+                  src={item.image}
+                  alt=""
+                />
               </div>
-            ))
-          }
+              <div class="mt-6 w-full flex-1 rounded-xl bg-white px-5 py-8 text-text shadow-xl">
+                <h5 class="font-primary text-xl font-semibold text-dark">{item.name}</h5>
+                <p class="mt-2 text-sm font-medium text-secondary">{item.field}</p>
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul class="mt-4 space-y-2 text-left text-sm text-text-offset">
+                    {item.highlights.map((line: string) => (
+                      <li class="flex items-start gap-2">
+                        <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
+                        <span class="leading-relaxed">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -143,8 +143,14 @@ members:
   title: El equipo detrás de Paqari
   description: Somos un equipo que combina ciencia, diseño y tecnología para democratizar la experimentación práctica en STEM.
   member_list:
-    - name: PhD Víctor Raúl Jauja Ccana
+    - name: "PhD. Víctor Raúl Jauja Ccana"
       field: Cofundador, electroquímica y producto
+      highlights:
+        - "Química / Electroquímica – UNI (Perú)"
+        - "Bernard Gross Award (SBPMat – Brasil)"
+        - "Desarrollo de aplicativos móviles y programación"
+        - "Docencia (UNI) y proyectos en industria minera"
+        - "Estancias de investigación en Francia, Argentina, Chile, España y Brasil"
       image: "/images/shared/users/user-3.png"
 ---
 Paqari OpenLab es una plataforma de aprendizaje práctico que acerca la ciencia aplicada a cualquier aula mediante un dispositivo modular, apps gratuitas y acompañamiento docente. Impulsamos la transición hacia los trabajos del futuro con experiencias seguras, sostenibles y accesibles.

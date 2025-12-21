@@ -11,6 +11,12 @@ const Faq = ({ data }) => {
       setIsActive((prev) => [...prev, index]);
     }
   };
+
+  const headingText =
+    data.faq.heading ||
+    (data.faq.title.toLowerCase().includes("preguntas")
+      ? "Resuelve tus dudas con Paqari OpenLab"
+      : "Answers about Paqari OpenLab");
   return (
     <section className="faqs section bg-gradient-to-b from-primary/5 via-white to-secondary/5">
       <div className="container max-w-[1230px]">
@@ -20,7 +26,7 @@ const Faq = ({ data }) => {
               {data.faq.title}
             </span>
             <h2 className="mt-4 text-3xl font-extrabold text-dark md:text-4xl">
-              {data.faq.title}
+              {headingText}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-text-offset lg:max-w-[440px]">
               {data.faq.description}
