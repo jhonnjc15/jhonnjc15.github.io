@@ -25,6 +25,9 @@ vision:
     Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y
     la programación: un laboratorio en cada mochila que impulse innovación educativa, ambiental e
     industrial en cualquier territorio.
+  statement: >-
+    Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y
+    programación.
   quote: >-
     "Construyendo un futuro sostenible · Building a sustainable future · Hamuq pachata aswan allin
     huqarispa"

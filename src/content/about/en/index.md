@@ -25,6 +25,9 @@ vision:
     We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and
     programming: a lab in every backpack that sparks educational, environmental, and industrial
     innovation anywhere.
+  statement: >-
+    We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and
+    programming.
   quote: >-
     "Building a sustainable future · Construyendo un futuro sostenible · Hamuq pachata aswan allin
     huqarispa"

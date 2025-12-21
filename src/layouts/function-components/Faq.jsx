@@ -18,22 +18,22 @@ const Faq = ({ data }) => {
       ? "Resuelve tus dudas con Paqari OpenLab"
       : "Answers about Paqari OpenLab");
   return (
-    <section className="faqs section bg-gradient-to-b from-primary/5 via-white to-secondary/5">
+    <section className="faqs section bg-gradient-to-b from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="container max-w-[1230px]">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="rounded-2xl bg-white/80 p-8 shadow-xl ring-1 ring-border/50 backdrop-blur text-left">
+          <div className="rounded-2xl bg-white/80 p-8 shadow-xl ring-1 ring-border/50 backdrop-blur text-left dark:bg-slate-900/70 dark:ring-white/10">
             <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-primary shadow-sm">
               {data.faq.title}
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold text-dark md:text-4xl">
+            <h2 className="mt-4 text-3xl font-extrabold text-dark dark:text-white md:text-4xl">
               {headingText}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-text-offset lg:max-w-[440px]">
+            <p className="mt-4 text-base leading-relaxed text-text-offset dark:text-gray-200 lg:max-w-[440px]">
               {data.faq.description}
             </p>
           </div>
 
-          <div className="rounded-3xl bg-white/90 p-5 shadow-2xl ring-1 ring-border/60 backdrop-blur lg:p-8">
+          <div className="rounded-3xl bg-white/90 p-5 shadow-2xl ring-1 ring-border/60 backdrop-blur pr-7 lg:p-9 lg:pr-12 dark:bg-slate-900/70 dark:ring-white/10">
             {data.faq.faq_list.map((item, i) => {
               const isOpen = isActive.includes(i);
 
@@ -43,15 +43,15 @@ const Faq = ({ data }) => {
                   onClick={() => accordionHandler(i)}
                   key={`item-${i}`}
                 >
-                  <div className="accordion-header relative flex cursor-pointer items-start gap-3 py-4">
+                  <div className="accordion-header relative flex cursor-pointer items-start gap-3 py-4 pr-6">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
                       {i + 1}
                     </div>
-                    <div className="flex-1 pl-1 text-left text-lg font-semibold text-dark">
+                    <div className="flex-1 pl-1 text-left text-lg font-semibold text-dark dark:text-white">
                       {item.title}
                     </div>
                     <svg
-                      className={`accordion-icon absolute right-0 top-1/2 -translate-y-1/2 text-primary transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+                      className={`accordion-icon absolute right-0 top-1/2 -translate-y-1/2 text-primary transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180" : "rotate-0"}`}
                       x="0px"
                       y="0px"
                       viewBox="0 0 512 512"
@@ -68,7 +68,7 @@ const Faq = ({ data }) => {
                       isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="pb-4 pl-[60px] pr-2 text-text">
+                    <div className="pb-4 pl-[60px] pr-3 text-text dark:text-gray-200">
                       <p
                         className="leading-relaxed"
                         dangerouslySetInnerHTML={{

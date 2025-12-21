@@ -149,6 +149,7 @@ const aboutCollection = defineCollection({
       whoWeAre: aboutSection,
       vision: aboutSection.extend({
         quote: z.string().optional(),
+        statement: z.string().optional(),
       }),
       mission: aboutSection,
       culture: aboutSection,
