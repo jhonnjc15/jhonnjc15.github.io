@@ -18,6 +18,18 @@ const youtubeVideos = data_by_id.youtube_videos ?? [];
 const available = data_by_id.available ?? true;
 const contactLabel = currentLocale === "en" ? "Contact Us" : "Contáctanos";
 const availabilityLabel = available ? (currentLocale === "en" ? "Available" : "Disponible") : (currentLocale === "en" ? "Unavailable" : "No disponible");
+const exchangeRate = 3.7; // PEN to USD
+const priceValue = data_by_id.price;
+const displayPrice = priceValue !== undefined
+  ? (currentLocale === "en"
+    ? `$${(priceValue / exchangeRate).toFixed(2)}`
+    : `S/. ${priceValue}`)
+  : undefined;
+const contactPhone = "993896226";
+const contactMessage = currentLocale === "en"
+  ? `I would like more information about ${data_by_id.name || data_by_id.title}.`
+  : `Me gustaría más información sobre ${data_by_id.name || data_by_id.title}.`;
+const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text=${encodeURIComponent(contactMessage)}`;
 
 const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}`;
 
@@ -56,7 +68,7 @@ const getYouTubeEmbed = (url: string) => {
           </span>
         )}
       </div>
-      <h1 class="text-3xl font-bold">{data_by_id.title}</h1>
+      <h1 class="text-3xl font-bold">{data_by_id.name || data_by_id.title}</h1>
     </div>
 
     <p class="leading-relaxed text-text-offset">
@@ -75,16 +87,21 @@ const getYouTubeEmbed = (url: string) => {
     )}
 
     <div class="flex flex-wrap items-center gap-3">
-      {data_by_id.price !== undefined && (
-        <div class="text-2xl font-semibold">${data_by_id.price}</div>
+      {displayPrice && (
+        <div class="text-2xl font-semibold">{displayPrice}</div>
       )}
       {data_by_id.price_note && <span class="text-sm text-text-offset">{data_by_id.price_note}</span>}
     </div>
 
     <a
-      href="/"
-      class="inline-block bg-primary py-3 px-8 rounded-xl shadow hover:bg-secondary transition text-center w-fit text-white"
+      href={whatsappLink}
+      target="_blank"
+      rel="noreferrer"
+      class="inline-flex items-center gap-2 bg-[#25D366] py-3 px-8 rounded-xl shadow hover:brightness-105 transition text-center w-fit text-white font-semibold"
     >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-5 w-5 fill-current">
+        <path d="M16 3C9.383 3 4 8.383 4 15c0 2.373.654 4.586 1.797 6.477L4 29l7.711-1.754C13.52 28.42 14.73 28.7 16 28.7c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 2c5.54 0 10 4.46 10 10s-4.46 10-10 10c-1.12 0-2.2-.19-3.199-.559l-.398-.141-.422.098-4.211.959.938-4.07.098-.422-.219-.367C7.613 19.55 7 17.317 7 15c0-5.54 4.46-10 10-10zm-.77 4c-.26 0-.637.046-1.02.464-.382.418-1.335 1.305-1.335 3.171 0 1.866 1.37 3.672 1.563 3.93.192.255 2.636 4.215 6.518 5.728.89.347 1.582.278 2.172.171.527-.095 1.622-.663 1.852-1.302.228-.64.228-1.19.16-1.303-.067-.113-.252-.18-.527-.316-.277-.137-1.645-.812-1.897-.904-.253-.093-.438-.139-.626.139-.19.278-.72.902-.882 1.086-.16.186-.327.209-.604.072-.277-.137-1.17-.432-2.23-1.327-.825-.707-1.383-1.58-1.546-1.858-.16-.278-.018-.428.12-.566.125-.124.277-.323.415-.484.139-.162.185-.278.277-.463.093-.186.047-.348-.023-.485-.07-.137-.626-1.504-.855-2.059-.228-.547-.46-.473-.634-.483-.163-.008-.35-.01-.54-.01z" />
+      </svg>
       {contactLabel}
     </a>
 
@@ -108,7 +125,7 @@ const getYouTubeEmbed = (url: string) => {
 
           {pdfGuides.length > 0 && (
             <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow">
-              <h3 class="text-xl font-semibold mb-3">{currentLocale === "en" ? "Guides and PDFs" : "Guías y PDFs"}</h3>
+              <h3 class="text-xl font-semibold mb-3">{currentLocale === "en" ? "Additional resources" : "Recursos adicionales"}</h3>
               <ul class="space-y-2">
                 {pdfGuides.map((guide: { title: string; url: string }) => (
                   <li>
@@ -138,7 +155,7 @@ const getYouTubeEmbed = (url: string) => {
                       <iframe
                         class="aspect-video w-full"
                         src={embedUrl}
-                        title={data_by_id.title}
+                        title={data_by_id.name || data_by_id.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                       ></iframe>
@@ -164,7 +181,7 @@ const getYouTubeEmbed = (url: string) => {
                   class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-background-offset px-4 py-2 text-sm font-semibold text-text hover:border-primary hover:text-primary"
                 >
                   <span class="h-2 w-2 rounded-full bg-primary"></span>
-                  {product.title}
+                  {product.name || product.title}
                 </a>
               ))}
             </div>

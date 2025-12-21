@@ -1,7 +1,7 @@
 ---
 banner:
-  title: "Paqari OpenLab: el amanecer de la ciencia práctica"
-  content: "Explora nuestro laboratorio en un dispositivo que democratiza la educación STEM con experiencias reales, incluso en escuelas sin internet ni laboratorios."
+  title: "Aprende, experimenta, crea..."
+  content: "Paqari OpenLab lleva la química, bio y nanotecnología al alcance de todos."
   image: /images/home/banner/PQOL_IMG_WEB5.png
   button:
     label: Conoce más sobre nosotros

@@ -46,13 +46,13 @@ const isOddCount = enhancedProducts.length % 2 !== 0;
                   width={640}
                   height={480}
                   src={item.mainImage}
-                  alt={item.data.title}
+                  alt={item.data.name || item.data.title}
                 />
               </div>
             </div>
             <div class="lg:w-1/2 space-y-3">
               <h3 transition:name={`title-${item.data.id_product}`} class="text-2xl font-semibold leading-tight text-default">
-                {item.data.title}
+                {item.data.name || item.data.title}
               </h3>
               <p class="text-sm leading-relaxed text-text-offset">
                 {plainify(item.data.description?.slice(0, Number(summary_length)))}...
