@@ -39,11 +39,13 @@ const Faq = ({ data }) => {
 
               return (
                 <div
-                  className={`accordion border-b border-border/70 ${isOpen ? "active" : ""}`}
+                  className={`accordion border-b border-border/70 bg-white/90 text-dark dark:bg-slate-900/80 dark:text-gray-100 ${
+                    isOpen ? "active" : ""
+                  }`}
                   onClick={() => accordionHandler(i)}
                   key={`item-${i}`}
                 >
-                  <div className="accordion-header relative flex cursor-pointer items-start gap-3 py-4 pr-6">
+                  <div className="accordion-header relative flex cursor-pointer items-start gap-3 py-4 pr-10">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
                       {i + 1}
                     </div>
@@ -68,7 +70,7 @@ const Faq = ({ data }) => {
                       isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="pb-4 pl-[60px] pr-3 text-text dark:text-gray-200">
+                    <div className="pb-4 pl-[60px] pr-4 text-text dark:text-gray-200">
                       <p
                         className="leading-relaxed"
                         dangerouslySetInnerHTML={{

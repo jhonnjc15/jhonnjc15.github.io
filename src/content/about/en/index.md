@@ -22,15 +22,10 @@ whoWeAre:
 vision:
   title: "Vision"
   description: >-
-    We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and
-    programming: a lab in every backpack that sparks educational, environmental, and industrial
-    innovation anywhere.
+    A lab in every backpack that sparks educational, environmental, and industrial innovation
+    anywhere, connecting communities with applied science.
   statement: >-
-    We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and
-    programming.
-  quote: >-
-    "Building a sustainable future · Construyendo un futuro sostenible · Hamuq pachata aswan allin
-    huqarispa"
+    We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and programming.
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "People collaborating on scientific ideas"
@@ -149,8 +144,7 @@ members:
       highlights:
         - "Chemistry / Electrochemistry – UNI (Peru)"
         - "Bernard Gross Award (SBPMat – Brazil)"
-        - "Mobile app development and programming"
-        - "Teaching experience (UNI) and mining industry projects"
+        - "Teaching (UNI) and mining industry projects"
         - "Research stays in France, Argentina, Chile, Spain, and Brazil"
       image: "/images/shared/users/user-3.png"
 ---

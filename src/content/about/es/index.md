@@ -22,15 +22,10 @@ whoWeAre:
 vision:
   title: "Visión"
   description: >-
-    Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y
-    la programación: un laboratorio en cada mochila que impulse innovación educativa, ambiental e
-    industrial en cualquier territorio.
+    Un laboratorio en cada mochila que impulse innovación educativa, ambiental e industrial en
+    cualquier territorio, conectando comunidades con ciencia aplicada.
   statement: >-
-    Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y
-    programación.
-  quote: >-
-    "Construyendo un futuro sostenible · Building a sustainable future · Hamuq pachata aswan allin
-    huqarispa"
+    Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y la programación.
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "Personas explorando una visión científica"
@@ -150,8 +145,7 @@ members:
       field: Cofundador, electroquímica y producto
       highlights:
         - "Química / Electroquímica – UNI (Perú)"
-        - "Bernard Gross Award (SBPMat – Brasil)"
-        - "Desarrollo de aplicativos móviles y programación"
+        - "Premio Bernard Gross (SBPMat – Brasil)"
         - "Docencia (UNI) y proyectos en industria minera"
         - "Estancias de investigación en Francia, Argentina, Chile, España y Brasil"
       image: "/images/shared/users/user-3.png"
