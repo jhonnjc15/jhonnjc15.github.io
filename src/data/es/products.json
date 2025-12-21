@@ -15,7 +15,7 @@
     ],
     "video": "url_video_1.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [
@@ -25,7 +25,8 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 150,
+    "show": true,
+    "price_soles": 150,
     "price_note": "Precio de pre-venta",
     "purchase_context": "Equipo principal; base para módulos complementarios o venta independiente."
   },
@@ -44,15 +45,16 @@
     ],
     "video": "url_video_2.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
     "related_products": [1, 6],
     "draft": false,
     "featured": false,
-    "available": true,
-    "price": 30,
+    "available": false,
+    "show": false,
+    "price_soles": 30,
     "price_note": "Compra por separado o junto a Pq-Central",
     "purchase_context": "Módulo que opera conectado a Pq-Central o como bancada compacta para pruebas rápidas."
   },
@@ -71,7 +73,7 @@
     ],
     "video": "url_video_4.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -79,9 +81,10 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 30,
+    "show": true,
+    "price_soles": 30,
     "price_note": "Venta por separado",
-    "purchase_context": "Complemento digital para Pq-Central; puede integrarse en kits educativos."
+    "purchase_context": "Módulo complementario conectado a Pq-Central; operable de manera individual para tareas específicas."
   },
   {
     "id_product": 4,
@@ -89,26 +92,27 @@
     "title": "Espectrofotómetro Visible/RGV",
     "description": "Dispositivo para uso como espectrofotómetro Visible y/o RGB. Cuantificación concecntraciones en soluciones a traves de análisis de color e intensidad",
     "features": [
-      "Modo Visible de 400 a 700 nm",
-      "Modo RGB para muestras coloridas",
-      "Resultados semicuantitativos"
+      "Modo Esp. Visible en rango 400 a 700 nm",
+      "Modo Esp. RGB muestras coloridas",
+      "Semicuantitativo"
     ],
     "images": [
       { "src": "/images/products/5/product-5-1.jpg", "isMain": true }
     ],
     "video": "url_video_5.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=FTQbiNvZqaY"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
     "related_products": [1],
     "draft": false,
     "featured": false,
-    "available": true,
-    "price": 30,
+    "available": false,
+    "show": false,
+    "price_soles": 30,
     "price_note": "Funciona por separado o como módulo de Pq-Central",
-    "purchase_context": "Equipo autónomo compatible con Pq-Central para análisis de color en campo o laboratorio."
+    "purchase_context": "Puede utilizarse de manera independiente como espectrofotómetro o acoplarse a Pq-Central."
   },
   {
     "id_product": 5,
@@ -125,7 +129,7 @@
     ],
     "video": "url_video_3.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=aqz-KE-bpKQ"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -133,26 +137,27 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 15,
+    "show": true,
+    "price_soles": 15,
     "price_note": "Funciona por separado o como módulo de Pq-Central",
-    "purchase_context": "Microscopio portátil que puede usarse solo o junto con Pq-Central para documentar experimentos."
+    "purchase_context": "Compatible con Pq-Central y utilizable de forma independiente para observaciones."
   },
   {
     "id_product": 6,
     "name": "NanoMat-Chem",
-    "title": "Módulo para la síntesis de materiales",
+    "title": "Módulo para la síntesis de materiales ",
     "description": "Es un módulo de Pq-Central diseñado para convertir la energía solar en energía química, permitiendo la síntesis de materiales avanzados como grafeno, quantum dots, óxidos metálicos, entre muchos otros",
     "features": [
-      "Módulo de Pq-Central",
-      "Produce hasta 5 V y 2 A",
-      "Incluye un puntero láser rojo de baja intensidad"
+      "Módulo de Pq-central",
+      "Produce hasta 5V y 2 A",
+      "Incluye un puntero laser rojo de baja intensidad"
     ],
     "images": [
       { "src": "/images/products/7/product-7-1.jpg", "isMain": true }
     ],
     "video": "url_video_7.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=3GwjfUFyY6M"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -160,8 +165,8 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 30,
-    "price_note": "Módulo complementario",
-    "purchase_context": "Pensado para ampliarse con Pq-Central; puede operar de forma independiente con su propia alimentación."
+    "show": true,
+    "price_soles": 30,
+    "purchase_context": "Módulo de Pq-central; puede operar de manera autónoma para síntesis de materiales."
   }
 ]

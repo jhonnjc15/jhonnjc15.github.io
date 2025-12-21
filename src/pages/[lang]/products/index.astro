@@ -19,7 +19,7 @@ const json_products = currentLocale === 'en' ? productsEN : productsES;
 
 // Mapea si necesitas un slug u otra transformación
 const posts = json_products
-  .filter((product) => product.available !== false)
+  .filter((product) => product.show !== false)
   .map(product => ({
     data: product,
     slug: `product-${product.id_product}`

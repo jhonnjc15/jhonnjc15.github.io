@@ -10,7 +10,7 @@ const { products, product_list } = Astro.props;
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 
-const visibleProducts = (products ?? []).filter((item: any) => item.data.available !== false);
+const visibleProducts = (products ?? []).filter((item: any) => item.data.show !== false);
 
 const enhancedProducts = visibleProducts.map((item) => {
   const mainImageObj = item.data.images?.find((img) => img.isMain);

@@ -9,7 +9,6 @@ const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 const aboutPath = "/about";
 const buttonLabel = button.label || i18n.COMMON.contact_cta;
-const badgeLabel = currentLocale === "en" ? "Featured journey" : "Recorrido destacado";
 ---
 
 <style>
@@ -31,9 +30,6 @@ const badgeLabel = currentLocale === "en" ? "Featured journey" : "Recorrido dest
     <div class="grid gap-8 lg:gap-12 lg:grid-cols-[1.05fr_minmax(0,0.9fr)] lg:items-center">
       <div class="relative flex justify-center sm:justify-start lg:order-1" data-animate="fade-right">
         <div class="max-w-4xl space-y-6 sm:space-y-7 text-center sm:text-left px-2 sm:px-0">
-          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-paqariYellow dark:text-paqariYellow">
-            {badgeLabel}
-          </p>
           <h1 class="banner-heading banner-title text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
             {title}
           </h1>

@@ -13,7 +13,7 @@ interface ProductData {
   title: string;
   description?: string;
   features?: string[];
-  price?: number;
+  price_soles?: number;
   price_note?: string;
   youtube_videos?: string[];
   blog_articles?: { title: string; url: string }[];
@@ -21,6 +21,7 @@ interface ProductData {
   related_products?: number[];
   purchase_context?: string;
   available?: boolean;
+  show?: boolean;
   images?: { src: string; isMain?: boolean }[];
 }
 
@@ -29,7 +30,7 @@ export async function getStaticPaths() {
   const paths: { params: { lang: string; id: string } }[] = [];
 
   for (const lang of locales) {
-    const localeProducts = (lang === "en" ? productsEN : productsES).filter((product) => product.available !== false);
+    const localeProducts = (lang === "en" ? productsEN : productsES).filter((product) => product.show !== false);
 
     for (const product of localeProducts) {
       paths.push({
@@ -47,7 +48,7 @@ export async function getStaticPaths() {
 const { id } = Astro.params;
 
 const product = products
-  .filter((entry) => entry.available !== false)
+  .filter((entry) => entry.show !== false)
   .find((entry) => String(entry.id_product) === String(id)) as ProductData | undefined;
 
 if (!product) {

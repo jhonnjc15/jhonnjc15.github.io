@@ -19,16 +19,17 @@ const available = data_by_id.available ?? true;
 const contactLabel = currentLocale === "en" ? "Contact Us" : "Contáctanos";
 const availabilityLabel = available ? (currentLocale === "en" ? "Available" : "Disponible") : (currentLocale === "en" ? "Unavailable" : "No disponible");
 const exchangeRate = 3.7; // PEN to USD
-const priceValue = data_by_id.price;
+const priceValue = data_by_id.price_soles;
 const displayPrice = priceValue !== undefined
   ? (currentLocale === "en"
     ? `$${(priceValue / exchangeRate).toFixed(2)}`
     : `S/. ${priceValue}`)
   : undefined;
 const contactPhone = "993896226";
+const greeting = currentLocale === "en" ? "Hello!" : "¡Hola!";
 const contactMessage = currentLocale === "en"
-  ? `I would like more information about ${data_by_id.name || data_by_id.title}.`
-  : `Me gustaría más información sobre ${data_by_id.name || data_by_id.title}.`;
+  ? `${greeting} I would like more information about ${data_by_id.name || data_by_id.title}.`
+  : `${greeting} Me gustaría más información sobre ${data_by_id.name || data_by_id.title}.`;
 const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text=${encodeURIComponent(contactMessage)}`;
 
 const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}`;

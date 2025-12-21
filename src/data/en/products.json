@@ -3,10 +3,10 @@
     "id_product": 1,
     "name": "Pq-Central",
     "title": "Paqari-stat v1",
-    "description": "Electrochemical device for potential control and current measurement, widely used in research labs for educational applications in energy, environment, or industry.",
+    "description": "Electrochemical device for potential control and current measurement. Widely used in research labs for educational applications in energy, environment, or industry.",
     "features": [
       "Wireless electrochemical control (Bluetooth) with built-in solar power",
-      "Modular design to expand with new experiments",
+      "Modular design that allows adding new experiments",
       "Potential range: -1.5 V to +1.5 V vs Ag",
       "Current range: -250 µA to +250 µA"
     ],
@@ -15,7 +15,7 @@
     ],
     "video": "url_video_1.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [
@@ -25,15 +25,16 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 150,
-    "price_note": "Pre-sale price",
-    "purchase_context": "Main hub; works on its own or as the base for complementary modules."
+    "show": true,
+    "price_soles": 150,
+    "price_note": "Pre-order price",
+    "purchase_context": "Main device; base for complementary modules or stand-alone purchase."
   },
   {
     "id_product": 2,
     "name": "Energy-Chem",
     "title": "Energy module",
-    "description": "Module for Pq-Central that enables experiments related to energy generation and storage devices (batteries, capacitors, fuel cells).",
+    "description": "Module for Pq-Central to perform experiments related to energy generation and storage devices (batteries, capacitors, fuel cells).",
     "features": [
       "Voltage range: up to 5 V",
       "Current range: up to 500 mA",
@@ -44,34 +45,35 @@
     ],
     "video": "url_video_2.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
     "related_products": [1, 6],
     "draft": false,
     "featured": false,
-    "available": true,
-    "price": 30,
-    "price_note": "Available separately or bundled with Pq-Central",
-    "purchase_context": "Operates when connected to Pq-Central or as a compact bench for quick energy tests."
+    "available": false,
+    "show": false,
+    "price_soles": 30,
+    "price_note": "Buy separately or with Pq-Central",
+    "purchase_context": "Module that runs connected to Pq-Central or as a compact bench for quick tests."
   },
   {
     "id_product": 3,
     "name": "Digi-Chem",
     "title": "Digital Chemistry module",
-    "description": "Module for experiments related to digital chemistry and automated chemical reactions.",
+    "description": "Module to perform experiments related to digital chemistry and automated chemical reactions.",
     "features": [
-      "Automated chemical sequences",
+      "Automation of chemical sequences",
       "Microfluidic conditions for greater precision",
-      "Up to 2 modules per Pq-Central unit"
+      "Maximum of 2 modules per Pq-Central unit"
     ],
     "images": [
       { "src": "/images/products/4/product-4-1.jpg", "isMain": true }
     ],
     "video": "url_video_4.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -79,42 +81,44 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 30,
+    "show": true,
+    "price_soles": 30,
     "price_note": "Sold separately",
-    "purchase_context": "Digital companion for Pq-Central that fits seamlessly into educational kits."
+    "purchase_context": "Complementary module connected to Pq-Central; can also operate individually for specific tasks."
   },
   {
     "id_product": 4,
     "name": "Spectro",
     "title": "Visible/RGB spectrophotometer",
-    "description": "Device for Visible and/or RGB spectrophotometry. Quantifies concentrations in solutions through color and intensity analysis.",
+    "description": "Device for use as a Visible and/or RGB spectrophotometer. Quantifies solution concentrations through color and intensity analysis.",
     "features": [
-      "Visible mode from 400 to 700 nm",
+      "Visible mode range 400 to 700 nm",
       "RGB mode for colorful samples",
-      "Semiquantitative results"
+      "Semi-quantitative"
     ],
     "images": [
       { "src": "/images/products/5/product-5-1.jpg", "isMain": true }
     ],
     "video": "url_video_5.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=FTQbiNvZqaY"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
     "related_products": [1],
     "draft": false,
     "featured": false,
-    "available": true,
-    "price": 30,
-    "price_note": "Works alone or as a Pq-Central module",
-    "purchase_context": "Standalone instrument compatible with Pq-Central for field or lab color analysis."
+    "available": false,
+    "show": false,
+    "price_soles": 30,
+    "price_note": "Works standalone or as a Pq-Central module",
+    "purchase_context": "Can be used independently as a spectrophotometer or attached to Pq-Central."
   },
   {
     "id_product": 5,
     "name": "Paqari-Scope",
     "title": "x40 Microscope",
-    "description": "A microscope for observing samples at small scale. It allows viewing cells and materials prepared in designed experiments: microstructures, microrobots, films, etc.",
+    "description": "A microscope for observing small-scale samples. Allows viewing from cells to materials prepared in designed experiments: microstructures, microrobots, films, etc.",
     "features": [
       "Magnification up to x40",
       "Capture images and videos",
@@ -125,7 +129,7 @@
     ],
     "video": "url_video_3.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=aqz-KE-bpKQ"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -133,18 +137,19 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 15,
-    "price_note": "Works alone or as a Pq-Central module",
-    "purchase_context": "Portable microscope usable on its own or alongside Pq-Central to document experiments."
+    "show": true,
+    "price_soles": 15,
+    "price_note": "Works standalone or as a Pq-Central module",
+    "purchase_context": "Compatible with Pq-Central and usable independently for observations."
   },
   {
     "id_product": 6,
     "name": "NanoMat-Chem",
-    "title": "Material synthesis module",
-    "description": "Pq-Central module designed to convert solar energy into chemical energy, enabling the synthesis of advanced materials such as graphene, quantum dots, and metal oxides, among many others.",
+    "title": "Materials synthesis module",
+    "description": "A Pq-Central module designed to convert solar energy into chemical energy, enabling the synthesis of advanced materials such as graphene, quantum dots, metallic oxides, and more.",
     "features": [
       "Pq-Central module",
-      "Produces up to 5 V and 2 A",
+      "Produces up to 5V and 2 A",
       "Includes a low-intensity red laser pointer"
     ],
     "images": [
@@ -152,7 +157,7 @@
     ],
     "video": "url_video_7.mp4",
     "youtube_videos": [
-      "https://www.youtube.com/watch?v=3GwjfUFyY6M"
+      "https://www.youtube.com/@PaqariOpenLab"
     ],
     "blog_articles": [],
     "pdf_guides": [],
@@ -160,8 +165,8 @@
     "draft": false,
     "featured": false,
     "available": true,
-    "price": 30,
-    "price_note": "Complementary module",
-    "purchase_context": "Built to expand with Pq-Central; can also run independently with its own power supply."
+    "show": true,
+    "price_soles": 30,
+    "purchase_context": "Pq-Central module; can operate autonomously for materials synthesis."
   }
 ]

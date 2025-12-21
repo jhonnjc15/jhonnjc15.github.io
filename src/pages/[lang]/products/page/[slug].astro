@@ -21,7 +21,7 @@ export async function getStaticPaths() {
   const paths = [];
 
   for (const lang of locales) {
-    const json_products = (lang === 'en' ? productsEN : productsES).filter((product) => product.available !== false);
+    const json_products = (lang === 'en' ? productsEN : productsES).filter((product) => product.show !== false);
     const posts = json_products.filter((product) => !product.featured);
     const totalPages = Math.ceil(posts.length / config.settings.pagination);
 
@@ -51,7 +51,7 @@ const { product_folder } = config.settings;
 
 // Mapear productos desde JSON
 const posts = json_products
-  .filter((product) => product.available !== false)
+  .filter((product) => product.show !== false)
   .map((product) => ({
     data: product,
     slug: `product-${product.id_product}`,
