@@ -1,205 +1,167 @@
 [
   {
     "id_product": 1,
-    "category": "educational",
-    "id_category": 1,
-    "name": "Advanced Mathematics Book",
-    "title": "Advanced Mathematics Book",
-    "description": "An educational book covering advanced topics in mathematics for students and professionals.",
-    "feature_1": "Includes practical exercises",
-    "feature_2": "Focus on real-world problems",
-    "feature_3": "Authored by field experts",
+    "name": "Pq-Central",
+    "title": "Paqari-stat v1",
+    "description": "Electrochemical device for potential control and current measurement, widely used in research labs for educational applications in energy, environment, or industry.",
+    "features": [
+      "Wireless electrochemical control (Bluetooth) with built-in solar power",
+      "Modular design to expand with new experiments",
+      "Potential range: -1.5 V to +1.5 V vs Ag",
+      "Current range: -250 µA to +250 µA"
+    ],
     "images": [
-      { "src": "/images/products/1/product-1-1.jpg", "isMain": true },
-      { "src": "/images/products/1/product-1-2.jpg", "isMain": false },
-      { "src": "/images/products/1/product-1-3.jpg", "isMain": false }
+      { "src": "/images/products/1/product-1-1.jpg", "isMain": true }
     ],
     "video": "url_video_1.mp4",
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+    ],
+    "blog_articles": [],
+    "pdf_guides": [
+      { "title": "Quick start guide", "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" }
+    ],
+    "related_products": [2, 3, 4, 5, 6],
     "draft": false,
     "featured": false,
-    "price": 299
+    "available": true,
+    "price": 150,
+    "price_note": "Pre-sale price",
+    "purchase_context": "Main hub; works on its own or as the base for complementary modules."
   },
   {
     "id_product": 2,
-    "category": "entertainment",
-    "id_category": 2,
-    "name": "Real-time Strategy Game",
-    "title": "Real-time Strategy Game",
-    "description": "An exciting real-time strategy game that challenges your wit and tactical skills.",
-    "feature_1": "Stunning graphics",
-    "feature_2": "Online multiplayer mode",
-    "feature_3": "Various scenarios and challenges",
+    "name": "Energy-Chem",
+    "title": "Energy module",
+    "description": "Module for Pq-Central that enables experiments related to energy generation and storage devices (batteries, capacitors, fuel cells).",
+    "features": [
+      "Voltage range: up to 5 V",
+      "Current range: up to 500 mA",
+      "Designed for energy generation and storage"
+    ],
     "images": [
-      { "src": "/images/products/2/product-2-1.jpg", "isMain": true },
-      { "src": "/images/products/2/product-2-2.jpg", "isMain": false }
+      { "src": "/images/products/2/product-2-1.jpg", "isMain": true }
     ],
     "video": "url_video_2.mp4",
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+    ],
+    "blog_articles": [],
+    "pdf_guides": [],
+    "related_products": [1, 6],
     "draft": false,
     "featured": false,
-    "price": 100
+    "available": true,
+    "price": 30,
+    "price_note": "Available separately or bundled with Pq-Central",
+    "purchase_context": "Operates when connected to Pq-Central or as a compact bench for quick energy tests."
   },
   {
     "id_product": 3,
-    "category": "scientific",
-    "id_category": 3,
-    "name": "High-Resolution Digital Microscope",
-    "title": "High-Resolution Digital Microscope",
-    "description": "A digital scientific microscope with high-resolution capability for research and discoveries in the field of biology.",
-    "feature_1": "Adjustable magnification",
-    "feature_2": "Capture images and videos",
-    "feature_3": "Data analysis platform",
-    "images": [
-      { "src": "/images/products/3/product-3-1.jpg", "isMain": true },
-      { "src": "/images/products/3/product-3-2.jpg", "isMain": false },
-      { "src": "/images/products/3/product-3-3.jpg", "isMain": false },
-      { "src": "/images/products/3/product-3-4.jpg", "isMain": false },
-      { "src": "/images/products/3/product-3-5.jpg", "isMain": false }
+    "name": "Digi-Chem",
+    "title": "Digital Chemistry module",
+    "description": "Module for experiments related to digital chemistry and automated chemical reactions.",
+    "features": [
+      "Automated chemical sequences",
+      "Microfluidic conditions for greater precision",
+      "Up to 2 modules per Pq-Central unit"
     ],
-    "video": "url_video_3.mp4",
+    "images": [
+      { "src": "/images/products/4/product-4-1.jpg", "isMain": true }
+    ],
+    "video": "url_video_4.mp4",
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=oHg5SJYRHA0"
+    ],
+    "blog_articles": [],
+    "pdf_guides": [],
+    "related_products": [1],
     "draft": false,
     "featured": false,
-    "price": 314
+    "available": true,
+    "price": 30,
+    "price_note": "Sold separately",
+    "purchase_context": "Digital companion for Pq-Central that fits seamlessly into educational kits."
   },
   {
     "id_product": 4,
-    "category": "educational",
-    "id_category": 1,
-    "name": "Science Experiment Kit",
-    "title": "Science Experiment Kit",
-    "description": "A set of educational experiments for students to explore and learn scientific concepts through hands-on activities.",
-    "feature_1": "Includes laboratory materials",
-    "feature_2": "Detailed guide for each experiment",
-    "feature_3": "Emphasis on practical experimentation",
-    "images": [
-      { "src": "/images/products/4/product-4-1.jpg", "isMain": true },
-      { "src": "/images/products/4/product-4-2.jpg", "isMain": false },
-      { "src": "/images/products/4/product-4-3.jpg", "isMain": false },
-      { "src": "/images/products/4/product-4-4.jpg", "isMain": false }
+    "name": "Spectro",
+    "title": "Visible/RGB spectrophotometer",
+    "description": "Device for Visible and/or RGB spectrophotometry. Quantifies concentrations in solutions through color and intensity analysis.",
+    "features": [
+      "Visible mode from 400 to 700 nm",
+      "RGB mode for colorful samples",
+      "Semiquantitative results"
     ],
-    "video": "url_video_4.mp4",
+    "images": [
+      { "src": "/images/products/5/product-5-1.jpg", "isMain": true }
+    ],
+    "video": "url_video_5.mp4",
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=FTQbiNvZqaY"
+    ],
+    "blog_articles": [],
+    "pdf_guides": [],
+    "related_products": [1],
     "draft": false,
     "featured": false,
-    "price": 345
+    "available": true,
+    "price": 30,
+    "price_note": "Works alone or as a Pq-Central module",
+    "purchase_context": "Standalone instrument compatible with Pq-Central for field or lab color analysis."
   },
   {
     "id_product": 5,
-    "category": "entertainment",
-    "id_category": 2,
-    "name": "3D Architecture Puzzle",
-    "title": "3D Architecture Puzzle",
-    "description": "A challenging 3D puzzle recreating famous architectural structures for entertainment and learning.",
-    "feature_1": "High-quality pieces",
-    "feature_2": "Detailed assembly instructions",
-    "feature_3": "Ideal for architecture enthusiasts",
-    "images": [
-      { "src": "/images/products/5/product-5-1.jpg", "isMain": true },
-      { "src": "/images/products/5/product-5-2.jpg", "isMain": false },
-      { "src": "/images/products/5/product-5-3.jpg", "isMain": false }
+    "name": "Paqari-Scope",
+    "title": "x40 Microscope",
+    "description": "A microscope for observing samples at small scale. It allows viewing cells and materials prepared in designed experiments: microstructures, microrobots, films, etc.",
+    "features": [
+      "Magnification up to x40",
+      "Capture images and videos",
+      "Scale bar in the app"
     ],
-    "video": "url_video_5.mp4",
+    "images": [
+      { "src": "/images/products/3/product-3-1.jpg", "isMain": true }
+    ],
+    "video": "url_video_3.mp4",
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=aqz-KE-bpKQ"
+    ],
+    "blog_articles": [],
+    "pdf_guides": [],
+    "related_products": [1],
     "draft": false,
     "featured": false,
-    "price": 634
+    "available": true,
+    "price": 15,
+    "price_note": "Works alone or as a Pq-Central module",
+    "purchase_context": "Portable microscope usable on its own or alongside Pq-Central to document experiments."
   },
   {
     "id_product": 6,
-    "category": "scientific",
-    "id_category": 3,
-    "name": "Portable Spectrometer",
-    "title": "Portable Spectrometer",
-    "description": "A compact spectrometer for chemical analysis in the field, perfect for mobile scientific research.",
-    "feature_1": "Quick and accurate analysis",
-    "feature_2": "User-friendly interface",
-    "feature_3": "Portable and lightweight",
-    "images": [
-      { "src": "/images/products/6/product-6-1.jpg", "isMain": true },
-      { "src": "/images/products/6/product-6-2.jpg", "isMain": false },
-      { "src": "/images/products/6/product-6-3.jpg", "isMain": false },
-      { "src": "/images/products/6/product-6-4.jpg", "isMain": false }
+    "name": "NanoMat-Chem",
+    "title": "Material synthesis module",
+    "description": "Pq-Central module designed to convert solar energy into chemical energy, enabling the synthesis of advanced materials such as graphene, quantum dots, and metal oxides, among many others.",
+    "features": [
+      "Pq-Central module",
+      "Produces up to 5 V and 2 A",
+      "Includes a low-intensity red laser pointer"
     ],
-    "video": "url_video_6.mp4",
-    "draft": false,
-    "featured": false,
-    "price": 234
-  },
-  {
-    "id_product": 7,
-    "category": "educational",
-    "id_category": 1,
-    "name": "Online World History Course",
-    "title": "Online World History Course",
-    "description": "An online educational course covering the most important events in world history, from ancient times to the modern era.",
-    "feature_1": "Video lessons by experts",
-    "feature_2": "Complementary reading material",
-    "feature_3": "Quizzes and assessments",
     "images": [
-      { "src": "/images/products/7/product-7-1.jpg", "isMain": true },
-      { "src": "/images/products/7/product-7-2.jpg", "isMain": false }
+      { "src": "/images/products/7/product-7-1.jpg", "isMain": true }
     ],
     "video": "url_video_7.mp4",
-    "draft": false,
-    "featured": false,
-    "price": 634
-  },
-  {
-    "id_product": 8,
-    "category": "entertainment",
-    "id_category": 2,
-    "name": "LED Juggling Ball",
-    "title": "LED Juggling Ball",
-    "description": "A juggling ball with built-in LED lights for impressive performances and nighttime entertainment.",
-    "feature_1": "Programmable lights",
-    "feature_2": "Durable and waterproof",
-    "feature_3": "Ideal for advanced jugglers",
-    "images": [
-      { "src": "/images/products/8/product-8-1.jpg", "isMain": true },
-      { "src": "/images/products/8/product-8-2.jpg", "isMain": false },
-      { "src": "/images/products/8/product-8-3.jpg", "isMain": false }
+    "youtube_videos": [
+      "https://www.youtube.com/watch?v=3GwjfUFyY6M"
     ],
-    "video": "url_video_8.mp4",
+    "blog_articles": [],
+    "pdf_guides": [],
+    "related_products": [1, 2],
     "draft": false,
     "featured": false,
-    "price": 354
-  },
-  {
-    "id_product": 9,
-    "category": "scientific",
-    "id_category": 3,
-    "name": "Professional Astronomical Telescope",
-    "title": "Professional Astronomical Telescope",
-    "description": "A powerful telescope for detailed astronomical observations, designed for enthusiasts and astronomy professionals.",
-    "feature_1": "Adjustable magnification",
-    "feature_2": "Stable mount",
-    "feature_3": "Includes observation accessories",
-    "images": [
-      { "src": "/images/products/9/product-9-1.jpg", "isMain": true },
-      { "src": "/images/products/9/product-9-2.jpg", "isMain": false },
-      { "src": "/images/products/9/product-9-3.jpg", "isMain": false },
-      { "src": "/images/products/9/product-9-4.jpg", "isMain": false }
-    ],
-    "video": "url_video_9.mp4",
-    "draft": false,
-    "featured": false,
-    "price": 232
-  },
-  {
-    "id_product": 10,
-    "category": "educational",
-    "id_category": 1,
-    "name": "Children's Robotics Kit",
-    "title": "Children's Robotics Kit",
-    "description": "An educational robotics kit introducing children to the world of programming and robot building in a fun and educational way.",
-    "feature_1": "Easy-to-use components",
-    "feature_2": "Step-by-step instructions",
-    "feature_3": "Compatible with various programming languages",
-    "images": [
-      { "src": "/images/products/10/product-10-1.jpg", "isMain": true },
-      { "src": "/images/products/10/product-10-2.jpg", "isMain": false },
-      { "src": "/images/products/10/product-10-3.jpg", "isMain": false }
-    ],
-    "video": "url_video_10.mp4",
-    "draft": false,
-    "featured": false,
-    "price": 200
+    "available": true,
+    "price": 30,
+    "price_note": "Complementary module",
+    "purchase_context": "Built to expand with Pq-Central; can also run independently with its own power supply."
   }
 ]
