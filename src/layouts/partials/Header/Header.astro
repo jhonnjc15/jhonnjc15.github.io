@@ -4,6 +4,7 @@ import Social from "@components/Social.astro";
 import menu from "@config/menu.json";
 import config from "@config/config.json";
 import social from "@config/social.json";
+import { getEntryBySlug } from "astro:content";
 
 import LanguageSelector from "../Header/LanguageSelector.astro"
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -32,6 +33,14 @@ const { pathname } = Astro.url;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const { currentLocale } = Astro
+const fallbackLocale = 'es';
+
+let siteInfo = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/footer`);
+if (!siteInfo) {
+  siteInfo = await getEntryBySlug("ui", `${fallbackLocale}/footer`);
+}
+
+const contactContent = siteInfo?.data?.contact ?? {};
 
 const navigationContent = currentLocale === 'en' ? blogNavigationEn : blogNavigationEs;
 const blogContent = navigationContent.blog ?? {};
@@ -42,7 +51,9 @@ const blogCtaDescription = blogContent.cta?.description ?? '';
 const blogCtaHighlight = blogContent.cta?.highlight ?? (currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS');
 const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
 const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
-const { email, phone, location } = config.params;
+const email = contactContent.email ?? config.params.email;
+const phone = contactContent.phone ?? config.params.phone;
+const location = contactContent.location ?? config.params.location;
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
 const topbarSocial = {
   facebook: social.facebook,

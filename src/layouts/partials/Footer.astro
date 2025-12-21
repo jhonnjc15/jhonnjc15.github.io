@@ -1,22 +1,52 @@
 ---
 import Logo from "@components/Logo.astro";
 import Social from "@components/Social.astro";
-import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
+import { getEntryBySlug } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 const { currentLocale } = Astro
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const { pathname } = Astro.url;
+const fallbackLocale = 'es';
+
+let footerEntry = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/footer`);
+if (!footerEntry) {
+  footerEntry = await getEntryBySlug("ui", `${fallbackLocale}/footer`);
+}
+
+const footerContent = footerEntry?.data ?? {};
+const footerSections = footerContent.sections ?? {};
+const contactInfo = footerContent.contact ?? {};
+const taglines = footerContent.taglines ?? [];
+const footerDescription = footerContent.description ?? "";
+const socialsTitle = footerSections.socials_title ?? (currentLocale === 'en' ? 'Socials' : 'Redes sociales');
+const quickLinksTitle = footerSections.quick_links_title ?? (currentLocale === 'en' ? 'Quick Links' : 'Enlaces rápidos');
+const contactTitle = footerSections.contact_title ?? (currentLocale === 'en' ? 'Location & Contact' : 'Ubicación y contacto');
 
 const { footer } = menu;
-const { copyright, location, email, phone, footer_description } = config.params;
-const mapLink = social.address;
+const copyright = footerContent.copyright ?? '';
+const location = contactInfo.location ?? '';
+const email = contactInfo.email ?? '';
+const phone = contactInfo.phone ?? '';
+const mapLink = contactInfo.map_link || social.address;
 const footerSocial = { ...social, whatsapp: "", telegram: "", email: "", phone: "", address: "" };
 const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
+
+function isActive(pathname: string, baseUrl: string, locale: string) {
+  const cleanPath = pathname.replace(/\/$/, '');
+  const expectedBase = `/${locale}${baseUrl === '/' ? '' : baseUrl}`;
+
+  if (baseUrl === '/') {
+    return cleanPath === `/${locale}`;
+  }
+
+  return cleanPath.startsWith(expectedBase);
+}
 ---
 
 <footer class="footer bg-default">
@@ -25,26 +55,32 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
       <div class="col-12 mt-12 md:col-6 lg:col-3">
         <Logo />
         <div class="mt-6 space-y-2 leading-relaxed">
-          {footer_description && <p>{footer_description}</p>}
-          <p class="font-semibold" style="color: #002060;">Construyendo un futuro sostenible</p>
-          <p class="font-semibold" style="color: #ae2012;">Building a sustainable future</p>
-          <p class="font-semibold" style="color: #00b050;">Hamuq pachata aswan allin huqarispa</p>
+          {footerDescription && <p>{footerDescription}</p>}
+          {taglines.map((tagline: { text: string; color?: string }, index: number) => (
+            <p class="font-semibold" style={tagline.color ? `color: ${tagline.color};` : undefined} key={`${tagline.text}-${index}`}>
+              {tagline.text}
+            </p>
+          ))}
         </div>
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Socials</h6>
+        <h6>{socialsTitle}</h6>
 
         <Social source={footerSocial} className="social-icons mt-4 lg:mt-6" />
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Quick Links</h6>
+        <h6>{quickLinksTitle}</h6>
         <ul>
           {
             footer.map((item, i) => (
               <li class={footer.length - 1 === i ? "mb-0" : "mb-4"}>
-                <a 
+                <a
                   href={getRelativeLocaleUrl(currentLocale ?? '',`${item.url}`)}
-                  class="hover:text-primary hover:underline "
+                  class={`relative hover:text-primary hover:underline transition-colors ${
+                    isActive(pathname, item.url, currentLocale ?? '')
+                      ? "text-primary font-semibold after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-primary after:content-['']"
+                      : ""
+                  }`}
                 >
                   {t(`nav.${item.name.toLowerCase()}`)}
                 </a>
@@ -54,7 +90,7 @@ const phoneLink = phone?.replace(/\s+/g, "") ?? phone;
         </ul>
       </div>
       <div class="col-12 mt-12 md:col-6 lg:col-3">
-        <h6>Location & Contact</h6>
+        <h6>{contactTitle}</h6>
         <ul>
           <li class="mb-2">
             {mapLink ? (

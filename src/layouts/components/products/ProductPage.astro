@@ -3,9 +3,21 @@ import Galeria from "./Galeria.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
 import VideoComponent from "@layouts/function-components/VideoComponent";
+import { getEntryBySlug } from "astro:content";
 
 const { data_by_id } = Astro.props;
 const { currentLocale } = Astro;
+const fallbackLocale = 'es';
+
+let productCopy = await getEntryBySlug("ui", `${currentLocale ?? fallbackLocale}/product-page`);
+if (!productCopy) {
+  productCopy = await getEntryBySlug("ui", `${fallbackLocale}/product-page`);
+}
+
+const productContent = productCopy?.data ?? {};
+const availabilityCopy = productContent.availability ?? {};
+const sectionTitles = productContent.sections ?? {};
+const contactCopy = productContent.contact ?? {};
 
 const allProducts = currentLocale === "en" ? productsEN : productsES;
 const relatedProducts = (data_by_id.related_products ?? [])
@@ -33,9 +45,12 @@ const youtubeVideos = data_by_id.youtube_videos ?? [];
 const youtubeEmbeds = youtubeVideos
   .map((video: string) => ({ url: video, id: getYouTubeEmbed(video) }))
   .filter((item: { id?: string }) => !!item.id);
+const productName = data_by_id.name || data_by_id.title;
 const available = data_by_id.available ?? true;
-const contactLabel = currentLocale === "en" ? "Contact Us" : "Contáctanos";
-const availabilityLabel = available ? (currentLocale === "en" ? "Available" : "Disponible") : (currentLocale === "en" ? "Unavailable" : "No disponible");
+const contactLabel = contactCopy.label ?? (currentLocale === "en" ? "Contact Us" : "Contáctanos");
+const availabilityLabel = available
+  ? availabilityCopy.available ?? (currentLocale === "en" ? "Available" : "Disponible")
+  : availabilityCopy.unavailable ?? (currentLocale === "en" ? "Unavailable" : "No disponible");
 const exchangeRate = 3.7; // PEN to USD
 const priceValue = data_by_id.price_soles;
 const displayPrice = priceValue !== undefined
@@ -44,10 +59,11 @@ const displayPrice = priceValue !== undefined
     : `S/. ${priceValue}`)
   : undefined;
 const contactPhone = "993896226";
-const greeting = currentLocale === "en" ? "Hello!" : "¡Hola!";
-const contactMessage = currentLocale === "en"
-  ? `${greeting} I would like more information about ${data_by_id.name || data_by_id.title}.`
-  : `${greeting} Me gustaría más información sobre ${data_by_id.name || data_by_id.title}.`;
+const greeting = contactCopy.greeting ?? (currentLocale === "en" ? "Hello!" : "¡Hola!");
+const messageTemplate = contactCopy.message_template ?? (currentLocale === "en"
+  ? "I would like more information about {product}."
+  : "Me gustaría más información sobre {product}.");
+const contactMessage = `${greeting} ${messageTemplate}`.replace("{product}", productName ?? "");
 const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text=${encodeURIComponent(contactMessage)}`;
 
 const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}`;
@@ -82,7 +98,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
 
     {features.length > 0 && (
       <div class="space-y-2">
-        <h3 class="text-lg font-semibold">{currentLocale === "en" ? "Key features" : "Características destacadas"}</h3>
+        <h3 class="text-lg font-semibold">{sectionTitles.features ?? (currentLocale === "en" ? "Key features" : "Características destacadas")}</h3>
         <ul class="list-disc list-inside space-y-2">
           {features.map((feature: string) => (
             <li>{feature}</li>
@@ -115,7 +131,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
         <div class="grid gap-6 md:grid-cols-2">
           {blogArticles.length > 0 && (
             <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow">
-              <h3 class="text-xl font-semibold mb-3">{currentLocale === "en" ? "Linked blog articles" : "Artículos del blog enlazados"}</h3>
+              <h3 class="text-xl font-semibold mb-3">{sectionTitles.blog_articles ?? (currentLocale === "en" ? "Linked blog articles" : "Artículos del blog enlazados")}</h3>
               <ul class="space-y-2">
                 {blogArticles.map((article: { title: string; url: string }) => (
                   <li>
@@ -130,7 +146,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
 
           {pdfGuides.length > 0 && (
             <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow">
-              <h3 class="text-xl font-semibold mb-3">{currentLocale === "en" ? "Additional resources" : "Recursos adicionales"}</h3>
+              <h3 class="text-xl font-semibold mb-3">{sectionTitles.resources ?? (currentLocale === "en" ? "Additional resources" : "Recursos adicionales")}</h3>
               <ul class="space-y-2">
                 {pdfGuides.map((guide: { title: string; url: string }) => (
                   <li>
@@ -149,7 +165,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
 
         {youtubeEmbeds.length > 0 && (
           <div class="space-y-3">
-            <h3 class="text-xl font-semibold">{currentLocale === "en" ? "Related YouTube videos" : "Videos de YouTube relacionados"}</h3>
+            <h3 class="text-xl font-semibold">{sectionTitles.videos ?? (currentLocale === "en" ? "Related YouTube videos" : "Videos de YouTube relacionados")}</h3>
             <div class="grid gap-4 md:grid-cols-2">
               {youtubeEmbeds.map((video: { url: string; id: string }) => (
                 <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-background via-background-offset to-background shadow">
@@ -174,7 +190,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
 
         {relatedProducts.length > 0 && (
           <div class="space-y-3">
-            <h3 class="text-xl font-semibold">{currentLocale === "en" ? "Related products" : "Productos relacionados"}</h3>
+            <h3 class="text-xl font-semibold">{sectionTitles.related_products ?? (currentLocale === "en" ? "Related products" : "Productos relacionados")}</h3>
             <div class="flex flex-wrap gap-3">
               {relatedProducts.map((product: any) => (
                 <a

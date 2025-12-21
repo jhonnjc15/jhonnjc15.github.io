@@ -96,6 +96,12 @@ const confirmBlock = z.object({
   cancel: z.string(),
 });
 
+const localizedContent = defineCollection({
+  schema: z.object({
+    translationKey: z.string().optional(),
+  }).passthrough(),
+});
+
 const chatbotCollection = defineCollection({
   schema: z.object({
     locale: z.string(),
@@ -221,4 +227,7 @@ export const collections = {
   about: aboutCollection,
   products: productsCollection,
   chatbot: chatbotCollection,
+  homepage: localizedContent,
+  contact: localizedContent,
+  ui: localizedContent,
 };

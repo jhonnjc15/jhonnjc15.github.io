@@ -18,6 +18,14 @@ video_section:
     - "Steps to run chemistry, energy, and nanotech practices with the kit and your community."
     - "Short stories on real experiments you can adapt offline in classrooms or in the field."
 
+call_to_action:
+  title: "Science outreach for everyone"
+  description: "Dive into our guides, demos, and talks on energy, technology, and environment created at Paqari OpenLab."
+  button:
+    label: "Visit us on YouTube"
+    link: "https://www.youtube.com/@PaqariOpenLab"
+  image: "/images/home/cta/sci_divulg2025.png"
+
 ##key features
 key_features:
   title: "What makes our solution unique"

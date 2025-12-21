@@ -18,16 +18,6 @@
     "product_folder": "products"
   },
 
-  "call_to_action": {
-    "title": "Divulgación científica para todas y todos",
-    "description": "Sumérgete en nuestras guías, demostraciones y charlas sobre energía, tecnología y medio ambiente creadas en Paqari Open Lab.",
-    "button": {
-      "label": "Visitar canal en YouTube",
-      "link": "https://www.youtube.com/@PaqariOpenLab"
-    },
-    "image": "/images/home/cta/sci_divulg2025.png"
-  },
-
   "disqus": {
     "enable": true,
     "shortname": "themefisher-template",
@@ -37,7 +27,7 @@
   "params": {
     "footer_description": "",
     "email": "paqari.openlab@gmail.com",
-    "location": "Puerta N° 5 - UNI, Av. Túpac Amaru 210, Rímac, Lima",
+    "location": "Puerta número 5 - Universidad Nacional de Ingeniería, Avenida Túpac Amaru 210, Rímac, Lima, Perú.",
     "phone": "+51 993 896 226",
     "contact_form_action": "#",
     "copyright": "Copyright © 2023 a theme by [PaqariOpenLab](https://google.com)"

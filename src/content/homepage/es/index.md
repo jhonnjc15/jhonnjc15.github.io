@@ -18,6 +18,14 @@ video_section:
     - "Pasos para ejecutar prácticas de química, energía y nanotecnología con el kit y la comunidad."
     - "Historias cortas sobre experimentos reales que puedes adaptar sin conexión en aula o campo."
 
+call_to_action:
+  title: "Divulgación científica para todas y todos"
+  description: "Sumérgete en nuestras guías, demostraciones y charlas sobre energía, tecnología y medio ambiente creadas en Paqari Open Lab."
+  button:
+    label: "Visítanos en YouTube"
+    link: "https://www.youtube.com/@PaqariOpenLab"
+  image: "/images/home/cta/sci_divulg2025.png"
+
 ##key features
 key_features:
   title: "Lo que hace única nuestra solución"

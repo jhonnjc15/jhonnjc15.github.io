@@ -1,56 +1,65 @@
----
-import config from "@config/config.json";
-
-const {
-  call_to_action: {
-    title,
-    description,
-    image,
-    button: { label, link },
-  },
-} = config;
+const { call_to_action } = Astro.props;
+const { title, description, image, button } = call_to_action ?? {};
+const { label, link } = button ?? {};
+const hasContent = Boolean(call_to_action);
 ---
 
-<section class="section px-5 py-0 xl:py-14">
-  <div class="container">
-    <div
-      class="bg-gradient
-            grid grid-cols-1 lg:grid-cols-2
-            items-center gap-6 lg:gap-10
-            rounded-[40px] px-4 py-7 lg:px-8 lg:py-10"
-    >
-      <div class="flex justify-center lg:justify-start">
-        <div class="space-y-4 text-center lg:text-left max-w-xl">
-          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-            {title}
-          </h2>
+{hasContent && (
+  <section class="section px-5 py-0 xl:py-14">
+    <div class="container">
+      <div
+        class="bg-gradient
+              grid grid-cols-1 lg:grid-cols-2
+              items-center gap-6 lg:gap-10
+              rounded-[40px] px-4 py-7 lg:px-8 lg:py-10"
+      >
+        <div class="flex justify-center lg:justify-start">
+          <div class="space-y-4 text-center lg:text-left max-w-xl">
+            {title && (
+              <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+                {title}
+              </h2>
+            )}
 
-          <p class="text-white text-base md:text-lg leading-relaxed">
-            {description}
-          </p>
+            {description && (
+              <p class="text-white text-base md:text-lg leading-relaxed">
+                {description}
+              </p>
+            )}
 
-          <a
-            class="btn btn-white inline-flex w-auto items-center justify-center lg:justify-start"
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {label}
-          </a>
+            {button && link && (
+              <a
+                class="btn btn-white inline-flex w-auto items-center justify-center gap-2 lg:justify-start"
+                href={link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg
+                  class="h-5 w-5 text-[#ff0000]"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M21.8 8.001s-.2-1.4-.8-2.002c-.77-.8-1.63-.8-2.02-.85C15.7 5 12 5 12 5h-.02s-3.7 0-6.98.149c-.4.051-1.25.05-2.02.85C2.39 6.6 2.2 8 2.2 8S2 9.6 2 11.2v1.6c0 1.6.2 3.2.2 3.2s.19 1.4.78 2.001c.77.8 1.78.778 2.22.862 1.61.154 6.8.2 6.8.2s3.71-.006 7-.2c.4-.063 1.25-.06 2.02-.86.6-.602.8-2.002.8-2.002S22 14.4 22 12.8v-1.6c0-1.6-.2-3.199-.2-3.199ZM10 14.6V8.8l5 2.9-5 2.9Z" />
+                </svg>
+                <span>{label}</span>
+              </a>
+            )}
+          </div>
+        </div>
+        <div class="flex justify-center">
+          {image && (
+            <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg">
+              <img
+                src={image}
+                alt={title}
+                class="h-full w-full rounded-2xl object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
         </div>
       </div>
-            <div class="flex justify-center">
-        {image && (
-          <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg">
-            <img
-              src={image}
-              alt="Divulgación científica 2025"
-              class="h-full w-full rounded-2xl object-cover"
-              loading="lazy"
-            />
-          </div>
-        )}
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+)}
