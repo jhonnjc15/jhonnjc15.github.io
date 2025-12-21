@@ -93,51 +93,36 @@ testimonial:
   title: Stories from the Paqari community
   description: Teachers, students, and partners explain how Paqari brings applied science to classrooms without labs or reliable internet.
   testimonial_list:
-    - author: Allison V. Córdova
+    - author: Camila Rivera
       avatar: "/images/shared/users/user-5.png"
-      organization: Higher education
+      organization: Rural teacher
       rating: four
-      content: Paqari makes electrochemistry practices viable with low consumption and controlled risks in the field.
-    - author: Diego A. Jauja
+      content: "Paqari let me run electrochemistry labs without a fixed lab—students see data in minutes."
+    - author: Leonel Huertas
       avatar: "/images/shared/users/user-6.png"
-      organization: School community
-      rating: four
-      content: The free apps and support help teachers guide experiments without depending on internet access.
-    - author: Víctor R. Jauja
+      organization: STEM mentor
+      rating: five
+      content: "Mobile control and offline guides mean our workshops keep running even when connectivity drops."
+    - author: Sofia Márquez
       avatar: "/images/shared/users/user-2.png"
-      organization: Industry and energy
+      organization: Community facilitator
       rating: five
-      content: The modular approach simplifies training on corrosion and batteries in remote settings.
-    - author: IB Clemente Althaus Teacher
+      content: "The solar modules motivate youth to test environmental sensors and share results with neighbors."
+    - author: Andrés Quispe
       avatar: "/images/shared/users/user-3.png"
-      organization: Secondary education
-      rating: five
-      content: The kit speeds up active learning and motivates students to test sensors and microreactors.
-    - author: UTEC Maker
+      organization: Technical coordinator
+      rating: four
+      content: "Modularity makes it simple to teach corrosion and batteries—we set up in minutes and start measuring."
+    - author: Valeria Ramos
       avatar: "/images/shared/users/user-4.png"
+      organization: Pre-university student
+      rating: five
+      content: "The free apps helped me repeat experiments at home and build a stronger science portfolio."
+    - author: Open Makers Crew
+      avatar: "/images/shared/users/user-1.png"
       organization: Maker community
       rating: five
-      content: Controlling the lab from a phone opens new ways to experiment together.
-    - author: Green transition ally
-      avatar: "/images/shared/users/user-1.png"
-      organization: Sustainable projects
-      rating: three
-      content: The energy and environment practices are clear and adaptable to each territory.
-    - author: UPCH Facilitator
-      avatar: "/images/shared/users/user-5.png"
-      organization: STEM training
-      rating: five
-      content: The lab-on-a-device model lowers barriers for girls and youth starting in science.
-    - author: Community coordinator
-      avatar: "/images/shared/users/user-5.png"
-      organization: Local innovation
-      rating: five
-      content: Paqari mentorship builds confidence to replicate protocols and share results.
-    - author: Energy mentor
-      avatar: "/images/shared/users/user-5.png"
-      organization: Technical workshop
-      rating: five
-      content: Battery and corrosion exercises show clear paths toward the jobs of the future.
+      content: "Combining PQ-central with printable add-ons gives us freedom to prototype and document every iteration."
 
 galery:
   title: Paqari Gallery

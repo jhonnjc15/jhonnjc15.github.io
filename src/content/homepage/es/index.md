@@ -93,51 +93,36 @@ testimonial:
   title: Historias reales desde nuestra comunidad
   description: Docentes, estudiantes y aliados cuentan cómo Paqari acerca la ciencia aplicada a aulas sin laboratorio ni internet confiable.
   testimonial_list:
-    - author: Allison V. Córdova
+    - author: Camila Rivera
       avatar: "/images/shared/users/user-5.png"
-      organization: Educación universitaria
+      organization: Docente rural
       rating: cuatro
-      content: Paqari hace que prácticas de electroquímica sean posibles con bajo consumo y riesgos controlados en campo.
-    - author: Diego A. Jauja
+      content: "Con Paqari pude guiar prácticas de electroquímica sin laboratorio fijo; los estudiantes ven resultados en minutos."
+    - author: Leonel Huertas
       avatar: "/images/shared/users/user-6.png"
-      organization: Comunidad escolar
-      rating: cuatro
-      content: Las apps gratuitas y el soporte ayudan a docentes a guiar experimentos sin depender de internet.
-    - author: Víctor R. Jauja
+      organization: Mentor STEM
+      rating: cinco
+      content: "El control desde el celular y las guías offline nos permiten acompañar talleres sin preocuparnos por el internet."
+    - author: Sofía Márquez
       avatar: "/images/shared/users/user-2.png"
-      organization: Industria y energía
+      organization: Facilitadora comunitaria
       rating: cinco
-      content: El enfoque modular facilita entrenar sobre corrosión y baterías en entornos remotos.
-    - author: Docente IB Clemente Althaus
+      content: "Los módulos solares motivan a las y los jóvenes a probar sensores ambientales y compartir datos con su barrio."
+    - author: Andrés Quispe
       avatar: "/images/shared/users/user-3.png"
-      organization: Educación media
-      rating: cinco
-      content: El kit acelera el aprendizaje activo y motiva a estudiantes a probar sensores y microreactores.
-    - author: Maker UTEC
+      organization: Coordinador técnico
+      rating: cuatro
+      content: "La modularidad simplifica enseñar corrosión y baterías; armamos las prácticas en minutos y medimos al instante."
+    - author: Valeria Ramos
       avatar: "/images/shared/users/user-4.png"
+      organization: Estudiante preuniversitaria
+      rating: cinco
+      content: "Las apps gratuitas me ayudaron a repetir los experimentos en casa y preparar mi portafolio científico."
+    - author: Equipo Makers Abiertos
+      avatar: "/images/shared/users/user-1.png"
       organization: Comunidad maker
       rating: cinco
-      content: Poder controlar el laboratorio desde el celular abre nuevas formas de experimentar en equipo.
-    - author: Aliada en transición verde
-      avatar: "/images/shared/users/user-1.png"
-      organization: Proyectos sostenibles
-      rating: tres
-      content: Las prácticas sobre energía y medio ambiente son claras y adaptables a cada territorio.
-    - author: Facilitadora UPCH
-      avatar: "/images/shared/users/user-5.png"
-      organization: Formación STEM
-      rating: cinco
-      content: El modelo lab-on-a-device reduce barreras para niñas y jóvenes que inician en ciencia.
-    - author: Coordinador comunitario
-      avatar: "/images/shared/users/user-5.png"
-      organization: Innovación local
-      rating: cinco
-      content: El acompañamiento Paqari crea confianza para replicar protocolos y compartir resultados.
-    - author: Mentor de energías
-      avatar: "/images/shared/users/user-5.png"
-      organization: Taller técnico
-      rating: cinco
-      content: Los ejercicios de baterías y corrosión muestran rutas claras para los trabajos del futuro.
+      content: "Poder combinar PQ-central con accesorios imprimibles nos da libertad para prototipar y documentar cada iteración."
 
 galery:
   title: Galería Paqari

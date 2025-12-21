@@ -20,21 +20,26 @@ whoWeAre:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Equipo de Paqari colaborando"
 vision:
-  title: "Nuestra Visión"
+  title: "Visión"
   description: >-
-    Aspiramos a que la química y la nanotecnología sean tan cercanas como Raspberry Pi lo fue para
-    la electrónica: un laboratorio en cada mochila que impulse innovación educativa, ambiental e
+    Aspiramos lograr para la química y nanotecnología lo que Raspberry Pi logró para la electrónica y
+    la programación: un laboratorio en cada mochila que impulse innovación educativa, ambiental e
     industrial en cualquier territorio.
-  quote: "“El amanecer del mañana se construye compartiendo ciencia práctica para todas y todos.”"
+  quote: >-
+    "Construyendo un futuro sostenible · Building a sustainable future · Hamuq pachata aswan allin
+    huqarispa"
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "Personas explorando una visión científica"
 mission:
-  title: "Nuestra Misión"
+  title: "Misión"
   description: >-
-    Democratizar el aprendizaje STEM con experiencias reales, offline y seguras que conecten
-    educación, industria e investigación; formar a estudiantes, docentes y makers para los
-    trabajos del futuro y cerrar brechas de género y acceso tecnológico.
+    Educación: Reducir la brecha en la enseñanza STEM con experiencias experimentales reales que
+    impulsen el aprendizaje activo, la creatividad y nuevos innovadores. Industria: Implementar
+    metodologías modernas de análisis y control para resolver desafíos técnicos, potenciando una
+    industria eficiente, sostenible y basada en conocimiento. Investigación: Acelerar el
+    descubrimiento y desarrollo de nuevos materiales y tecnologías emergentes, priorizando recursos
+    locales y fortaleciendo la investigación aplicada regional.
 culture:
   title: "Raíces de Innovación"
   description: >-
@@ -138,12 +143,6 @@ members:
   title: El equipo detrás de Paqari
   description: Somos un equipo que combina ciencia, diseño y tecnología para democratizar la experimentación práctica en STEM.
   member_list:
-    - name: PhD(c) Allison V. Córdova Huamán
-      field: Cofundadora, investigación y desarrollo
-      image: "/images/shared/users/user-1.png"
-    - name: Bach. Diego A. Jauja Ccana
-      field: Cofundador, comunidad y educación
-      image: "/images/shared/users/user-2.png"
     - name: PhD Víctor Raúl Jauja Ccana
       field: Cofundador, electroquímica y producto
       image: "/images/shared/users/user-3.png"

@@ -20,21 +20,25 @@ whoWeAre:
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
     alt: "Paqari team collaborating"
 vision:
-  title: "Our Vision"
+  title: "Vision"
   description: >-
-    We aim for chemistry and nanotechnology to feel as reachable as Raspberry Pi made electronics:
-    a lab in every backpack that sparks educational, environmental, and industrial innovation
-    anywhere.
-  quote: "“Tomorrow’s dawn is built by sharing practical science for everyone.”"
+    We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and
+    programming: a lab in every backpack that sparks educational, environmental, and industrial
+    innovation anywhere.
+  quote: >-
+    "Building a sustainable future · Construyendo un futuro sostenible · Hamuq pachata aswan allin
+    huqarispa"
   image:
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
     alt: "People collaborating on scientific ideas"
 mission:
-  title: "Our Mission"
+  title: "Mission"
   description: >-
-    To democratize STEM learning with real, offline, and safe experiences linking education,
-    industry, and research; to prepare students, teachers, and makers for the jobs of the future
-    while reducing gender and technology gaps.
+    Education: Close STEM learning gaps with real experiments that encourage active learning,
+    creativity, and new innovators. Industry: Apply modern analysis and control methods to solve
+    technical challenges, boosting an efficient, sustainable, knowledge-driven industry.
+    Research: Speed up the discovery and development of new materials and emerging technologies,
+    prioritizing local resources and strengthening applied research in the region.
 culture:
   title: "Roots of Innovation"
   description: >-
@@ -137,12 +141,6 @@ members:
   title: Meet the team behind Paqari
   description: We combine science, design, and technology to democratize hands-on experimentation in STEM.
   member_list:
-    - name: PhD(c) Allison V. Córdova Huamán
-      field: Co-founder, research and development
-      image: "/images/shared/users/user-1.png"
-    - name: Bach. Diego A. Jauja Ccana
-      field: Co-founder, community and education
-      image: "/images/shared/users/user-2.png"
     - name: PhD Víctor Raúl Jauja Ccana
       field: Co-founder, electrochemistry and product
       image: "/images/shared/users/user-3.png"

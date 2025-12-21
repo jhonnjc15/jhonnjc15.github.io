@@ -2,15 +2,15 @@
 title: Questions
 faq:
   title: Frequently Asked Questions
-  description: Here you'll find answers to the most common questions about our services, how to use them, and what to expect.
+  description: Quick answers about Paqari OpenLab, how to use PQ-central, its modules, and offline resources.
   faq_list:
-    - title: How can I integrate Avocode to my current tool stack?
-      content: The service is provided for free during this pilot project, and is provided "as is", with no commitment to any level of service or availability.
-    - title: What platforms are supported by the service?
-      content: Currently, the service is web-based and works on all modern browsers. Support for mobile and desktop apps is planned in the future.
-    - title: Is my data secure while using the service?
-      content: Yes, we use industry-standard encryption to ensure your data is protected at all times during usage.
-    - title: Who is responsible for managing the service?
-      content: The service is managed by our core development team. For inquiries, you may contact our support via email or the contact page.
+    - title: How does PQ-central work if my school has no internet?
+      content: The device and free apps run offline; you can control experiments from your phone and sync data whenever connectivity is available.
+    - title: What comes in a standard Paqari OpenLab kit?
+      content: PQ-central, selected modules, downloadable PDF guides, and teacher support so you can start practices right away.
+    - title: Can I combine modules for different areas?
+      content: Yes. Mix modules for energy, corrosion, spectroscopy, or digital chemistry—just pick what each practice needs.
+    - title: Can the guides and videos be used without a traditional lab?
+      content: The guides are designed for resource-limited spaces; the videos show simple setups and safety recommendations.
 ---
 Questions
