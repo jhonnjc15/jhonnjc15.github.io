@@ -9,6 +9,12 @@ input#nav-toggle:checked ~ label#hide-button {
 
 input#nav-toggle:checked ~ #nav-menu {
   @apply block lg:flex border-b dark:border-gray-600 border-primary lg:border-0 ;
+  position: fixed;
+  inset-inline: 0;
+  top: var(--header-total-height);
+  max-height: calc(100vh - var(--header-total-height));
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--color-background) 92%, transparent);
 }
 
 :root {
