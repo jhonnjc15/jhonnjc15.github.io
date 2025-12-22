@@ -1,5 +1,5 @@
 .btn {
-  @apply inline-block h-[52px] border px-8 py-2 text-sm font-medium leading-[36px] transition-all duration-200;
+  @apply inline-block min-h-[52px] border px-7 py-2 text-sm font-medium leading-tight text-center break-words whitespace-normal transition-all duration-200;
 }
 
 .btn-primary {

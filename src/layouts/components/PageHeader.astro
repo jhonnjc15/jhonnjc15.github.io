@@ -60,12 +60,15 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
     </ul>
     <div class="p-0 lg:p-10">
       <h1
-        class="mb-5 mt-8 text-default text-4xl md:text-5xl font-extrabold tracking-tight"
+        class="mb-5 mt-8 text-default text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight"
         set:html={markdownify(
           page_data?.page_title ? page_data?.page_title : page_data?.title
         )}
       />
-      <p class='text-default text-lg max-w-3xl mx-auto leading-relaxed' set:html={markdownify(content)} />
+      <p
+        class="text-default text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+        set:html={markdownify(content)}
+      />
 
       {
         page_data.buttons && (
