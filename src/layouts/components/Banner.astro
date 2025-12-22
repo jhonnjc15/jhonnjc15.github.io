@@ -24,7 +24,11 @@ const buttonLabel = button.label || i18n.COMMON.contact_cta;
   }
 </style>
 
-<section class="section banner relative overflow-hidden pb-12 pt-16 sm:pb-18 sm:pt-20 md:pt-24 lg:pt-16 xl:pt-12 mt-0 mb-[20px] sm:mb-[50px] md:mb-[50px]" data-animate="fade-right">
+<section
+  class="section banner relative overflow-hidden pb-12 sm:pb-18 lg:pb-20 mt-0 mb-[20px] sm:mb-[50px] md:mb-[50px]"
+  data-animate="fade-right"
+  style="--header-offset: clamp(112px, 12vw, 148px); margin-top: calc(-1 * var(--header-offset)); padding-top: calc(var(--header-offset) + 3.5rem);"
+>
   <slot />
   <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
   <div class="container relative">
