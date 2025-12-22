@@ -150,4 +150,4 @@ members:
         - "Estancias de investigación en Francia, Argentina, Chile, España y Brasil"
       image: "/images/shared/users/user-3.png"
 ---
-Paqari OpenLab es una plataforma de aprendizaje práctico que acerca la ciencia aplicada a cualquier aula mediante un dispositivo modular, apps gratuitas y acompañamiento docente. Impulsamos la transición hacia los trabajos del futuro con experiencias seguras, sostenibles y accesibles.
+Paqari OpenLab acerca la ciencia aplicada a cualquier aula con un dispositivo modular, apps gratuitas y acompañamiento docente. Impulsamos trabajos del futuro con experiencias seguras y sostenibles.

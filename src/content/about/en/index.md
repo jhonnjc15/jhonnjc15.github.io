@@ -148,4 +148,4 @@ members:
         - "Research stays in France, Argentina, Chile, Spain, and Brazil"
       image: "/images/shared/users/user-3.png"
 ---
-Paqari OpenLab is a hands-on learning platform that brings applied science to any classroom through a modular device, free apps, and teacher support. We drive the transition toward future jobs with safe, sustainable, and accessible experiences.
+Paqari OpenLab brings applied science to any classroom with a modular device, free apps, and teacher support. We prepare learners for future jobs with safe and sustainable experiences.
