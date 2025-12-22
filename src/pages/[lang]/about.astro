@@ -1,12 +1,12 @@
 ---
-import PageHeader from "@components/PageHeader.astro";
 import Shape from "@components/Shape.astro";
 import CounterComponent from "@components/about/CounterComponent.astro";
-import BackgroundVideo from "@components/BackgroundVideo.astro";
 import Gallery from "@components/about/Gallery.astro";
 import OurMembers from "@components/about/OurMembers.astro";
 import Works from "@components/about/Works.astro";
 import Base from "@layouts/Base.astro";
+import PageHero from "@layouts/components/PageHero.astro";
+import BackgroundImage from "@layouts/components/BackgroundImage.astro";
 import { getEntryBySlug } from "astro:content";
 import { getEntry } from "astro:content";
 import CultureStorySection from "@components/about/CultureStorySection.astro";
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
 }
 
-const video_path = "/images/shared/backgrounds/background-video.mp4"
+const heroBackground = "/images/shared/backgrounds/home-background.jpg";
 ---
 
 <Base
@@ -46,54 +46,34 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
   description={about.data.description}
   image={about.data.image}
 >
+  <PageHero page_data={page_data}>
+    <BackgroundImage slot="background" src={heroBackground} />
+  </PageHero>
   {/*
-  <div class="-z-50 absolute w-full h-screen bg-no-repeat bg-center lg:bg-cover bg-[url('/images/shared/backgrounds/home-background.jpg')] top-0 opacity-50 ">
-  </div>
+    <CounterComponent counter={counter} />
   */}
-  
-  <div class="-z-50 absolute w-full h-screen bg-no-repeat bg-center bg-[length:130%_100%] sm:bg-[length:115%_100%] lg:bg-cover bg-[url('/images/shared/backgrounds/home-background.jpg')] top-0 opacity-50">
-</div>
-  
-  {/* 
-  <BackgroundVideo src={video_path}/>
+  <!-- benifit -->
+  {/*
+    <!-- gellary -->
+
+    <!-- our works -->
+    <Works features={features} />
   */}
 
-  <section class="page-hero pt-12 pb-14" data-animate="fade-up">
-    <div class="container">
-      <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
+  <Gallery gallery={gallery} />
 
-      <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 absolute top-5 lg:top-[200px] left lg:right-[100px] rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
+  <AboutUsSection section={about.data.whoWeAre} />
+  <VisionMissionSection
+    vision={about.data.vision}
+    mission={about.data.mission}
+  />
+  <CultureStorySection section={about.data.culture} />
+  <DemocratizingScience section={about.data.openFrontiers} />
+  <LabImpactSection section={about.data.labImpact} />
+  <PocketLabSection section={about.data.pocketLab} />
 
-      <div class="page-hero-content mx-auto max-w-[768px] text-center">
-        <PageHeader page_data={page_data} />
-      </div>
-    </div>
-  </section>
-      {/* 
-      <CounterComponent counter={counter} />
-      */}
-      <!-- benifit -->
-      {/*
-      <!-- gellary -->
-      
-      <!-- our works -->
-      <Works features={features} />
-      */}
-
-      <Gallery gallery={gallery} />
-
-      <AboutUsSection section={about.data.whoWeAre} />
-      <VisionMissionSection
-        vision={about.data.vision}
-        mission={about.data.mission}
-      />
-      <CultureStorySection section={about.data.culture} />
-      <DemocratizingScience section={about.data.openFrontiers} />
-      <LabImpactSection section={about.data.labImpact} />
-      <PocketLabSection section={about.data.pocketLab} />
-
-      <!-- our members -->
-      <!-- Sección de miembros -->
+  <!-- our members -->
+  <!-- Sección de miembros -->
   <section class="relative py-16">
     <div class="container">
       <OurMembers members={members} />
