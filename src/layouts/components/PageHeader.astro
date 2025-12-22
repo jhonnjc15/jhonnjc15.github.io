@@ -77,7 +77,7 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
               (button: any) =>
                 button?.enable && (
                   <a
-                    class={`btn m-3 block sm:inline-block ${
+                    class={`btn m-3 block sm:inline-block content-center ${
                       button?.outline ? "btn-outline-primary" : "btn-primary"
                     } `}
                     href={getRelativeLocaleUrl(currentLocale ?? '',`${button?.link}`)}

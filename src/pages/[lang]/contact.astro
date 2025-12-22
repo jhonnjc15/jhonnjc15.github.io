@@ -64,13 +64,13 @@ export async function getStaticPaths() {
   description={contact.description}
   image={contact.image}
 >
-  <section class="page-hero pb-4 pt-12" data-animate="fade-up">
+  <section data-animate="fade-right" class="page-hero pb-4 pt-12" >
     <div class="container">
       <PageHeader page_data={page_data} />
     </div>
   </section>
 
-  <section class="section" data-animate="zoom-in">
+  <section class="section">
   <div class="container">
     <article class="relative overflow-hidden rounded-[32px] shadow-2xl border border-emerald-200/70 dark:border-emerald-900/60">
       <Image
@@ -80,14 +80,13 @@ export async function getStaticPaths() {
         quality={95}
         class="absolute inset-0 h-full w-full object-cover [image-rendering:optimizeQuality]"
         alt=""
-        data-animate="fade-up"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
 
       <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
         <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           {/* Columna de texto */}
-          <div class="space-y-4 min-w-0">
+          <div data-animate="fade-up" class="space-y-4 min-w-0">
             <p class="text-[0.75rem] uppercase tracking-[0.32em] font-semibold text-secondary drop-shadow">
               {contact.hero_tagline}
             </p>
@@ -100,7 +99,7 @@ export async function getStaticPaths() {
           </div>
 
           {/* Columna del formulario + redes  sm:p-8 lg:p-4 */}
-          <div class="min-w-0">
+          <div data-animate="fade-up" class="min-w-0">
             <div
               data-animate="fade-right"
               class="bg-white/15 backdrop-blur-xl rounded-3xl px-4 py-8 sm:p-10 lg:p-8 border border-white/25 shadow-2xl w-full"

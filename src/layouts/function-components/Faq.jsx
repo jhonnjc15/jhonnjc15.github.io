@@ -18,7 +18,7 @@ const Faq = ({ data }) => {
       ? "Resuelve tus dudas con Paqari OpenLab"
       : "Answers about Paqari OpenLab");
   return (
-    <section className="faqs section bg-gradient-to-b from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section data-animate="fade-right" className="faqs section bg-gradient-to-b from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="container max-w-[1230px]">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="rounded-2xl bg-white/80 p-8 shadow-xl ring-1 ring-border/50 backdrop-blur text-left dark:bg-slate-900/70 dark:ring-white/10">

@@ -13,7 +13,7 @@ interface SectionData {
 const { section } = Astro.props as { section: SectionData };
 ---
 
-<section class="py-20 bg-gradient-to-tr from-secondary/20 to-primary/10">
+<section data-animate="fade-up" class="py-20 bg-gradient-to-tr from-secondary/20 to-primary/10">
   <div class="container mx-auto text-center max-w-3xl">
     <h2 class="text-3xl md:text-5xl font-bold text-primary mb-6">{section.title}</h2>
     <p class="text-lg text-text-offset leading-relaxed mb-10">{section.description}</p>

@@ -26,25 +26,25 @@ const buttonLabel = button.label || i18n.COMMON.contact_cta;
 
 <section
   class="section banner relative overflow-hidden pb-12 sm:pb-18 lg:pb-20 mt-0 mb-[20px] sm:mb-[50px] md:mb-[50px]"
-  data-animate="fade-right"
   style="--header-offset: var(--header-total-height, 148px); margin-top: calc(-1 * var(--header-offset)); padding-top: calc(var(--header-offset) + clamp(2.5rem, 1.5vw, 3.5rem));"
 >
   <slot />
   <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>
   <div class="container relative">
     <div class="grid gap-8 lg:gap-12 lg:grid-cols-[1.05fr_minmax(0,0.9fr)] lg:items-center">
-      <div class="relative flex justify-center sm:justify-start lg:order-1" data-animate="fade-right">
-        <div class="max-w-4xl space-y-6 sm:space-y-7 text-center sm:text-left px-2 sm:px-0">
-          <h1 class="banner-heading banner-title text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
+      <div class="relative flex justify-center sm:justify-start lg:order-1">
+        <div class="max-w-4xl space-y-16 md:space-y-10 xl:space-y-7 text-center sm:text-left px-2 sm:px-0">
+          <h1 data-animate="fade-right" class="banner-heading banner-title text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] text-gray-900 dark:text-white">
             {title}
           </h1>
-          <p class="banner-text my-4 text-lg font-semibold text-gray-700 dark:text-white/80 max-w-2xl mx-auto sm:mx-0">
+          <p data-animate="fade-right" class="banner-text my-4 text-lg font-semibold text-gray-700 dark:text-white/80 max-w-2xl mx-auto sm:mx-0">
             {content}
           </p>
           {button.enable && (
             <a
               class="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl px-[3px] py-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paqariYellow/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               href={getRelativeLocaleUrl(currentLocale ?? "", button.link || aboutPath)}
+              data-animate="fade-right"
             >
               <span class="absolute inset-0 rounded-2xl bg-slate-900/60 blur-sm dark:blur-md"></span>
               <span class="pointer-events-none absolute inset-[-6px] rounded-[18px] bg-[conic-gradient(#f3a415_18deg,transparent_140deg)] opacity-80 animate-border-rotate"></span>
@@ -58,6 +58,7 @@ const buttonLabel = button.label || i18n.COMMON.contact_cta;
       <div class="hidden lg:flex lg:order-2" data-animate="zoom-in">
         <div class="relative mx-auto max-w-[460px] rounded-[32px] bg-gradient-to-br from-background to-background-offset p-5 shadow-[0_25px_90px_-28px_rgba(0,0,0,0.5)] flex items-center justify-center">
           <Image
+            data-animate="fade-right"
             class="w-full object-contain drop-shadow-2xl"
             alt="banner"
             src={image}

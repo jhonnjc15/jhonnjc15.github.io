@@ -5,7 +5,6 @@ const { page_data } = Astro.props;
 ---
 <section
   class="page-hero relative overflow-hidden pb-14"
-  data-animate="fade-up"
   style="--header-offset: var(--header-total-height, 148px); margin-top: calc(-1 * var(--header-offset)); padding-top: calc(var(--header-offset) + clamp(2.5rem, 1.5vw, 3.5rem));"
 >
   <slot name="background" />
@@ -14,7 +13,7 @@ const { page_data } = Astro.props;
 
     <span class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 absolute top-5 lg:top-[200px] left lg:right-[100px] rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
 
-    <div class="page-hero-content mx-auto max-w-[768px] text-center">
+    <div data-animate="fade-up" class="page-hero-content mx-auto max-w-[768px] text-center">
       <PageHeader page_data={page_data} />
     </div>
   </div>

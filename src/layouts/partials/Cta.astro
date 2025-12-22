@@ -6,7 +6,7 @@ const hasContent = Boolean(call_to_action);
 ---
 
 {hasContent && (
-  <section class="section px-5 py-0 xl:py-14">
+  <section data-animate="fade-right" class="section px-5 py-0 xl:py-14">
     <div class="container">
       <div
         class="bg-gradient
@@ -14,7 +14,7 @@ const hasContent = Boolean(call_to_action);
               items-center gap-6 lg:gap-10
               rounded-[40px] px-4 py-7 lg:px-8 lg:py-10"
       >
-        <div class="flex justify-center lg:justify-start">
+        <div data-animate="fade-up" class="flex justify-center lg:justify-start">
           <div class="space-y-4 text-center lg:text-left max-w-xl">
             {title && (
               <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
@@ -48,7 +48,7 @@ const hasContent = Boolean(call_to_action);
             )}
           </div>
         </div>
-        <div class="flex justify-center">
+        <div data-animate="zoom-in" class="flex justify-center">
           {image && (
             <div class="overflow-hidden rounded-[24px] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur max-w-lg">
               <img
