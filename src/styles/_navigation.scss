@@ -22,15 +22,15 @@ input#nav-toggle:checked ~ #nav-menu {
 
 @media (max-width: 1279px) {
   :root {
-    --navbar-height: 86px;
-    --header-offset-compensation: 12px;
+    --navbar-height: 98px;
+    --header-offset-compensation: 16px;
   }
 }
 
 @media (max-width: 767px) {
   :root {
-    --navbar-height: 82px;
-    --header-offset-compensation: 10px;
+    --navbar-height: 102px;
+    --header-offset-compensation: 18px;
   }
 }
 
