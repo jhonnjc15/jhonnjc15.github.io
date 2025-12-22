@@ -206,6 +206,11 @@ if (!chatContent) {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const type = entry.target.dataset.animate;
+            const transitionClasses = [
+              'transition-all',
+              'duration-[1200ms]',
+              'ease-[cubic-bezier(0.25,0.1,0.25,1)]',
+            ];
 
             // 🔹 Quita las clases iniciales de invisibilidad y desplazamiento
             entry.target.classList.remove('opacity-0', 'translate-y-20', 'translate-x-20', 'scale-95');
@@ -222,6 +227,12 @@ if (!chatContent) {
                 entry.target.classList.add('opacity-100', 'scale-100');
                 break;
             }
+
+            // 🔹 Evita transiciones posteriores por cambios de layout (ej. menú mobile)
+            //    quitando las clases de transición después del primer render
+            requestAnimationFrame(() => {
+              entry.target.classList.remove(...transitionClasses);
+            });
 
             observer.unobserve(entry.target);
           }
