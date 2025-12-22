@@ -27,7 +27,7 @@ const buttonLabel = button.label || i18n.COMMON.contact_cta;
 <section
   class="section banner relative overflow-hidden pb-12 sm:pb-18 lg:pb-20 mt-0 mb-[20px] sm:mb-[50px] md:mb-[50px]"
   data-animate="fade-right"
-  style="--header-offset: clamp(112px, 12vw, 148px); margin-top: calc(-1 * var(--header-offset)); padding-top: calc(var(--header-offset) + 3.5rem);"
+  style="--header-offset: var(--header-total-height, 148px); margin-top: calc(-1 * var(--header-offset)); padding-top: calc(var(--header-offset) + clamp(2.5rem, 1.5vw, 3.5rem));"
 >
   <slot />
   <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-paqariGreen/5 to-transparent"></div>

@@ -11,6 +11,29 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply block lg:flex border-b dark:border-gray-600 border-primary lg:border-0 ;
 }
 
+:root {
+  --topbar-height: 50px;
+  --navbar-height: 92px;
+  --header-offset-compensation: 14px;
+  --header-total-height: calc(
+    var(--topbar-height) + var(--navbar-height) + var(--header-offset-compensation)
+  );
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --navbar-height: 86px;
+    --header-offset-compensation: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --navbar-height: 82px;
+    --header-offset-compensation: 10px;
+  }
+}
+
 /* HEADER BASE */
 .header {
   @apply sticky top-0 z-50 bg-transparent px-5 sm:px-10 pt-0 pb-5 transition-all duration-300;
