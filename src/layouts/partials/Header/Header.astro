@@ -170,7 +170,19 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                 >
                   {t(`nav.${menu.name.toLowerCase()}`)}
                 </a>
-                <div class={`nav-link peer-hover:text-primary hover:text-primary inline-flex items-center align-middle px-0 lg:absolute inset-y-0 lg:-right-1`}
+                <input
+                  id={`dropdown-${menu.name.toLowerCase()}`}
+                  type="checkbox"
+                  class="nav-dropdown-toggle hidden"
+                />
+                <label
+                  for={`dropdown-${menu.name.toLowerCase()}`}
+                  class="nav-dropdown-toggle-button nav-link inline-flex items-center align-middle px-0 lg:hidden"
+                >
+                  <ChevronIcon />
+                </label>
+                <div
+                  class={`nav-link peer-hover:text-primary hover:text-primary hidden lg:inline-flex items-center align-middle px-0 lg:absolute inset-y-0 lg:-right-1`}
                 >
                   <ChevronIcon />
                 </div>

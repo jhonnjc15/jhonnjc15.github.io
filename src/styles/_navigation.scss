@@ -127,7 +127,7 @@ input#nav-toggle:checked ~ #nav-menu {
 .header-sticky .navbar {
   @apply border-transparent shadow-[0_10px_35px_rgba(0,0,0,0.16)] scale-[1.01]
          bg-white/85 backdrop-blur-md dark:bg-gray-900/85;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .header-sticky {
@@ -159,16 +159,16 @@ input#nav-toggle:checked ~ #nav-menu {
 @media (min-width: 1280px) {
   /* desplazamiento de los elementos */
   .header-sticky .logo-container {
-    @apply translate-x-[80%];
+    @apply translate-x-0;
   }
 
   .header-sticky .menu-container {
-    @apply -translate-x-[80%];
+    @apply translate-x-0;
   }
 
   /* estilo visual del navbar al hacer scroll */
   .header-sticky .navbar {
-    @apply shadow-[0_12px_38px_rgba(0,0,0,0.18)] scale-[1.015];
+    @apply shadow-[0_12px_38px_rgba(0,0,0,0.18)] scale-100;
     border-radius: 9999px;
   }
 }
@@ -176,15 +176,15 @@ input#nav-toggle:checked ~ #nav-menu {
 /* Estilo sticky para 2XL (>=1536px) */
 @media (min-width: 1536px) {
   .header-sticky .logo-container {
-    @apply translate-x-[150%];
+    @apply translate-x-0;
   }
 
   .header-sticky .menu-container {
-    @apply -translate-x-[150%];
+    @apply translate-x-0;
   }
 
   .header-sticky .navbar {
-    @apply shadow-[0_16px_45px_rgba(0,0,0,0.2)] scale-[1.02];
+    @apply shadow-[0_16px_45px_rgba(0,0,0,0.2)] scale-100;
   }
 }
 
@@ -237,6 +237,14 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .nav-dropdown-list {
   @apply z-[80]  ml-1 my-2 rounded-lg border-0 border-solid  border-primary bg-default px-4 py-3  shadow-sm duration-300  lg:mt-0 lg:border lg:bg-white lg:shadow-[0_0.9rem_1.56rem_rgb(0,0,0,0.1)];
+}
+
+.nav-dropdown-toggle:checked ~ .nav-dropdown-list {
+  @apply block;
+}
+
+.nav-dropdown-toggle:checked ~ .nav-dropdown-toggle-button svg {
+  @apply rotate-180;
 }
 
 .nav-dropdown-item {
