@@ -32,6 +32,17 @@
       ]
     },
     {
+      "name": "Resources",
+      "url": "/resources",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Apps",
+          "url": "/resources/apps"
+        }
+      ]
+    },
+    {
       "name": "Contact",
       "url": "/contact"
     }
@@ -53,6 +64,10 @@
     {
       "name": "Blog",
       "url": "/blog"
+    },
+    {
+      "name": "Resources",
+      "url": "/resources"
     },
     {
       "name": "Contact",

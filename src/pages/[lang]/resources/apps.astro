@@ -1,0 +1,143 @@
+---
+import Base from "@layouts/Base.astro";
+import PageHero from "@layouts/components/PageHero.astro";
+import BackgroundImage from "@layouts/components/BackgroundImage.astro";
+import { Image } from "astro:assets";
+
+const { currentLocale } = Astro;
+const isEnglish = currentLocale === "en";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const heroBackground = "/images/shared/backgrounds/home-background.jpg";
+const pageData = {
+  title: isEnglish ? "Apps" : "Aplicativos",
+  content: isEnglish
+    ? "Download our free mobile apps and access Paqari OpenLab resources from any device."
+    : "Descarga nuestros aplicativos gratuitos y accede a los recursos de Paqari OpenLab desde cualquier dispositivo.",
+};
+
+const downloadLink = "https://github.com/PaqariOL/PaqariOLab_apps";
+
+const apps = [
+  {
+    name: "Paqari OpenLab",
+    subtitle: isEnglish ? "Core control app" : "App principal de control",
+    description: isEnglish
+      ? "Connect to the PQ-central unit, review experiment steps, and collect data in real time."
+      : "Conéctate a la unidad PQ-central, revisa pasos de experimentos y captura datos en tiempo real.",
+    highlights: isEnglish
+      ? [
+          "Bluetooth pairing with the device.",
+          "Experiment presets and safety reminders.",
+          "Offline access to essential guides.",
+        ]
+      : [
+          "Conexión Bluetooth con el equipo.",
+          "Presets de experimentos y alertas de seguridad.",
+          "Acceso offline a guías esenciales.",
+        ],
+    image: "/images/resources/apps/app-paqari-openlab.svg",
+    qr: "/images/resources/apps/qr-paqari-openlab.svg",
+  },
+  {
+    name: "PQOL Académico",
+    subtitle: isEnglish ? "Learning companion" : "Compañero educativo",
+    description: isEnglish
+      ? "Designed for classrooms with structured learning paths, activities, and assessments."
+      : "Diseñado para aulas con rutas de aprendizaje, actividades y evaluaciones guiadas.",
+    highlights: isEnglish
+      ? [
+          "Step-by-step labs and classroom prompts.",
+          "Offline activity packs for limited connectivity.",
+          "Shareable results and reflections.",
+        ]
+      : [
+          "Prácticas paso a paso y guías para aula.",
+          "Paquetes offline para conectividad limitada.",
+          "Resultados y reflexiones compartibles.",
+        ],
+    image: "/images/resources/apps/app-pqol-academico.svg",
+    qr: "/images/resources/apps/qr-pqol-academico.svg",
+  },
+];
+---
+<Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
+  <PageHero page_data={pageData}>
+    <BackgroundImage slot="background" src={heroBackground} />
+  </PageHero>
+
+  <section class="section pt-6 pb-8">
+    <div class="container">
+      <div class="overflow-hidden rounded-3xl border border-gray-200 bg-background p-4 shadow-xl dark:border-gray-700">
+        <Image
+          src="/images/resources/apps/apps-overview.svg"
+          width={1200}
+          height={480}
+          alt={isEnglish ? "Apps overview" : "Vista general de aplicativos"}
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-6 pb-20">
+    <div class="container space-y-12">
+      <article class="grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div class="space-y-4">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{apps[0].subtitle}</p>
+          <h2 class="text-3xl font-bold text-default">{apps[0].name}</h2>
+          <p class="text-sm text-text-offset">{apps[0].description}</p>
+          <ul class="space-y-2 text-sm text-text-offset">
+            {apps[0].highlights.map((item: string) => (
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div class="overflow-hidden rounded-2xl bg-background-offset p-4">
+            <Image src={apps[0].image} width={480} height={640} alt={apps[0].name} class="h-full w-full object-cover" />
+          </div>
+          <div class="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-inner">
+            <Image src={apps[0].qr} width={220} height={220} alt={`${apps[0].name} QR`} />
+            <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
+              {isEnglish ? "Go to repository" : "Ir al repositorio"}
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div class="order-2 space-y-4 lg:order-1">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{apps[1].subtitle}</p>
+          <h2 class="text-3xl font-bold text-default">{apps[1].name}</h2>
+          <p class="text-sm text-text-offset">{apps[1].description}</p>
+          <ul class="space-y-2 text-sm text-text-offset">
+            {apps[1].highlights.map((item: string) => (
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="order-1 grid gap-6 sm:grid-cols-2 lg:order-2">
+          <div class="overflow-hidden rounded-2xl bg-background-offset p-4">
+            <Image src={apps[1].image} width={480} height={640} alt={apps[1].name} class="h-full w-full object-cover" />
+          </div>
+          <div class="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-inner">
+            <Image src={apps[1].qr} width={220} height={220} alt={`${apps[1].name} QR`} />
+            <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
+              {isEnglish ? "Go to repository" : "Ir al repositorio"}
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</Base>

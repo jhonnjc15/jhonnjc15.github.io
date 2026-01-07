@@ -8,6 +8,13 @@ banner:
     link: "/about"
     enable: true
 
+products_section:
+  title: "Featured products"
+  description: "Explore a selection of our kits and learning solutions built for hands-on practice."
+  button:
+    label: "More products"
+    link: "/products"
+
 video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "YouTube highlights"

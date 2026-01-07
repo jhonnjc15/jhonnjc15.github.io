@@ -1,0 +1,54 @@
+---
+import Base from "@layouts/Base.astro";
+import PageHero from "@layouts/components/PageHero.astro";
+import BackgroundImage from "@layouts/components/BackgroundImage.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const { currentLocale } = Astro;
+const isEnglish = currentLocale === "en";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const heroBackground = "/images/shared/backgrounds/home-background.jpg";
+const pageData = {
+  title: isEnglish ? "Resources" : "Recursos",
+  content: isEnglish
+    ? "Explore downloads, guides, and tools created by Paqari OpenLab."
+    : "Explora descargas, guías y herramientas creadas por Paqari OpenLab.",
+};
+---
+<Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
+  <PageHero page_data={pageData}>
+    <BackgroundImage slot="background" src={heroBackground} />
+  </PageHero>
+
+  <section class="section pt-6 pb-20">
+    <div class="container">
+      <div class="grid gap-6 md:grid-cols-2">
+        <a
+          class="group flex flex-col justify-between rounded-3xl border border-gray-200 bg-background p-6 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl dark:border-gray-700"
+          href={getRelativeLocaleUrl(currentLocale ?? "", "/resources/apps")}
+        >
+          <div class="space-y-3">
+            <h2 class="text-2xl font-bold text-default">
+              {isEnglish ? "Apps" : "Aplicativos"}
+            </h2>
+            <p class="text-sm text-text-offset">
+              {isEnglish
+                ? "Download the Paqari OpenLab apps and access offline guides."
+                : "Descarga los aplicativos de Paqari OpenLab y accede a guías offline."}
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+            {isEnglish ? "View apps" : "Ver aplicativos"}
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

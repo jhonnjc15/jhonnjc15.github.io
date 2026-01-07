@@ -8,6 +8,13 @@ banner:
     link: "/about"
     enable: true
 
+products_section:
+  title: "Productos destacados"
+  description: "Descubre algunos de nuestros kits y soluciones educativas diseñadas para aprender haciendo."
+  button:
+    label: "Más productos"
+    link: "/products"
+
 video_section:
   id: "IlNIGFlt4KI"
   sectionLabel: "Historias en YouTube"
