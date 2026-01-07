@@ -11,6 +11,9 @@ import { getEntry } from "astro:content";
 import BackgroundVideo from "@components/BackgroundVideo.astro";
 import GaleriaPaqari from "@components/Galeria_Paqari.astro";
 import VideoSpotlight from "@layouts/components/VideoSpotlight.astro";
+import HomeProducts from "@layouts/components/HomeProducts.astro";
+import productsES from "@data/es/products.json";
+import productsEN from "@data/en/products.json";
 
 
 const { currentLocale } = Astro
@@ -27,7 +30,8 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery, video_section, call_to_action } = homepage.data;
+const { banner, key_features, service, testimonial, galery, video_section, call_to_action, products_section } = homepage.data;
+const productsData = currentLocale === "en" ? productsEN : productsES;
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -43,6 +47,8 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
   <Banner banner={banner}>
     <BackgroundVideo src={video_path}/>
   </Banner>
+
+  <HomeProducts section={products_section} products={productsData} />
 
   <VideoSpotlight videoSection={video_section} />
 

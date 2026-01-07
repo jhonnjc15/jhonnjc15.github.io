@@ -2,11 +2,18 @@
 banner:
   title: "Learn, experiment, create..."
   content: "Paqari OpenLab makes chemistry, bio and nanotechnology accessible to everyone."
-  image: /images/home/banner/PQOL_IMG_WEB5.png
+  image: /images/home/banner/banner-img.png
   button:
     label: Learn more about us
     link: "/about"
     enable: true
+
+products_section:
+  title: "Featured products"
+  description: "Explore a selection of our kits and learning solutions built for hands-on practice."
+  button:
+    label: "More products"
+    link: "/products"
 
 video_section:
   id: "IlNIGFlt4KI"

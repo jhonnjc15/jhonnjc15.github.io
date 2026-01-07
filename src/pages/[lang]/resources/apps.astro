@@ -1,0 +1,98 @@
+---
+import Base from "@layouts/Base.astro";
+import PageHero from "@layouts/components/PageHero.astro";
+import BackgroundImage from "@layouts/components/BackgroundImage.astro";
+import { Image } from "astro:assets";
+
+const { currentLocale } = Astro;
+const isEnglish = currentLocale === "en";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const heroBackground = "/images/shared/backgrounds/home-background.jpg";
+const pageData = {
+  title: isEnglish ? "Apps" : "Aplicativos",
+  content: isEnglish
+    ? "Download our free mobile apps and access Paqari OpenLab resources from any device."
+    : "Descarga nuestros aplicativos gratuitos y accede a los recursos de Paqari OpenLab desde cualquier dispositivo.",
+};
+
+const downloadLink = "https://github.com/PaqariOL/PaqariOLab_apps";
+
+const apps = [
+  {
+    name: "Paqari OpenLab",
+    description: isEnglish
+      ? "Core app to explore experiments, guides, and device connectivity."
+      : "App principal para explorar experimentos, guías y conexión con el dispositivo.",
+    image: "/images/resources/apps/app-paqari-openlab.svg",
+    qr: "/images/resources/apps/qr-paqari-openlab.svg",
+  },
+  {
+    name: "PQOL Académico",
+    description: isEnglish
+      ? "Academic companion with structured learning paths and offline activities."
+      : "Aplicativo académico con rutas de aprendizaje y actividades offline.",
+    image: "/images/resources/apps/app-pqol-academico.svg",
+    qr: "/images/resources/apps/qr-pqol-academico.svg",
+  },
+];
+---
+<Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
+  <PageHero page_data={pageData}>
+    <BackgroundImage slot="background" src={heroBackground} />
+  </PageHero>
+
+  <section class="section pt-6 pb-20">
+    <div class="container space-y-10">
+      <div class="grid gap-8 lg:grid-cols-2">
+        {apps.map((app) => (
+          <article class="flex flex-col gap-6 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:flex-row lg:items-center">
+            <div class="lg:w-1/2">
+              <div class="overflow-hidden rounded-2xl bg-background-offset p-4">
+                <Image
+                  src={app.image}
+                  width={480}
+                  height={640}
+                  alt={app.name}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col gap-4">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold text-default">{app.name}</h2>
+                <p class="text-sm text-text-offset">{app.description}</p>
+              </div>
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div class="flex items-center justify-center rounded-2xl bg-white p-3 shadow-inner">
+                  <Image src={app.qr} width={220} height={220} alt={`${app.name} QR`} />
+                </div>
+                <div class="space-y-3">
+                  <p class="text-sm font-semibold text-default">
+                    {isEnglish ? "Free download" : "Descarga libre"}
+                  </p>
+                  <a
+                    class="btn btn-primary"
+                    href={downloadLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {isEnglish ? "Go to repository" : "Ir al repositorio"}
+                  </a>
+                  <p class="text-xs text-text-offset">
+                    {isEnglish
+                      ? "Open the repository to download the APKs and documentation."
+                      : "Abre el repositorio para descargar los APKs y la documentación."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

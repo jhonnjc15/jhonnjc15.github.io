@@ -25,10 +25,12 @@ export const ui = {
 		'nav.home': 'Inicio',
 		'nav.about': 'Nosotros',
                 'nav.products': 'Productos',
-                'nav.blog': 'Blog',
+		'nav.blog': 'Blog',
                 'nav.educational': 'Educativo',
                 'nav.entertainment': 'Entretenimiento',
                 'nav.scientific': 'Científico',
+		'nav.resources': 'Recursos',
+		'nav.apps': 'Aplicativos',
 		'nav.contact': 'Contacto',
 	},
 	en: {
@@ -39,6 +41,8 @@ export const ui = {
                 'nav.educational': 'Educational',
                 'nav.entertainment': 'Entertainment',
                 'nav.scientific': 'Scientific',
+		'nav.resources': 'Resources',
+		'nav.apps': 'Apps',
 		'nav.contact': 'Contact',
 	},
 } as const;
@@ -52,6 +56,8 @@ export const routes = {
                 'blog/educational': 'blog/educational',
                 'blog/entertainment': 'blog/entertainment',
                 'blog/scientific': 'blog/scientific',
+                'resources': 'resources',
+                'resources/apps': 'resources/apps',
                 'contact': 'contact',
         },
         en: {
@@ -62,6 +68,8 @@ export const routes = {
                 'blog/educational': 'blog/educational',
                 'blog/entertainment': 'blog/entertainment',
                 'blog/scientific': 'blog/scientific',
+                'resources': 'resources',
+                'resources/apps': 'resources/apps',
                 'contact': 'contact',
         },
 };

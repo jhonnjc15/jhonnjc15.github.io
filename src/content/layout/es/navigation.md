@@ -13,4 +13,13 @@ blog:
       description: "Retos lúdicos y demostraciones rápidas para ferias, clubes y familias."
     scientific:
       description: "Prototipos, datos abiertos y hallazgos para proyectos de ciencia ciudadana."
+resources:
+  subtitle: "Recursos disponibles"
+  cta:
+    title: "Accede a nuestros aplicativos gratuitos."
+    description: "Descargas directas, enlaces y guías rápidas para empezar."
+    highlight: "APLICATIVOS"
+  categories:
+    apps:
+      description: "Aplicativos móviles con acceso libre para usar en aula y campo."
 ---
