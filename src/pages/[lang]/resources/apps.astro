@@ -69,22 +69,13 @@ const apps = [
     <BackgroundImage slot="background" src={heroBackground} />
   </PageHero>
 
-  <section class="section pt-6 pb-8">
-    <div class="container">
-      <div class="overflow-hidden rounded-3xl border border-gray-200 bg-background p-4 shadow-xl dark:border-gray-700">
-        <Image
-          src="/images/resources/apps/apps-overview.svg"
-          width={1200}
-          height={480}
-          alt={isEnglish ? "Apps overview" : "Vista general de aplicativos"}
-          class="h-full w-full object-cover"
-        />
-      </div>
-    </div>
-  </section>
-
-  <section class="section pt-6 pb-20">
-    <div class="container space-y-12">
+  <section class="section pt-6 pb-20 relative overflow-hidden">
+    <span class="pointer-events-none absolute w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-6 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
+    <span class="pointer-events-none absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 top-5 lg:top-[120px] right-6 rounded-full skew-y-12 blur-2xl opacity-30 skew-x-12 rotate-90"></span>
+    <span class="pointer-events-none absolute w-3/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-secondary bottom-10 left-10 rounded-full blur-3xl opacity-25"></span>
+    <span class="pointer-events-none absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-green-400 to-primary bottom-24 right-24 rounded-full blur-2xl opacity-25"></span>
+    <span class="pointer-events-none absolute w-1/6 aspect-square bg-gradient-to-tr from-secondary to-primary top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-15"></span>
+    <div class="container space-y-12 relative">
       <article class="grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div class="space-y-4">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{apps[0].subtitle}</p>

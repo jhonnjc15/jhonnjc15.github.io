@@ -258,7 +258,7 @@ input#nav-toggle:checked ~ #nav-menu {
 /* Cuando el chat está abierto en móviles, solidificar fondos de dropdowns/menús */
 @media (max-width: 1023px) {
   .nav-dropdown-list {
-    @apply bg-white/95 border border-gray-200 shadow-md dark:bg-gray-900/95 dark:border-gray-700;
+    @apply mt-0 bg-white/95 border border-gray-200 shadow-md dark:bg-gray-900/95 dark:border-gray-700;
   }
 
   body.chat-open .navbar,
