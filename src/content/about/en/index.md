@@ -140,12 +140,12 @@ members:
   description: We combine science, design, and technology to democratize hands-on experimentation in STEM.
   member_list:
     - name: "PhD. Víctor Raúl Jauja Ccana"
-      field: Co-founder, electrochemistry and product
+      field: Scientist, Founder and Innovator
       highlights:
         - "Chemistry / Electrochemistry – UNI (Peru)"
         - "Bernard Gross Award (SBPMat – Brazil)"
         - "Teaching (UNI) and mining industry projects"
         - "Research stays in France, Argentina, Chile, Spain, and Brazil"
-      image: "/images/shared/users/user-3.png"
+      image: "/images/about/team/Victor Raul Jauja Ccana.png"
 ---
 Paqari OpenLab brings applied science to any classroom with a modular device, free apps, and teacher support. We prepare learners for future jobs with safe and sustainable experiences.
