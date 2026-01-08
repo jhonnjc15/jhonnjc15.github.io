@@ -1,7 +1,7 @@
 ---
 import AppSection from "./AppSection.astro";
 
-const { isEnglish, downloadLink, buttonLabel, reverse = false } = Astro.props;
+const { isEnglish, downloadLink, buttonLabel } = Astro.props;
 
 const app = {
   name: "Paqari OpenLab",
@@ -25,4 +25,4 @@ const app = {
 };
 ---
 
-<AppSection app={app} downloadLink={downloadLink} buttonLabel={buttonLabel} reverse={reverse} />
+<AppSection app={app} downloadLink={downloadLink} buttonLabel={buttonLabel} />
