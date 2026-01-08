@@ -159,16 +159,16 @@ input#nav-toggle:checked ~ #nav-menu {
 @media (min-width: 1280px) {
   /* desplazamiento de los elementos */
   .header-sticky .logo-container {
-    @apply translate-x-0;
+    @apply translate-x-[24%];
   }
 
   .header-sticky .menu-container {
-    @apply translate-x-0;
+    @apply -translate-x-[24%];
   }
 
   /* estilo visual del navbar al hacer scroll */
   .header-sticky .navbar {
-    @apply shadow-[0_12px_38px_rgba(0,0,0,0.18)] scale-100;
+    @apply shadow-[0_12px_38px_rgba(0,0,0,0.18)] scale-[1.01];
     border-radius: 9999px;
   }
 }
@@ -176,15 +176,15 @@ input#nav-toggle:checked ~ #nav-menu {
 /* Estilo sticky para 2XL (>=1536px) */
 @media (min-width: 1536px) {
   .header-sticky .logo-container {
-    @apply translate-x-0;
+    @apply translate-x-[40%];
   }
 
   .header-sticky .menu-container {
-    @apply translate-x-0;
+    @apply -translate-x-[40%];
   }
 
   .header-sticky .navbar {
-    @apply shadow-[0_16px_45px_rgba(0,0,0,0.2)] scale-100;
+    @apply shadow-[0_16px_45px_rgba(0,0,0,0.2)] scale-[1.015];
   }
 }
 
@@ -257,6 +257,10 @@ input#nav-toggle:checked ~ #nav-menu {
 
 /* Cuando el chat está abierto en móviles, solidificar fondos de dropdowns/menús */
 @media (max-width: 1023px) {
+  .nav-dropdown-list {
+    @apply bg-white/95 border border-gray-200 shadow-md dark:bg-gray-900/95 dark:border-gray-700;
+  }
+
   body.chat-open .navbar,
   body.chat-open .nav-dropdown-list {
     @apply bg-white/95 dark:bg-gray-900/95 backdrop-blur-md;
