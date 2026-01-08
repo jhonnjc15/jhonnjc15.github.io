@@ -1,7 +1,8 @@
 ---
 import Base from "@layouts/Base.astro";
 import PageHero from "@layouts/components/PageHero.astro";
-import AppSection from "@layouts/components/apps/AppSection.astro";
+import AppPrimaryControl from "@layouts/components/apps/AppPrimaryControl.astro";
+import AppEducationCompanion from "@layouts/components/apps/AppEducationCompanion.astro";
 
 const { currentLocale } = Astro;
 const isEnglish = currentLocale === "en";
@@ -20,48 +21,6 @@ const pageData = {
 const downloadLink = "https://github.com/PaqariOL/PaqariOLab_apps";
 const buttonLabel = isEnglish ? "Go to repository" : "Ir al repositorio";
 
-const apps = [
-  {
-    name: "Paqari OpenLab",
-    subtitle: isEnglish ? "Core control app" : "App principal de control",
-    description: isEnglish
-      ? "Connect to the PQ-central unit, review experiment steps, and collect data in real time."
-      : "Conéctate a la unidad PQ-central, revisa pasos de experimentos y captura datos en tiempo real.",
-    highlights: isEnglish
-      ? [
-          "Bluetooth pairing with the device.",
-          "Experiment presets and safety reminders.",
-          "Offline access to essential guides.",
-        ]
-      : [
-          "Conexión Bluetooth con el equipo.",
-          "Presets de experimentos y alertas de seguridad.",
-          "Acceso offline a guías esenciales.",
-        ],
-    image: "/images/resources/apps/Paqari_Open_lap_App.png",
-    qr: "/images/resources/apps/QR_Paqari_App.png",
-  },
-  {
-    name: "PQOL Académico",
-    subtitle: isEnglish ? "Learning companion" : "Compañero educativo",
-    description: isEnglish
-      ? "Designed for classrooms with structured learning paths, activities, and assessments."
-      : "Diseñado para aulas con rutas de aprendizaje, actividades y evaluaciones guiadas.",
-    highlights: isEnglish
-      ? [
-          "Step-by-step labs and classroom prompts.",
-          "Offline activity packs for limited connectivity.",
-          "Shareable results and reflections.",
-        ]
-      : [
-          "Prácticas paso a paso y guías para aula.",
-          "Paquetes offline para conectividad limitada.",
-          "Resultados y reflexiones compartibles.",
-        ],
-    image: "/images/resources/apps/PQOL_academico_App.png",
-    qr: "/images/resources/apps/QR_Paqari_App.png",
-  },
-];
 ---
 <Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
   <PageHero page_data={pageData} />
@@ -73,8 +32,8 @@ const apps = [
     <span class="pointer-events-none absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-green-400 to-primary bottom-24 right-24 rounded-full blur-2xl opacity-25"></span>
     <span class="pointer-events-none absolute w-1/6 aspect-square bg-gradient-to-tr from-secondary to-primary top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-15"></span>
     <div class="container space-y-12 relative">
-      <AppSection app={apps[0]} downloadLink={downloadLink} buttonLabel={buttonLabel} />
-      <AppSection app={apps[1]} downloadLink={downloadLink} buttonLabel={buttonLabel} reverse />
+      <AppPrimaryControl isEnglish={isEnglish} downloadLink={downloadLink} buttonLabel={buttonLabel} />
+      <AppEducationCompanion isEnglish={isEnglish} downloadLink={downloadLink} buttonLabel={buttonLabel} reverse />
     </div>
   </section>
 </Base>
