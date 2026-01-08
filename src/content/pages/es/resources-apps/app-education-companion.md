@@ -1,4 +1,5 @@
 ---
+title: "Compañero educativo"
 name: "PQOL Académico"
 subtitle: "Compañero educativo"
 description: "Diseñado para aulas con rutas de aprendizaje, actividades y evaluaciones guiadas."

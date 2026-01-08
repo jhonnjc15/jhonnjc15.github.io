@@ -1,4 +1,5 @@
 ---
+title: "App principal de control"
 name: "Paqari OpenLab"
 subtitle: "App principal de control"
 description: "Conéctate a la unidad PQ-central, revisa pasos de experimentos y captura datos en tiempo real."

@@ -1,4 +1,5 @@
 ---
+title: "Core control app"
 name: "Paqari OpenLab"
 subtitle: "Core control app"
 description: "Connect to the PQ-central unit, review experiment steps, and collect data in real time."

@@ -1,4 +1,5 @@
 ---
+title: "Learning companion"
 name: "PQOL Académico"
 subtitle: "Learning companion"
 description: "Designed for classrooms with structured learning paths, activities, and assessments."
