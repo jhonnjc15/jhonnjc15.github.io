@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+
+const { app, downloadLink, buttonLabel, reverse = false } = Astro.props;
+const contentOrder = reverse ? "order-2 lg:order-1" : "";
+const mediaOrder = reverse ? "order-1 lg:order-2" : "";
+const layoutCols = reverse ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.9fr_1.1fr]";
+---
+
+<article class={`grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 ${layoutCols} lg:items-center`}>
+  <div class={`space-y-4 ${contentOrder}`}>
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{app.subtitle}</p>
+    <h2 class="text-3xl font-bold text-default">{app.name}</h2>
+    <p class="text-sm text-text-offset">{app.description}</p>
+    <ul class="space-y-2 text-sm text-text-offset">
+      {app.highlights.map((item: string) => (
+        <li class="flex gap-2">
+          <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class={`grid gap-6 sm:grid-cols-2 items-stretch ${mediaOrder}`}>
+    <div class="flex items-center justify-center overflow-hidden rounded-2xl bg-background-offset p-4">
+      <div class="aspect-[3/4] w-full max-w-[320px]">
+        <Image
+          src={app.image}
+          width={480}
+          height={640}
+          alt={app.name}
+          class="h-full w-full object-contain"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-inner">
+      <Image src={app.qr} width={220} height={220} alt={`${app.name} QR`} />
+      <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
+        {buttonLabel}
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,7 +1,7 @@
 ---
 import Base from "@layouts/Base.astro";
 import PageHero from "@layouts/components/PageHero.astro";
-import { Image } from "astro:assets";
+import AppSection from "@layouts/components/apps/AppSection.astro";
 
 const { currentLocale } = Astro;
 const isEnglish = currentLocale === "en";
@@ -18,6 +18,7 @@ const pageData = {
 };
 
 const downloadLink = "https://github.com/PaqariOL/PaqariOLab_apps";
+const buttonLabel = isEnglish ? "Go to repository" : "Ir al repositorio";
 
 const apps = [
   {
@@ -72,59 +73,8 @@ const apps = [
     <span class="pointer-events-none absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-green-400 to-primary bottom-24 right-24 rounded-full blur-2xl opacity-25"></span>
     <span class="pointer-events-none absolute w-1/6 aspect-square bg-gradient-to-tr from-secondary to-primary top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-15"></span>
     <div class="container space-y-12 relative">
-      <article class="grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div class="space-y-4">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{apps[0].subtitle}</p>
-          <h2 class="text-3xl font-bold text-default">{apps[0].name}</h2>
-          <p class="text-sm text-text-offset">{apps[0].description}</p>
-          <ul class="space-y-2 text-sm text-text-offset">
-            {apps[0].highlights.map((item: string) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-2">
-          <div class="overflow-hidden rounded-2xl bg-background-offset p-4">
-            <Image src={apps[0].image} width={480} height={640} alt={apps[0].name} class="h-full w-full object-cover" />
-          </div>
-          <div class="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-inner">
-            <Image src={apps[0].qr} width={220} height={220} alt={`${apps[0].name} QR`} />
-            <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
-              {isEnglish ? "Go to repository" : "Ir al repositorio"}
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="grid gap-8 rounded-3xl border border-gray-200 bg-background p-6 shadow-xl dark:border-gray-700 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div class="order-2 space-y-4 lg:order-1">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{apps[1].subtitle}</p>
-          <h2 class="text-3xl font-bold text-default">{apps[1].name}</h2>
-          <p class="text-sm text-text-offset">{apps[1].description}</p>
-          <ul class="space-y-2 text-sm text-text-offset">
-            {apps[1].highlights.map((item: string) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="order-1 grid gap-6 sm:grid-cols-2 lg:order-2">
-          <div class="overflow-hidden rounded-2xl bg-background-offset p-4">
-            <Image src={apps[1].image} width={480} height={640} alt={apps[1].name} class="h-full w-full object-cover" />
-          </div>
-          <div class="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-inner">
-            <Image src={apps[1].qr} width={220} height={220} alt={`${apps[1].name} QR`} />
-            <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
-              {isEnglish ? "Go to repository" : "Ir al repositorio"}
-            </a>
-          </div>
-        </div>
-      </article>
+      <AppSection app={apps[0]} downloadLink={downloadLink} buttonLabel={buttonLabel} />
+      <AppSection app={apps[1]} downloadLink={downloadLink} buttonLabel={buttonLabel} reverse />
     </div>
   </section>
 </Base>
