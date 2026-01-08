@@ -13,7 +13,7 @@ interface SectionData {
 const { section } = Astro.props as { section: SectionData };
 import { getI18N } from "@i18n/index";
 const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const i18n = await getI18N({ currentLocale });
 ---
 
 <section class="py-20 bg-background text-text relative overflow-hidden" data-animate="fade-up">

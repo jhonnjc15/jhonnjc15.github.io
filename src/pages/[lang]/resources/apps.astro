@@ -3,27 +3,32 @@ import Base from "@layouts/Base.astro";
 import PageHero from "@layouts/components/PageHero.astro";
 import AppPrimaryControl from "@layouts/components/apps/AppPrimaryControl.astro";
 import AppEducationCompanion from "@layouts/components/apps/AppEducationCompanion.astro";
+import { getEntryBySlug } from "astro:content";
 
 const { currentLocale } = Astro;
-const isEnglish = currentLocale === "en";
+const fallbackLocale = "es";
+const locale = currentLocale ?? fallbackLocale;
 
 export async function getStaticPaths() {
   return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
-const pageData = {
-  title: isEnglish ? "Apps" : "Aplicativos",
-  content: isEnglish
-    ? "Download our free mobile apps and access Paqari OpenLab resources from any device."
-    : "Descarga nuestros aplicativos gratuitos y accede a los recursos de Paqari OpenLab desde cualquier dispositivo.",
-};
+let pageEntry = await getEntryBySlug("pages", `${locale}/resources-apps`);
+if (!pageEntry) {
+  pageEntry = await getEntryBySlug("pages", `${fallbackLocale}/resources-apps`);
+}
 
-const downloadLink = "https://github.com/PaqariOL/PaqariOLab_apps";
-const buttonLabel = isEnglish ? "Go to repository" : "Ir al repositorio";
+const pageData = pageEntry?.data ?? {};
+const heroData = {
+  ...pageData,
+  content: pageData.description,
+};
+const downloadLink = pageData.downloadLink ?? "https://github.com/PaqariOL/PaqariOLab_apps";
+const buttonLabel = pageData.buttonLabel ?? "";
 
 ---
-<Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
-  <PageHero page_data={pageData} />
+<Base title={pageData.title} meta_title={pageData.title} description={pageData.description}>
+  <PageHero page_data={heroData} />
 
   <section class="section pt-6 pb-20 relative overflow-hidden">
     <span class="pointer-events-none absolute w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-6 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
@@ -32,8 +37,8 @@ const buttonLabel = isEnglish ? "Go to repository" : "Ir al repositorio";
     <span class="pointer-events-none absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-green-400 to-primary bottom-24 right-24 rounded-full blur-2xl opacity-25"></span>
     <span class="pointer-events-none absolute w-1/6 aspect-square bg-gradient-to-tr from-secondary to-primary top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-15"></span>
     <div class="container space-y-12 relative">
-      <AppPrimaryControl isEnglish={isEnglish} downloadLink={downloadLink} buttonLabel={buttonLabel} />
-      <AppEducationCompanion isEnglish={isEnglish} downloadLink={downloadLink} buttonLabel={buttonLabel} />
+      <AppPrimaryControl downloadLink={downloadLink} buttonLabel={buttonLabel} />
+      <AppEducationCompanion downloadLink={downloadLink} buttonLabel={buttonLabel} />
     </div>
   </section>
 </Base>

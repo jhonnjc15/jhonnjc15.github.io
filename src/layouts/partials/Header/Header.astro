@@ -44,21 +44,32 @@ if (!navigationEntry) {
   navigationEntry = await getEntryBySlug("layout", `${fallbackLocale}/navigation`);
 }
 
+let headerEntry = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/header`);
+if (!headerEntry) {
+  headerEntry = await getEntryBySlug("layout", `${fallbackLocale}/header`);
+}
+
 const navigationContent = navigationEntry?.data ?? {};
+const headerContent = headerEntry?.data ?? {};
+const topbarLocationLabel = headerContent.topbar?.location_label ?? "Paqari OpenLab";
 const blogContent = navigationContent.blog ?? {};
 const resourcesContent = navigationContent.resources ?? {};
+const blogFallback = headerContent.blog ?? {};
+const resourcesFallback = headerContent.resources ?? {};
+const productsFallback = headerContent.products ?? {};
 const blogCategoriesCopy = blogContent.categories ?? {};
-const blogDropdownSubtitle = blogContent.subtitle ?? (currentLocale === 'en' ? 'Stories by category' : 'Historias por categoría');
-const blogCtaText = blogContent.cta?.title ?? (currentLocale === 'en' ? 'Discover our blog categories' : 'Explora nuestras categorías de blog');
-const blogCtaDescription = blogContent.cta?.description ?? '';
-const blogCtaHighlight = blogContent.cta?.highlight ?? (currentLocale === 'en' ? 'FEATURED ARTICLES' : 'ARTÍCULOS DESTACADOS');
+const blogDropdownSubtitle = blogContent.subtitle ?? blogFallback.subtitle ?? '';
+const blogCtaText = blogContent.cta?.title ?? blogFallback.cta?.title ?? '';
+const blogCtaDescription = blogContent.cta?.description ?? blogFallback.cta?.description ?? '';
+const blogCtaHighlight = blogContent.cta?.highlight ?? blogFallback.cta?.highlight ?? '';
 const resourcesCategoriesCopy = resourcesContent.categories ?? {};
-const resourcesDropdownSubtitle = resourcesContent.subtitle ?? (currentLocale === 'en' ? 'Available resources' : 'Recursos disponibles');
-const resourcesCtaText = resourcesContent.cta?.title ?? (currentLocale === 'en' ? 'Explore our resources' : 'Explora nuestros recursos');
-const resourcesCtaDescription = resourcesContent.cta?.description ?? '';
-const resourcesCtaHighlight = resourcesContent.cta?.highlight ?? (currentLocale === 'en' ? 'RESOURCES' : 'RECURSOS');
-const productsCtaText = currentLocale === 'en' ? 'Learn more about our ' : 'Conoce más sobre nuestros ';
-const productsCtaHighlight = currentLocale === 'en' ? 'AMAZING PRODUCTS' : 'INCREÍBLES PRODUCTOS';
+const resourcesDropdownSubtitle = resourcesContent.subtitle ?? resourcesFallback.subtitle ?? '';
+const resourcesCtaText = resourcesContent.cta?.title ?? resourcesFallback.cta?.title ?? '';
+const resourcesCtaDescription = resourcesContent.cta?.description ?? resourcesFallback.cta?.description ?? '';
+const resourcesCtaHighlight = resourcesContent.cta?.highlight ?? resourcesFallback.cta?.highlight ?? '';
+const productsCtaText = productsFallback.cta?.title_prefix ?? '';
+const productsCtaHighlight = productsFallback.cta?.highlight ?? '';
+const productsDropdownDescription = productsFallback.dropdown_description ?? '';
 const email = contactContent.email ?? config.params.email;
 const phone = contactContent.phone ?? config.params.phone;
 const location = contactContent.location ?? config.params.location;
@@ -108,7 +119,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           <span class="topbar-icon">
             <IoLocationOutline />
           </span>
-          <span class="topbar-text">Paqari OpenLab</span>
+          <span class="topbar-text">{topbarLocationLabel}</span>
         </a>
       </div>
       <Social source={topbarSocial} className="social-icons topbar-social-icons" />
@@ -210,7 +221,7 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
                             ? blogCategoriesCopy?.[child.name.toLowerCase()]?.description ?? `${t('nav.blog')} • ${blogDropdownSubtitle}`
                             : menu.name.toLowerCase() === 'resources'
                               ? resourcesCategoriesCopy?.[child.name.toLowerCase()]?.description ?? `${t('nav.resources')} • ${resourcesDropdownSubtitle}`
-                              : 'Trending wallpapers for any kind of tatse'}
+                              : productsDropdownDescription}
                         </p>
                       </a>
                     </li>

@@ -3,7 +3,7 @@ import TestimonialSlider from "@layouts/function-components/TestimonialSlider";
 import { getI18N } from "@i18n/index";
 const { testimonial } = Astro.props;
 const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const i18n = await getI18N({ currentLocale });
 ---
 
 <section data-animate="fade-up" class="section reviews">

@@ -4,7 +4,7 @@ import TestimonialSliderPaqari from "@layouts/function-components/TestimonialSli
 import { getI18N } from "@i18n/index";
 const { galery } = Astro.props;
 const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const i18n = await getI18N({ currentLocale });
 ---
 
 <section data-animate="fade-up" class="section reviews">
@@ -22,4 +22,3 @@ const i18n = getI18N({ currentLocale });
     </div>
   </div>
 </section>
-

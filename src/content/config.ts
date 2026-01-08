@@ -209,4 +209,5 @@ export const collections = {
   homepage: localizedContent,
   contact: localizedContent,
   layout: localizedContent,
+  i18n: localizedContent,
 };

@@ -1,28 +1,17 @@
 ---
+import { getEntryBySlug } from "astro:content";
 import AppSection from "./AppSection.astro";
 
-const { isEnglish, downloadLink, buttonLabel } = Astro.props;
+const { downloadLink, buttonLabel } = Astro.props;
+const fallbackLocale = "es";
+const locale = Astro.currentLocale ?? fallbackLocale;
 
-const app = {
-  name: "Paqari OpenLab",
-  subtitle: isEnglish ? "Core control app" : "App principal de control",
-  description: isEnglish
-    ? "Connect to the PQ-central unit, review experiment steps, and collect data in real time."
-    : "Conéctate a la unidad PQ-central, revisa pasos de experimentos y captura datos en tiempo real.",
-  highlights: isEnglish
-    ? [
-        "Bluetooth pairing with the device.",
-        "Experiment presets and safety reminders.",
-        "Offline access to essential guides.",
-      ]
-    : [
-        "Conexión Bluetooth con el equipo.",
-        "Presets de experimentos y alertas de seguridad.",
-        "Acceso offline a guías esenciales.",
-      ],
-  image: "/images/resources/apps/Paqari_Open_lap_App.png",
-  qr: "/images/resources/apps/QR_Paqari_App.png",
-};
+let appEntry = await getEntryBySlug("pages", `${locale}/resources-apps/app-primary-control`);
+if (!appEntry) {
+  appEntry = await getEntryBySlug("pages", `${fallbackLocale}/resources-apps/app-primary-control`);
+}
+
+const app = appEntry?.data ?? {};
 ---
 
 <AppSection app={app} downloadLink={downloadLink} buttonLabel={buttonLabel} />

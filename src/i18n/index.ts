@@ -1,20 +1,34 @@
-import english from '@i18n/en.json';
-import spanish from '@i18n/es.json';
+import { getEntryBySlug } from "astro:content";
 
 const LANG = {
 	ENGLISH: 'en',
 	SPANISH: 'es',
 };
 
-export function getTranslations(lang: string) {
-  return LANG[lang as keyof typeof LANG] || LANG['es'];
+const fallbackLocale = LANG.SPANISH;
+
+async function getLocaleEntry(locale: string) {
+  let entry = await getEntryBySlug("i18n", locale);
+  if (!entry && locale !== fallbackLocale) {
+    entry = await getEntryBySlug("i18n", fallbackLocale);
+  }
+  return entry?.data ?? {};
 }
 
-export const getI18N = ({
+export async function getTranslations(lang: string) {
+  const locale = LANG[lang as keyof typeof LANG] || fallbackLocale;
+  return getLocaleEntry(locale);
+}
+
+export const getI18N = async ({
 	currentLocale = 'es',
 }: {
 	currentLocale: string | undefined;
 }) => {
-	if (currentLocale === LANG.ENGLISH) return {...spanish, ...english};
+  const spanish = await getLocaleEntry(fallbackLocale);
+	if (currentLocale === LANG.ENGLISH) {
+    const english = await getLocaleEntry(LANG.ENGLISH);
+    return { ...spanish, ...english };
+  }
 	return spanish;
 };

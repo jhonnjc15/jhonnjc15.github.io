@@ -1,28 +1,17 @@
 ---
+import { getEntryBySlug } from "astro:content";
 import AppSection from "./AppSection.astro";
 
-const { isEnglish, downloadLink, buttonLabel } = Astro.props;
+const { downloadLink, buttonLabel } = Astro.props;
+const fallbackLocale = "es";
+const locale = Astro.currentLocale ?? fallbackLocale;
 
-const app = {
-  name: "PQOL Académico",
-  subtitle: isEnglish ? "Learning companion" : "Compañero educativo",
-  description: isEnglish
-    ? "Designed for classrooms with structured learning paths, activities, and assessments."
-    : "Diseñado para aulas con rutas de aprendizaje, actividades y evaluaciones guiadas.",
-  highlights: isEnglish
-    ? [
-        "Step-by-step labs and classroom prompts.",
-        "Offline activity packs for limited connectivity.",
-        "Shareable results and reflections.",
-      ]
-    : [
-        "Prácticas paso a paso y guías para aula.",
-        "Paquetes offline para conectividad limitada.",
-        "Resultados y reflexiones compartibles.",
-      ],
-  image: "/images/resources/apps/PQOL_academico_App.png",
-  qr: "/images/resources/apps/QR_Paqari_App.png",
-};
+let appEntry = await getEntryBySlug("pages", `${locale}/resources-apps/app-education-companion`);
+if (!appEntry) {
+  appEntry = await getEntryBySlug("pages", `${fallbackLocale}/resources-apps/app-education-companion`);
+}
+
+const app = appEntry?.data ?? {};
 ---
 
 <AppSection app={app} downloadLink={downloadLink} buttonLabel={buttonLabel} />
