@@ -1,7 +1,6 @@
 ---
 import Base from "@layouts/Base.astro";
 import PageHero from "@layouts/components/PageHero.astro";
-import BackgroundImage from "@layouts/components/BackgroundImage.astro";
 import { Image } from "astro:assets";
 
 const { currentLocale } = Astro;
@@ -11,7 +10,6 @@ export async function getStaticPaths() {
   return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
-const heroBackground = "/images/shared/backgrounds/home-background.jpg";
 const pageData = {
   title: isEnglish ? "Apps" : "Aplicativos",
   content: isEnglish
@@ -65,9 +63,7 @@ const apps = [
 ];
 ---
 <Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
-  <PageHero page_data={pageData}>
-    <BackgroundImage slot="background" src={heroBackground} />
-  </PageHero>
+  <PageHero page_data={pageData} />
 
   <section class="section pt-6 pb-20 relative overflow-hidden">
     <span class="pointer-events-none absolute w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-6 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>

@@ -1,7 +1,6 @@
 ---
 import Base from "@layouts/Base.astro";
 import PageHero from "@layouts/components/PageHero.astro";
-import BackgroundImage from "@layouts/components/BackgroundImage.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { currentLocale } = Astro;
@@ -11,7 +10,6 @@ export async function getStaticPaths() {
   return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
-const heroBackground = "/images/shared/backgrounds/home-background.jpg";
 const pageData = {
   title: isEnglish ? "Resources" : "Recursos",
   content: isEnglish
@@ -20,9 +18,7 @@ const pageData = {
 };
 ---
 <Base title={pageData.title} meta_title={pageData.title} description={pageData.content}>
-  <PageHero page_data={pageData}>
-    <BackgroundImage slot="background" src={heroBackground} />
-  </PageHero>
+  <PageHero page_data={pageData} />
 
   <section class="section pt-6 pb-20">
     <div class="container">
