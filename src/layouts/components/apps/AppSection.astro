@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 
 const { app, downloadLink, buttonLabel, reverse = false } = Astro.props;
-const contentOrder = reverse ? "order-2 lg:order-1" : "";
-const mediaOrder = reverse ? "order-1 lg:order-2" : "";
+const contentOrder = reverse ? "lg:order-1" : "";
+const mediaOrder = reverse ? "lg:order-2" : "";
 const layoutCols = reverse ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.9fr_1.1fr]";
 ---
 
@@ -21,7 +21,7 @@ const layoutCols = reverse ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.9fr
       ))}
     </ul>
   </div>
-  <div class={`grid gap-4 sm:grid-cols-2 items-stretch ${mediaOrder}`}>
+  <div class={`grid gap-4 sm:grid-cols-2 items-stretch justify-items-center ${mediaOrder}`}>
     <div class="flex items-center justify-center overflow-hidden rounded-2xl bg-background-offset p-3">
       <div class="h-[360px] w-full max-w-[260px]">
         <Image
@@ -33,8 +33,8 @@ const layoutCols = reverse ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.9fr
         />
       </div>
     </div>
-    <div class="flex flex-col items-center justify-center gap-3 rounded-2xl bg-white p-3 shadow-inner">
-      <Image src={app.qr} width={220} height={220} alt={`${app.name} QR`} class="w-[200px] h-[200px]" />
+    <div class="flex w-full max-w-[260px] flex-col items-center justify-center gap-3 rounded-2xl bg-white p-3 shadow-inner">
+      <Image src={app.qr} width={220} height={220} alt={`${app.name} QR`} class="h-[200px] w-[200px]" />
       <a class="btn btn-primary" href={downloadLink} target="_blank" rel="noopener noreferrer">
         {buttonLabel}
       </a>
