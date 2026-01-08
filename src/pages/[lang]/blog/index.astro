@@ -46,7 +46,13 @@ if (!blogIndex) {
   blogIndex = await getEntryBySlug("pages", `${fallbackLocale}/blog-index`);
 }
 
+let blogUi = await getEntryBySlug("pages", `${currentLocale}/blog-ui`);
+if (!blogUi) {
+  blogUi = await getEntryBySlug("pages", `${fallbackLocale}/blog-ui`);
+}
+
 const copy = blogIndex?.data ?? { title: "Blog", description: "" };
+const blogLabels = blogUi?.data ?? {};
 
 const page_data = {
   title: copy.title,
@@ -65,8 +71,8 @@ export async function getStaticPaths() {
     </div>
   </section>
   <section class="section mx-4 md:mx-10 lg:mx-20 mt-12" data-animate="zoom-in">
-    <BlogCategories categories={categories} />
-    <Blogs posts={currentPosts} basePath={blog_folder} />
+    <BlogCategories categories={categories} labels={blogLabels} />
+    <Blogs posts={currentPosts} basePath={blog_folder} labels={blogLabels} />
     <Pagination
       section={blog_folder}
       currentPage={1}

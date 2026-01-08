@@ -30,7 +30,7 @@ const page_data = {
 };
 
 //console.log(homepage)
-const { banner, key_features, service, testimonial, galery, video_section, call_to_action, products_section } = homepage.data;
+const { banner, key_features, service, testimonial, galery, video_section, call_to_action, products_section, blog_themes } = homepage.data;
 const productsData = currentLocale === "en" ? productsEN : productsES;
 
 export async function getStaticPaths() {
@@ -53,7 +53,7 @@ const video_path = "/images/shared/backgrounds/background-video.mp4"
   <VideoSpotlight videoSection={video_section} />
 
   <!-- Blog Themes -->
-  <BlogThemesHome/>
+  <BlogThemesHome blogThemes={blog_themes} />
   {/* 
   <!-- key features -->
   <KeyFeatures key_features={key_features} />

@@ -1,16 +1,15 @@
 ---
 import "photoswipe/style.css";
 import TestimonialSliderPaqari from "@layouts/function-components/TestimonialSliderPaqari";
-import { getI18N } from "@i18n/index";
 const { galery } = Astro.props;
-const { currentLocale } = Astro;
-const i18n = await getI18N({ currentLocale });
 ---
 
 <section data-animate="fade-up" class="section reviews">
   <div class="container">
     <div class="text-center space-y-3 max-w-3xl mx-auto">
-      <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.HOME.gallery_title}</p>
+      {galery.eyebrow && (
+        <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{galery.eyebrow}</p>
+      )}
       <h2 class="text-3xl md:text-4xl font-extrabold text-default">{galery.title}</h2>
       <p class="text-text-offset leading-relaxed">{galery.description}</p>
     </div>

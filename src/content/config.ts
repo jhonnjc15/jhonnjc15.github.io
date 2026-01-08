@@ -42,6 +42,7 @@ const aboutSectionImage = z
   .optional();
 
 const aboutSection = z.object({
+  eyebrow: z.string().optional(),
   title: z.string(),
   description: z.string(),
   image: aboutSectionImage,
@@ -209,5 +210,4 @@ export const collections = {
   homepage: localizedContent,
   contact: localizedContent,
   layout: localizedContent,
-  i18n: localizedContent,
 };

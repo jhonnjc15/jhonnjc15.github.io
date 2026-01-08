@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import './ContactButtonStyles.css';
 
-const ContactButton = ({i18n}) => {
+const ContactButton = ({ message }) => {
     const [state, setState] = useState(false)
 
     const PhoneNumber = 993896226
-    const defaultMessage = `${i18n.contact_button.wsp}`
+    const defaultMessage = `${message ?? ""}`
     const whatsappMessage = `https://api.whatsapp.com/send/?phone=51${PhoneNumber}&text=${defaultMessage}&type=phone_number&app_absent=0`
     const telegramMessage = `https://t.me/+51${PhoneNumber}?text=${defaultMessage}`
     return (

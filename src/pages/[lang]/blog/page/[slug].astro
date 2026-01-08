@@ -6,7 +6,7 @@ import Blogs from "@components/Blogs.astro";
 import BlogCategories from "@components/blog/BlogCategories.astro";
 import Pagination from "@layouts/components/Pagination.astro";
 import config from "@config/config.json";
-import { getCollection } from "astro:content";
+import { getCollection, getEntryBySlug } from "astro:content";
 import { sortByDate } from "@lib/utils/sortFunctions";
 import { filterByLocale } from "@lib/utils/filterByLocale";
 
@@ -44,6 +44,13 @@ const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const indexOfLastPost = currentPage * pagination;
 const indexOfFirstPost = indexOfLastPost - pagination;
 const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+let blogUi = await getEntryBySlug("pages", `${currentLocale}/blog-ui`);
+if (!blogUi) {
+  blogUi = await getEntryBySlug("pages", `${fallbackLocale}/blog-ui`);
+}
+
+const blogLabels = blogUi?.data ?? {};
 
 const copy = currentLocale === "en"
   ? {
@@ -89,8 +96,8 @@ export async function getStaticPaths() {
     </div>
   </section>
   <section class="section mx-4 md:mx-10 lg:mx-20 mt-12">
-    <BlogCategories categories={categories} />
-    <Blogs posts={currentPosts} basePath={blog_folder} />
+    <BlogCategories categories={categories} labels={blogLabels} />
+    <Blogs posts={currentPosts} basePath={blog_folder} labels={blogLabels} />
     <Pagination
       section={blog_folder}
       totalPages={totalPages}

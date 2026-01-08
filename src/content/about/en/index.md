@@ -11,6 +11,7 @@ buttons:
     outline: true
     enable: true
 whoWeAre:
+  eyebrow: "Our team"
   title: "Who We Are"
   description: >-
     Paqari OpenLab draws from the Quechua word for “dawn,” signaling a future of accessible science.

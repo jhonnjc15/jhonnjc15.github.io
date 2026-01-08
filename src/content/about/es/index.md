@@ -11,6 +11,7 @@ buttons:
     outline: true
     enable: true
 whoWeAre:
+  eyebrow: "Nuestro equipo"
   title: "Quiénes Somos"
   description: >-
     Paqari OpenLab toma su nombre del quechua para “amanecer” y representa una ciencia más accesible.

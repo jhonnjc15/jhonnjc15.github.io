@@ -5,10 +5,9 @@ import { plainify } from "@lib/utils/textConverter";
 const { summary_length } = config.settings;
 import categoriesES from "@data/es/blog-categories.json";
 import categoriesEN from "@data/en/blog-categories.json";
-import { getI18N } from "@i18n/index";
 
 const { currentLocale } = Astro;
-const i18n = await getI18N({ currentLocale });
+const { blogThemes } = Astro.props;
 
 const categories_data = currentLocale === "en" ? categoriesEN : categoriesES;
 
@@ -66,8 +65,8 @@ const getCategoryKey = (data: any) => {
 <section data-animate="zoom-in" class="section">
   <div class="max-w-7xl mx-auto px-3 sm:px-5 md:px-8 xl:px-6 space-y-8">
     <div class="text-center space-y-3">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-default">{i18n.HOME.categories_title}</h2>
-      <p class="max-w-3xl mx-auto text-text-offset leading-relaxed">{i18n.HOME.categories_description}</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-default">{blogThemes?.title}</h2>
+      <p class="max-w-3xl mx-auto text-text-offset leading-relaxed">{blogThemes?.description}</p>
     </div>
 
     <div class="custom-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 rounded-3xl overflow-hidden my-6 md:my-4 bg-offset">
@@ -98,7 +97,7 @@ const getCategoryKey = (data: any) => {
                     hover:text-paqariYellow
                     group-hover:text-paqariYellow"
             >
-              <span>{i18n.HOME.categories_cta}</span>
+              <span>{blogThemes?.cta_label}</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                    class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300
                           group-hover:translate-x-0 group-hover:opacity-100">
@@ -116,10 +115,10 @@ const getCategoryKey = (data: any) => {
         <img class="w-10 sm:w-12 md:w-12 mx-auto sm:mx-0" src="data:image/png;base64,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" alt="external-blog-content-creator-xnimrodx-lineal-color-xnimrodx-2">
         <div class="space-y-2 sm:space-y-3 mt-4">
           <h5 class="text-base sm:text-lg md:text-lg font-semibold">
-            {i18n.HOME.categories_blog_title}
+            {blogThemes?.blog_card_title}
           </h5>
           <p class="block font-sans text-xs sm:text-sm md:text-sm leading-snug overflow-hidden opacity-75">
-            {i18n.HOME.categories_blog_description}
+            {blogThemes?.blog_card_description}
           </p>
         </div>
 
@@ -131,7 +130,7 @@ const getCategoryKey = (data: any) => {
                 hover:text-paqariYellow
                 group-hover:text-paqariYellow"
         >
-          <span>{i18n.COMMON.visit_blog}</span>
+          <span>{blogThemes?.blog_card_cta}</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                class="w-4 h-4 sm:w-5 sm:h-5 -translate-x-3 opacity-0 transition duration-300
                       group-hover:translate-x-0 group-hover:opacity-100">

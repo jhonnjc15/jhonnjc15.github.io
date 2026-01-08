@@ -2,13 +2,12 @@
 import { Image } from 'astro:assets';
 import config from "@config/config.json";
 import { plainify } from "@lib/utils/textConverter";
-import { getI18N } from "@i18n/index";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { summary_length } = config.settings;
 const { products, product_list } = Astro.props;
 const { currentLocale } = Astro;
-const i18n = await getI18N({ currentLocale });
+const productDetailLabel = product_list?.product_detail_button?.label;
 
 const visibleProducts = (products ?? []).filter((item: any) => item.data.show !== false);
 
@@ -72,7 +71,7 @@ const isOddCount = enhancedProducts.length % 2 !== 0;
                     `/products/${item.data.id_product}`,
                   )}
                 >
-                  {i18n.COMMON.discover_more}
+                  {productDetailLabel}
                   <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
                   </svg>

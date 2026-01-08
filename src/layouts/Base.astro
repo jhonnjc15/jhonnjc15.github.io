@@ -32,9 +32,6 @@ const { title, meta_title, description, image, noindex, canonical, is404 = false
 
  
 const { currentLocale } = Astro
-import { getI18N } from '@i18n/index';
-import { ContentSchemaContainsSlugError } from "node_modules/astro/dist/core/errors/errors-data";
-const i18n = await getI18N({ currentLocale })
 // console.log("currentLocale")
 // console.log(currentLocale)
 
@@ -42,6 +39,11 @@ const fallbackLocale = "es";
 let chatContent = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/chatbot`);
 if (!chatContent) {
   chatContent = await getEntryBySlug("layout", `${fallbackLocale}/chatbot`);
+}
+
+let contactButtonEntry = await getEntryBySlug("layout", `${currentLocale ?? fallbackLocale}/contact_button`);
+if (!contactButtonEntry) {
+  contactButtonEntry = await getEntryBySlug("layout", `${fallbackLocale}/contact_button`);
 }
 ---
 
@@ -197,7 +199,7 @@ if (!chatContent) {
     </main>
     <Footer />
     <ContactButton
-      i18n={i18n}
+      message={contactButtonEntry?.data?.message}
       client:load/>
     <ChatWidget chatContent={chatContent?.data} client:load />
 

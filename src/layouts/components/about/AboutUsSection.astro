@@ -5,22 +5,22 @@ interface ImageData {
 }
 
 interface SectionData {
+  eyebrow?: string;
   title: string;
   description: string;
   image?: ImageData;
 }
 
 const { section } = Astro.props as { section: SectionData };
-import { getI18N } from "@i18n/index";
-const { currentLocale } = Astro;
-const i18n = await getI18N({ currentLocale });
 ---
 
 <section class="py-20 bg-background text-text relative overflow-hidden" data-animate="fade-up">
   <span class="absolute -top-16 -right-10 w-[340px] h-[240px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
   <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
     <div class="lg:w-1/2 space-y-4">
-      <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{i18n.COMMON.our_team}</p>
+      {section.eyebrow && (
+        <p class="text-xs uppercase tracking-[0.25em] text-secondary font-semibold">{section.eyebrow}</p>
+      )}
       <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">{section.title}</h2>
       <p class="text-text-offset leading-relaxed text-lg">{section.description}</p>
     </div>

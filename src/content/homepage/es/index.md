@@ -7,6 +7,7 @@ banner:
     label: Conoce más sobre nosotros
     link: "/about"
     enable: true
+  button_fallback_label: "Contáctanos"
 
 products_section:
   title: "Productos destacados"
@@ -14,6 +15,14 @@ products_section:
   button:
     label: "Más productos"
     link: "/products"
+
+blog_themes:
+  title: "Temáticas del blog"
+  description: "Explora guías, experimentos y noticias sobre nuestras líneas de divulgación y educación abierta."
+  cta_label: "Explorar temática"
+  blog_card_title: "Visita el blog"
+  blog_card_description: "Descubre historias, curiosidades y tutoriales creados con la comunidad de Paqari Open Lab."
+  blog_card_cta: "Ir al blog"
 
 video_section:
   id: "IlNIGFlt4KI"
@@ -105,6 +114,7 @@ service:
 
 #testimonial
 testimonial:
+  eyebrow: "Voces que guían nuestro laboratorio"
   title: Historias reales desde nuestra comunidad
   description: Docentes, estudiantes y aliados cuentan cómo Paqari acerca la ciencia aplicada a aulas sin laboratorio ni internet confiable.
   testimonial_list:
@@ -140,6 +150,7 @@ testimonial:
       content: "Poder combinar PQ-central con accesorios imprimibles nos da libertad para prototipar y documentar cada iteración."
 
 galery:
+  eyebrow: "Galería Paqari"
   title: Galería Paqari
   description: "Momentos que nos inspiran: talleres, prototipos y encuentros con la comunidad."
   galery_list:
