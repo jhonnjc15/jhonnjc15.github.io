@@ -160,7 +160,6 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
               //Nav con hijos (Products/)
               <li
                 class="nav-item nav-dropdown group relative cursor-pointer gap-0"
-                id="dropdown-button"
               >
                 <a
                   href={getRelativeLocaleUrl(currentLocale ?? '', menu.url)}
@@ -189,7 +188,6 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 
                 {/* Dropdown cambio de posicion (nav-dropdown-list) tamaño, color de fondo, etc*/}
                 <ul
-                  id="dropdown"
                   class="border-2 border-primary mt-1 lg:mt-0 lg:p-8 nav-dropdown-list hidden duration-400 lg:invisible lg:absolute lg:-left-[18rem] lg:top-12 z-[95] lg:z-[95] lg:h-[300px] lg:w-[666px] mx-auto w-[13.5rem] lg:flex lg:flex-row lg:gap-8 lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100"
                 >
                   <div class="lg:flex lg:flex-col lg:divide-y lg:justify-center lg:w-1/2">
@@ -309,12 +307,22 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
 <script> 
   //Se cambio <script is:inline> por solo <script>
   
-  function button_2() {
-    const button = document.getElementById("dropdown-button");
-    button?.addEventListener("click", () => {
-      const dropdown = document.getElementById("dropdown");
-      dropdown?.classList.toggle(dropdown.style === "hidden" ? "block" : "hidden");
-      setHeaderOffset();
+  function initDropdownToggles() {
+    const dropdowns = document.querySelectorAll(".nav-dropdown");
+
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".nav-dropdown-toggle-button");
+      const menu = dropdown.querySelector(".nav-dropdown-list");
+
+      if (!toggle || !menu) {
+        return;
+      }
+
+      toggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        menu.classList.toggle("hidden");
+        setHeaderOffset();
+      });
     });
   }
 
@@ -353,14 +361,14 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
     navToggleWatcher();
   }
 
-  button_2();
+  initDropdownToggles();
   header_2();
   initHeaderOffsets();
 
   window.addEventListener("resize", setHeaderOffset);
   window.addEventListener("load", setHeaderOffset);
 
-  document.addEventListener('astro:after-swap', button_2);
+  document.addEventListener('astro:after-swap', initDropdownToggles);
   document.addEventListener('astro:after-swap', header_2);
   document.addEventListener('astro:after-swap', initHeaderOffsets);
 </script>
