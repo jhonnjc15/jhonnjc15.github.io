@@ -45,6 +45,10 @@ let contactButtonEntry = await getEntryBySlug("layout", `${currentLocale ?? fall
 if (!contactButtonEntry) {
   contactButtonEntry = await getEntryBySlug("layout", `${fallbackLocale}/contact_button`);
 }
+
+const siteTitle = config.site.title;
+const pageTitle = meta_title ?? title;
+const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 ---
 
 <!DOCTYPE html>
@@ -114,9 +118,7 @@ if (!contactButtonEntry) {
     />
 
     <!-- title -->
-    <title>
-      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
-    </title>
+    <title>{plainify(fullTitle)}</title>
     
     <ViewTransitions/>
     
@@ -140,9 +142,7 @@ if (!contactButtonEntry) {
     <!-- og-title -->
     <meta
       property="og:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
-      )}
+      content={plainify(fullTitle)}
     />
 
     <!-- og-description -->
@@ -161,9 +161,7 @@ if (!contactButtonEntry) {
     <!-- twitter-title -->
     <meta
       name="twitter:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
-      )}
+      content={plainify(fullTitle)}
     />
 
     <!-- twitter-description -->
