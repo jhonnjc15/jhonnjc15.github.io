@@ -1,6 +1,6 @@
 ---
 import Galeria from "./Galeria.astro";
-import PageHeader from "@components/PageHeader.astro";
+import ProductBreadcrumb from "./ProductBreadcrumb.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
 import config from "@config/config.json";
@@ -49,7 +49,6 @@ const youtubeEmbeds = youtubeVideos
   .map((video: string) => ({ url: video, id: getYouTubeEmbed(video) }))
   .filter((item: { id?: string }) => !!item.id);
 const productName = data_by_id.name || data_by_id.title;
-const productDescription = data_by_id.description ?? "";
 const available = data_by_id.available ?? true;
 const contactLabel = contactCopy.label ?? (currentLocale === "en" ? "Contact Us" : "Contáctanos");
 const availabilityLabel = available
@@ -73,17 +72,16 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text
 const getProductLink = (product: { id_product: number; name?: string; title?: string }) =>
   `/${currentLocale ?? "es"}/products/${getProductSlug(product)}`;
 
-const page_data = {
+const breadcrumbData = {
   title: productName,
   page_title: productName,
-  content: productDescription,
   index_title: currentLocale === "en" ? "Products" : "Productos",
   index_path: config.settings.product_folder,
 };
 ---
 
-<div class="mb-10 w-full max-w-5xl mx-auto">
-  <PageHeader page_data={page_data} />
+<div class="mb-8 w-full">
+  <ProductBreadcrumb data={breadcrumbData} />
 </div>
 <div class="flex flex-col lg:flex-row gap-12 items-start">
   <!-- Galería -->
