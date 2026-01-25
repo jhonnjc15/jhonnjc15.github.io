@@ -43,14 +43,14 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
         {
           index_title ? (
             <span class="leading-none">
-              /{" "}
+              <span class="text-default">/</span>{" "}
               <a
                 href={getRelativeLocaleUrl(currentLocale ?? '',`/${index_path}`)}
                 class="text-primary"
               >
                 {index_title}
               </a>{" "}
-              / <span class="text-default">{page_title ? page_title : humanize(slug.replace("page /", ""))}</span>
+              <span class="text-default">/</span> <span class="text-default">{page_title ? page_title : humanize(slug.replace("page /", ""))}</span>
             </span>
           ) : (
             <span class="leading-none text-default">/ {title}</span>
