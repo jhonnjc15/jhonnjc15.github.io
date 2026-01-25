@@ -1,7 +1,9 @@
 ---
 import Galeria from "./Galeria.astro";
+import PageHeader from "@components/PageHeader.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
+import config from "@config/config.json";
 import VideoComponent from "@layouts/function-components/VideoComponent";
 import { getEntryBySlug } from "astro:content";
 import { getProductSlug } from "@lib/utils/productSlug";
@@ -47,6 +49,7 @@ const youtubeEmbeds = youtubeVideos
   .map((video: string) => ({ url: video, id: getYouTubeEmbed(video) }))
   .filter((item: { id?: string }) => !!item.id);
 const productName = data_by_id.name || data_by_id.title;
+const productDescription = data_by_id.description ?? "";
 const available = data_by_id.available ?? true;
 const contactLabel = contactCopy.label ?? (currentLocale === "en" ? "Contact Us" : "Contáctanos");
 const availabilityLabel = available
@@ -69,8 +72,19 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text
 
 const getProductLink = (product: { id_product: number; name?: string; title?: string }) =>
   `/${currentLocale ?? "es"}/products/${getProductSlug(product)}`;
+
+const page_data = {
+  title: productName,
+  page_title: productName,
+  content: productDescription,
+  index_title: currentLocale === "en" ? "Products" : "Productos",
+  index_path: config.settings.product_folder,
+};
 ---
 
+<div class="mb-10 w-full max-w-5xl mx-auto">
+  <PageHeader page_data={page_data} />
+</div>
 <div class="flex flex-col lg:flex-row gap-12 items-start">
   <!-- Galería -->
   <div class="w-full lg:w-[480px] shrink-0 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md bg-white dark:bg-gray-900">
