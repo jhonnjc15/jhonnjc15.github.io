@@ -49,6 +49,7 @@ const { title, page_title, product_list } = productIndex.data;
 
 const { slug } = Astro.params;
 const { product_folder } = config.settings;
+const pageLabel = currentLocale === "en" ? "page" : "pag";
 
 // Mapear productos desde JSON
 const posts = json_products
@@ -75,6 +76,7 @@ const currentProducts = recentProduct.slice(indexOfFirstProduct, indexOfLastProd
 // Metadata para PageHeader
 const page_data = {
   index_title: productIndex.data.title,
+  page_title: `${pageLabel} ${slug}`,
   slug: `page / ${slug}`,
   index_path: `${config.settings.product_folder}`
 };

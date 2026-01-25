@@ -4,7 +4,7 @@ import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import Disqus from "./function-components/Disqus";
-import ProductBreadcrumb from "./components/products/ProductBreadcrumb.astro";
+import ContentBreadcrumb from "./components/products/ContentBreadcrumb.astro";
 
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -44,7 +44,7 @@ const breadcrumbData = {
   <span class="absolute bottom-0 right-10 w-[240px] h-[180px] bg-gradient-to-tr from-primary to-green-400 rounded-full blur-2xl opacity-25"></span>
   <div class="container relative">
     <div class="mb-8 w-full">
-      <ProductBreadcrumb data={breadcrumbData} />
+      <ContentBreadcrumb data={breadcrumbData} />
     </div>
     <div class="row justify-center">
       <div class="lg:col-10" data-animate="zoom-in">

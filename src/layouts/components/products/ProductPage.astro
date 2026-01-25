@@ -1,6 +1,6 @@
 ---
 import Galeria from "./Galeria.astro";
-import ProductBreadcrumb from "./ProductBreadcrumb.astro";
+import ContentBreadcrumb from "./ContentBreadcrumb.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
 import config from "@config/config.json";
@@ -81,7 +81,7 @@ const breadcrumbData = {
 ---
 
 <div class="mb-8 w-full">
-  <ProductBreadcrumb data={breadcrumbData} />
+  <ContentBreadcrumb data={breadcrumbData} />
 </div>
 <div class="flex flex-col lg:flex-row gap-12 items-start">
   <!-- Galería -->

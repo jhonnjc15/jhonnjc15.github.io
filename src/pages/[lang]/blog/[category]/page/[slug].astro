@@ -67,7 +67,7 @@ const blogLabels = blogUi?.data ?? {};
 const pageLabel = currentLocale === "en" ? "page" : "pag";
 const page_data = {
   index_title: activeCategory.name,
-  page_title: `${activeCategory.name} / ${pageLabel} ${slug}`,
+  page_title: `${pageLabel} ${slug}`,
   slug: `page / ${slug}`,
   index_path: `${blog_folder}/${category}`,
   content: activeCategory.long_description ?? "",
