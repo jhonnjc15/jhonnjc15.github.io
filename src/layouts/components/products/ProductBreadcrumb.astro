@@ -6,11 +6,13 @@ const { data } = Astro.props || {};
 const { title, index_title, page_title, index_path } = data || {};
 ---
 
-<div class="relative mx-auto my-4 w-full max-w-3xl overflow-hidden rounded-full bg-theme-light/70 px-6 py-3 text-center shadow-sm">
-  <span class="absolute w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-6 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
-  <span class="absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 top-5 lg:top-[120px] right-6 rounded-full skew-y-12 blur-2xl opacity-30 skew-x-12 rotate-90"></span>
+<div class="relative mx-auto w-full max-w-3xl overflow-hidden rounded-full bg-gradient-to-b from-background to-background-offset px-0 py-0 md:px-6 md:py-4 text-center shadow-sm">
+  <span class="absolute w-6/12 lg:w-8/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-20 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
+  <span class="absolute w-1/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-20 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
+  
+  
   <ul
-    class="breadcrumb relative inline-flex items-center justify-center space-x-2 text-sm text-dark"
+    class="border border-primary/30 rounded-3xl  dark:bg-theme-light/20 bg-theme-light px-5 py-2 backdrop-blur breadcrumb relative inline-flex items-center justify-center space-x-2 text-sm text-dark"
   >
     <li class="leading-none">
       <a
@@ -32,23 +34,30 @@ const { title, index_title, page_title, index_path } = data || {};
         <span class="leading-none">Home</span>
       </a>
     </li>
-    <li class="leading-none">
-      {
-        index_title ? (
-          <span class="leading-none">
-            /{" "}
-            <a
-              href={getRelativeLocaleUrl(currentLocale ?? "", `/${index_path}`)}
-              class="text-primary"
-            >
-              {index_title}
-            </a>{" "}
-            / {page_title ?? title}
-          </span>
-        ) : (
-          <span class="leading-none">/ {title}</span>
-        )
-      }
-    </li>
+    <li class="leading-none flex items-center min-w-0 overflow-hidden">
+  {index_title ? (
+    <span class="leading-none flex items-center gap-1 whitespace-nowrap min-w-0">
+      <span class="text-default">/</span>
+
+      <a
+        href={getRelativeLocaleUrl(currentLocale ?? "", `/${index_path}`)}
+        class="text-primary whitespace-nowrap"
+      >
+        {index_title}
+      </a>
+
+      <span class="text-default">/</span>
+
+      {/* IMPORTANTE: min-w-0 + truncate */}
+      <span class="text-default min-w-0 truncate max-w-[110px] sm:max-w-none">
+        {page_title ?? title}
+      </span>
+    </span>
+  ) : (
+    <span class="leading-none text-default whitespace-nowrap truncate max-w-[140px] sm:max-w-none">
+      / {title}
+    </span>
+  )}
+</li>
   </ul>
 </div>
