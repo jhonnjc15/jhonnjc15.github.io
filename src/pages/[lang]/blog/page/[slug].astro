@@ -18,7 +18,10 @@ const fallbackLocale = "es";
 const { blog_folder, pagination } = config.settings;
 
 const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
-const categories = categoryEntries.map((entry) => entry.category_name);
+const categories = categoryEntries.map((entry) => ({
+  slug: entry.category_name,
+  label: entry.name,
+}));
 
 const allPosts = await getCollection("blog");
 
@@ -62,9 +65,10 @@ const copy = currentLocale === "en"
       description: "Explora ideas, tutoriales e historias de nuestro equipo organizadas por temática.",
     };
 
+const pageLabel = currentLocale === "en" ? "page" : "pag";
 const page_data = {
   index_title: copy.title,
-  page_title: `${copy.title} / ${slug}`,
+  page_title: `${copy.title} / ${pageLabel} ${slug}`,
   slug: `page / ${slug}`,
   index_path: blog_folder,
   content: copy.description,

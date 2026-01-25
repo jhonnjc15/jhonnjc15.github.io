@@ -6,6 +6,23 @@ import config from "@config/config.json";
 const { categories, basePath = config.settings.blog_folder, labels } = Astro.props;
 const params = Astro.params;
 const { currentLocale } = Astro;
+
+const normalizedCategories = (categories ?? []).map((category: any) => {
+  if (typeof category === "string") {
+    return {
+      slug: slugify(category),
+      label: humanize(category),
+    };
+  }
+
+  const slugSource = category.slug ?? category.category_name ?? category.name ?? category.label ?? "";
+  const labelSource = category.label ?? category.name ?? humanize(slugSource);
+
+  return {
+    slug: slugify(slugSource),
+    label: labelSource,
+  };
+});
 ---
 
 <div class="category-filter mb-10 mt-3 rounded-2xl bg-[#EEEEEE] dark:bg-background-offset/60 p-6 shadow-sm" data-animate="fade-up">
@@ -23,20 +40,20 @@ const { currentLocale } = Astro;
       >
     </li>
     {
-      categories.map((category: any) => (
+      normalizedCategories.map((category: { slug: string; label: string }) => (
         <li>
           <a
             class={`filter-btn ${
-              params.category === slugify(category)
+              params.category === category.slug
                 ? "filter-btn-active"
                 : undefined
             } btn btn-sm`}
             href={getRelativeLocaleUrl(
               currentLocale ?? '',
-              `/${basePath}/${slugify(category)}`,
+              `/${basePath}/${category.slug}`,
             )}
           >
-            {humanize(category)}
+            {category.label}
           </a>
         </li>
       ))

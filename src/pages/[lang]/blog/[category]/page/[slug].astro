@@ -28,7 +28,10 @@ if (!activeCategory) {
   throw new Error(`Category not found: ${category}`);
 }
 
-const categories = categoryEntries.map((entry) => entry.category_name);
+const categories = categoryEntries.map((entry) => ({
+  slug: entry.category_name,
+  label: entry.name,
+}));
 
 const allPosts = await getCollection("blog");
 const normalizeSlug = (slug: string) => slug.split("/").slice(1).join("/");
@@ -61,9 +64,10 @@ if (!blogUi) {
 
 const blogLabels = blogUi?.data ?? {};
 
+const pageLabel = currentLocale === "en" ? "page" : "pag";
 const page_data = {
   index_title: activeCategory.name,
-  page_title: `${activeCategory.name} / ${slug}`,
+  page_title: `${activeCategory.name} / ${pageLabel} ${slug}`,
   slug: `page / ${slug}`,
   index_path: `${blog_folder}/${category}`,
   content: activeCategory.long_description ?? "",

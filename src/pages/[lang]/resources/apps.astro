@@ -22,6 +22,9 @@ const pageData = pageEntry?.data ?? {};
 const heroData = {
   ...pageData,
   content: pageData.description,
+  index_title: locale === "en" ? "Resources" : "Recursos",
+  index_path: "resources",
+  page_title: pageData.title,
 };
 const downloadLink = pageData.downloadLink ?? "https://github.com/PaqariOL/PaqariOLab_apps";
 const buttonLabel = pageData.buttonLabel ?? "";

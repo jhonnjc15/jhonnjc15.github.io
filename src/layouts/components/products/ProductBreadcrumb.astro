@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { currentLocale } = Astro;
 const { data } = Astro.props || {};
-const { title, index_title, page_title, index_path } = data || {};
+const { title, index_title, page_title, index_path, category_title, category_path } = data || {};
 ---
 
 <div class="relative mx-auto w-full max-w-3xl overflow-hidden rounded-full bg-gradient-to-b from-background to-background-offset px-0 py-0 md:px-6 md:py-4 text-center shadow-sm">
@@ -45,6 +45,24 @@ const { title, index_title, page_title, index_path } = data || {};
       >
         {index_title}
       </a>
+
+      {category_title ? (
+        <>
+          <span class="text-default">/</span>
+          {
+            category_path ? (
+              <a
+                href={getRelativeLocaleUrl(currentLocale ?? "", `/${category_path}`)}
+                class="text-primary whitespace-nowrap"
+              >
+                {category_title}
+              </a>
+            ) : (
+              <span class="text-default whitespace-nowrap">{category_title}</span>
+            )
+          }
+        </>
+      ) : null}
 
       <span class="text-default">/</span>
 

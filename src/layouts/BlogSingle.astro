@@ -8,6 +8,8 @@ import ProductBreadcrumb from "./components/products/ProductBreadcrumb.astro";
 
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 const { blog_folder } = config.settings;
 const { currentLocale } = Astro;
 import {
@@ -19,11 +21,20 @@ import {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
+const primaryCategory = post.data.categories?.[0];
+const categoryEntry = primaryCategory
+  ? categoryEntries.find((entry) => entry.category_name === primaryCategory)
+  : undefined;
+const categoryTitle = categoryEntry?.name ?? (primaryCategory ? humanize(primaryCategory) : undefined);
+const categoryPath = primaryCategory ? `${blog_folder}/${slugify(primaryCategory)}` : undefined;
 const breadcrumbData = {
   title: post.data.title,
   page_title: post.data.title,
   index_title: currentLocale === "en" ? "Blog" : "Blog",
   index_path: blog_folder,
+  category_title: categoryTitle,
+  category_path: categoryPath,
 };
 ---
 
