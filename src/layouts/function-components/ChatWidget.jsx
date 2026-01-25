@@ -2,9 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { marked } from "marked";
 
 const STORAGE_KEY = "paqari-rag-chat-history";
-const ENDPOINT =
-  import.meta.env.PUBLIC_RAG_ENDPOINT ||
-  "http://127.0.0.1:8000/api/v1/rag/query" || "https://vids-weddings-perception-never.trycloudflare.com/api/v1/rag/query";
+const ENDPOINT = import.meta.env.PUBLIC_RAG_ENDPOINT ?? "/api/v1/rag/query";
 
 marked.setOptions({ gfm: true, breaks: true });
 

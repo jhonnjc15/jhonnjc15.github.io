@@ -9,10 +9,24 @@ import mdx from '@astrojs/mdx';
 import AutoImport from 'astro-auto-import';
 
 
-const SITE_URL = process.env.SITE_URL ?? "http://localhost:4321";
+const SITE_URL =
+  process.env.SITE_URL ??
+  (process.env.NODE_ENV === "development"
+    ? "http://localhost:4321"
+    : undefined);
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://127.0.0.1:8000",
+          changeOrigin: true,
+        },
+      },
+    },
+  },
   build: {
     inlineStylesheets: "never"
   },
