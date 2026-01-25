@@ -4,6 +4,7 @@ import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import Disqus from "./function-components/Disqus";
+import ProductBreadcrumb from "./components/products/ProductBreadcrumb.astro";
 
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -18,12 +19,21 @@ import {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const breadcrumbData = {
+  title: post.data.title,
+  page_title: post.data.title,
+  index_title: currentLocale === "en" ? "Blog" : "Blog",
+  index_path: blog_folder,
+};
 ---
 
 <section class="section blog-single relative overflow-hidden">
   <span class="absolute -top-16 right-8 w-[360px] h-[220px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
   <span class="absolute bottom-0 left-10 w-[240px] h-[180px] bg-gradient-to-tr from-primary to-green-400 rounded-full blur-2xl opacity-25"></span>
   <div class="container relative">
+    <div class="mb-8 w-full">
+      <ProductBreadcrumb data={breadcrumbData} />
+    </div>
     <div class="row justify-center">
       <div class="lg:col-10" data-animate="zoom-in">
         <div class="relative overflow-hidden rounded-3xl shadow-2xl aspect-[16/9] bg-background-offset">
