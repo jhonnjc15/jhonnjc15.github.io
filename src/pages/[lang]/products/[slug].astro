@@ -3,6 +3,7 @@ import Base from "@layouts/Base.astro";
 import ProductPage from "@components/products/ProductPage.astro";
 import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
+import { getProductSlug } from "@lib/utils/productSlug";
 
 const { currentLocale } = Astro;
 
@@ -27,7 +28,7 @@ interface ProductData {
 
 export async function getStaticPaths() {
   const locales = ["es", "en"];
-  const paths: { params: { lang: string; id: string } }[] = [];
+  const paths: { params: { lang: string; slug: string } }[] = [];
 
   for (const lang of locales) {
     const localeProducts = (lang === "en" ? productsEN : productsES).filter((product) => product.show !== false);
@@ -36,7 +37,7 @@ export async function getStaticPaths() {
       paths.push({
         params: {
           lang,
-          id: product.id_product.toString(),
+          slug: getProductSlug(product),
         },
       });
     }
@@ -45,14 +46,14 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { id } = Astro.params;
+const { slug } = Astro.params;
 
 const product = products
   .filter((entry) => entry.show !== false)
-  .find((entry) => String(entry.id_product) === String(id)) as ProductData | undefined;
+  .find((entry) => getProductSlug(entry) === slug) as ProductData | undefined;
 
 if (!product) {
-  throw new Error(`Product not found for id ${id}`);
+  throw new Error(`Product not found for slug ${slug}`);
 }
 
 const pageTitle = product.title;

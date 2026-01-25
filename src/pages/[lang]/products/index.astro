@@ -6,6 +6,7 @@ import { getEntryBySlug } from "astro:content";
 import ProductsList from "@components/products/ProductsList.astro";
 import config from "@config/config.json";
 import Pagination from "@layouts/components/Pagination.astro";
+import { getProductSlug } from "@lib/utils/productSlug";
 
 // Importa ambos archivos estáticos
 import productsES from '@data/es/products.json';
@@ -22,7 +23,7 @@ const posts = json_products
   .filter((product) => product.show !== false)
   .map(product => ({
     data: product,
-    slug: `product-${product.id_product}`
+    slug: getProductSlug(product)
 }));
 
 //import productsJson from "@data/products.json";

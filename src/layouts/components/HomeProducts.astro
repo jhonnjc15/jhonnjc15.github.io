@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { getProductSlug } from "@lib/utils/productSlug";
 
 const { section, products } = Astro.props;
 const { currentLocale } = Astro;
@@ -53,7 +54,7 @@ const getMainImage = (item: any) =>
               <div class="pt-2 mt-auto flex justify-center">
                 <a
                   class="btn btn-outline-primary inline-flex items-center gap-2"
-                  href={getRelativeLocaleUrl(currentLocale ?? "", `/products/${product.id_product}`)}
+                  href={getRelativeLocaleUrl(currentLocale ?? "", `/products/${getProductSlug(product)}`)}
                 >
                   {currentLocale === "en" ? "Discover more" : "Descubrir más"}
                   <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

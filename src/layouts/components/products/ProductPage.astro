@@ -4,6 +4,7 @@ import productsES from "@data/es/products.json";
 import productsEN from "@data/en/products.json";
 import VideoComponent from "@layouts/function-components/VideoComponent";
 import { getEntryBySlug } from "astro:content";
+import { getProductSlug } from "@lib/utils/productSlug";
 
 const { data_by_id } = Astro.props;
 const { currentLocale } = Astro;
@@ -66,7 +67,8 @@ const messageTemplate = contactCopy.message_template ?? (currentLocale === "en"
 const contactMessage = `${greeting} ${messageTemplate}`.replace("{product}", productName ?? "");
 const whatsappLink = `https://api.whatsapp.com/send?phone=51${contactPhone}&text=${encodeURIComponent(contactMessage)}`;
 
-const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}`;
+const getProductLink = (product: { id_product: number; name?: string; title?: string }) =>
+  `/${currentLocale ?? "es"}/products/${getProductSlug(product)}`;
 ---
 
 <div class="flex flex-col lg:flex-row gap-12 items-start">
@@ -194,7 +196,7 @@ const getProductLink = (id: number) => `/${currentLocale ?? "es"}/products/${id}
             <div class="flex flex-wrap gap-3">
               {relatedProducts.map((product: any) => (
                 <a
-                  href={getProductLink(product.id_product)}
+                  href={getProductLink(product)}
                   class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-background-offset px-4 py-2 text-sm font-semibold text-text hover:border-primary hover:text-primary"
                 >
                   <span class="h-2 w-2 rounded-full bg-primary"></span>

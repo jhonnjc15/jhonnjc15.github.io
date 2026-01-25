@@ -6,6 +6,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Base.astro";
 import Pagination from "@layouts/components/Pagination.astro";
 import { getEntryBySlug } from "astro:content";
+import { getProductSlug } from "@lib/utils/productSlug";
 
 import productsES from '@data/es/products.json';
 import productsEN from '@data/en/products.json';
@@ -54,7 +55,7 @@ const posts = json_products
   .filter((product) => product.show !== false)
   .map((product) => ({
     data: product,
-    slug: `product-${product.id_product}`,
+    slug: getProductSlug(product),
   }));
 
 // Filtrar productos no destacados
