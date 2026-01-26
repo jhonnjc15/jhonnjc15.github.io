@@ -217,7 +217,7 @@ select:invalid {
   @apply prose-strong:text-dark;
   @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
   @apply prose-li:text-text;
-  @apply prose-table:relative prose-table:w-full prose-table:overflow-hidden prose-table:rounded-2xl prose-table:border prose-table:border-border prose-table:border-opacity-70 prose-table:text-sm;
+  @apply prose-table:relative prose-table:w-full prose-table:table-fixed prose-table:overflow-hidden prose-table:rounded-2xl prose-table:border prose-table:border-border prose-table:border-opacity-70 prose-table:text-sm;
   @apply prose-thead:border-border prose-thead:bg-gray-100;
   @apply prose-th:relative prose-th:z-10 prose-th:px-6 prose-th:py-4 prose-th:text-dark prose-th:align-top;
   @apply prose-tr:border-border prose-tr:border-opacity-60;
@@ -274,7 +274,7 @@ select:invalid {
   }
 
   :where(table) {
-    @apply my-8 block w-full overflow-x-auto rounded-2xl border border-border border-opacity-60 bg-white text-left shadow-sm;
+    @apply my-8 block w-full table-fixed overflow-x-auto rounded-2xl border border-border border-opacity-60 bg-white text-left shadow-sm;
   }
 
   :where(table) thead {
