@@ -8,6 +8,7 @@ author: "Paqari Team"
 categories:
   - scientific
 featured: false
+show: false
 ---
 Working with scientists and citizen researchers means embracing transparency. Every project starts with an open canvas where we document hypotheses, equipment needs, and ethical considerations. That shared plan guides the hardware design and software pipelines we develop at Paqari Open Lab.
 

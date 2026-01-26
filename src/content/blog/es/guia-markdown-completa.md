@@ -9,6 +9,7 @@ categories:
   - educational
 featured: false
 time_to_read: "06 min de lectura"
+show: false
 ---
 ¡Bienvenido! Este post es un ejemplo completo para mostrar todo lo que puede hacer el contenido en Markdown. 🚀
 

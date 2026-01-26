@@ -9,6 +9,7 @@ categories:
   - educational
 featured: false
 time_to_read: "06 mins read"
+show: false
 ---
 Welcome! This post is a complete sample to show everything you can do with Markdown content. 🚀
 

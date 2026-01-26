@@ -8,6 +8,7 @@ author: "Paqari Team"
 categories:
   - entertainment
 featured: false
+show: false
 ---
 Entertainment is a powerful entry point to explore science and technology. Our creative sprints combine writers, developers, and facilitators to build playful universes. We start with simple mechanics—cooperative challenges, mixed-reality puzzles, or narrative journeys—and keep iterating until the experience feels effortless.
 

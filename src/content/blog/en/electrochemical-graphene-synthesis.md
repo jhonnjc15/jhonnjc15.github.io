@@ -9,8 +9,9 @@ author: "Paqari OpenLab"
 categories:
   - scientific
 featured: false
+show: true
 ---
-🧪 **Electrochemical graphene synthesis**  
+**Electrochemical graphene synthesis**  
 **Technique:** Anodic exfoliation  
 **Level:** Intermediate – Advanced  
 **Estimated time:** 2–4 hours  

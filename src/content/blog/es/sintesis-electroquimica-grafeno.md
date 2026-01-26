@@ -9,8 +9,9 @@ author: "Paqari OpenLab"
 categories:
   - scientific
 featured: false
+show: true
 ---
-🧪 **Síntesis electroquímica de grafeno**  
+**Síntesis electroquímica de grafeno**  
 **Técnica:** Exfoliación anódica  
 **Nivel:** Intermedio – Avanzado  
 **Duración estimada:** 2–4 horas  

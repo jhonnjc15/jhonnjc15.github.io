@@ -8,6 +8,7 @@ author: "Equipo Paqari"
 categories:
   - scientific
 featured: false
+show: false
 ---
 Trabajar con científicos y comunidades requiere transparencia total. Cada proyecto empieza con un lienzo compartido donde registramos hipótesis, necesidades de equipamiento y consideraciones éticas. Ese plan guía el diseño de hardware y los flujos de software que construimos en Paqari Open Lab.
 

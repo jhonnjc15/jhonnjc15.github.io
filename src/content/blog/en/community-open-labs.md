@@ -8,7 +8,7 @@ author: "Paqari Team"
 categories:
   - educational
 featured: false
-show: true
+show: false
 ---
 We run open-lab pop-ups so teams can prototype with us without leaving their neighborhoods. Each session blends quick demos, hands-on kits, and time for participants to adapt the tools to their own projects.
 

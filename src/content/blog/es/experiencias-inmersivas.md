@@ -8,6 +8,7 @@ author: "Equipo Paqari"
 categories:
   - entertainment
 featured: false
+show: false
 ---
 El entretenimiento es una puerta poderosa para explorar la ciencia y la tecnología. En nuestros sprints creativos reunimos guionistas, desarrolladores y facilitadores para construir universos lúdicos. Partimos de mecánicas simples—retos cooperativos, acertijos de realidad mixta o viajes narrativos—y iteramos hasta que la experiencia se siente natural.
 

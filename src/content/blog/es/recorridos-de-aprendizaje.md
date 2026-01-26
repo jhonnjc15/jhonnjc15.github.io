@@ -8,6 +8,7 @@ author: "Equipo Paqari"
 categories:
   - educational
 featured: false
+show: false
 ---
 Aprender debería sentirse como una conversación, no como una lista interminable de instrucciones. En Paqari Open Lab iniciamos cada proyecto mapeando los retos reales que tienen las personas al aprender. Esa investigación se transforma en un recorrido que mezcla experiencias presenciales, recursos digitales y acompañamiento comunitario.
 

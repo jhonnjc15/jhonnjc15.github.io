@@ -8,6 +8,7 @@ author: "Paqari Team"
 categories:
   - educational
 featured: false
+show: false
 ---
 Learning should feel like a conversation rather than a long list of instructions. At Paqari Open Lab we start every project by mapping the real problems that learners face. That investigation becomes a learning path that mixes physical experiences, digital resources, and community support.
 
