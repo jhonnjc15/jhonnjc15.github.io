@@ -75,7 +75,7 @@ const breadcrumbData = {
             </li>
             <li class="inline-flex items-center">
               <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-              {readingTime(post.body)}
+              {post.data.time_to_read ?? readingTime(post.body)}
             </li>
             <li class="inline-flex items-center gap-2">
               <FaRegFolder className={"-mt-1 inline-block"} />

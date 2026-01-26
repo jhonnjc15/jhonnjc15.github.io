@@ -202,6 +202,97 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
     <ChatWidget chatContent={chatContent?.data} client:load />
 
     <script>
+      const enhanceMarkdownContent = (root = document) => {
+        const contentBlocks = root.querySelectorAll('.content');
+        if (!contentBlocks.length) return;
+
+        const htmlLang = document.documentElement.lang || 'es';
+        const copyLabel = htmlLang.startsWith('es') ? 'Copiar código' : 'Copy code';
+        const copiedLabel = htmlLang.startsWith('es') ? 'Copiado' : 'Copied';
+
+        contentBlocks.forEach((content) => {
+          content.querySelectorAll('h1, h2, h3, h4').forEach((heading) => {
+            if (!heading.id || heading.querySelector('.heading-anchor')) return;
+
+            const anchor = document.createElement('a');
+            anchor.className = 'heading-anchor';
+            anchor.href = `#${heading.id}`;
+            anchor.setAttribute('aria-label', htmlLang.startsWith('es') ? 'Enlace permanente' : 'Permalink');
+            anchor.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 13a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 13" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 11a5 5 0 0 1 0 7L12.5 20.5a5 5 0 1 1-7-7L7 11" />
+              </svg>
+            `;
+            heading.appendChild(anchor);
+          });
+
+          content.querySelectorAll('blockquote').forEach((quote) => {
+            const firstText = quote.textContent?.trim() ?? '';
+            if (firstText.startsWith('⚠️')) {
+              quote.classList.add('is-warning');
+            } else if (firstText.startsWith('💡')) {
+              quote.classList.add('is-tip');
+            }
+          });
+
+          content.querySelectorAll('img').forEach((img) => {
+            if (img.dataset.enhanced === 'true') return;
+
+            const isLinked = img.parentElement?.tagName === 'A';
+            const figure = document.createElement('figure');
+            const parentToReplace = isLinked ? img.parentElement : img;
+
+            if (isLinked && img.parentElement) {
+              img.parentElement.classList.add('image-zoom');
+              figure.appendChild(img.parentElement);
+            } else {
+              const link = document.createElement('a');
+              link.href = img.src;
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              link.className = 'image-zoom';
+              img.replaceWith(link);
+              link.appendChild(img);
+              figure.appendChild(link);
+            }
+
+            if (img.alt) {
+              const caption = document.createElement('figcaption');
+              caption.textContent = img.alt;
+              figure.appendChild(caption);
+            }
+
+            parentToReplace?.replaceWith(figure);
+            img.dataset.enhanced = 'true';
+          });
+
+          content.querySelectorAll('pre > code').forEach((codeBlock) => {
+            const pre = codeBlock.parentElement;
+            if (!pre || pre.querySelector('.code-copy-button')) return;
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'code-copy-button';
+            button.textContent = copyLabel;
+
+            button.addEventListener('click', async () => {
+              try {
+                await navigator.clipboard.writeText(codeBlock.textContent ?? '');
+                button.textContent = copiedLabel;
+                setTimeout(() => {
+                  button.textContent = copyLabel;
+                }, 2000);
+              } catch (error) {
+                console.warn('No se pudo copiar el código', error);
+              }
+            });
+
+            pre.appendChild(button);
+          });
+        });
+      };
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -285,13 +376,22 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
         }
       }
 
+      const runEnhancements = () => enhanceMarkdownContent(document);
+
       if (document.readyState === 'complete') {
         restoreScrollPosition();
+        runEnhancements();
       } else {
-        window.addEventListener('load', restoreScrollPosition, { once: true });
+        window.addEventListener('load', () => {
+          restoreScrollPosition();
+          runEnhancements();
+        }, { once: true });
       }
 
-      document.addEventListener('astro:after-swap', restoreScrollPosition);
+      document.addEventListener('astro:after-swap', () => {
+        restoreScrollPosition();
+        runEnhancements();
+      });
 
     </script>
 

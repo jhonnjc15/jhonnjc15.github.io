@@ -203,26 +203,136 @@ select:invalid {
 }
 // content style
 .content {
-  @apply prose max-w-none;
-  @apply prose-headings:mb-[.9em] prose-headings:mt-[.5em] prose-headings:font-bold prose-headings:text-dark;
+  @apply prose max-w-none text-text;
+  @apply prose-headings:mb-[.9em] prose-headings:mt-[1.2em] prose-headings:font-bold prose-headings:text-dark;
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
   @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
+  @apply prose-h4:text-[1.35rem] md:prose-h4:text-[1.5rem];
   @apply prose-hr:border-border;
-  @apply prose-p:text-base prose-p:text-text;
-  @apply prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:text-dark;
-  @apply prose-code:px-1 prose-code:text-primary;
-  @apply prose-pre:rounded-md;
+  @apply prose-p:text-base prose-p:text-text prose-p:leading-relaxed;
+  @apply prose-blockquote:text-dark;
+  @apply prose-code:rounded prose-code:border prose-code:border-border/60 prose-code:bg-theme-light prose-code:px-1.5 prose-code:py-0.5 prose-code:text-primary;
+  @apply prose-pre:rounded-xl prose-pre:border prose-pre:border-border/40 prose-pre:bg-[#0f172a] prose-pre:px-5 prose-pre:py-4 prose-pre:shadow-lg;
   @apply prose-strong:text-dark;
   @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
   @apply prose-li:text-text;
-  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:content-[""];
+  @apply prose-table:relative prose-table:w-full prose-table:overflow-hidden prose-table:rounded-xl prose-table:border prose-table:border-border/70 prose-table:text-sm;
   @apply prose-thead:border-border prose-thead:bg-theme-light;
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-dark;
-  @apply prose-tr:border-border;
-  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-3 prose-th:text-dark;
+  @apply prose-tr:border-border/60;
+  @apply prose-td:relative prose-td:z-10 prose-td:px-4 prose-td:py-3;
   @apply marker:text-primary;
-  @apply prose-img:rounded-md;
+  @apply prose-img:rounded-2xl;
+
+  &.prose {
+    @apply mx-auto max-w-[75ch];
+  }
+
+  :where(h1, h2, h3, h4) {
+    scroll-margin-top: 7rem;
+  }
+
+  :where(ul, ol) {
+    @apply my-6 pl-6 md:pl-8;
+  }
+
+  :where(li) {
+    @apply my-2 leading-relaxed;
+  }
+
+  :where(ol > li)::marker {
+    @apply font-semibold text-primary;
+  }
+
+  :where(hr) {
+    @apply my-10 border-t border-dashed border-border/80;
+  }
+
+  :where(img) {
+    @apply mx-auto my-8 w-full max-w-[720px] rounded-2xl shadow-lg;
+  }
+
+  figure {
+    @apply my-8 flex flex-col items-center gap-3;
+
+    figcaption {
+      @apply text-sm text-text-offset text-center;
+    }
+  }
+
+  .image-zoom {
+    @apply block;
+
+    img {
+      @apply transition-transform duration-300 ease-out;
+    }
+
+    &:hover img {
+      @apply scale-[1.02];
+    }
+  }
+
+  :where(table) {
+    @apply block w-full overflow-x-auto;
+  }
+
+  :where(tbody tr:nth-child(odd)) {
+    @apply bg-theme-light/70 dark:bg-white/5;
+  }
+
+  blockquote {
+    @apply my-6 rounded-2xl border-l-4 border-primary/70 bg-theme-light/80 px-6 py-4 not-italic text-base shadow-sm;
+  }
+
+  blockquote.is-warning {
+    @apply border-amber-500/80 bg-amber-50/80 text-amber-900;
+  }
+
+  blockquote.is-tip {
+    @apply border-sky-500/70 bg-sky-50/80 text-sky-900;
+  }
+
+  pre {
+    @apply relative overflow-x-auto;
+  }
+
+  .code-copy-button {
+    @apply absolute right-3 top-3 rounded-md border border-white/10 bg-white/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white/80 backdrop-blur transition hover:bg-white/20 hover:text-white;
+  }
+
+  .heading-anchor {
+    @apply ml-2 inline-flex items-center opacity-0 transition-opacity duration-200;
+
+    svg {
+      @apply h-4 w-4 text-primary;
+    }
+  }
+
+  :where(h1, h2, h3, h4):hover .heading-anchor {
+    @apply opacity-100;
+  }
+
+  code::before,
+  code::after {
+    content: "";
+  }
+
+  .dark & {
+    @apply text-white;
+
+    blockquote {
+      @apply bg-white/5 text-white;
+    }
+
+    .code-copy-button {
+      @apply border-white/20 bg-white/5 text-white/80;
+    }
+
+    :where(img) {
+      @apply shadow-[0_20px_40px_rgba(15,23,42,0.35)];
+    }
+  }
   .btn {
     p {
       @apply m-0 text-white;

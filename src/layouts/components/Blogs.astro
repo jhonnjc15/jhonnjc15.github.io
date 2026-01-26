@@ -80,7 +80,7 @@ const buildCategoryLink = (category: string) =>
                     fill="#939393"
                   />
                 </svg>
-                {readingTime(item.body)}
+                {item.data.time_to_read ?? readingTime(item.body)}
               </span>
               <a
                 class="ml-auto inline-flex items-center text-primary font-semibold hover:underline"

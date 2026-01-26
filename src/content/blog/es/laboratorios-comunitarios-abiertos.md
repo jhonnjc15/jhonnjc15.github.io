@@ -6,7 +6,7 @@ date: 2024-07-12
 image: "/images/blog/posts/post-11.png"
 author: "Equipo Paqari"
 categories:
-  - community
+  - educational
 featured: false
 ---
 Organizamos laboratorios itinerantes para que los equipos puedan prototipar con nosotros sin salir de su barrio. Cada sesión mezcla demostraciones rápidas, kits prácticos y tiempo para que las personas adapten las herramientas a sus propios proyectos.

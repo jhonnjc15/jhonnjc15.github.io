@@ -65,7 +65,7 @@ const { posts } = Astro.props;
                     fill="#939393"
                   />
                 </svg>
-                {readingTime(post.body)}
+                {post.data.time_to_read ?? readingTime(post.body)}
               </span>
             </div>
           </div>
