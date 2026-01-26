@@ -203,7 +203,7 @@ select:invalid {
 }
 // content style
 .content {
-  @apply prose max-w-none text-text;
+  @apply max-w-none text-text;
   @apply prose-headings:mb-[.9em] prose-headings:mt-[1.2em] prose-headings:font-bold prose-headings:text-dark;
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
