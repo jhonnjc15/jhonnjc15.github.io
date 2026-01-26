@@ -8,6 +8,7 @@ author: "Equipo Paqari"
 categories:
   - educational
 featured: false
+show: true
 ---
 Organizamos laboratorios itinerantes para que los equipos puedan prototipar con nosotros sin salir de su barrio. Cada sesión mezcla demostraciones rápidas, kits prácticos y tiempo para que las personas adapten las herramientas a sus propios proyectos.
 

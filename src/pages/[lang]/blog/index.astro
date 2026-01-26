@@ -34,6 +34,7 @@ if (localePosts.length === 0 && currentLocale !== fallbackLocale) {
 
 const posts = localePosts
   .filter((entry) => !entry.data.draft)
+  .filter((entry) => entry.data.show !== false)
   .map((entry) => ({
     ...entry,
     slug: normalizeSlug(entry.slug),

@@ -44,6 +44,7 @@ if (localePosts.length === 0 && currentLocale !== fallbackLocale) {
 
 const posts = localePosts
   .filter((entry) => !entry.data.draft)
+  .filter((entry) => entry.data.show !== false)
   .filter((entry) => entry.data.categories.includes(category))
   .map((entry) => ({
     ...entry,
@@ -85,6 +86,7 @@ export async function getStaticPaths() {
     for (const entry of categoriesData) {
       const posts = filterByLocale(entries, lang)
         .filter((post) => !post.data.draft)
+        .filter((post) => post.data.show !== false)
         .filter((post) => post.data.categories.includes(entry.category_name));
 
       const pages = Math.ceil(posts.length / pageSize) || 1;

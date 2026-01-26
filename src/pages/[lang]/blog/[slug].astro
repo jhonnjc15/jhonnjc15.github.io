@@ -12,12 +12,14 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
   return locales.flatMap((lang) =>
-    filterByLocale(posts, lang).map((post) => ({
-      params: {
-        lang,
-        slug: post.slug.split("/").slice(1).join("/"),
-      },
-    }))
+    filterByLocale(posts, lang)
+      .filter((post) => post.data.show !== false)
+      .map((post) => ({
+        params: {
+          lang,
+          slug: post.slug.split("/").slice(1).join("/"),
+        },
+      }))
   );
 }
 
@@ -31,6 +33,10 @@ if (!post && currentLocale !== fallbackLocale) {
 
 if (!post) {
   throw new Error(`Blog post not found for slug ${slug}`);
+}
+
+if (post.data.show === false) {
+  throw new Error(`Blog post hidden for slug ${slug}`);
 }
 
 const pageTitle = post.data.title;

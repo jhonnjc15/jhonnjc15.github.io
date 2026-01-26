@@ -35,6 +35,7 @@ if (localePosts.length === 0 && currentLocale !== fallbackLocale) {
 
 const posts = localePosts
   .filter((entry) => !entry.data.draft)
+  .filter((entry) => entry.data.show !== false)
   .map((entry) => ({
     ...entry,
     slug: normalizeSlug(entry.slug),
@@ -81,7 +82,9 @@ export async function getStaticPaths() {
   const pageSize = config.settings.pagination;
 
   for (const lang of locales) {
-    const localePosts = filterByLocale(entries, lang).filter((entry) => !entry.data.draft);
+    const localePosts = filterByLocale(entries, lang)
+      .filter((entry) => !entry.data.draft)
+      .filter((entry) => entry.data.show !== false);
     const pages = Math.ceil(localePosts.length / pageSize) || 1;
 
     for (let page = 2; page <= pages; page++) {
