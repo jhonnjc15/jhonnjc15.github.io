@@ -274,7 +274,7 @@ select:invalid {
   }
 
   :where(table) {
-    @apply my-8 block w-full table-fixed overflow-x-auto rounded-2xl border border-border border-opacity-60 bg-white text-left shadow-sm;
+    @apply my-8 w-full table-fixed rounded-2xl border border-border border-opacity-60 bg-white text-left shadow-sm;
   }
 
   :where(table) thead {
