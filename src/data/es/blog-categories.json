@@ -1,6 +1,6 @@
 [
   {
-    "category_name": "educational",
+    "category_name": "Educational",
     "name": "Educativo",
     "url": "/blog/educational",
     "image_url": "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
@@ -9,7 +9,7 @@
     "long_description": "Reúne artículos con metodologías, fichas y actividades para docentes, estudiantes y familias que quieren experimentar y comprender la ciencia desde cero."
   },
   {
-    "category_name": "entertainment",
+    "category_name": "Entertainment",
     "name": "Entretenimiento",
     "url": "/blog/entertainment",
     "image_url": "https://cdn-icons-png.flaticon.com/512/747/747376.png",
@@ -18,7 +18,7 @@
     "long_description": "Aquí encontrarás publicaciones que combinan divulgación con entretenimiento: trivias, dinámicas, experimentos sencillos y relatos que despiertan la curiosidad de cualquier persona."
   },
   {
-    "category_name": "scientific",
+    "category_name": "Scientific",
     "name": "Científico",
     "url": "/blog/scientific",
     "image_url": "https://cdn-icons-png.flaticon.com/512/2620/2620403.png",

@@ -8,6 +8,7 @@ import config from "@config/config.json";
 import { getCollection, getEntryBySlug } from "astro:content";
 import { sortByDate } from "@lib/utils/sortFunctions";
 import { filterByLocale } from "@lib/utils/filterByLocale";
+import { slugify } from "@lib/utils/textConverter";
 
 import categoriesES from "@data/es/blog-categories.json";
 import categoriesEN from "@data/en/blog-categories.json";
@@ -18,7 +19,7 @@ const { blog_folder, pagination } = config.settings;
 
 const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
 const categories = categoryEntries.map((entry) => ({
-  slug: entry.category_name,
+  slug: slugify(entry.category_name),
   label: entry.name,
 }));
 

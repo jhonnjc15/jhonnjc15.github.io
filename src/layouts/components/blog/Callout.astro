@@ -1,0 +1,30 @@
+---
+const { currentLocale } = Astro;
+const { type = "tip", items = [] } = Astro.props;
+
+const isEnglish = currentLocale === "en";
+
+const styles = {
+  tip: {
+    wrapper: "border-emerald-300/60 bg-emerald-50/60 text-emerald-900",
+    label: isEnglish ? "Tip" : "Tip",
+  },
+  warning: {
+    wrapper: "border-amber-300/60 bg-amber-50/70 text-amber-900",
+    label: isEnglish ? "Warning" : "Advertencia",
+  },
+};
+
+const selected = styles[type] ?? styles.tip;
+---
+
+<div class={`rounded-2xl border px-5 py-4 ${selected.wrapper}`}>
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+    {selected.label}
+  </p>
+  <ul class="list-disc pl-5 space-y-1">
+    {items.map((item: string) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 [
   {
-    "category_name": "educational",
+    "category_name": "Educational",
     "name": "Educational",
     "url": "/blog/educational",
     "image_url": "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
@@ -9,7 +9,7 @@
     "long_description": "Collects articles with methods, worksheets, and activities for teachers, students, and families who want to experiment and understand science from scratch."
   },
   {
-    "category_name": "entertainment",
+    "category_name": "Entertainment",
     "name": "Entertainment",
     "url": "/blog/entertainment",
     "image_url": "https://cdn-icons-png.flaticon.com/512/747/747376.png",
@@ -18,7 +18,7 @@
     "long_description": "Find publications that mix outreach with entertainment: trivia, activities, simple experiments, and narratives that spark curiosity in everyone."
   },
   {
-    "category_name": "scientific",
+    "category_name": "Scientific",
     "name": "Scientific",
     "url": "/blog/scientific",
     "image_url": "https://cdn-icons-png.flaticon.com/512/2620/2620403.png",

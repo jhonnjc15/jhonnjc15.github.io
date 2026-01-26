@@ -1,0 +1,37 @@
+---
+import { Markdown } from "astro/components";
+import Callout from "@components/blog/Callout.astro";
+
+const { step, index } = Astro.props;
+const stepNumber = index + 1;
+---
+
+<article class="rounded-3xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6 shadow-sm space-y-4">
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
+      {stepNumber}
+    </span>
+    <h3 class="text-xl font-semibold">{step.title}</h3>
+  </div>
+
+  <div class="prose prose-neutral dark:prose-invert max-w-none">
+    <Markdown content={step.body} />
+  </div>
+
+  {
+    step.images?.length ? (
+      <div class="grid gap-4 md:grid-cols-2">
+        {step.images.map((image: string) => (
+          <div class="overflow-hidden rounded-2xl border border-border/50 bg-background-offset/50">
+            <img class="h-full w-full object-cover" src={image} alt={step.title} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    ) : null
+  }
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {step.tips?.length ? <Callout type="tip" items={step.tips} /> : null}
+    {step.warnings?.length ? <Callout type="warning" items={step.warnings} /> : null}
+  </div>
+</article>

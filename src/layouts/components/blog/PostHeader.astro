@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import dateFormat from "@lib/utils/dateFormat";
+import readingTime from "@lib/utils/readingTime";
+import { humanize, slugify } from "@lib/utils/textConverter";
+import ContentBreadcrumb from "@components/products/ContentBreadcrumb.astro";
+
+import {
+  FaRegCalendarAlt,
+  FaRegClock,
+  FaRegFolder,
+  FaRegUserCircle,
+} from "react-icons/fa/index.js";
+
+const { post, categoryEntries, blogFolder } = Astro.props;
+const { currentLocale } = Astro;
+
+const primaryCategory = post.data.categories?.[0];
+const categoryEntry = primaryCategory
+  ? categoryEntries.find(
+      (entry: { category_name: string }) =>
+        slugify(entry.category_name) === slugify(primaryCategory),
+    )
+  : undefined;
+const categoryTitle = categoryEntry?.name ?? (primaryCategory ? humanize(primaryCategory) : undefined);
+const categoryPath = primaryCategory ? `${blogFolder}/${slugify(primaryCategory)}` : undefined;
+const breadcrumbData = {
+  title: post.data.title,
+  page_title: post.data.title,
+  index_title: currentLocale === "en" ? "Blog" : "Blog",
+  index_path: blogFolder,
+  category_title: categoryTitle,
+  category_path: categoryPath,
+};
+---
+
+<div class="mb-8 w-full">
+  <ContentBreadcrumb data={breadcrumbData} />
+</div>
+<div class="row justify-center">
+  <div class="lg:col-10" data-animate="zoom-in">
+    <div class="relative overflow-hidden rounded-3xl shadow-2xl aspect-[16/9] bg-background-offset">
+      <Image
+        class="h-full w-full object-cover"
+        src={post.data.image}
+        alt={post.data.title}
+        width={1280}
+        height={720}
+      />
+    </div>
+  </div>
+  <div class="mt-10 max-w-[900px] lg:col-9" data-animate="fade-up">
+    <h1 class="h2 text-4xl md:text-5xl font-extrabold leading-tight">
+      {post.data.title}
+    </h1>
+    <div class="mb-5 mt-6 flex items-center space-x-2 text-text-offset">
+      <ul class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <li class="inline-flex items-center">
+          <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+          {humanize(post.data.author)}
+        </li>
+
+        <li class="inline-flex items-center">
+          <FaRegCalendarAlt className={"mr-2 -mt-1 inline-block"} />
+          {dateFormat(post.data.date)}
+        </li>
+        <li class="inline-flex items-center">
+          <FaRegClock className={"mr-2 -mt-1 inline-block"} />
+          {readingTime(post.body)}
+        </li>
+        <li class="inline-flex items-center gap-2">
+          <FaRegFolder className={"-mt-1 inline-block"} />
+          {
+            post.data.categories.map((category: string, index: number) => {
+              const entry = categoryEntries.find(
+                (item: { category_name: string }) =>
+                  slugify(item.category_name) === slugify(category),
+              );
+              const label = entry?.name ?? humanize(category);
+
+              return (
+                <a
+                  href={getRelativeLocaleUrl(
+                    currentLocale ?? "",
+                    `/${blogFolder}/${slugify(category)}`,
+                  )}
+                  class="hover:text-primary"
+                >
+                  {label}
+                  {index !== post.data.categories.length - 1 && ","}
+                </a>
+              );
+            })
+          }
+        </li>
+      </ul>
+    </div>
+
+    <slot />
+  </div>
+</div>

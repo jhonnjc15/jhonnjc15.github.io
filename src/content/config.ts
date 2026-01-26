@@ -1,21 +1,81 @@
 import { defineCollection, z } from "astro:content";
 
+const categoryEnum = z.enum(["Educational", "Entertainment", "Scientific"]);
+
+const stepSchema = z.object({
+  title: z.string(),
+  body: z.string(),
+  images: z.array(z.string()).optional(),
+  tips: z.array(z.string()).optional(),
+  warnings: z.array(z.string()).optional(),
+});
+
+const blogBaseSchema = z.object({
+  title: z.string(),
+  subtitle: z.string().optional(),
+  description: z.string().optional(),
+  date: z.date(),
+  image: z.string(),
+  author: z.string(),
+  categories: z.array(categoryEnum).min(1),
+  draft: z.boolean().optional(),
+  featured: z.boolean().optional(),
+  translationKey: z.string().optional(),
+});
+
+const articleSchema = blogBaseSchema.extend({
+  type: z.literal("article"),
+});
+
+const guideSchema = blogBaseSchema.extend({
+  type: z.literal("guide"),
+  objective: z.string().optional(),
+  materials: z.array(z.string()).optional(),
+  steps: z.array(stepSchema).min(1),
+});
+
+const labSchema = blogBaseSchema.extend({
+  type: z.literal("lab"),
+  level: z.string().optional(),
+  duration: z.string().optional(),
+  objective: z.string(),
+  theory: z.string().optional(),
+  materials: z.array(z.string()).min(1),
+  equipment: z.array(z.string()).min(1),
+  safety: z.array(z.string()).min(1),
+  steps: z.array(stepSchema).min(1),
+  data_capture: z.array(z.string()).optional(),
+  expected_results: z.array(z.string()).optional(),
+  waste_disposal: z.array(z.string()).optional(),
+  notes: z.array(z.string()).optional(),
+  references: z.array(z.string()).optional(),
+});
+
+const reviewSchema = blogBaseSchema.extend({
+  type: z.literal("review"),
+  summary: z.string(),
+  pros: z.array(z.string()).min(1),
+  cons: z.array(z.string()).min(1),
+  verdict: z.string(),
+  comparison: z
+    .array(
+      z.object({
+        name: z.string(),
+        value: z.string(),
+      })
+    )
+    .optional(),
+});
+
 // Blog collection schema
 const blogCollection = defineCollection({
-  schema: z
-    .object({
-      id: z.string().optional(),
-      title: z.string().optional(),
-      subtitle: z.string().optional(),
-      date: z.date().optional(),
-      image: z.string().optional(),
-      author: z.string().optional(),
-      categories: z.array(z.string()).default(["others"]),
-      draft: z.boolean().optional(),
-      featured: z.boolean().optional(),
-      translationKey: z.string().optional(),
-    })
-    .passthrough(),
+  type: "content",
+  schema: z.discriminatedUnion("type", [
+    articleSchema,
+    guideSchema,
+    labSchema,
+    reviewSchema,
+  ]),
 });
 
 // Pages collection schema

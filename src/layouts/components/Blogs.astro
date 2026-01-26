@@ -5,15 +5,27 @@ import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import { humanize, plainify, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 const { summary_length } = config.settings;
 const { posts, basePath = config.settings.blog_folder, labels } = Astro.props;
 const { currentLocale } = Astro;
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
 
 const buildPostLink = (slug: string) =>
   getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slug}`);
 
 const buildCategoryLink = (category: string) =>
   getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slugify(category)}`);
+
+const getCategoryLabel = (category: string) => {
+  const entry = categoryEntries.find(
+    (item: { category_name: string }) =>
+      slugify(item.category_name) === slugify(category),
+  );
+
+  return entry?.name ?? humanize(category);
+};
 ---
 
 <div class="row">
@@ -36,7 +48,7 @@ const buildCategoryLink = (category: string) =>
                   class="tag blog-category-tag !border-white/30 !bg-black/30 backdrop-blur"
                   href={buildCategoryLink(category)}
                 >
-                  {humanize(category)}
+                  {getCategoryLabel(category)}
                 </a>
               ))}
             </div>

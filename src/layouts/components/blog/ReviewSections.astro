@@ -1,0 +1,70 @@
+---
+const { review } = Astro.props;
+const { currentLocale } = Astro;
+const isEnglish = currentLocale === "en";
+---
+
+<section class="mt-10 space-y-8">
+  <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6 space-y-2">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+      {isEnglish ? "Summary" : "Resumen"}
+    </p>
+    <p class="text-base">{review.summary}</p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Pros" : "Pros"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {review.pros.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Cons" : "Contras"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {review.cons.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  {review.comparison?.length && (
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-4">
+        {isEnglish ? "Comparison" : "Comparativa"}
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="text-xs uppercase tracking-[0.15em] text-text-offset">
+            <tr>
+              <th class="pb-3 pr-4">{isEnglish ? "Item" : "Elemento"}</th>
+              <th class="pb-3">{isEnglish ? "Value" : "Valor"}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border/60">
+            {review.comparison.map((row: { name: string; value: string }) => (
+              <tr>
+                <td class="py-3 pr-4 font-medium">{row.name}</td>
+                <td class="py-3">{row.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )}
+
+  <div class="rounded-2xl border border-border/60 bg-primary/10 p-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-2">
+      {isEnglish ? "Final verdict" : "Recomendación final"}
+    </p>
+    <p class="text-base font-semibold text-default">{review.verdict}</p>
+  </div>
+</section>

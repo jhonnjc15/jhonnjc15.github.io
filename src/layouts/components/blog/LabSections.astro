@@ -1,0 +1,150 @@
+---
+import { Markdown } from "astro/components";
+
+const { lab } = Astro.props;
+const { currentLocale } = Astro;
+const isEnglish = currentLocale === "en";
+---
+
+<section class="mt-10 space-y-8">
+  <div class="grid gap-6 md:grid-cols-2">
+    {(lab.level || lab.duration) && (
+      <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-5 space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+          {isEnglish ? "Lab details" : "Ficha técnica"}
+        </p>
+        <dl class="space-y-2 text-sm">
+          {lab.level && (
+            <div class="flex flex-wrap gap-2">
+              <dt class="font-semibold">{isEnglish ? "Level" : "Nivel"}:</dt>
+              <dd>{lab.level}</dd>
+            </div>
+          )}
+          {lab.duration && (
+            <div class="flex flex-wrap gap-2">
+              <dt class="font-semibold">{isEnglish ? "Duration" : "Duración"}:</dt>
+              <dd>{lab.duration}</dd>
+            </div>
+          )}
+        </dl>
+      </div>
+    )}
+
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-5 space-y-2">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+        {isEnglish ? "Objective" : "Objetivo"}
+      </p>
+      <p class="text-base">{lab.objective}</p>
+    </div>
+  </div>
+
+  {lab.theory && (
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Theoretical basis" : "Fundamento teórico"}
+      </p>
+      <div class="prose prose-neutral dark:prose-invert max-w-none">
+        <Markdown content={lab.theory} />
+      </div>
+    </div>
+  )}
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Materials" : "Materiales"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.materials.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Equipment" : "Equipos"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.equipment.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="rounded-2xl border border-border/60 bg-white/70 dark:bg-background-offset/60 p-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+      {isEnglish ? "Safety" : "Seguridad"}
+    </p>
+    <ul class="list-disc pl-5 space-y-1">
+      {lab.safety.map((item: string) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+
+  {lab.data_capture?.length && (
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Data capture" : "Captura de datos"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.data_capture.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  {lab.expected_results?.length && (
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Expected results" : "Resultados esperados"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.expected_results.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  {lab.waste_disposal?.length && (
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Waste disposal" : "Disposición de residuos"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.waste_disposal.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  {lab.notes?.length && (
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "Notes" : "Notas"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.notes.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  {lab.references?.length && (
+    <div class="rounded-2xl border border-border/60 bg-background-offset/40 p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
+        {isEnglish ? "References" : "Referencias"}
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        {lab.references.map((item: string) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>
