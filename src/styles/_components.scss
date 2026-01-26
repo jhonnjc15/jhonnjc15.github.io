@@ -282,7 +282,7 @@ select:invalid {
   }
 
   blockquote {
-    @apply my-6 rounded-2xl border-l-4 border-primary/70 bg-theme-light/80 px-6 py-4 not-italic text-base shadow-sm;
+    @apply my-6 rounded-2xl border-l-4 border-primary border-opacity-70 bg-theme-light/80 px-6 py-4 not-italic text-base shadow-sm;
   }
 
   blockquote.is-warning {
