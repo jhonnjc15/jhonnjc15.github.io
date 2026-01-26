@@ -217,11 +217,11 @@ select:invalid {
   @apply prose-strong:text-dark;
   @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
   @apply prose-li:text-text;
-  @apply prose-table:relative prose-table:w-full prose-table:overflow-hidden prose-table:rounded-xl prose-table:border prose-table:border-border/70 prose-table:text-sm;
-  @apply prose-thead:border-border prose-thead:bg-theme-light;
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-3 prose-th:text-dark;
-  @apply prose-tr:border-border/60;
-  @apply prose-td:relative prose-td:z-10 prose-td:px-4 prose-td:py-3;
+  @apply prose-table:relative prose-table:w-full prose-table:overflow-hidden prose-table:rounded-2xl prose-table:border prose-table:border-border prose-table:border-opacity-70 prose-table:text-sm;
+  @apply prose-thead:border-border prose-thead:bg-gray-100;
+  @apply prose-th:relative prose-th:z-10 prose-th:px-5 prose-th:py-4 prose-th:text-dark;
+  @apply prose-tr:border-border prose-tr:border-opacity-60;
+  @apply prose-td:relative prose-td:z-10 prose-td:px-5 prose-td:py-4;
   @apply marker:text-primary;
   @apply prose-img:rounded-2xl;
 
@@ -274,11 +274,23 @@ select:invalid {
   }
 
   :where(table) {
-    @apply block w-full overflow-x-auto;
+    @apply my-8 block w-full overflow-x-auto rounded-2xl border border-border border-opacity-60 bg-white shadow-sm;
+  }
+
+  :where(table) thead {
+    @apply bg-gray-100;
+  }
+
+  :where(table) th {
+    @apply font-semibold text-dark;
   }
 
   :where(tbody tr:nth-child(odd)) {
-    @apply bg-theme-light/70 dark:bg-white/5;
+    @apply bg-gray-50;
+  }
+
+  :where(tbody tr) {
+    @apply border-border border-opacity-40;
   }
 
   blockquote {
@@ -320,6 +332,26 @@ select:invalid {
 
   .dark & {
     @apply text-white;
+
+    :where(table) {
+      @apply border-white border-opacity-15 bg-slate-900 shadow-[0_12px_30px_rgba(0,0,0,0.35)];
+    }
+
+    :where(table) thead {
+      @apply bg-slate-800;
+    }
+
+    :where(table) th {
+      @apply text-white;
+    }
+
+    :where(tbody tr:nth-child(odd)) {
+      @apply bg-slate-950/40;
+    }
+
+    :where(tbody tr) {
+      @apply border-white border-opacity-10;
+    }
 
     blockquote {
       @apply bg-white/5 text-white;
