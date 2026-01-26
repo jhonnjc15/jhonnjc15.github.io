@@ -21,6 +21,8 @@ time_to_read: "06 min de lectura"
 - Tablas con información resumida.
 - Citas destacadas con iconos.
 - Fragmentos de código en línea y bloques largos.
+- Notas, advertencias y consejos con emojis.
+- Ejemplos con HTML embebido y video.
 
 ### Checklist rápida
 
@@ -50,6 +52,41 @@ La imagen anterior se centra automáticamente y toma un ancho cómodo para lectu
 
 ---
 
+## HTML embebido (prueba)
+
+Sí, puedes incluir HTML dentro del Markdown si necesitas componentes simples. Por ejemplo:
+
+<div class="rounded-2xl border border-primary border-opacity-40 bg-theme-light bg-opacity-70 px-5 py-4">
+  <strong>Tarjeta HTML:</strong> Este bloque está escrito en HTML dentro del Markdown.
+</div>
+
+---
+
+## Video embebido
+
+<div class="aspect-video overflow-hidden rounded-2xl border border-border border-opacity-60">
+  <iframe
+    class="h-full w-full"
+    src="https://www.youtube.com/embed/8ZK_S-46KwE"
+    title="Paqari OpenLab video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+
+---
+
+## Notas, consejos y advertencias
+
+> 💡 **Tip:** Usa subtítulos cortos para mejorar la lectura en móvil.
+
+> ⚠️ **Advertencia:** Verifica permisos y seguridad antes de usar reactivos o herramientas.
+
+> ✅ **Nota:** Documenta los resultados con fotos y pequeñas conclusiones.
+
+---
+
 ## Código en línea y bloques
 
 Cuando necesites mencionar un comando, escribe algo como `npm run dev`.
@@ -61,6 +98,20 @@ export const hello = (name: string) => {
 ```
 
 > ⚠️ **Precaución:** Revisa siempre las dependencias antes de ejecutar un script.
+
+---
+
+## Lista avanzada y checklist
+
+- [x] Preparar materiales y checklist.
+- [x] Definir objetivos de la sesión.
+- [ ] Compartir resultados con el equipo.
+
+---
+
+## Cita larga
+
+> “La ciencia abierta se construye mejor cuando cada persona puede replicar, adaptar y mejorar los pasos de un experimento.”
 
 ---
 
