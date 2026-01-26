@@ -1,5 +1,5 @@
 ---
-import { Markdown } from "astro/components";
+import { marked } from "marked";
 
 const { lab } = Astro.props;
 const { currentLocale } = Astro;
@@ -43,9 +43,10 @@ const isEnglish = currentLocale === "en";
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-3">
         {isEnglish ? "Theoretical basis" : "Fundamento teórico"}
       </p>
-      <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <Markdown content={lab.theory} />
-      </div>
+      <div
+        class="prose prose-neutral dark:prose-invert max-w-none"
+        set:html={marked.parse(lab.theory)}
+      />
     </div>
   )}
 
