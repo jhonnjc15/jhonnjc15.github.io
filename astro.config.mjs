@@ -36,7 +36,7 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/noop'
     }
   },
-  site: SITE_URL,
+  site: SITE_URL ?? config.site.base_url,
   base: "/",  
   //trailingSlash: config.site.trailing_slash ? "always" : "never",
   integrations: [
