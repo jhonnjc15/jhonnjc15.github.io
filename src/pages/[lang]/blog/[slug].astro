@@ -43,7 +43,7 @@ const pageTitle = post.data.title;
 const pageDescription = post.data.subtitle ?? post.data.excerpt ?? "";
 
 ---
-<Base title={pageTitle} description={pageDescription}>
+<Base title={pageTitle} description={pageDescription} image={post.data.image}>
   <Shape />
   <BlogSingle post={post} />
 </Base>

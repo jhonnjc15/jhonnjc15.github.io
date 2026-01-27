@@ -160,7 +160,7 @@ const breadcrumbData = {
       return `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
     }
     if (type === "linkedin") {
-      return `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${title}&summary=${description}&source=${encodedUrl}`;
+      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
     }
     if (type === "instagram") {
       return `https://www.instagram.com/?url=${encodedUrl}`;
