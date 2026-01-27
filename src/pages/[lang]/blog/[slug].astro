@@ -4,6 +4,7 @@ import Shape from "@components/Shape.astro";
 import BlogSingle from "@layouts/BlogSingle.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 import { filterByLocale } from "@lib/utils/filterByLocale";
+import config from "@config/config.json";
 const { currentLocale } = Astro;
 const fallbackLocale = "es";
 
@@ -41,9 +42,43 @@ if (post.data.show === false) {
 
 const pageTitle = post.data.title;
 const pageDescription = post.data.subtitle ?? post.data.excerpt ?? "";
+const postBody = post.body ?? "";
+const fallbackImage = config.metadata.meta_image;
+
+const getFirstImage = (content) => {
+  const markdownRegex = /!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/i;
+  const htmlRegex = /<img[^>]+src=["']([^"']+)["'][^>]*>/i;
+  const markdownMatch = markdownRegex.exec(content);
+  const htmlMatch = htmlRegex.exec(content);
+
+  if (markdownMatch && htmlMatch) {
+    return markdownMatch.index < htmlMatch.index ? markdownMatch[1] : htmlMatch[1];
+  }
+
+  if (markdownMatch) return markdownMatch[1];
+  if (htmlMatch) return htmlMatch[1];
+  return null;
+};
+
+const imagePath = getFirstImage(postBody) ?? fallbackImage;
+const absoluteImageUrl = Astro.site
+  ? new URL(imagePath, Astro.site).href
+  : `${config.site.base_url}${imagePath}`;
 
 ---
-<Base title={pageTitle} description={pageDescription} image={post.data.image}>
+<Base title={pageTitle} description={pageDescription} disableOg={true}>
+  <Fragment slot="head">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={absoluteImageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={absoluteImageUrl} />
+  </Fragment>
   <Shape />
   <BlogSingle post={post} />
 </Base>
