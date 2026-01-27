@@ -60,7 +60,7 @@ const getFirstImage = (content) => {
   return null;
 };
 
-const imagePath = getFirstImage(postBody) ?? fallbackImage;
+const imagePath = post.data.image ?? getFirstImage(postBody) ?? fallbackImage;
 const absoluteImageUrl = Astro.site
   ? new URL(imagePath, Astro.site).href
   : `${config.site.base_url}${imagePath}`;
