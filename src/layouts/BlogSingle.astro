@@ -148,7 +148,7 @@ const breadcrumbData = {
 <script is:inline>
   const shareLists = document.querySelectorAll("[data-share-title]");
   const dropdowns = document.querySelectorAll("[data-share-dropdown]");
-  const shareUrl = window.location.href;
+  const shareUrl = window.location.href.split("#")[0];
   const shareTitle = (list) => list.getAttribute("data-share-title") ?? "";
   const shareDescription = (list) => list.getAttribute("data-share-description") ?? "";
 
@@ -171,6 +171,11 @@ const breadcrumbData = {
         href = `https://www.instagram.com/?url=${encodedUrl}`;
       }
       link.setAttribute("href", href);
+      link.addEventListener("click", (event) => {
+        if (href === "#") {
+          event.preventDefault();
+        }
+      });
     });
   });
 
