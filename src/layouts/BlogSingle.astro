@@ -30,6 +30,7 @@ const categoryEntry = primaryCategory
   : undefined;
 const categoryTitle = categoryEntry?.name ?? (primaryCategory ? humanize(primaryCategory) : undefined);
 const categoryPath = primaryCategory ? `${blog_folder}/${slugify(primaryCategory)}` : undefined;
+const heroImage = post.data.cover ?? post.data.image;
 const breadcrumbData = {
   title: post.data.title,
   page_title: post.data.title,
@@ -53,7 +54,7 @@ const breadcrumbData = {
         <div class="relative overflow-hidden rounded-3xl shadow-2xl aspect-[16/9] bg-background-offset">
           <Image
             class="h-full w-full object-cover"
-            src={post.data.image}
+            src={heroImage}
             alt={post.data.title}
             width={1280}
             height={720}

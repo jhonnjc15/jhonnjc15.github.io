@@ -42,25 +42,8 @@ if (post.data.show === false) {
 
 const pageTitle = post.data.title;
 const pageDescription = post.data.subtitle ?? post.data.excerpt ?? "";
-const postBody = post.body ?? "";
 const fallbackImage = config.metadata.meta_image;
-
-const getFirstImage = (content) => {
-  const markdownRegex = /!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/i;
-  const htmlRegex = /<img[^>]+src=["']([^"']+)["'][^>]*>/i;
-  const markdownMatch = markdownRegex.exec(content);
-  const htmlMatch = htmlRegex.exec(content);
-
-  if (markdownMatch && htmlMatch) {
-    return markdownMatch.index < htmlMatch.index ? markdownMatch[1] : htmlMatch[1];
-  }
-
-  if (markdownMatch) return markdownMatch[1];
-  if (htmlMatch) return htmlMatch[1];
-  return null;
-};
-
-const imagePath = post.data.image ?? getFirstImage(postBody) ?? fallbackImage;
+const imagePath = post.data.cover ?? post.data.image ?? fallbackImage;
 const absoluteImageUrl = Astro.site
   ? new URL(imagePath, Astro.site).href
   : `${config.site.base_url}${imagePath}`;
