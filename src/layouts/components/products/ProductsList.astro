@@ -9,20 +9,32 @@ const { summary_length } = config.settings;
 const { products, product_list } = Astro.props;
 const { currentLocale } = Astro;
 const productDetailLabel = product_list?.product_detail_button?.label;
+const searchPlaceholder = currentLocale === 'en' ? 'Search products' : 'Buscar productos';
+const searchEmptyLabel = currentLocale === 'en' ? 'No matching products found.' : 'No se encontraron productos que coincidan.';
 
 const visibleProducts = (products ?? []).filter((item: any) => item.data.show !== false);
 
 const enhancedProducts = visibleProducts.map((item) => {
   const mainImageObj = item.data.images?.find((img) => img.isMain);
+  const searchText = [
+    item.data.name,
+    item.data.title,
+    item.data.description,
+    ...(item.data.features ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
   return {
     ...item,
-    mainImage: mainImageObj?.src || '/images/default.jpg'
+    mainImage: mainImageObj?.src || '/images/default.jpg',
+    searchText,
   };
 });
 
 const isOddCount = enhancedProducts.length % 2 !== 0;
 ---
-<div class="space-y-4">
+<div class="space-y-4" data-search-scope="products">
   <div class="mb-8 flex flex-col gap-2 md:flex-row md:items-center md:justify-between" data-animate="fade-up">
     <div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-default">{product_list.title}</h2>
@@ -31,11 +43,28 @@ const isOddCount = enhancedProducts.length % 2 !== 0;
       {product_list.description}
     </p>
   </div>
+  <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between rounded-2xl bg-background-offset/60 p-4" data-animate="fade-up">
+    <label class="sr-only" for="product-filter-input">{searchPlaceholder}</label>
+    <input
+      id="product-filter-input"
+      type="search"
+      class="w-full md:max-w-md rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-text shadow-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/30"
+      placeholder={searchPlaceholder}
+      data-search-input
+    />
+    <p class="text-sm text-text-offset" data-search-count></p>
+  </div>
+  <p class="text-sm text-text-offset hidden" data-search-empty>{searchEmptyLabel}</p>
 
   <div class="grid gap-10 md:grid-cols-2 items-stretch justify-items-stretch" data-animate="zoom-in">
     {
       enhancedProducts.map((item: any, idx: number) => (
-        <article class={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-6 shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700 ${isOddCount && idx === enhancedProducts.length - 1 ? "md:col-span-2 md:max-w-3xl md:mx-auto" : ""}`} data-animate={idx % 2 === 0 ? "fade-up" : "fade-right"}>
+        <article
+          class={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-6 shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700 ${isOddCount && idx === enhancedProducts.length - 1 ? "md:col-span-2 md:max-w-3xl md:mx-auto" : ""}`}
+          data-animate={idx % 2 === 0 ? "fade-up" : "fade-right"}
+          data-search-item
+          data-search-text={item.searchText}
+        >
           <span class="absolute w-3/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 right-2 rounded-full blur-3xl opacity-20"></span>
           <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
             <div class="lg:w-1/2">
@@ -85,3 +114,39 @@ const isOddCount = enhancedProducts.length % 2 !== 0;
     }
   </div>
 </div>
+<script>
+  const scopes = document.querySelectorAll('[data-search-scope="products"]');
+  scopes.forEach((scope) => {
+    const input = scope.querySelector("[data-search-input]");
+    const items = Array.from(scope.querySelectorAll("[data-search-item]"));
+    const emptyState = scope.querySelector("[data-search-empty]");
+    const count = scope.querySelector("[data-search-count]");
+
+    if (!input) return;
+
+    const update = () => {
+      const query = input.value.trim().toLowerCase();
+      const tokens = query.split(/\s+/).filter(Boolean);
+      let visibleCount = 0;
+
+      items.forEach((item) => {
+        const haystack = (item.getAttribute("data-search-text") ?? "").toLowerCase();
+        const matches = tokens.every((token) => haystack.includes(token));
+        item.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      if (emptyState) {
+        emptyState.classList.toggle("hidden", visibleCount !== 0);
+      }
+      if (count) {
+        count.textContent = query
+          ? `${visibleCount}/${items.length}`
+          : `${items.length}`;
+      }
+    };
+
+    input.addEventListener("input", update);
+    update();
+  });
+</script>

@@ -8,6 +8,24 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 const { summary_length } = config.settings;
 const { posts, basePath = config.settings.blog_folder, labels } = Astro.props;
 const { currentLocale } = Astro;
+const searchPlaceholder = currentLocale === "en" ? "Search blog posts" : "Buscar en el blog";
+const searchEmptyLabel = currentLocale === "en" ? "No matching posts found." : "No se encontraron publicaciones que coincidan.";
+
+const enhancedPosts = posts.map((item: any) => {
+  const searchableText = [
+    item.data.title,
+    item.data.description,
+    ...(item.data.categories ?? []),
+    plainify(item.body?.slice(0, Number(summary_length)) ?? ""),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return {
+    ...item,
+    searchableText,
+  };
+});
 
 const buildPostLink = (slug: string) =>
   getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slug}`);
@@ -16,10 +34,29 @@ const buildCategoryLink = (category: string) =>
   getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slugify(category)}`);
 ---
 
-<div class="row">
+<div class="space-y-4" data-search-scope="blog">
+  <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between rounded-2xl bg-[#EEEEEE] dark:bg-background-offset/60 p-4" data-animate="fade-up">
+    <label class="sr-only" for="blog-filter-input">{searchPlaceholder}</label>
+    <input
+      id="blog-filter-input"
+      type="search"
+      class="w-full md:max-w-md rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/30"
+      placeholder={searchPlaceholder}
+      data-search-input
+    />
+    <p class="text-sm text-gray-600" data-search-count></p>
+  </div>
+  <p class="text-sm text-gray-600 hidden" data-search-empty>{searchEmptyLabel}</p>
+
+  <div class="row">
   {
-    posts.map((item: any, idx: number) => (
-      <div class="mb-10 md:col-6 lg:col-4" data-animate={idx % 2 === 0 ? "fade-up" : "zoom-in"}>
+    enhancedPosts.map((item: any, idx: number) => (
+      <div
+        class="mb-10 md:col-6 lg:col-4"
+        data-animate={idx % 2 === 0 ? "fade-up" : "zoom-in"}
+        data-search-item
+        data-search-text={item.searchableText}
+      >
         <div class="relative h-full overflow-hidden rounded-3xl bg-white dark:bg-white p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200">
           <div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
@@ -101,4 +138,41 @@ const buildCategoryLink = (category: string) =>
       </div>
     ))
   }
+  </div>
 </div>
+<script>
+  const scopes = document.querySelectorAll('[data-search-scope="blog"]');
+  scopes.forEach((scope) => {
+    const input = scope.querySelector("[data-search-input]");
+    const items = Array.from(scope.querySelectorAll("[data-search-item]"));
+    const emptyState = scope.querySelector("[data-search-empty]");
+    const count = scope.querySelector("[data-search-count]");
+
+    if (!input) return;
+
+    const update = () => {
+      const query = input.value.trim().toLowerCase();
+      const tokens = query.split(/\s+/).filter(Boolean);
+      let visibleCount = 0;
+
+      items.forEach((item) => {
+        const haystack = (item.getAttribute("data-search-text") ?? "").toLowerCase();
+        const matches = tokens.every((token) => haystack.includes(token));
+        item.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      if (emptyState) {
+        emptyState.classList.toggle("hidden", visibleCount !== 0);
+      }
+      if (count) {
+        count.textContent = query
+          ? `${visibleCount}/${items.length}`
+          : `${items.length}`;
+      }
+    };
+
+    input.addEventListener("input", update);
+    update();
+  });
+</script>
