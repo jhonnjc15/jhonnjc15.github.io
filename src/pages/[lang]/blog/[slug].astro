@@ -43,7 +43,7 @@ if (post.data.show === false) {
 const pageTitle = post.data.title;
 const pageDescription = post.data.subtitle ?? post.data.excerpt ?? "";
 const fallbackImage = config.metadata.meta_image;
-const imagePath = post.data.cover ?? post.data.image ?? fallbackImage;
+const imagePath = post.data.ogImage ?? post.data.cover ?? post.data.image ?? fallbackImage;
 const absoluteImageUrl = Astro.site
   ? new URL(imagePath, Astro.site).href
   : `${config.site.base_url}${imagePath}`;

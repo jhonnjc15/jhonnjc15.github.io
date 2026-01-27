@@ -6,6 +6,7 @@ description: "Guía breve con materiales, montaje y precauciones para exfoliar g
 date: 2024-08-30
 image: "/images/blog/posts/post-13.png"
 cover: "/images/blog/posts/post-13.png"
+ogImage: "/images/home/gallery/pqol2025_egraphen.png"
 author: "Paqari OpenLab"
 categories:
   - scientific
