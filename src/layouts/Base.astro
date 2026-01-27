@@ -24,10 +24,20 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
   is404?: boolean;
+  disableOg?: boolean;
 }
 
 // distructure frontmatters
-const { title, meta_title, description, image, noindex, canonical, is404 = false } =
+const {
+  title,
+  meta_title,
+  description,
+  image,
+  noindex,
+  canonical,
+  is404 = false,
+  disableOg = false,
+} =
   Astro.props;
 
  
@@ -139,55 +149,61 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
     <!-- author from config.json -->
     <meta name="author" content={config.metadata.meta_author} />
 
-    <!-- og-title -->
-    <meta
-      property="og:title"
-      content={plainify(fullTitle)}
-    />
+    {!disableOg && (
+      <>
+        <!-- og-title -->
+        <meta
+          property="og:title"
+          content={plainify(fullTitle)}
+        />
 
-    <!-- og-description -->
-    <meta
-      property="og:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description
-      )}
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
-    />
+        <!-- og-description -->
+        <meta
+          property="og:description"
+          content={plainify(
+            description ? description : config.metadata.meta_description
+          )}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
+        />
 
-    <!-- twitter-title -->
-    <meta
-      name="twitter:title"
-      content={plainify(fullTitle)}
-    />
+        <!-- twitter-title -->
+        <meta
+          name="twitter:title"
+          content={plainify(fullTitle)}
+        />
 
-    <!-- twitter-description -->
-    <meta
-      name="twitter:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description
-      )}
-    />
+        <!-- twitter-description -->
+        <meta
+          name="twitter:description"
+          content={plainify(
+            description ? description : config.metadata.meta_description
+          )}
+        />
 
-    <!-- og-image -->
-    <meta
-      property="og:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
+        <!-- og-image -->
+        <meta
+          property="og:image"
+          content={`${config.site.base_url}${
+            image ? image : config.metadata.meta_image
+          }`}
+        />
 
-    <!-- twitter-image -->
-    <meta
-      name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
-    <meta name="twitter:card" content="summary_large_image" />
+        <!-- twitter-image -->
+        <meta
+          name="twitter:image"
+          content={`${config.site.base_url}${
+            image ? image : config.metadata.meta_image
+          }`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+      </>
+    )}
+
+    <slot name="head" />
   </head>
   <body>
     <TwSizeIndicator />
