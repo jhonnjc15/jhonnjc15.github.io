@@ -146,64 +146,96 @@ const breadcrumbData = {
 </section>
 
 <script is:inline>
-  const shareLists = document.querySelectorAll("[data-share-title]");
-  const dropdowns = document.querySelectorAll("[data-share-dropdown]");
-  const shareUrl = window.location.href.split("#")[0];
+  const getShareLists = () => document.querySelectorAll("[data-share-title]");
   const shareTitle = (list) => list.getAttribute("data-share-title") ?? "";
   const shareDescription = (list) => list.getAttribute("data-share-description") ?? "";
+  const getCleanShareUrl = () => {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    return url.href.replace(/#$/, "");
+  };
 
-  shareLists.forEach((list) => {
-    const title = encodeURIComponent(shareTitle(list));
-    const description = encodeURIComponent(shareDescription(list));
-    const encodedUrl = encodeURIComponent(shareUrl);
+  const buildShareHref = (type, encodedUrl, title, description) => {
+    if (type === "facebook") {
+      return `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    }
+    if (type === "linkedin") {
+      return `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${title}&summary=${description}&source=${encodedUrl}`;
+    }
+    if (type === "instagram") {
+      return `https://www.instagram.com/?url=${encodedUrl}`;
+    }
+    return "#";
+  };
 
-    list.querySelectorAll("[data-share-link]").forEach((link) => {
-      const type = link.getAttribute("data-share-link");
-      if (!type) return;
-      let href = "#";
-      if (type === "facebook") {
-        href = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-      }
-      if (type === "linkedin") {
-        href = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${title}&summary=${description}&source=${encodedUrl}`;
-      }
-      if (type === "instagram") {
-        href = `https://www.instagram.com/?url=${encodedUrl}`;
-      }
-      link.setAttribute("href", href);
-      link.addEventListener("click", (event) => {
-        if (href === "#") {
-          event.preventDefault();
+  const updateShareLinks = () => {
+    const shareUrl = getCleanShareUrl();
+    getShareLists().forEach((list) => {
+      const title = encodeURIComponent(shareTitle(list));
+      const description = encodeURIComponent(shareDescription(list));
+      const encodedUrl = encodeURIComponent(shareUrl);
+
+      list.querySelectorAll("[data-share-link]").forEach((link) => {
+        const type = link.getAttribute("data-share-link");
+        if (!type) return;
+        const href = buildShareHref(type, encodedUrl, title, description);
+        link.setAttribute("href", href);
+      });
+    });
+  };
+
+  const bindShareInteractions = () => {
+    updateShareLinks();
+
+    document.querySelectorAll(".copy-link-button").forEach((button) => {
+      if (button.dataset.copyBound === "true") return;
+      button.dataset.copyBound = "true";
+      button.addEventListener("click", async () => {
+        const tooltip = button.querySelector(".copy-tooltip");
+        try {
+          await navigator.clipboard.writeText(getCleanShareUrl());
+          button.classList.add("ring-2", "ring-green-400/70");
+          if (tooltip) {
+            tooltip.classList.add("opacity-100");
+            tooltip.classList.remove("opacity-0");
+          }
+          window.setTimeout(() => {
+            button.classList.remove("ring-2", "ring-green-400/70");
+            if (tooltip) {
+              tooltip.classList.remove("opacity-100");
+              tooltip.classList.add("opacity-0");
+            }
+          }, 1600);
+        } catch (error) {
+          console.error("Failed to copy link", error);
         }
       });
     });
-  });
 
-  document.querySelectorAll(".copy-link-button").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const tooltip = button.querySelector(".copy-tooltip");
-      try {
-        await navigator.clipboard.writeText(shareUrl);
-        button.classList.add("ring-2", "ring-green-400/70");
-        if (tooltip) {
-          tooltip.classList.add("opacity-100");
-          tooltip.classList.remove("opacity-0");
-        }
-        window.setTimeout(() => {
-          button.classList.remove("ring-2", "ring-green-400/70");
-          if (tooltip) {
-            tooltip.classList.remove("opacity-100");
-            tooltip.classList.add("opacity-0");
-          }
-        }, 1600);
-      } catch (error) {
-        console.error("Failed to copy link", error);
-      }
+    document.querySelectorAll("[data-share-link]").forEach((link) => {
+      if (link.dataset.shareBound === "true") return;
+      link.dataset.shareBound = "true";
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const type = link.getAttribute("data-share-link");
+        if (!type) return;
+        const list = link.closest("[data-share-title]");
+        if (!list) return;
+        const shareUrl = encodeURIComponent(getCleanShareUrl());
+        const title = encodeURIComponent(shareTitle(list));
+        const description = encodeURIComponent(shareDescription(list));
+        const href = buildShareHref(type, shareUrl, title, description);
+        if (href === "#") return;
+        window.open(href, "_blank", "noopener,noreferrer");
+      });
     });
-  });
+  };
+
+  bindShareInteractions();
+  document.addEventListener("astro:page-load", bindShareInteractions);
 
   document.addEventListener("click", (event) => {
-    dropdowns.forEach((dropdown) => {
+    document.querySelectorAll("[data-share-dropdown]").forEach((dropdown) => {
       if (!dropdown.hasAttribute("open")) return;
       if (dropdown.contains(event.target)) return;
       dropdown.removeAttribute("open");
