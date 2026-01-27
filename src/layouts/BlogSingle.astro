@@ -154,9 +154,6 @@ const breadcrumbData = {
     url.hash = "";
     return url.href.replace(/#$/, "");
   };
-  const getEncodedShareUrl = () =>
-    encodeURIComponent("https://jhonnjc15.github.io/es/blog/sintesis-electroquimica-grafeno/");
-
   const buildShareHref = (type, encodedUrl, title, description) => {
     if (type === "facebook") {
       return `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
@@ -174,7 +171,7 @@ const breadcrumbData = {
     getShareLists().forEach((list) => {
       const title = encodeURIComponent(shareTitle(list));
       const description = encodeURIComponent(shareDescription(list));
-      const encodedUrl = getEncodedShareUrl();
+      const encodedUrl = encodeURIComponent(getCleanShareUrl());
 
       list.querySelectorAll("[data-share-link]").forEach((link) => {
         const type = link.getAttribute("data-share-link");
@@ -224,7 +221,7 @@ const breadcrumbData = {
         if (!type) return;
         const list = link.closest("[data-share-title]");
         if (!list) return;
-        const shareUrl = getEncodedShareUrl();
+        const shareUrl = encodeURIComponent(getCleanShareUrl());
         const title = encodeURIComponent(shareTitle(list));
         const description = encodeURIComponent(shareDescription(list));
         const href = buildShareHref(type, shareUrl, title, description);
