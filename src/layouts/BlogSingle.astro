@@ -99,17 +99,18 @@ const breadcrumbData = {
           </ul>
           <details class="relative">
             <summary class="list-none">
-              <span class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/10 text-text-offset shadow-sm transition hover:border-primary/40 hover:text-primary">
+              <span class="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border border-primary/30 bg-primary/10 text-lg text-primary shadow-lg shadow-primary/10 transition hover:border-primary hover:bg-primary/20">
                 <IoShareSocialOutline />
               </span>
             </summary>
-            <div class="absolute right-0 z-10 mt-3 rounded-full border border-white/10 bg-background/95 px-3 py-2 shadow-lg backdrop-blur">
+            <div class="absolute right-0 z-10 mt-3 rounded-2xl border border-primary/20 bg-background/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur">
               <Share
                 className="flex items-center gap-2"
                 title={post.data.title}
                 description={post.data.subtitle ?? post.data.excerpt ?? ""}
                 slug={post.slug}
                 showCopy={true}
+                copyLabel={currentLocale === "en" ? "Copied!" : "Copiado"}
               />
             </div>
           </details>
@@ -131,6 +132,7 @@ const breadcrumbData = {
             description={post.data.subtitle ?? post.data.excerpt ?? ""}
             slug={post.slug}
             showCopy={true}
+            copyLabel={currentLocale === "en" ? "Copied!" : "Copiado"}
           />
         </div>
         <!-- <Disqus client:load /> -->
@@ -140,14 +142,48 @@ const breadcrumbData = {
 </section>
 
 <script is:inline>
+  const shareLists = document.querySelectorAll("[data-share-title]");
+  const shareUrl = window.location.href;
+  const shareTitle = (list) => list.getAttribute("data-share-title") ?? "";
+  const shareDescription = (list) => list.getAttribute("data-share-description") ?? "";
+
+  shareLists.forEach((list) => {
+    const title = encodeURIComponent(shareTitle(list));
+    const description = encodeURIComponent(shareDescription(list));
+    const encodedUrl = encodeURIComponent(shareUrl);
+
+    list.querySelectorAll("[data-share-link]").forEach((link) => {
+      const type = link.getAttribute("data-share-link");
+      if (!type) return;
+      let href = "#";
+      if (type === "facebook") {
+        href = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+      }
+      if (type === "linkedin") {
+        href = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${title}&summary=${description}&source=${encodedUrl}`;
+      }
+      if (type === "instagram") {
+        href = `https://www.instagram.com/?url=${encodedUrl}`;
+      }
+      link.setAttribute("href", href);
+    });
+  });
+
   document.querySelectorAll(".copy-link-button").forEach((button) => {
     button.addEventListener("click", async () => {
-      const url = button.getAttribute("data-copy-url");
-      if (!url) return;
+      const tooltip = button.querySelector(".copy-tooltip");
       try {
-        await navigator.clipboard.writeText(url);
-        button.classList.add("text-primary");
-        window.setTimeout(() => button.classList.remove("text-primary"), 1500);
+        await navigator.clipboard.writeText(shareUrl);
+        if (tooltip) {
+          tooltip.classList.add("opacity-100");
+          tooltip.classList.remove("opacity-0");
+        }
+        window.setTimeout(() => {
+          if (tooltip) {
+            tooltip.classList.remove("opacity-100");
+            tooltip.classList.add("opacity-0");
+          }
+        }, 1600);
       } catch (error) {
         console.error("Failed to copy link", error);
       }

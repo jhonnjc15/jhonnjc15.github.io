@@ -1,5 +1,4 @@
 ---
-import config from "@config/config.json";
 import {
   IoLogoFacebook,
   IoLogoInstagram,
@@ -7,21 +6,32 @@ import {
   IoLinkOutline,
 } from "react-icons/io5/index.js";
 
-const { base_url } = config.site;
-const { title, description, slug, className, showCopy = false } = Astro.props;
-const shareUrl = `${base_url}/${slug}`;
+const {
+  title,
+  description,
+  slug,
+  className,
+  showCopy = false,
+  copyLabel = "Copied!",
+} = Astro.props;
 const itemClass =
-  "inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-text-offset transition hover:bg-primary/10 hover:text-primary";
+  "relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-text-offset transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
 ---
 
-<ul class={`${className}`}>
+<ul
+  class={`${className}`}
+  data-share-title={title}
+  data-share-description={description}
+  data-share-slug={slug}
+>
   <li class="inline-block">
     <a
       aria-label="facebook share button"
-      href={`https://facebook.com/sharer/sharer.php?u=${shareUrl}`}
+      href="#"
       target="_blank"
       rel="noreferrer noopener"
       class={itemClass}
+      data-share-link="facebook"
     >
       <IoLogoFacebook />
     </a>
@@ -29,10 +39,11 @@ const itemClass =
   <li class="inline-block">
     <a
       aria-label="linkedin share button"
-      href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${title}&summary=${description}&source=${base_url}`}
+      href="#"
       target="_blank"
       rel="noreferrer noopener"
       class={itemClass}
+      data-share-link="linkedin"
     >
       <IoLogoLinkedin />
     </a>
@@ -40,10 +51,11 @@ const itemClass =
   <li class="inline-block">
     <a
       aria-label="instagram share button"
-      href={`https://www.instagram.com/?url=${shareUrl}`}
+      href="#"
       target="_blank"
       rel="noreferrer noopener"
       class={itemClass}
+      data-share-link="instagram"
     >
       <IoLogoInstagram />
     </a>
@@ -55,9 +67,12 @@ const itemClass =
           type="button"
           aria-label="copy link"
           class={`${itemClass} copy-link-button`}
-          data-copy-url={shareUrl}
+          data-copy-label={copyLabel}
         >
           <IoLinkOutline />
+          <span class="copy-tooltip pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition">
+            {copyLabel}
+          </span>
         </button>
       </li>
     )
