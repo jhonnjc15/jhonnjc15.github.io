@@ -97,13 +97,13 @@ const breadcrumbData = {
               }
             </li>
           </ul>
-          <details class="relative">
+          <details class="relative" data-share-dropdown>
             <summary class="list-none">
-              <span class="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border border-primary/30 bg-primary/10 text-lg text-primary shadow-lg shadow-primary/10 transition hover:border-primary hover:bg-primary/20">
+              <span class="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border border-primary/40 bg-primary/20 text-lg text-primary shadow-lg shadow-primary/10 transition hover:border-primary hover:bg-primary/30 dark:border-primary/50">
                 <IoShareSocialOutline />
               </span>
             </summary>
-            <div class="absolute right-0 z-10 mt-3 rounded-2xl border border-primary/20 bg-background/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur">
+            <div class="absolute right-0 z-10 mt-3 rounded-2xl border border-black/10 bg-white/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur dark:border-primary/20 dark:bg-background/95">
               <Share
                 className="flex items-center gap-2"
                 title={post.data.title}
@@ -122,8 +122,8 @@ const breadcrumbData = {
         >
           <Content />
         </div>
-        <div class="mt-10 border-t border-white/10 pt-8">
-          <h2 class="text-lg font-semibold text-text-offset">
+        <div class="mt-10 border-t border-black/10 pt-8 dark:border-white/10">
+          <h2 class="text-center text-lg font-semibold text-text-offset">
             {currentLocale === "en" ? "Share this post" : "Comparte este post"}
           </h2>
           <Share
@@ -143,6 +143,7 @@ const breadcrumbData = {
 
 <script is:inline>
   const shareLists = document.querySelectorAll("[data-share-title]");
+  const dropdowns = document.querySelectorAll("[data-share-dropdown]");
   const shareUrl = window.location.href;
   const shareTitle = (list) => list.getAttribute("data-share-title") ?? "";
   const shareDescription = (list) => list.getAttribute("data-share-description") ?? "";
@@ -187,6 +188,14 @@ const breadcrumbData = {
       } catch (error) {
         console.error("Failed to copy link", error);
       }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.hasAttribute("open")) return;
+      if (dropdown.contains(event.target)) return;
+      dropdown.removeAttribute("open");
     });
   });
 </script>
