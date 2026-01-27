@@ -16,10 +16,10 @@ const {
   forceLight = false,
 } = Astro.props;
 const itemClassBase =
-  "relative inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/80 text-text-offset shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
+  "relative inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/80 shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
 const itemClass = forceLight
-  ? `${itemClassBase} border-black/15`
-  : `${itemClassBase} border-black/15 dark:border-white/25 dark:bg-white/20 dark:text-white`;
+  ? `${itemClassBase} border-black/20 text-black/70`
+  : `${itemClassBase} border-black/15 text-text-offset dark:border-white/25 dark:bg-white/20 dark:text-white`;
 ---
 
 <ul
