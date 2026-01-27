@@ -176,11 +176,13 @@ const breadcrumbData = {
       const tooltip = button.querySelector(".copy-tooltip");
       try {
         await navigator.clipboard.writeText(shareUrl);
+        button.classList.add("ring-2", "ring-green-400/70");
         if (tooltip) {
           tooltip.classList.add("opacity-100");
           tooltip.classList.remove("opacity-0");
         }
         window.setTimeout(() => {
+          button.classList.remove("ring-2", "ring-green-400/70");
           if (tooltip) {
             tooltip.classList.remove("opacity-100");
             tooltip.classList.add("opacity-0");
