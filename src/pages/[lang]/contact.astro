@@ -5,18 +5,9 @@ import config from "@config/config.json";
 import Base from "@layouts/Base.astro";
 import { getEntryBySlug } from "astro:content";
 import Form from "@layouts/function-components/Form";
-import {
-  IoLogoFacebook,
-  IoLogoLinkedin,
-  IoLogoInstagram,
-  IoLogoYoutube,
-  IoLogoTiktok,
-  IoLogoWhatsapp,
-} from "react-icons/io5/index.js";
+import Social from "@components/Social.astro";
 import { getEntry } from "astro:content";
 import social from "@config/social.json";
-import { humanize } from "@lib/utils/textConverter";
-import { RiTelegramFill } from "react-icons/ri/index.js";
 
 
 const { currentLocale } = Astro
@@ -31,16 +22,6 @@ if (!entry) {
 
 const { title, page_title, form_content_data } = entry.data;
 const allowedNetworks = ["facebook", "linkedin", "instagram", "youtube", "tiktok", "whatsapp", "telegram"];
-const socialIcons = {
-  facebook: IoLogoFacebook,
-  linkedin: IoLogoLinkedin,
-  instagram: IoLogoInstagram,
-  youtube: IoLogoYoutube,
-  tiktok: IoLogoTiktok,
-  whatsapp: IoLogoWhatsapp,
-  telegram: RiTelegramFill,
-};
-const socialLinks = Object.entries(social).filter(([network, url]) => allowedNetworks.includes(network) && Boolean(url));
 
 const { contact_form_action } = config.params;
 const contact = entry.data;
@@ -112,22 +93,11 @@ export async function getStaticPaths() {
 
               <div class="my-6 border-t border-white/25 dark:border-white/20" aria-hidden="true"></div>
 
-              <div class="flex flex-wrap items-center justify-center gap-3 text-xl text-white">
-                {socialLinks.map(([network, url]) => (
-                  <a
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white border border-white/25 hover:bg-white/25 transition"
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={humanize(network)}
-                  >
-                    {(() => {
-                      const Icon = socialIcons[network];
-                      return Icon ? <Icon /> : null;
-                    })()}
-                  </a>
-                ))}
-              </div>
+              <Social
+                source={social}
+                networks={allowedNetworks}
+                className="flex flex-wrap items-center justify-center gap-3 text-xl"
+              />
             </div>
           </div>
         </div>

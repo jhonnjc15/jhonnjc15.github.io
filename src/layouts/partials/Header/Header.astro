@@ -122,7 +122,12 @@ function isActive(pathname: string, baseUrl: string, locale: string) {
           <span class="topbar-text">{topbarLocationLabel}</span>
         </a>
       </div>
-      <Social source={topbarSocial} className="social-icons topbar-social-icons" />
+      <Social
+        source={topbarSocial}
+        networks={["facebook", "instagram", "youtube", "linkedin"]}
+        className="flex items-center gap-1 text-[11px]"
+        sizeClass="h-4 w-4"
+      />
     </div>
   </div>
   <nav
