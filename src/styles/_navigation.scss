@@ -40,9 +40,9 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .topbar-container {
-  @apply sticky top-0 z-[60] mb-2;
-  height: 50px;
-  min-height: 50px;
+  @apply sticky top-0 z-[60];
+  height: 40px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
