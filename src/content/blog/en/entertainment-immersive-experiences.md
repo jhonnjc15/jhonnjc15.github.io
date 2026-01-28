@@ -3,7 +3,7 @@ title: "Designing Immersive Entertainment Experiences"
 translationKey: blog-immersive-experiences
 subtitle: "Behind the scenes of our interactive storytelling prototypes"
 date: 2024-05-08
-image: "/images/blog/posts/post-6.png"
+image: "/images/blog/entertainment-immersive-experiences/featured.png"
 author: "Paqari Team"
 categories:
   - entertainment
@@ -16,7 +16,7 @@ Entertainment is a powerful entry point to explore science and technology. Our c
 
 Every show or installation begins with a blueprint that maps the visitor flow, the emotional beats, and the technical triggers. We co-create it with partners so they know exactly which assets to prepare and which steps they can customize.
 
-![Storyboard wall with interactive story beats](/images/blog/posts/post-7.png)
+![Storyboard wall with interactive story beats](/images/blog/entertainment-immersive-experiences/post-7.png)
 
 ### Module kit
 
@@ -30,7 +30,7 @@ Every show or installation begins with a blueprint that maps the visitor flow, t
 
 We synchronize audio cues and lighting transitions directly from the blueprint. Facilitators can trigger them manually or let our control app handle the timing. Each cue references a downloadable asset pack so teams can localize voices and music.
 
-![Team testing sensors inside an immersive set](/images/blog/posts/post-9.png)
+![Team testing sensors inside an immersive set](/images/blog/entertainment-immersive-experiences/post-9.png)
 
 ## Implementation scenarios
 

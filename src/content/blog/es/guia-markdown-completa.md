@@ -3,7 +3,7 @@ title: "Guía completa de Markdown para el blog"
 translationKey: blog-markdown-showcase
 subtitle: "Un post de muestra para ver títulos, listas, tablas, código e imágenes"
 date: 2024-08-25
-image: "/images/blog/posts/post-12.png"
+image: "/images/blog/guia-markdown-completa/featured.png"
 author: "Equipo Paqari"
 categories:
   - educational
@@ -47,7 +47,7 @@ show: false
 
 ## Imágenes y multimedia
 
-![Equipo Paqari preparando un taller](/images/blog/posts/post-9.png)
+![Equipo Paqari preparando un taller](/images/blog/guia-markdown-completa/post-9.png)
 
 La imagen anterior se centra automáticamente y toma un ancho cómodo para lectura en móvil y escritorio.
 

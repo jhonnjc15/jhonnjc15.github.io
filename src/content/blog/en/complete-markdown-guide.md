@@ -3,7 +3,7 @@ title: "Complete Markdown Guide for the Blog"
 translationKey: blog-markdown-showcase
 subtitle: "A full sample post showcasing headings, lists, tables, code, and images"
 date: 2024-08-25
-image: "/images/blog/posts/post-12.png"
+image: "/images/blog/complete-markdown-guide/featured.png"
 author: "Paqari Team"
 categories:
   - educational
@@ -45,7 +45,7 @@ Welcome! This post is a complete sample to show everything you can do with Markd
 
 ## Images and media
 
-![Paqari team preparing a workshop](/images/blog/posts/post-9.png)
+![Paqari team preparing a workshop](/images/blog/complete-markdown-guide/post-9.png)
 
 The image above centers automatically and uses a comfortable width for mobile and desktop reading.
 

@@ -3,7 +3,7 @@ title: "Community Open Labs on the Move"
 translationKey: blog-community-open-labs
 subtitle: "How we take Paqari workshops to neighborhoods and partner spaces"
 date: 2024-07-12
-image: "/images/blog/posts/post-11.png"
+image: "/images/blog/community-open-labs/featured.png"
 author: "Paqari Team"
 categories:
   - educational
@@ -20,7 +20,7 @@ Our traveling kit focuses on the essentials so teams can set up in under 20 minu
 - Tablets preloaded with tutorials and checklists.
 - A mini print station for labels, QR codes, and consent forms.
 
-![Facilitators aligning a curriculum board](/images/blog/posts/post-3.png)
+![Facilitators aligning a curriculum board](/images/blog/community-open-labs/post-3.png)
 
 > **Tip:** If a venue already has connectivity, switch the tutorials to streaming mode and free up tablet storage for media capture.
 
@@ -32,7 +32,7 @@ We split each visit into three repeatable blocks that any host team can remix:
 2. **Build + test (45 min):** Assemble sensors or storytelling props and document what changes.
 3. **Share-out (20 min):** Capture voice notes, photos, and next steps in the shared workspace.
 
-![Storyboard wall with interactive story beats](/images/blog/posts/post-5.png)
+![Storyboard wall with interactive story beats](/images/blog/community-open-labs/post-5.png)
 
 ## Handing off the lab
 

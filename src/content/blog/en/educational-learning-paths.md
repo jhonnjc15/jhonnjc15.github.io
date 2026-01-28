@@ -3,7 +3,7 @@ title: "Designing Learning Paths with Paqari"
 translationKey: blog-learning-paths
 subtitle: "How we translate complex concepts into accessible educational experiences"
 date: 2024-04-20
-image: "/images/blog/posts/post-2.png"
+image: "/images/blog/educational-learning-paths/featured.png"
 author: "Paqari Team"
 categories:
   - educational
@@ -16,7 +16,7 @@ Learning should feel like a conversation rather than a long list of instructions
 
 We always begin with a visual map that shows how each module builds toward a clear skill. It includes the required materials, the estimated time per activity, and links to any optional add-ons. Facilitators can print it or load it on a tablet when they are on the move.
 
-![Facilitators aligning a curriculum board](/images/blog/posts/post-4.png)
+![Facilitators aligning a curriculum board](/images/blog/educational-learning-paths/post-4.png)
 
 ### Step 1 — Kickoff discovery session
 
@@ -30,7 +30,7 @@ We always begin with a visual map that shows how each module builds toward a cle
 
 We adapt our library of micro-experiments to match the discovery insights. Each activity card includes setup instructions, facilitator notes, and troubleshooting scenarios. Swap or remove cards freely—if a section is not present in the Markdown playbook it simply stays hidden on the website.
 
-![Prototype cards and digital worksheets on a table](/images/blog/posts/post-8.png)
+![Prototype cards and digital worksheets on a table](/images/blog/educational-learning-paths/post-8.png)
 
 ### Step 3 — Deploy and measure
 
@@ -51,7 +51,7 @@ All deliverables live in our open repository. Facilitators can download only the
 | Assessment checklist | Tracks skills, attitudes, and collaboration indicators | After every pilot |
 | Community follow-up emails | Keeps alumni engaged with new challenges | Quarterly or per cohort |
 
-![Students exploring a hands-on electronics kit](/images/blog/posts/post-12.png)
+![Students exploring a hands-on electronics kit](/images/blog/educational-learning-paths/post-12.png)
 
 ## Facilitation checklist
 

@@ -4,9 +4,9 @@ translationKey: blog-electrochemical-graphene
 subtitle: "Exfoliación anódica para obtener óxido de grafeno reducido (rGO)"
 description: "Guía breve con materiales, montaje y precauciones para exfoliar grafito por vía electroquímica."
 date: 2024-08-30
-image: "/images/blog/posts/post-13.png"
-cover: "/images/blog/posts/post-13.png"
-ogImage: "/images/home/gallery/pqol2025_egraphen.png"
+image: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
+cover: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
+ogImage: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
 author: "Paqari OpenLab"
 categories:
   - scientific

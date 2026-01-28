@@ -100,20 +100,20 @@ gallery:
   title: Crecimos escuchando a las aulas que no tenían laboratorio
   description: "Estas escenas muestran prototipos, talleres solares y prácticas reales que llevamos a escuelas y comunidades."
   images:
-    - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
-      alt: "Equipo ideando en una mesa de laboratorio"
+    - src: "/images/about/gallery/Baterias2025.png"
+      alt: "Experimentos de baterías en un taller Paqari"
       size: feature
-    - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
-      alt: "Código abierto en pantalla con reflejos de colores"
+    - src: "/images/about/gallery/Pqlab_catal_96pi.png"
+      alt: "Montaje de kit de catálisis para estudiantes"
       size: portrait
-    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
-      alt: "Desarrolladora probando un dispositivo portátil"
+    - src: "/images/about/gallery/PqOl_hack_matter.png"
+      alt: "Prototipos de hackathon con Paqari OpenLab"
       size: landscape
-    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
-      alt: "Dos personas colaborando frente a panel interactivo"
+    - src: "/images/about/gallery/pqol2025_egqds.png"
+      alt: "Demostración de puntos cuánticos en Paqari OpenLab"
       size: square
-    - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
-      alt: "Microscopio y cuaderno de notas en banco de pruebas"
+    - src: "/images/about/gallery/pqol2025_egraphen.png"
+      alt: "Sesión de síntesis de grafeno en Paqari OpenLab"
       size: statement
 
 ## nuestros trabajos

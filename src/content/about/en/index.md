@@ -98,20 +98,20 @@ gallery:
   title: We grew by listening to classrooms without labs
   description: "These scenes show prototypes, solar workshops, and real practices we bring to schools and communities."
   images:
-    - src: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80"
-      alt: "Team brainstorming around a lab table"
+    - src: "/images/about/gallery/Baterias2025.png"
+      alt: "Battery experiments during a Paqari workshop"
       size: feature
-    - src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80"
-      alt: "Open-source code glowing on a monitor"
+    - src: "/images/about/gallery/Pqlab_catal_96pi.png"
+      alt: "Catalysis lab kit setup for students"
       size: portrait
-    - src: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80"
-      alt: "Developer testing a wearable device"
+    - src: "/images/about/gallery/PqOl_hack_matter.png"
+      alt: "Hackathon prototypes with Paqari OpenLab"
       size: landscape
-    - src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
-      alt: "Two collaborators pointing at an interactive display"
+    - src: "/images/about/gallery/pqol2025_egqds.png"
+      alt: "Quantum dots demonstration at Paqari OpenLab"
       size: square
-    - src: "https://images.unsplash.com/photo-1554384645-13eab165c24b?auto=format&fit=crop&w=1600&q=80"
-      alt: "Microscope and notebook on a testing bench"
+    - src: "/images/about/gallery/pqol2025_egraphen.png"
+      alt: "Graphene synthesis session at Paqari OpenLab"
       size: statement
 
 ## our works
