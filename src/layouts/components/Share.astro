@@ -16,7 +16,7 @@ const {
   forceLight = false,
 } = Astro.props;
 const itemClassBase =
-  "relative inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/80 shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
+  "group relative inline-flex h-11 w-11 items-center justify-center rounded-full border bg-white/80 shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary";
 const itemClass = forceLight
   ? `${itemClassBase} border-black/20 text-black/70`
   : `${itemClassBase} border-black/15 text-text-offset dark:border-white/25 dark:bg-white/20 dark:text-white`;
@@ -37,7 +37,9 @@ const itemClass = forceLight
       class={itemClass}
       data-share-link="facebook"
     >
-      <IoLogoFacebook />
+      <span class="transition-transform duration-200 ease-out group-hover:scale-105">
+        <IoLogoFacebook />
+      </span>
     </a>
   </li>
   <li class="inline-block">
@@ -49,7 +51,9 @@ const itemClass = forceLight
       class={itemClass}
       data-share-link="linkedin"
     >
-      <IoLogoLinkedin />
+      <span class="transition-transform duration-200 ease-out group-hover:scale-105">
+        <IoLogoLinkedin />
+      </span>
     </a>
   </li>
   <li class="inline-block">
@@ -61,7 +65,9 @@ const itemClass = forceLight
       class={itemClass}
       data-share-link="instagram"
     >
-      <IoLogoInstagram />
+      <span class="transition-transform duration-200 ease-out group-hover:scale-105">
+        <IoLogoInstagram />
+      </span>
     </a>
   </li>
   {
@@ -73,7 +79,9 @@ const itemClass = forceLight
           class={`${itemClass} copy-link-button`}
           data-copy-label={copyLabel}
         >
-          <IoLinkOutline />
+          <span class="transition-transform duration-200 ease-out group-hover:scale-105">
+            <IoLinkOutline />
+          </span>
           <span class="copy-tooltip pointer-events-none absolute -top-0 left-1/2 z-20 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-paqariGreen px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-200 ease-out dark:bg-paqariYellow dark:text-black">
             {copyLabel}
           </span>
