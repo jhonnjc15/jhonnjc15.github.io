@@ -18,7 +18,7 @@ whoWeAre:
     We build a modular, portable lab that blends technology, creativity, and community so any
     classroom can experiment with chemistry, energy, and nanotech without barriers.
   image:
-    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/whoWeAre/photo-1521737604893-d14cc237f11d.jpeg"
     alt: "Paqari team collaborating"
 vision:
   title: "Vision"
@@ -28,7 +28,7 @@ vision:
   statement: >-
     We aim to achieve for chemistry and nanotechnology what Raspberry Pi achieved for electronics and programming.
   image:
-    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/vision_mision/photo-1503676260728-1c00da094a0b.jpeg"
     alt: "People collaborating on scientific ideas"
 mission:
   title: "Mission"
@@ -45,7 +45,7 @@ culture:
     open data, and diverse community participation to turn ideas into solutions that serve
     schools and productive sectors.
   image:
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/culture/photo-1522202176988-66273c2fd55f.jpeg"
     alt: "Colleagues sharing ideas in a creative space"
 openFrontiers:
   title: "Open Frontiers"
@@ -53,7 +53,7 @@ openFrontiers:
     Our lab-on-a-device model works with solar power, free apps, and offline operation for schools
     without internet or traditional labs, connecting applied science with real-world contexts.
   image:
-    src: "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/openFrontiers/photo-1554475901-4538ddfbccc2.jpeg"
     alt: "Exploring open science"
 labImpact:
   title: "Ripple of Change"
@@ -62,7 +62,7 @@ labImpact:
     closer to those opportunities through safe, low-consumption methods replicable in classrooms,
     in the field, or in industry.
   image:
-    src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/labImpact/photo-1501594907352-04cda38ebc29.jpeg"
     alt: "People observing scientific breakthroughs"
 pocketLab:
   title: "Science Anywhere"
@@ -71,7 +71,7 @@ pocketLab:
     remote control, downloadable guides, and electrochemistry, energy, and spectroscopy practices
     that fit in a portable device.
   image:
-    src: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
+    src: "/images/about/pocketLab/photo-1603791440384-56cd371ee9a7.jpeg"
     alt: "Portable technology enabling science"
 
 # counter
