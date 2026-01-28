@@ -4,8 +4,9 @@ translationKey: blog-electrochemical-graphene
 subtitle: "Anodic exfoliation to obtain reduced graphene oxide (rGO)"
 description: "A concise guide to materials, setup, and safety notes for electrochemical exfoliation of graphite."
 date: 2024-08-30
-image: "/images/blog/electrochemical-graphene-synthesis/featured.png"
-ogImage: "/images/blog/electrochemical-graphene-synthesis/featured.png"
+image: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
+cover: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
+ogImage: "/images/blog/sintesis-electroquimica-grafeno/featured.png"
 author: "Paqari OpenLab"
 categories:
   - scientific

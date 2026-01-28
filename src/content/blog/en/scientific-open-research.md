@@ -3,7 +3,7 @@ title: "Collaborative Research in the Open"
 translationKey: blog-open-research
 subtitle: "Building scientific tools alongside the communities that use them"
 date: 2024-06-18
-image: "/images/blog/scientific-open-research/featured.png"
+image: "/images/blog/investigacion-abierta/featured.png"
 author: "Paqari Team"
 categories:
   - scientific

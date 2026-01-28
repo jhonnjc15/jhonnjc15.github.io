@@ -3,7 +3,7 @@ title: "Designing Immersive Entertainment Experiences"
 translationKey: blog-immersive-experiences
 subtitle: "Behind the scenes of our interactive storytelling prototypes"
 date: 2024-05-08
-image: "/images/blog/entertainment-immersive-experiences/featured.png"
+image: "/images/blog/experiencias-inmersivas/featured.png"
 author: "Paqari Team"
 categories:
   - entertainment

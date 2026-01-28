@@ -98,19 +98,19 @@ gallery:
   title: We grew by listening to classrooms without labs
   description: "These scenes show prototypes, solar workshops, and real practices we bring to schools and communities."
   images:
-    - src: "/images/about/gallery/Baterias2025.png"
+    - src: "/images/about/gallery/photo-1554384645-13eab165c24b.jpeg"
       alt: "Battery experiments during a Paqari workshop"
       size: feature
-    - src: "/images/about/gallery/Pqlab_catal_96pi.png"
+    - src: "/images/about/gallery/photo-1556761175-4b46a572b786.jpeg"
       alt: "Catalysis lab kit setup for students"
       size: portrait
-    - src: "/images/about/gallery/PqOl_hack_matter.png"
+    - src: "/images/about/gallery/photo-1487058792275-0ad4aaf24ca7.jpeg"
       alt: "Hackathon prototypes with Paqari OpenLab"
       size: landscape
-    - src: "/images/about/gallery/pqol2025_egqds.png"
+    - src: "/images/about/gallery/photo-1504384308090-c894fdcc538d.jpeg"
       alt: "Quantum dots demonstration at Paqari OpenLab"
       size: square
-    - src: "/images/about/gallery/pqol2025_egraphen.png"
+    - src: "/images/about/gallery/photo-1515879218367-8466d910aaa4.jpeg"
       alt: "Graphene synthesis session at Paqari OpenLab"
       size: statement
 

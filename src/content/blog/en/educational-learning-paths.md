@@ -3,12 +3,14 @@ title: "Designing Learning Paths with Paqari"
 translationKey: blog-learning-paths
 subtitle: "How we translate complex concepts into accessible educational experiences"
 date: 2024-04-20
-image: "/images/blog/educational-learning-paths/featured.png"
+image: "/images/blog/recorridos-de-aprendizaje/featured.png"
+cover: "/images/blog/recorridos-de-aprendizaje/featured.png"
+ogImage: "/images/blog/recorridos-de-aprendizaje/featured.png"
 author: "Paqari Team"
 categories:
   - educational
 featured: false
-show: false
+show: true
 ---
 Learning should feel like a conversation rather than a long list of instructions. At Paqari Open Lab we start every project by mapping the real problems that learners face. That investigation becomes a learning path that mixes physical experiences, digital resources, and community support.
 

@@ -3,7 +3,7 @@ title: "Complete Markdown Guide for the Blog"
 translationKey: blog-markdown-showcase
 subtitle: "A full sample post showcasing headings, lists, tables, code, and images"
 date: 2024-08-25
-image: "/images/blog/complete-markdown-guide/featured.png"
+image: "/images/blog/guia-markdown-completa/featured.png"
 author: "Paqari Team"
 categories:
   - educational

@@ -3,7 +3,7 @@ title: "Community Open Labs on the Move"
 translationKey: blog-community-open-labs
 subtitle: "How we take Paqari workshops to neighborhoods and partner spaces"
 date: 2024-07-12
-image: "/images/blog/community-open-labs/featured.png"
+image: "/images/blog/laboratorios-comunitarios-abiertos/featured.png"
 author: "Paqari Team"
 categories:
   - educational
