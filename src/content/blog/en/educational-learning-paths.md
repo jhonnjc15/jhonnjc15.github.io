@@ -18,7 +18,9 @@ Learning should feel like a conversation rather than a long list of instructions
 
 We always begin with a visual map that shows how each module builds toward a clear skill. It includes the required materials, the estimated time per activity, and links to any optional add-ons. Facilitators can print it or load it on a tablet when they are on the move.
 
-![Facilitators aligning a curriculum board](/images/blog/recorridos-de-aprendizaje/post-4.png)
+![Facilitadores organizando un tablero curricular](/images/blog/recorridos-de-aprendizaje/post-4.png)
+
+![Tarjetas de prototipo y guías digitales sobre la mesa](/images/blog/recorridos-de-aprendizaje/post-8.png)
 
 ### Step 1 — Kickoff discovery session
 
@@ -32,7 +34,7 @@ We always begin with a visual map that shows how each module builds toward a cle
 
 We adapt our library of micro-experiments to match the discovery insights. Each activity card includes setup instructions, facilitator notes, and troubleshooting scenarios. Swap or remove cards freely—if a section is not present in the Markdown playbook it simply stays hidden on the website.
 
-![Prototype cards and digital worksheets on a table](/images/blog/recorridos-de-aprendizaje/post-8.png)
+![Facilitadores organizando un tablero curricular](/images/blog/recorridos-de-aprendizaje/post-4.png)
 
 ### Step 3 — Deploy and measure
 

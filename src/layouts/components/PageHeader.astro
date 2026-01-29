@@ -17,47 +17,55 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
   <span class="absolute w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 lg:left-6 rounded-full skew-y-12 blur-3xl opacity-30 skew-x-12 rotate-90"></span>
   <span class="absolute w-2/12 lg:w-1/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 top-5 lg:top-[120px] right-6 rounded-full skew-y-12 blur-2xl opacity-30 skew-x-12 rotate-90"></span>
   <div class="relative" data-animate="fade-up">
-    <ul
-      class="border border-primary/30 breadcrumb inline-flex h-9 items-center justify-center space-x-2 rounded-3xl dark:bg-theme-light/20 bg-theme-light/80 px-5 py-2 backdrop-blur"
-    >
-      <li class="leading-none text-dark">
-        <a
-          href={getRelativeLocaleUrl(currentLocale ?? '',`/`)}
-          class="inline-flex items-end text-primary"
-        >
-          <svg
-            class="mr-1.5 leading-none"
-            width="18"
-            height="18"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
+    <div class="w-full overflow-x-auto overflow-y-hidden [-webkit-overflow-scrolling:touch]">
+      <ul
+        class="border border-primary/30 breadcrumb inline-flex items-center justify-center space-x-2 rounded-3xl
+              dark:bg-theme-light/20 bg-theme-light/80 px-5 py-2 backdrop-blur
+              whitespace-nowrap overflow-y-hidden"
+      >
+        <li class="leading-none text-dark shrink-0">
+          <a
+            href={getRelativeLocaleUrl(currentLocale ?? '',`/`)}
+            class="inline-flex items-end text-primary shrink-0"
           >
-            <path
-              d="M13.1769 15.0588H10.3533V9.41178H5.64744V15.0588H2.82391V6.58825H1.88274V16H14.118V6.58825H13.1769V15.0588ZM6.58862 15.0588V10.353H9.41215V15.0588H6.58862ZM15.8084 6.09225L15.2512 6.85178L8.00038 1.52472L0.749559 6.8499L0.192383 6.09131L8.00038 0.357666L15.8084 6.09225Z"
-              fill="currentColor"></path>
-          </svg>
-          <span class="leading-none">Home</span>
-        </a>
-      </li>
-      <li class="leading-none text-dark ">
-        {
-          index_title ? (
-            <span class="leading-none">
-              <span class="text-default">/</span>{" "}
-              <a
-                href={getRelativeLocaleUrl(currentLocale ?? '',`/${index_path}`)}
-                class="text-primary"
-              >
-                {index_title}
-              </a>{" "}
-              <span class="text-default">/</span> <span class="text-default">{page_title ? page_title : humanize(slug.replace("page /", ""))}</span>
-            </span>
-          ) : (
-            <span class="leading-none text-default">/ {title}</span>
-          )
-        }
-      </li>
-    </ul>
+            <svg
+              class="mr-1.5 leading-none shrink-0"
+              width="18"
+              height="18"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.1769 15.0588H10.3533V9.41178H5.64744V15.0588H2.82391V6.58825H1.88274V16H14.118V6.58825H13.1769V15.0588ZM6.58862 15.0588V10.353H9.41215V15.0588H6.58862ZM15.8084 6.09225L15.2512 6.85178L8.00038 1.52472L0.749559 6.8499L0.192383 6.09131L8.00038 0.357666L15.8084 6.09225Z"
+                fill="currentColor"></path>
+            </svg>
+            <span class="leading-none shrink-0">Home</span>
+          </a>
+        </li>
+
+        <li class="leading-none text-dark shrink-0">
+          {
+            index_title ? (
+              <span class="leading-none shrink-0">
+                <span class="text-default">/</span>{" "}
+                <a
+                  href={getRelativeLocaleUrl(currentLocale ?? '',`/${index_path}`)}
+                  class="text-primary shrink-0"
+                >
+                  {index_title}
+                </a>{" "}
+                <span class="text-default">/</span>{" "}
+                <span class="text-default shrink-0">
+                  {page_title ? page_title : humanize(slug.replace("page /", ""))}
+                </span>
+              </span>
+            ) : (
+              <span class="leading-none text-default shrink-0">/ {title}</span>
+            )
+          }
+        </li>
+      </ul>
+    </div>
     <div class="p-0 lg:p-10">
       <h1
         class="mb-5 mt-8 text-default text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight"

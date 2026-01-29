@@ -20,6 +20,8 @@ Siempre abrimos el proyecto con un mapa visual que muestra cómo cada módulo fo
 
 ![Facilitadores organizando un tablero curricular](/images/blog/recorridos-de-aprendizaje/post-4.png)
 
+![Tarjetas de prototipo y guías digitales sobre la mesa](/images/blog/recorridos-de-aprendizaje/post-8.png)
+
 ### Paso 1 — Sesión de descubrimiento
 
 1. Organiza una conversación de 30 minutos para entender cómo el grupo aborda actualmente el tema.
@@ -32,7 +34,7 @@ Siempre abrimos el proyecto con un mapa visual que muestra cómo cada módulo fo
 
 Adaptamos nuestra biblioteca de microexperiencias según los hallazgos de descubrimiento. Cada tarjeta de actividad incluye instrucciones de montaje, notas para facilitadores y escenarios de resolución de problemas. Cambia o elimina tarjetas libremente; si una sección no está en el cuaderno Markdown simplemente no se mostrará en el sitio.
 
-![Tarjetas de prototipo y guías digitales sobre la mesa](/images/blog/recorridos-de-aprendizaje/post-8.png)
+![Facilitadores organizando un tablero curricular](/images/blog/recorridos-de-aprendizaje/post-4.png)
 
 ### Paso 3 — Implementación y medición
 

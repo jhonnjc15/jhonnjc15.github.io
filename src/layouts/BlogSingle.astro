@@ -62,15 +62,16 @@ const breadcrumbData = {
           />
         </div>
       </div>
-      <div class="mt-10 max-w-[900px] lg:col-9" data-animate="fade-up">
+      <div class="mt-10 max-w-[900px] lg:col-9">
         <h1
           class="h2 text-4xl md:text-5xl font-extrabold leading-tight"
           transition:name={`title-${post.slug}`}
+          data-animate="fade-up"
         >
           {post.data.title}
         </h1>
         <div class="mb-5 mt-6 flex flex-wrap items-center justify-between gap-4 text-text-offset">
-          <ul class="flex w-full flex-wrap items-center gap-x-4 gap-y-2 sm:w-auto">
+          <ul class="flex w-full flex-wrap items-center gap-x-4 gap-y-2 sm:w-auto" data-animate="fade-up">
             <li class="inline-flex items-center">
               <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
               {humanize(post.data.author)}
@@ -108,7 +109,7 @@ const breadcrumbData = {
               }
             </li>
           </ul>
-          <details class="relative flex w-full justify-end sm:w-auto" data-share-dropdown>
+          <details class="group relative flex w-full justify-end sm:w-auto" data-share-dropdown data-animate="fade-up">
             <summary class="list-none">
               <span class="group relative inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border border-primary/40 bg-primary/20 text-lg text-primary shadow-lg shadow-primary/10 transition hover:border-primary hover:bg-primary/30 dark:border-primary/50">
                 <IoShareSocialOutline />
@@ -117,7 +118,14 @@ const breadcrumbData = {
                 </span>
               </span>
             </summary>
-            <div class="absolute right-0 z-10 mt-3 rounded-2xl border border-black/15 bg-white/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur dark:border-white/15 dark:bg-background/95">
+
+            <div
+              class="absolute right-0 top-10 z-10 mt-3 rounded-2xl border border-black/15 bg-white/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur dark:border-white/15 dark:bg-background/95
+                    origin-top-right
+                    opacity-0 translate-y-[-6px] scale-[0.98] pointer-events-none
+                    transition duration-500 ease-in-out
+                    group-open:opacity-100 group-open:translate-y-0 group-open:scale-100 group-open:pointer-events-auto"
+            >
               <Share
                 className="flex items-center gap-2"
                 title={post.data.title}
@@ -133,11 +141,11 @@ const breadcrumbData = {
 
         <div
           class="content prose prose-neutral max-w-none dark:prose-invert prose-a:text-primary dark:prose-a:text-primary"
-          data-animate="fade-up"
+          data-animate="fade-right"
         >
           <Content />
         </div>
-        <div class="mt-10 border-t border-black/15 pt-8 dark:border-white/15">
+        <div class="mt-10 border-t border-black/15 pt-8 dark:border-white/15" data-animate="fade-up">
           <h2 class="text-center text-lg font-semibold text-text-offset">
             {currentLocale === "en" ? "Share this post" : "Comparte este post"}
           </h2>
