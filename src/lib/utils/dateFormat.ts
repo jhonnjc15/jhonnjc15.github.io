@@ -1,7 +1,8 @@
-const dateFormat = (datetime: string | Date) => {
+const dateFormat = (datetime: string | Date, locale: string = "en") => {
   const dateTime = new Date(datetime);
+  const resolvedLocale = locale.startsWith("es") ? "es-ES" : "en-US";
 
-  const date = dateTime.toLocaleDateString([], {
+  const date = dateTime.toLocaleDateString(resolvedLocale, {
     year: "numeric",
     month: "long",
     day: "numeric",

@@ -74,27 +74,33 @@ const breadcrumbData = {
 
             <li class="inline-flex items-center">
               <FaRegCalendarAlt className={"mr-2 -mt-1 inline-block"} />
-              {dateFormat(post.data.date)}
+              {dateFormat(post.data.date, currentLocale ?? "en")}
             </li>
             <li class="inline-flex items-center">
               <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-              {post.data.time_to_read ?? readingTime(post.body)}
+              {post.data.time_to_read ?? readingTime(post.body, currentLocale ?? "en")}
             </li>
             <li class="inline-flex items-center gap-2">
               <FaRegFolder className={"-mt-1 inline-block"} />
               {
-                post.data.categories.map((category: string, index: number) => (
-                  <a
-                    href={getRelativeLocaleUrl(
-                      currentLocale ?? '',
-                      `/${blog_folder}/${slugify(category)}`,
-                    )}
-                    class="hover:text-primary"
-                  >
-                    {humanize(category)}
-                    {index !== post.data.categories.length - 1 && ","}
-                  </a>
-                ))
+                post.data.categories.map((category: string, index: number) => {
+                  const entry = categoryEntries.find(
+                    (item) => item.category_name === category,
+                  );
+                  const label = entry?.name ?? humanize(category);
+                  return (
+                    <a
+                      href={getRelativeLocaleUrl(
+                        currentLocale ?? '',
+                        `/${blog_folder}/${slugify(category)}`,
+                      )}
+                      class="hover:text-primary"
+                    >
+                      {label}
+                      {index !== post.data.categories.length - 1 && ","}
+                    </a>
+                  );
+                })
               }
             </li>
           </ul>

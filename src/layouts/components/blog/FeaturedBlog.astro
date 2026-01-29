@@ -3,8 +3,12 @@ import { Image } from 'astro:assets';import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import { humanize, plainify, slugify } from "@lib/utils/textConverter";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 const { summary_length } = config.settings;
 const { posts } = Astro.props;
+const { currentLocale } = Astro;
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
 ---
 
 <h2 class="h4 mb-4">Featured Posts</h2>
@@ -22,11 +26,17 @@ const { posts } = Astro.props;
           />
           <div class="card-content">
             <div class="card-tags space-x-1">
-              {post.data.categories.map((category: any) => (
-                <a class="tag" href={`/categories/${slugify(category)}`}>
-                  {humanize(category)}
-                </a>
-              ))}
+              {post.data.categories.map((category: any) => {
+                const entry = categoryEntries.find(
+                  (item) => item.category_name === category,
+                );
+                const label = entry?.name ?? humanize(category);
+                return (
+                  <a class="tag" href={`/categories/${slugify(category)}`}>
+                    {label}
+                  </a>
+                );
+              })}
             </div>
             <h3 class="h4 card-title">
               <a href={`/blog/${post.slug}`}>{post.data.title}</a>
@@ -53,7 +63,7 @@ const { posts } = Astro.props;
                     fill="#939393"
                   />
                 </svg>
-                {dateFormat(post.data.date)}
+                {dateFormat(post.data.date, currentLocale ?? "en")}
               </span>
               <span class="inline-flex items-center text-xs text-[#666]">
                 <svg
@@ -69,7 +79,7 @@ const { posts } = Astro.props;
                     fill="#939393"
                   />
                 </svg>
-                {post.data.time_to_read ?? readingTime(post.body)}
+                {post.data.time_to_read ?? readingTime(post.body, currentLocale ?? "en")}
               </span>
             </div>
           </div>

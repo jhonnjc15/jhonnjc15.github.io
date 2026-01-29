@@ -1,5 +1,5 @@
 // content reading
-const readingTime = (content: string) => {
+const readingTime = (content: string, locale: string = "en") => {
   const WPS = 275 / 60;
 
   let images = 0;
@@ -26,15 +26,18 @@ const readingTime = (content: string) => {
 
   const minutes = Math.ceil(((words - imageAdjust) / WPS + imageSecs) / 60);
 
-  if (minutes < 10) {
-    if (minutes < 2) {
-      return "0" + minutes + ` Min read`;
-    } else {
-      return "0" + minutes + ` Mins read`;
-    }
-  } else {
-    return minutes + ` Mins read`;
+  const isSpanish = locale.startsWith("es");
+  const paddedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+
+  if (isSpanish) {
+    return `${paddedMinutes} min de lectura`;
   }
+
+  if (minutes === 1) {
+    return `${paddedMinutes} Min read`;
+  }
+
+  return `${paddedMinutes} Mins read`;
 };
 
 export default readingTime;

@@ -5,9 +5,12 @@ import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import { humanize, plainify, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 const { summary_length } = config.settings;
 const { posts, basePath = config.settings.blog_folder, labels } = Astro.props;
 const { currentLocale } = Astro;
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
 
 const buildPostLink = (slug: string) =>
   getRelativeLocaleUrl(currentLocale ?? '', `/${basePath}/${slug}`);
@@ -31,14 +34,20 @@ const buildCategoryLink = (category: string) =>
             />
             <span class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></span>
             <div class="absolute left-4 right-4 top-4 flex flex-wrap gap-2">
-              {item.data.categories.map((category: any) => (
-                <a
-                  class="tag blog-category-tag !border-white/30 !bg-black/30 backdrop-blur"
-                  href={buildCategoryLink(category)}
-                >
-                  {humanize(category)}
-                </a>
-              ))}
+              {item.data.categories.map((category: any) => {
+                const entry = categoryEntries.find(
+                  (item) => item.category_name === category,
+                );
+                const label = entry?.name ?? humanize(category);
+                return (
+                  <a
+                    class="tag blog-category-tag !border-white/30 !bg-black/30 backdrop-blur"
+                    href={buildCategoryLink(category)}
+                  >
+                    {label}
+                  </a>
+                );
+              })}
             </div>
           </div>
           <div class="card-content mt-5 space-y-3">
@@ -68,7 +77,7 @@ const buildCategoryLink = (category: string) =>
                     fill="#939393"
                   />
                 </svg>
-                {dateFormat(item.data.date)}
+                {dateFormat(item.data.date, currentLocale ?? "en")}
               </span>
               <span class="inline-flex items-center text-xs">
                 <svg
@@ -84,7 +93,7 @@ const buildCategoryLink = (category: string) =>
                     fill="#939393"
                   />
                 </svg>
-                {item.data.time_to_read ?? readingTime(item.body)}
+                {item.data.time_to_read ?? readingTime(item.body, currentLocale ?? "en")}
               </span>
               <a
                 class="ml-auto inline-flex items-center text-primary font-semibold hover:underline"

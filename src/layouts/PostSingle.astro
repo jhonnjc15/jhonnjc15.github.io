@@ -6,8 +6,11 @@ import { getSinglePage } from "@lib/contentParser.astro";
 import dateFormat from "@lib/utils/dateFormat";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import categoriesES from "@data/es/blog-categories.json";
+import categoriesEN from "@data/en/blog-categories.json";
 const { blog_folder } = config.settings;
 const { currentLocale } = Astro;
+const categoryEntries = currentLocale === "en" ? categoriesEN : categoriesES;
 
 const allAuthors = await getSinglePage("authors");
 const posts = await getSinglePage(blog_folder);
@@ -51,23 +54,29 @@ const { title, description, authors, categories, image, date, tags } =
               ))
           }
         </li>
-        <li>{dateFormat(date)}</li>
+        <li>{dateFormat(date, currentLocale ?? "en")}</li>
         <li>
           <ul>
             {
-              categories.map((category: string) => (
-                <li class="inline-block">
-                  <a
-                    href={getRelativeLocaleUrl(
-                      currentLocale ?? '',
-                      `/${blog_folder}/${slugify(category)}`,
-                    )}
-                    class="mr-3 hover:text-primary"
-                  >
-                    &#9635; {humanize(category)}
-                  </a>
-                </li>
-              ))
+              categories.map((category: string) => {
+                const entry = categoryEntries.find(
+                  (item) => item.category_name === category,
+                );
+                const label = entry?.name ?? humanize(category);
+                return (
+                  <li class="inline-block">
+                    <a
+                      href={getRelativeLocaleUrl(
+                        currentLocale ?? '',
+                        `/${blog_folder}/${slugify(category)}`,
+                      )}
+                      class="mr-3 hover:text-primary"
+                    >
+                      &#9635; {label}
+                    </a>
+                  </li>
+                );
+              })
             }
           </ul>
         </li>
