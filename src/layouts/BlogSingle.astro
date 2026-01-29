@@ -114,7 +114,7 @@ const breadcrumbData = {
                 description={post.data.subtitle ?? post.data.excerpt ?? ""}
                 slug={post.slug}
                 showCopy={true}
-                copyLabel={currentLocale === "en" ? "Copied!" : "Copiado"}
+                copyLabel={currentLocale === "en" ? "Link Copied!" : "Link Copiado!"}
                 forceLight={true}
               />
             </div>
@@ -137,7 +137,7 @@ const breadcrumbData = {
             description={post.data.subtitle ?? post.data.excerpt ?? ""}
             slug={post.slug}
             showCopy={true}
-            copyLabel={currentLocale === "en" ? "Copied Link!" : "Link Copiado!"}
+            copyLabel={currentLocale === "en" ? "Link Copied!" : "Link Copiado!"}
           />
         </div>
         <!-- <Disqus client:load /> -->
