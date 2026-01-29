@@ -78,7 +78,7 @@ const {
   telegram,
 } = source;
 
-const itemClassBase = `relative inline-flex ${sizeClass} items-center justify-center rounded-full border bg-white/80 shadow-sm transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary dark:hover:border-primary/60 dark:hover:bg-primary/20 dark:hover:text-primary`;
+const itemClassBase = `relative inline-flex ${sizeClass} items-center justify-center rounded-full border bg-white/80 shadow-sm transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:border-primary/40 hover:bg-primary/10 hover:text-primary dark:hover:border-primary/60 dark:hover:bg-primary/20 dark:hover:text-primary`;
 const itemClass = forceLight
   ? `${itemClassBase} border-black/20 text-black/70 dark:border-white/25 dark:bg-white/20 dark:text-white`
   : `${itemClassBase} border-black/15 text-text-offset dark:border-white/25 dark:bg-white/20 dark:text-white`;
