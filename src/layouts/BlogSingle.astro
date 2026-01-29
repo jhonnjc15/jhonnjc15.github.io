@@ -58,14 +58,14 @@ const breadcrumbData = {
             alt={post.data.title}
             width={1280}
             height={720}
-            transition:name={`blog-image-${post.slug}`}
+            transition:name={`img-${post.slug}`}
           />
         </div>
       </div>
       <div class="mt-10 max-w-[900px] lg:col-9" data-animate="fade-up">
         <h1
           class="h2 text-4xl md:text-5xl font-extrabold leading-tight"
-          transition:name={`blog-title-${post.slug}`}
+          transition:name={`title-${post.slug}`}
         >
           {post.data.title}
         </h1>
