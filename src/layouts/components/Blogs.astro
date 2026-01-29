@@ -62,8 +62,9 @@ const buildCategoryLink = (category: string) =>
                   : `${plainify(item.body?.slice(0, Number(summary_length)))}...`
               }
             </p>
-            <div class="card-footer mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-700">
-              <span class="inline-flex items-center text-xs">
+            <div class="card-footer mt-4 flex flex-col items-center gap-4 text-sm text-gray-600 dark:text-gray-700">
+              <div class="flex flex-wrap items-center justify-center gap-4">
+                <span class="inline-flex items-center text-xs">
                 <svg
                   class="mr-1.5"
                   width="14"
@@ -78,8 +79,8 @@ const buildCategoryLink = (category: string) =>
                   />
                 </svg>
                 {dateFormat(item.data.date, currentLocale ?? "en")}
-              </span>
-              <span class="inline-flex items-center text-xs">
+                </span>
+                <span class="inline-flex items-center text-xs">
                 <svg
                   class="mr-1.5"
                   width="16"
@@ -94,9 +95,10 @@ const buildCategoryLink = (category: string) =>
                   />
                 </svg>
                 {item.data.time_to_read ?? readingTime(item.body, currentLocale ?? "en")}
-              </span>
+                </span>
+              </div>
               <a
-                class="ml-auto inline-flex items-center text-primary font-semibold hover:underline"
+                class="inline-flex items-center justify-center text-primary font-semibold hover:underline"
                 href={buildPostLink(item.slug)}
               >
                 {labels?.discover_more_label}
