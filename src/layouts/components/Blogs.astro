@@ -62,8 +62,17 @@ const buildCategoryLink = (category: string) =>
                   : `${plainify(item.body?.slice(0, Number(summary_length)))}...`
               }
             </p>
-            <div class="card-footer mt-4 flex flex-col items-center gap-4 text-sm text-gray-600 dark:text-gray-700">
-              <div class="flex flex-wrap items-center justify-center gap-4">
+            <div class="card-footer mt-4 flex items-center justify-between gap-4 text-sm text-gray-600 dark:text-gray-700">
+              <a
+                class="peer order-2 inline-flex items-center justify-center text-primary font-semibold hover:underline"
+                href={buildPostLink(item.slug)}
+              >
+                {labels?.discover_more_label}
+                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
+                </svg>
+              </a>
+              <div class="order-1 flex flex-wrap items-center gap-4 transition duration-200 peer-hover:-translate-y-0.5 peer-hover:text-primary">
                 <span class="inline-flex items-center text-xs">
                 <svg
                   class="mr-1.5"
@@ -97,15 +106,6 @@ const buildCategoryLink = (category: string) =>
                 {item.data.time_to_read ?? readingTime(item.body, currentLocale ?? "en")}
                 </span>
               </div>
-              <a
-                class="inline-flex items-center justify-center text-primary font-semibold hover:underline"
-                href={buildPostLink(item.slug)}
-              >
-                {labels?.discover_more_label}
-                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
