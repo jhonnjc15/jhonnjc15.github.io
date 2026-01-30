@@ -41,8 +41,6 @@ const getMainImage = (item: any) =>
     skewX={0}
     skewY={0}
   />
-  <span class="pointer-events-none absolute top-24 right-32 h-24 w-24 rounded-full bg-gradient-to-tr from-primary to-green-400 blur-2xl opacity-25"></span>
-  <span class="pointer-events-none absolute bottom-20 left-20 h-28 w-28 rounded-full bg-gradient-to-tr from-secondary to-primary blur-2xl opacity-20"></span>
   <div class="container space-y-10 relative">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div class="space-y-2">
@@ -59,8 +57,6 @@ const getMainImage = (item: any) =>
       {
         featuredProducts.map((product: any) => (
           <article class="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-gray-200 bg-background p-5 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl dark:border-gray-700">
-            <span class="pointer-events-none absolute -top-6 left-6 h-20 w-20 rounded-full bg-gradient-to-tr from-secondary to-green-400 blur-2xl opacity-30"></span>
-            <span class="pointer-events-none absolute bottom-4 right-6 h-24 w-24 rounded-full bg-gradient-to-tr from-primary to-secondary blur-2xl opacity-20"></span>
             <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-background-offset border border-gray-200 dark:border-gray-700">
               <Image
                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105"

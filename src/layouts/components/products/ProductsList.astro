@@ -4,6 +4,7 @@ import config from "@config/config.json";
 import { plainify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getProductSlug } from "@lib/utils/productSlug";
+import GlowShape from "@layouts/GlowShape.astro";
 
 const { summary_length } = config.settings;
 const { products, product_list } = Astro.props;
@@ -22,7 +23,20 @@ const enhancedProducts = visibleProducts.map((item) => {
 
 const isOddCount = enhancedProducts.length % 2 !== 0;
 ---
-<div class="space-y-4">
+<div class="space-y-4 relative overflow-hidden">
+  <GlowShape
+    size={220}
+    top={-40}
+    right={-20}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={35}
+    toStop={80}
+    blur={64}
+    opacity={0.2}
+    skewX={0}
+    skewY={0}
+  />
   <div class="mb-8 flex flex-col gap-2 md:flex-row md:items-center md:justify-between" data-animate="fade-up">
     <div>
       <h2 class="text-3xl md:text-4xl font-extrabold text-default">{product_list.title}</h2>
@@ -36,7 +50,6 @@ const isOddCount = enhancedProducts.length % 2 !== 0;
     {
       enhancedProducts.map((item: any, idx: number) => (
         <article class={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-offset to-background p-6 shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl border border-gray-200 dark:border-gray-700 ${isOddCount && idx === enhancedProducts.length - 1 ? "md:col-span-2 md:max-w-3xl md:mx-auto" : ""}`} data-animate={idx % 2 === 0 ? "fade-up" : "fade-right"}>
-          <span class="absolute w-3/12 aspect-square bg-gradient-to-tr from-secondary to-green-400 -top-8 right-2 rounded-full blur-3xl opacity-20"></span>
           <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
             <div class="lg:w-1/2">
               <div class="relative overflow-hidden rounded-2xl bg-background aspect-[4/3]">
