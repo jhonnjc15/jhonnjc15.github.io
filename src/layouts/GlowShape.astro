@@ -1,0 +1,90 @@
+---
+interface Props {
+  size?: number;
+
+  top?: number;
+  left?: number;
+  right?: number;
+  bottom?: number;
+
+  from?: string;
+  to?: string;
+  color?: string;
+
+  gradient?: boolean;
+
+  fromStop?: number;   // 👈 NUEVO
+  toStop?: number;     // 👈 NUEVO
+
+  blur?: number;
+  opacity?: number;
+
+  rotate?: number;
+  skewX?: number;
+  skewY?: number;
+
+  zIndex?: number;
+}
+
+const {
+  size = 240,
+
+  top,
+  left,
+  right,
+  bottom,
+
+  from = "#217276",
+  to = "#f3a415",
+  color = "#217276",
+
+  gradient = true,
+
+  fromStop = 20,   // 👈 predomina el color principal
+  toStop = 85,
+
+  blur = 120,
+  opacity = 0.3,
+
+  rotate = 0,
+  skewX = 12,
+  skewY = 12,
+
+  zIndex = 0,
+} = Astro.props;
+
+const style = `
+  position: absolute;
+  width: ${size}px;
+  height: ${size}px;
+
+  ${top !== undefined ? `top:${top}px;` : ""}
+  ${left !== undefined ? `left:${left}px;` : ""}
+  ${right !== undefined ? `right:${right}px;` : ""}
+  ${bottom !== undefined ? `bottom:${bottom}px;` : ""}
+
+  background: ${
+    gradient
+      ? `linear-gradient(
+          45deg,
+          ${from} ${fromStop}%,
+          ${to} ${toStop}%
+        )`
+      : color
+  };
+
+  border-radius: 9999px;
+  filter: blur(${blur}px);
+  opacity: ${opacity};
+
+  transform:
+    rotate(${rotate}deg)
+    skewX(${skewX}deg)
+    skewY(${skewY}deg);
+
+  z-index: ${zIndex};
+  pointer-events: none;
+`;
+---
+
+<span style={style} aria-hidden="true"></span>

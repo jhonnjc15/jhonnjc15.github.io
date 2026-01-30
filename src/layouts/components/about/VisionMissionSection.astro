@@ -1,4 +1,6 @@
 ---
+import GlowShape from "@layouts/GlowShape.astro";
+
 interface ImageData {
   src: string;
   alt?: string;
@@ -50,6 +52,32 @@ const missionSections = formatSections(mission.description);
   class="relative overflow-hidden bg-background-offset py-20 text-text"
   data-animate="fade-up"
 >
+  <GlowShape
+    size={400}
+    top={0}
+    left={0}
+    from="#217276"
+    to="#f3a415"
+    fromStop={1}
+    toStop={99}
+    blur={50}
+    opacity={0.3}
+    rotate={90}
+  />
+
+  <GlowShape
+    size={400}
+    top={600}
+    right={0}
+    from="#217276"
+    to="#f3a415"
+    fromStop={30}
+    toStop={70}
+    blur={70}
+    opacity={0.4}
+    rotate={90}
+  />
+
   <div class="relative container mx-auto max-w-6xl px-6 space-y-10">
     <div class="text-center">
       <h2 class="text-3xl font-extrabold text-dark dark:text-white md:text-4xl">{headingText}</h2>

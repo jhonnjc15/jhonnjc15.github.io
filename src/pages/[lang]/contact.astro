@@ -8,6 +8,7 @@ import Form from "@layouts/function-components/Form";
 import Social from "@components/Social.astro";
 import { getEntry } from "astro:content";
 import social from "@config/social.json";
+import GlowShape from '@layouts/GlowShape.astro';
 
 
 const { currentLocale } = Astro
@@ -63,7 +64,7 @@ export async function getStaticPaths() {
         alt=""
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-black/20"></div>
-
+      
       <div class="relative px-4 py-12 sm:px-8 md:px-12 lg:px-16 text-white">
         <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           {/* Columna de texto */}
