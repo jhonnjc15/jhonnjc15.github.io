@@ -1,5 +1,6 @@
 ---
 import TestimonialSlider from "@layouts/function-components/TestimonialSlider";
+import GlowShape from "@layouts/GlowShape.astro";
 const { testimonial } = Astro.props;
 ---
 
@@ -17,5 +18,19 @@ const { testimonial } = Astro.props;
         <TestimonialSlider list={testimonial.testimonial_list} client:load />
       </div>
     </div>
+
   </div>
+  <GlowShape
+    size={250}
+    bottom={0}
+    right={0}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={85}
+    toStop={15}
+    blur={64}
+    opacity={0.3}
+    rotate={90}
+    zIndex={0}
+  />
 </section>

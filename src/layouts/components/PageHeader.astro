@@ -16,9 +16,9 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
 
 <div class="text-center relative overflow-hidden rounded-3xl bg-gradient-to-b from-background to-background-offset px-6 py-4 shadow-sm">
   <GlowShape
-    size={180}
+    size={280}
     top={-32}
-    left={24}
+    right={24}
     from="var(--color-secondary)"
     to="#4ade80"
     fromStop={25}
@@ -27,18 +27,8 @@ const { title, index_title, page_title, slug, content, index_path } = page_data 
     opacity={0.3}
     rotate={90}
   />
-  <GlowShape
-    size={120}
-    top={20}
-    right={24}
-    from="var(--color-secondary)"
-    to="#4ade80"
-    fromStop={35}
-    toStop={80}
-    blur={48}
-    opacity={0.3}
-    rotate={90}
-  />
+
+
   <div class="relative" data-animate="fade-up">
     <div class="w-full overflow-x-auto overflow-y-hidden [-webkit-overflow-scrolling:touch]">
       <ul

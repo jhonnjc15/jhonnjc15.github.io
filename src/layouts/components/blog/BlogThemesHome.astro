@@ -5,6 +5,7 @@ import { plainify } from "@lib/utils/textConverter";
 const { summary_length } = config.settings;
 import categoriesES from "@data/es/blog-categories.json";
 import categoriesEN from "@data/en/blog-categories.json";
+import GlowShape from "@layouts/GlowShape.astro";
 
 const { currentLocale } = Astro;
 const { blogThemes } = Astro.props;
@@ -108,7 +109,19 @@ const getCategoryKey = (data: any) => {
           </div>
         );
       })}
-
+      <GlowShape
+        size={250}
+        top={0}
+        left={0}
+        from="var(--color-secondary)"
+        to="#4ade80"
+        fromStop={25}
+        toStop={75}
+        blur={64}
+        opacity={0.3}
+        rotate={90}
+        zIndex={0}
+      />
       <!-- BLOQUE BLOG -->
       <div class="card group relative min-h-[190px] sm:min-h-[220px] md:min-h-[240px] lg:min-h-[260px]
                   flex flex-col justify-between h-full py-6 px-5 sm:py-8 sm:px-6 md:py-8 md:px-6 bg-offset">
