@@ -109,7 +109,7 @@ const breadcrumbData = {
               }
             </li>
           </ul>
-          <details class="group relative flex w-full justify-end sm:w-auto" data-share-dropdown data-animate="fade-up">
+          <details class="group relative z-20 flex w-full justify-end sm:w-auto" data-share-dropdown data-animate="fade-up">
             <summary class="list-none">
               <span class="group relative inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border border-primary/40 bg-primary/20 text-lg text-primary shadow-lg shadow-primary/10 transition hover:border-primary hover:bg-primary/30 dark:border-primary/50">
                 <IoShareSocialOutline />
@@ -120,7 +120,7 @@ const breadcrumbData = {
             </summary>
 
             <div
-              class="absolute right-0 top-10 z-10 mt-3 rounded-2xl border border-black/15 bg-white/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur dark:border-white/15 dark:bg-background/95
+              class="absolute right-0 top-10 z-30 mt-3 rounded-2xl border border-black/15 bg-white/95 px-4 py-3 shadow-xl shadow-primary/10 backdrop-blur dark:border-white/15 dark:bg-background/95
                     origin-top-right
                     opacity-0 translate-y-[-6px] scale-[0.98] pointer-events-none
                     transition duration-500 ease-in-out
@@ -179,9 +179,6 @@ const breadcrumbData = {
     }
     if (type === "linkedin") {
       return `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-    }
-    if (type === "instagram") {
-      return `https://www.instagram.com/share?url=${encodedUrl}`;
     }
     return "#";
   };
