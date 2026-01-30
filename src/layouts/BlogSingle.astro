@@ -5,6 +5,7 @@ import dateFormat from "@lib/utils/dateFormat";
 import readingTime from "@lib/utils/readingTime";
 import Disqus from "./function-components/Disqus";
 import ContentBreadcrumb from "./components/products/ContentBreadcrumb.astro";
+import GlowShape from "@layouts/GlowShape.astro";
 
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -42,9 +43,48 @@ const breadcrumbData = {
 ---
 
 <section class="section blog-single relative overflow-hidden">
-  <span class="absolute top-[500px] left-0 w-[360px] h-[220px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
-  <span class="absolute top-0 right-8 w-[260px] h-[120px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
-  <span class="absolute bottom-0 right-10 w-[240px] h-[180px] bg-gradient-to-tr from-primary to-green-400 rounded-full blur-2xl opacity-25"></span>
+  <GlowShape
+    width={360}
+    height={220}
+    top={500}
+    left={0}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={30}
+    toStop={70}
+    blur={64}
+    opacity={0.25}
+    skewX={0}
+    skewY={0}
+  />
+  <GlowShape
+    width={260}
+    height={120}
+    top={0}
+    right={32}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={20}
+    toStop={80}
+    blur={64}
+    opacity={0.25}
+    skewX={0}
+    skewY={0}
+  />
+  <GlowShape
+    width={240}
+    height={180}
+    bottom={0}
+    right={40}
+    from="var(--color-primary)"
+    to="#4ade80"
+    fromStop={35}
+    toStop={75}
+    blur={40}
+    opacity={0.25}
+    skewX={0}
+    skewY={0}
+  />
   <div class="container relative">
     <div class="mb-8 w-full">
       <ContentBreadcrumb data={breadcrumbData} />

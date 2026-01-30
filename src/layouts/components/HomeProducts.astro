@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getProductSlug } from "@lib/utils/productSlug";
+import GlowShape from "@layouts/GlowShape.astro";
 
 const { section, products } = Astro.props;
 const { currentLocale } = Astro;
@@ -13,8 +14,33 @@ const getMainImage = (item: any) =>
   item.images?.find((img: { isMain?: boolean }) => img.isMain)?.src ?? "/images/default.jpg";
 ---
 <section class="section pt-6 pb-20 lg:pt-10 relative overflow-hidden">
-  <span class="pointer-events-none absolute -top-12 left-8 h-40 w-40 rounded-full bg-gradient-to-tr from-secondary to-green-400 blur-3xl opacity-30"></span>
-  <span class="pointer-events-none absolute bottom-8 right-10 h-44 w-44 rounded-full bg-gradient-to-tr from-primary to-secondary blur-3xl opacity-20"></span>
+  <GlowShape
+    size={160}
+    top={-48}
+    left={32}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={35}
+    toStop={70}
+    blur={64}
+    opacity={0.3}
+    skewX={0}
+    skewY={0}
+  />
+  <GlowShape
+    size={176}
+    bottom={32}
+    right={40}
+    from="var(--color-primary)"
+    to="var(--color-secondary)"
+    fromStop={25}
+    toStop={75}
+    blur={64}
+    opacity={0.2}
+    dominant="to"
+    skewX={0}
+    skewY={0}
+  />
   <span class="pointer-events-none absolute top-24 right-32 h-24 w-24 rounded-full bg-gradient-to-tr from-primary to-green-400 blur-2xl opacity-25"></span>
   <span class="pointer-events-none absolute bottom-20 left-20 h-28 w-28 rounded-full bg-gradient-to-tr from-secondary to-primary blur-2xl opacity-20"></span>
   <div class="container space-y-10 relative">

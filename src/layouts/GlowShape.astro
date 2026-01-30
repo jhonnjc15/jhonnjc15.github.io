@@ -1,6 +1,8 @@
 ---
 interface Props {
   size?: number;
+  width?: number;
+  height?: number;
 
   top?: number;
   left?: number;
@@ -12,6 +14,8 @@ interface Props {
   color?: string;
 
   gradient?: boolean;
+  radial?: boolean;
+  dominant?: "from" | "to";
 
   fromStop?: number;   // 👈 NUEVO
   toStop?: number;     // 👈 NUEVO
@@ -28,6 +32,8 @@ interface Props {
 
 const {
   size = 240,
+  width,
+  height,
 
   top,
   left,
@@ -39,6 +45,8 @@ const {
   color = "#217276",
 
   gradient = true,
+  radial = false,
+  dominant = "from",
 
   fromStop = 20,   // 👈 predomina el color principal
   toStop = 85,
@@ -53,10 +61,24 @@ const {
   zIndex = 0,
 } = Astro.props;
 
+const shapeWidth = width ?? size;
+const shapeHeight = height ?? size;
+const clampedFromStop = Math.max(0, Math.min(100, fromStop));
+const clampedToStop = Math.max(0, Math.min(100, toStop));
+const startStop = Math.min(clampedFromStop, clampedToStop);
+const endStop = Math.max(clampedFromStop, clampedToStop);
+const [primaryColor, secondaryColor] = dominant === "to" ? [to, from] : [from, to];
+const gradientStops = `
+  ${primaryColor} 0%,
+  ${primaryColor} ${startStop}%,
+  ${secondaryColor} ${endStop}%,
+  ${secondaryColor} 100%
+`;
+
 const style = `
   position: absolute;
-  width: ${size}px;
-  height: ${size}px;
+  width: ${shapeWidth}px;
+  height: ${shapeHeight}px;
 
   ${top !== undefined ? `top:${top}px;` : ""}
   ${left !== undefined ? `left:${left}px;` : ""}
@@ -65,11 +87,15 @@ const style = `
 
   background: ${
     gradient
-      ? `linear-gradient(
-          45deg,
-          ${from} ${fromStop}%,
-          ${to} ${toStop}%
-        )`
+      ? radial
+        ? `radial-gradient(
+            circle,
+            ${gradientStops}
+          )`
+        : `linear-gradient(
+            45deg,
+            ${gradientStops}
+          )`
       : color
   };
 

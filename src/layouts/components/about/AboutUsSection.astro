@@ -1,4 +1,6 @@
 ---
+import GlowShape from "@layouts/GlowShape.astro";
+
 interface ImageData {
   src: string;
   alt?: string;
@@ -15,7 +17,20 @@ const { section } = Astro.props as { section: SectionData };
 ---
 
 <section class="py-20 bg-background text-text relative overflow-hidden" data-animate="fade-up">
-  <span class="absolute -top-16 -right-10 w-[340px] h-[240px] bg-gradient-to-tr from-secondary to-green-400 rounded-full blur-3xl opacity-25"></span>
+  <GlowShape
+    width={340}
+    height={240}
+    top={-64}
+    right={-40}
+    from="var(--color-secondary)"
+    to="#4ade80"
+    fromStop={30}
+    toStop={70}
+    blur={64}
+    opacity={0.25}
+    skewX={0}
+    skewY={0}
+  />
   <div class="container mx-auto flex flex-col lg:flex-row items-center gap-12 relative">
     <div class="lg:w-1/2 space-y-4">
       {section.eyebrow && (
